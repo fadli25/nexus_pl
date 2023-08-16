@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "normalize.css";
+
+@font-face {
+  font-family: Innter;
+  src: url(./inter.ttf);
+}
+
+body {
+  font-family: Innter;
+  color: #fff;
+}
