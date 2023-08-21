@@ -13,3 +13,16 @@ body {
   font-family: Innter;
   color: #fff;
 }
+@font-face {
+  font-family: popSemibold;
+  src: url(./Poppins-SemiBold.ttf);
+}
+.fontPopSemibold {
+  font-family: popSemibold;
+}
+.tower {
+  border-radius: 0.6vw;
+  background: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.72) 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-family: popSemibold;
+}

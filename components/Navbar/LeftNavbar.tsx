@@ -68,7 +68,7 @@ export default function LeftNavbar() {
 
   const buttonVariants = {
     whileTap: { scale: 0.95 },
-    whileHover: { scale: 1.05 },
+    whileHover: { scale: 1.06 },
   };
 
   const buttonStyle = {
@@ -83,12 +83,12 @@ export default function LeftNavbar() {
   return (
     <div className="fixed top-0 left-0 h-full bg-[#0F0F0F] w-[20vw]">
       <div className="flex flex-col pt-[2vw] items-center gap-y-[1vw] text-[1vw] font-[500]">
-        <div className="w-[12vw]">
+        <div>
           <Image
             src={imageSrc}
             width={9000}
             height={9000}
-            className="w-[12vw] h-[12vw] rounded-full object-cover object-center"
+            className="w-[10vw] h-[10vw] rounded-full object-cover object-center"
             alt="profile image"
             style={{
               border: "0.28vw #00ff47 solid",
