@@ -5,6 +5,7 @@ import { BsFillChatFill } from "react-icons/bs";
 import { MdLocalGroceryStore } from "react-icons/md";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function TopNavbar() {
   const connectWalletStyle = {
@@ -46,7 +47,48 @@ export default function TopNavbar() {
       </div>
     );
   }
-  console.log(path.length);
+
+  function founder() {
+    return (
+      <div className="mt-[8vw] px-[2vw]">
+        <div className="fontPopSemibold text-[4vw]">Founder</div>
+        <div className="fontPopSemibold text-[2.4vw] text-[#00ff47] mb-[3vw]">
+          My Projects
+        </div>
+        <div className="flex justify-start items-center gap-x-[0.7vw]">
+          <motion.button
+            className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            My Projects
+          </motion.button>
+          <motion.button
+            className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            Hire staffs
+          </motion.button>
+          <motion.button
+            className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            Incoming Applications
+          </motion.button>
+          <motion.button
+            className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            Watchlist
+          </motion.button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-black w-[80vw] min-h-[20vw] float-right px-[2vw] relative z-[100]">
       <div className="flex justify-end py-[1.4vw] z-50">
@@ -77,9 +119,17 @@ export default function TopNavbar() {
           </Button>
         </div>
       </div>
-      <div className="absolute top-0 left-0 w-full h-full grid place-items-center -z-10">
-        <div>{path.length === 1 && home()}</div>
-      </div>
+
+      {path.length === 1 && (
+        <div className="absolute top-0 left-0 w-full h-full grid place-items-center -z-10">
+          {home()}
+        </div>
+      )}
+      {path === "/founder" && (
+        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          {founder()}
+        </div>
+      )}
     </div>
   );
 }
