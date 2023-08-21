@@ -135,7 +135,7 @@ export default function Freelancers() {
                         <div className="text-[#00ff47] text-[1.9vw] text-end">
                           4.6
                         </div>
-                        <div className="text-black bg-blue-500 px-[1vw] py-[0.2vw] text-[0.6vw]">
+                        <div className="text-black bg-[#1DA1F2] px-[1vw] py-[0.2vw] text-[0.6vw]">
                           Expert
                         </div>
                       </div>

@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export default function TopNavbar() {
   const connectWalletStyle = {
-    fontSite: "1vw",
+    fontSite: "1.1vw",
     padding: "0.6vw 2vw",
     border: "0.12vw #00ff47 solid",
     borderRaduis: "9999px",
@@ -19,7 +19,8 @@ export default function TopNavbar() {
       color: "#00ff47",
     },
   };
-  const cwc = "rounded-full hover:border-[#00ff47] hover:border-[0.12vw]";
+  const cwc =
+    "rounded-full hover:border-[#00ff47] hover:border-[0.12vw] text-[1vw]";
   const buttonProfile = {
     fontSize: "1vw",
     padding: "0.7vw 2vw",
@@ -90,7 +91,7 @@ export default function TopNavbar() {
   }
 
   return (
-    <div className="bg-black w-[80vw] min-h-[20vw] float-right px-[2vw] relative z-[100]">
+    <div className="bg-black w-[80vw] float-right px-[2vw] relative z-[100]">
       <div className="flex justify-end py-[1.4vw] z-50">
         <div className="flex flex-col gap-y-[0.7vw] items-end">
           {/* Connect Wallet */}
