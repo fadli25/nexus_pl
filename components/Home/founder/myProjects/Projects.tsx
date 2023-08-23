@@ -1,7 +1,9 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import AddProject from "./AddProject";
+import { useRouter } from "next/router";
 
 export default function Projects() {
   const styleButton1 = {
@@ -51,7 +53,10 @@ export default function Projects() {
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
   function hairing() {
     return (
-      <div className="w-full py-[1.4vw] px-[2.4vw] mt-[2vw] bg-[#000] text-white flex justify-between items-center">
+      <div
+        onClick={() => router.push("/founder/project")}
+        className="w-full py-[1.4vw] px-[2.4vw] mt-[2vw] bg-[#000] text-white flex justify-between items-center"
+      >
         <div>
           <div className="text-[3vw] fontPopSemibold flex flex-col items-start w-[24vw]">
             <div>Bone Shamans</div>
@@ -145,14 +150,17 @@ export default function Projects() {
       </div>
     );
   }
+  const [addProject, setAddProject] = useState(true);
+  const router = useRouter();
   return (
-    <div className="px-[3vw] mt-[3vw]">
+    <div className="px-[3vw] pt-[3vw] relative">
       <div className="flex items-center gap-x-[1vw]">
         <div>
           <Button
             variant="contained"
             sx={styleButton1}
             className="bg-[#00ff47] hover:bg-[#00ff47]"
+            onClick={() => router.push("/founder/addproject")}
           >
             Add new project
           </Button>

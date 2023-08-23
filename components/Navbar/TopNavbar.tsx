@@ -61,6 +61,7 @@ export default function TopNavbar() {
             className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96 }}
+            onClick={() => router.push("/founder")}
           >
             My Projects
           </motion.button>
@@ -126,7 +127,7 @@ export default function TopNavbar() {
           {home()}
         </div>
       )}
-      {path === "/founder" && (
+      {path.slice(0, 8) === "/founder" && (
         <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
           {founder()}
         </div>
