@@ -160,7 +160,7 @@ export default function Projects() {
             variant="contained"
             sx={styleButton1}
             className="bg-[#00ff47] hover:bg-[#00ff47]"
-            onClick={() => router.push("/founder/addproject")}
+            onClick={() => router.push("/founder/project/addproject")}
           >
             Add new project
           </Button>

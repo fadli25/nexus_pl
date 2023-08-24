@@ -69,6 +69,7 @@ export default function TopNavbar() {
             className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96 }}
+            onClick={() => router.push("/founder/haire")}
           >
             Hire staffs
           </motion.button>

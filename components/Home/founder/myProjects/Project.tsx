@@ -195,7 +195,7 @@ export default function Project() {
                   variant="contained"
                   sx={buttonStyle}
                   className={`${buttonStyleClass}`}
-                  onClick={() => router.push("/founder/invite")}
+                  onClick={() => router.push("/founder/project/invite")}
                 >
                   Invite
                 </Button>
@@ -223,7 +223,7 @@ export default function Project() {
                   variant="contained"
                   sx={buttonStyle}
                   className={`${buttonStyleClass}`}
-                  onClick={() => router.push("/founder/invite")}
+                  onClick={() => router.push("/founder/project/invite")}
                 >
                   Invite
                 </Button>
