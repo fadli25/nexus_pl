@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode, useState } from "react";
 import { Button, IconButton } from "@mui/material";
 import { IoNotifications, IoSettingsOutline } from "react-icons/io5";
 import { BsFillChatFill } from "react-icons/bs";
@@ -48,13 +48,24 @@ export default function TopNavbar() {
       </div>
     );
   }
+  // const [newtext, setnewText] = useState("My Projects");
+
+  function pathFunction() {
+    if (path.slice(0, 14) == "/founder/haire") {
+      return <>Hire Staffs</>;
+    } else if (path.slice(0, 14) === "/founder/incom") {
+      return <>Incoming Projects</>;
+    } else {
+      return <>My Projects</>;
+    }
+  }
 
   function founder() {
     return (
-      <div className="mt-[8vw] px-[2vw]">
+      <div className="mt-[9vw] px-[2vw]">
         <div className="fontPopSemibold text-[4vw]">Founder</div>
-        <div className="fontPopSemibold text-[2.4vw] text-[#00ff47] mb-[3vw]">
-          My Projects
+        <div className="fontPopSemibold text-[2.4vw] text-[#00ff47] mb-[2vw]">
+          {pathFunction()}
         </div>
         <div className="flex justify-start items-center gap-x-[0.7vw]">
           <motion.button
@@ -77,6 +88,7 @@ export default function TopNavbar() {
             className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96 }}
+            onClick={() => router.push("/founder/incoming")}
           >
             Incoming Applications
           </motion.button>
@@ -87,6 +99,37 @@ export default function TopNavbar() {
           >
             Watchlist
           </motion.button>
+        </div>
+      </div>
+    );
+  }
+
+  function pathFunction1() {
+    if (path.slice(0, 14) == "/founder/haire") {
+      return <>Hire Staffs</>;
+    } else if (path.slice(0, 14) === "/founder/incom") {
+      return <>Incoming Projects</>;
+    } else {
+      return <>Find Project</>;
+    }
+  }
+
+  function freelance() {
+    return (
+      <div className="mt-[9vw] px-[2vw]">
+        <div className="fontPopSemibold text-[4.4vw]">Freelance</div>
+        <div className="fontPopSemibold text-[2.4vw] text-[#00ff47] mb-[2vw]">
+          {pathFunction1()}
+        </div>
+        <div className="flex justify-start items-center gap-x-[0.7vw]">
+          <MotionButton1 onClick={() => router.push("/freelance")}>
+            Find Project
+          </MotionButton1>
+          <MotionButton1>Ongoing Jobs</MotionButton1>
+          <MotionButton1>Outgoing Applications</MotionButton1>
+          <MotionButton1>Watchlist</MotionButton1>
+          <MotionButton1>Job Invitatons</MotionButton1>
+          <MotionButton1>Job History</MotionButton1>
         </div>
       </div>
     );
@@ -133,6 +176,29 @@ export default function TopNavbar() {
           {founder()}
         </div>
       )}
+      {path.slice(0, 8) === "/freelan" && (
+        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          {freelance()}
+        </div>
+      )}
     </div>
+  );
+}
+
+type ButtonMotion = {
+  children: ReactNode;
+  onClick?: () => void;
+};
+
+export function MotionButton1({ children, onClick }: ButtonMotion) {
+  return (
+    <motion.button
+      className="bg-white px-[1vw] py-[0.5vw] text-black text-[0.9vw]"
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.96 }}
+      onClick={onClick}
+    >
+      {children}
+    </motion.button>
   );
 }

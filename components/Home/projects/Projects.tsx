@@ -55,6 +55,7 @@ export default function Projects() {
       <div className="my-[1.3vw]">
         <Swiper
           slidesPerView={2}
+          spaceBetween={5}
           loop={true}
           autoplay={{
             delay: 1300,

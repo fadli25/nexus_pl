@@ -57,6 +57,7 @@ export default function Freelancers() {
         <div className="my-[1.3vw]">
           <Swiper
             slidesPerView={2}
+            spaceBetween={5}
             loop={true}
             autoplay={{
               delay: 1600,
@@ -70,7 +71,7 @@ export default function Freelancers() {
               <SwiperSlide>
                 <motion.div
                   whileHover={{ scale: 1.04 }}
-                  className="child w-[34.4vw] mt-[0.7vw] px-[1vw] bg-black h-[17vw] flex items-center gap-x-[1vw]"
+                  className="child w-[34.6vw] mt-[0.7vw] px-[1vw] bg-black h-[17vw] flex items-center gap-x-[1vw]"
                 >
                   <div className="flex flex-col items-center">
                     <div className="rounded-full w-fit border-[0.15vw] border-[#00ff47] overflow-hidden">

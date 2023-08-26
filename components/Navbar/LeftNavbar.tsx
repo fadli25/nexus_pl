@@ -21,8 +21,8 @@ export default function LeftNavbar() {
       link: "/founder",
     },
     {
-      name: "Freelace",
-      link: "/freelace",
+      name: "Freelance",
+      link: "/freelance",
     },
     {
       name: "Investor",
