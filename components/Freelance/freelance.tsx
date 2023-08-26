@@ -110,7 +110,7 @@ export default function freelance() {
         <div className="mt-[3vw] flex flex-wrap justify-between gap-y-[2vw] pb-[4vw]">
           {data.map((el, i) => (
             <motion.div
-              onClick={() => router.push("/founder/haire/profile")}
+              onClick={() => router.push("/freelance/project")}
               whileHover={{ scale: 1.04 }}
               key={i}
               className="w-[32vw] rounded-[0.6vw] overflow-hidden  flex justify-between bg-black"

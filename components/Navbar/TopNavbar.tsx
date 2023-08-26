@@ -125,8 +125,12 @@ export default function TopNavbar() {
           <MotionButton1 onClick={() => router.push("/freelance")}>
             Find Project
           </MotionButton1>
-          <MotionButton1>Ongoing Jobs</MotionButton1>
-          <MotionButton1>Outgoing Applications</MotionButton1>
+          <MotionButton1 onClick={() => router.push("/freelance/ongoing")}>
+            Ongoing Jobs
+          </MotionButton1>
+          <MotionButton1 onClick={() => router.push("/freelance/outgoing")}>
+            Outgoing Applications
+          </MotionButton1>
           <MotionButton1>Watchlist</MotionButton1>
           <MotionButton1>Job Invitatons</MotionButton1>
           <MotionButton1>Job History</MotionButton1>
