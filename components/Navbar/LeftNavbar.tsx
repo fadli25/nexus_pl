@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { ReactNode, useState } from "react";
 import { motion, Variants, Variant } from "framer-motion";
 import { Button } from "@mui/material/";
 import { useRouter } from "next/router";
@@ -24,18 +24,12 @@ export default function LeftNavbar() {
       name: "Freelance",
       link: "/freelance",
     },
-    {
-      name: "Investor",
-      link: "/investor",
-    },
+
     {
       name: "Payment",
       link: "/payment",
     },
-    {
-      name: "Merch Store",
-      link: "/",
-    },
+
     {
       name: "Support",
       link: "/",
@@ -81,40 +75,58 @@ export default function LeftNavbar() {
   };
 
   return (
-    <div className="fixed top-0 left-0 h-full bg-[#0F0F0F] w-[20vw]">
-      <div className="flex flex-col pt-[2vw] items-center gap-y-[1vw] text-[1vw] font-[500]">
+    <div className="hidden md:block fixed top-0 left-0 border-r border-white/20 h-full bg-[#0F0F0F] w-[20vw] z-[9999]">
+      <div className="flex flex-col justify-between min-h-[46vw] pt-[2vw] items-center gap-y-[1vw] text-[1vw] font-[500]">
         <div>
           <Image
             src={imageSrc}
             width={9000}
             height={9000}
-            className="w-[10vw] h-[10vw] rounded-full object-cover object-center"
+            className="w-[10vw] mb-[2vw] h-[10vw] rounded-full object-cover object-center"
             alt="profile image"
             style={{
-              border: "0.28vw #00ff47 solid",
+              border: "0.28vw #fff solid",
             }}
           />
         </div>
-        {menu.map((el, index) => (
-          <motion.div
-            variants={buttonVariants}
-            whileTap="whileTap"
-            whileHover="whileHover"
-          >
-            <Button
-              variant="text"
-              onClick={() => router.push(el.link)}
-              sx={buttonStyle}
-              // whileTap={tap}
-            >
+        <div className="flex flex-col items-center gap-y-[1.5vw] -mt-[5vw]">
+          {menu.map((el, index) => (
+            <MuiButton onClick={() => router.push(el.link)}>
               {el.name}
-            </Button>
-          </motion.div>
-        ))}
-        <Button variant="contained" sx={singOut} className={`${buttonClass}`}>
+            </MuiButton>
+          ))}
+        </div>
+        <Button variant="contained" sx={singOut} className={`${buttonClass} `}>
           Sing Out
         </Button>
       </div>
     </div>
+  );
+}
+
+interface Button {
+  children: ReactNode;
+  onClick?: () => void;
+}
+export function MuiButton({ children, onClick }: Button) {
+  return (
+    <motion.div whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.06 }}>
+      <Button
+        variant="text"
+        onClick={onClick}
+        sx={{
+          fontSize: "1vw",
+          color: "#fff",
+          textTransform: "none",
+          "&hover": {
+            color: "#fff",
+          },
+        }}
+
+        // whileTap={tap}
+      >
+        {children}
+      </Button>
+    </motion.div>
   );
 }

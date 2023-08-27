@@ -16,6 +16,11 @@ export default function Projects() {
     ":hover": {
       background: "#00ff47",
     },
+    "@media (max-width:767px)": {
+      fontSize: "3vw",
+      padding: "0.7vw 5vw",
+      borderRadius: "1vw",
+    },
   };
   const styleButton2 = {
     fontSize: "1vw",
@@ -26,6 +31,11 @@ export default function Projects() {
     color: "#fff",
     ":hover": {
       background: "#FF2D2D",
+    },
+    "@media (max-width:767px)": {
+      fontSize: "3vw",
+      padding: "0.7vw 5vw",
+      borderRadius: "1vw",
     },
   };
   const styleButtonHiring = {
@@ -38,6 +48,11 @@ export default function Projects() {
     ":hover": {
       background: "#00ff47",
     },
+    "@media (max-width:767px)": {
+      fontSize: "2vw",
+      padding: "0.7vw 5vw",
+      borderRadius: "1vw",
+    },
   };
   const styleButtonNotHiring = {
     fontSize: "0.9vw",
@@ -49,13 +64,16 @@ export default function Projects() {
     ":hover": {
       background: "#FF2D2D",
     },
+    "@media (max-width:767px)": {
+      fontSize: "2vw",
+    },
   };
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
   function hairing() {
     return (
       <div
         onClick={() => router.push("/founder/project")}
-        className="w-full py-[1.4vw] px-[2.4vw] mt-[2vw] bg-[#000] text-white flex justify-between items-center"
+        className="w-full py-[2vw] px-[2.4vw] mt-[2vw] bg-[#000] text-white flex justify-between items-center"
       >
         <div>
           <div className="text-[3vw] fontPopSemibold flex flex-col items-start w-[24vw]">
@@ -90,7 +108,7 @@ export default function Projects() {
           <div className="text-[#00ff47] text-[1.8vw]">10</div>
           <div>Staffs</div>
         </div>
-        <div className="w-[9vw] flex justify-end">
+        <div className="w-[16vw] flex justify-end">
           <Button
             variant="contained"
             sx={styleButtonHiring}

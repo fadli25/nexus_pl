@@ -13,11 +13,11 @@ export default function index() {
   ];
   const router = useRouter();
   return (
-    <div className="pt-[2vw] w-[80vw] float-right">
+    <div className=" w-[80vw] float-right">
       <Head>
         <title>Outgoing</title>
       </Head>
-      <div className="w-[60vw] mx-auto">
+      <div className="w-[60vw] mx-auto pt-[2vw]">
         {data.map((el, i) => (
           <div
             key={i}

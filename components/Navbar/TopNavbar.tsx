@@ -11,28 +11,35 @@ export default function TopNavbar() {
   const connectWalletStyle = {
     fontSite: "1.1vw",
     padding: "0.6vw 2vw",
-    border: "0.12vw #00ff47 solid",
+    border: "0.12vw #fff solid",
     borderRaduis: "9999px",
-    color: "#00ff47",
+    color: "#fff",
     "&hover": {
       border: "0.12vw #00ff47 solid",
-      color: "#00ff47",
+      color: "#fff",
+    },
+    "@media (max-width: 767px)": {
+      fontSize: "2.4vw",
     },
   };
   const cwc =
-    "rounded-full hover:border-[#00ff47] hover:border-[0.12vw] text-[1vw]";
+    "rounded-full hover:border-[#fff] hover:border-[0.12vw] text-[2.4vw] md:text-[1vw]";
   const buttonProfile = {
     fontSize: "1vw",
     padding: "0.7vw 2vw",
-    color: "#000",
-    background: "#00ff47",
+    color: "#fff",
+    border: "0.12vw #fff solid",
     fontWeight: "500",
     textTransform: "none",
     "&hover": {
-      background: "#00ff4799",
+      border: "0.12vw #fff solid",
+      color: "#fff",
+    },
+    "@media (max-width: 767px)": {
+      fontSize: "2.4vw",
     },
   };
-  const mpc = "bg-[#00ff47] hover:bg-[#00ff47aa]";
+  // const mpc = "";
 
   const router = useRouter();
 
@@ -43,7 +50,7 @@ export default function TopNavbar() {
 
   function home() {
     return (
-      <div className="w-[36vw] -ml-[10vw]">
+      <div className="w-[60vw] md:w-[36vw] -ml-[10vw]">
         <Image src={homeImage} width={9000} height={9000} alt="logo" />
       </div>
     );
@@ -62,53 +69,35 @@ export default function TopNavbar() {
 
   function founder() {
     return (
-      <div className="mt-[9vw] px-[2vw]">
-        <div className="fontPopSemibold text-[4vw]">Founder</div>
-        <div className="fontPopSemibold text-[2.4vw] text-[#00ff47] mb-[2vw]">
+      <div className="mt-[14vw] md:mt-[11.6vw] px-[2vw]">
+        <div className="fontPopSemibold text-[8vw] md:text-[4vw] mb-[-0.4vw]">
+          Founder
+        </div>
+        <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction()}
         </div>
-        <div className="flex justify-start items-center gap-x-[0.7vw]">
-          <motion.button
-            className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.96 }}
-            onClick={() => router.push("/founder")}
-          >
+        <div className="flex justify-start items-center mt-[3vw] md:mt-0 gap-x-[0.7vw]">
+          <MotionButton onClick={() => router.push("/founder")}>
             My Projects
-          </motion.button>
-          <motion.button
-            className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.96 }}
-            onClick={() => router.push("/founder/haire")}
-          >
+          </MotionButton>
+
+          <MotionButton onClick={() => router.push("/founder/haire")}>
             Hire staffs
-          </motion.button>
-          <motion.button
-            className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.96 }}
-            onClick={() => router.push("/founder/incoming")}
-          >
+          </MotionButton>
+          <MotionButton onClick={() => router.push("/founder/incoming")}>
             Incoming Applications
-          </motion.button>
-          <motion.button
-            className="bg-white px-[2vw] py-[0.5vw] text-black text-[1vw]"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.96 }}
-          >
-            Watchlist
-          </motion.button>
+          </MotionButton>
+          <MotionButton>Watchlist</MotionButton>
         </div>
       </div>
     );
   }
 
   function pathFunction1() {
-    if (path.slice(0, 14) == "/founder/haire") {
-      return <>Hire Staffs</>;
-    } else if (path.slice(0, 14) === "/founder/incom") {
-      return <>Incoming Projects</>;
+    if (path.slice(0, 14) == "/freelance/out") {
+      return <>Outgoing Jobs</>;
+    } else if (path.slice(0, 14) === "/freelance/ong") {
+      return <>Ongoing Projects</>;
     } else {
       return <>Find Project</>;
     }
@@ -116,12 +105,14 @@ export default function TopNavbar() {
 
   function freelance() {
     return (
-      <div className="mt-[9vw] px-[2vw]">
-        <div className="fontPopSemibold text-[4.4vw]">Freelance</div>
-        <div className="fontPopSemibold text-[2.4vw] text-[#00ff47] mb-[2vw]">
+      <div className="mt-[14vw] md:mt-[11.6vw] px-[2vw]">
+        <div className="fontPopSemibold text-[8vw] md:text-[4.4vw] mb-[-0.4vw]">
+          Freelance
+        </div>
+        <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction1()}
         </div>
-        <div className="flex justify-start items-center gap-x-[0.7vw]">
+        <div className="flex justify-start items-center gap-x-[0.7vw] ">
           <MotionButton1 onClick={() => router.push("/freelance")}>
             Find Project
           </MotionButton1>
@@ -141,32 +132,93 @@ export default function TopNavbar() {
     );
   }
 
+  function messages() {
+    return (
+      <div className="mt-[14vw] md:mt-[12.6vw] px-[2vw]">
+        <div className="fontPopSemibold text-[8vw] md:text-[4.4vw] mb-[-0.4vw]">
+          Messages
+        </div>
+        <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] my-[2vw]">
+          {/* {pathFunction1()} */}
+        </div>
+        <div className="flex justify-start items-center gap-x-[0.7vw] ">
+          <MotionButton1>Team</MotionButton1>
+          <MotionButton1>Messages</MotionButton1>
+          <MotionButton1>Incoming Requests</MotionButton1>
+        </div>
+      </div>
+    );
+  }
+
+  function tower() {
+    return (
+      <div className="mt-[12vw] px-[2vw]">
+        <div className=" text-[5vw] uppercase">REBIRTH TOWER</div>
+        <div className="fontPopSemibold text-[2vw] text-[#00ff47] mb-[2vw]">
+          Burn Rug NFTS for a rewards
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="bg-black w-[80vw] float-right px-[2vw] relative z-[100]">
+    <div className="bg-black border-b border-white/20 w-full md:w-[80vw] float-right px-[2vw] relative z-[100]">
       <div className="flex justify-end py-[1.4vw] z-50">
-        <div className="flex flex-col gap-y-[0.7vw] items-end">
+        <div className="flex flex-col gap-y-[0.5vw] md:gap-y-[0.7vw] items-end">
           {/* Connect Wallet */}
-          <Button
-            variant="outlined"
-            sx={connectWalletStyle}
-            className={`${cwc}`}
-          >
-            Connet Wallet
-          </Button>
+          <div className="flex gap-x-[3vw] md:gap-x-[1.4vw] ] itemes-center">
+            <motion.button
+              className="text-[3.2vw] md:text-[1.2vw] font-semibold text-[#0FA]"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              onClick={() => router.push("/tower")}
+            >
+              Rebirth Tower
+            </motion.button>
+            <Button
+              variant="outlined"
+              sx={connectWalletStyle}
+              className={`${cwc}`}
+            >
+              Connet Wallet
+            </Button>
+          </div>
           {/* Notification */}
-          <IconButton className="text-[2.2vw] text-[#00ff47] w-fit">
+          <IconButton className="text-[4vw] md:text-[2.2vw] text-white w-fit">
             <IoNotifications />
           </IconButton>
-          <IconButton className="text-[2.2vw] text-[#00ff47] w-fit">
+          <IconButton
+            className="text-[4vw] md:text-[2.2vw] text-white w-fit"
+            onClick={() => router.push("/messages")}
+          >
             <BsFillChatFill />
           </IconButton>
-          <IconButton className="text-[2.2vw] text-[#00ff47] w-fit">
+          <IconButton className="text-[4vw] md:text-[2.2vw] text-white w-fit">
             <MdLocalGroceryStore />
           </IconButton>
-          <IconButton className="text-[2.2vw] text-[#00ff47] w-fit">
+          <IconButton className="text-[4vw] md:text-[2.2vw] text-white w-fit">
             <IoSettingsOutline />
           </IconButton>
-          <Button variant="contained" sx={buttonProfile} className={`${mpc}`}>
+          <Button
+            variant="contained"
+            sx={{
+              fontSize: "1vw",
+              padding: "0.7vw 2vw",
+              color: "#fff",
+              border: "0.12vw #fff solid",
+              fontWeight: "500",
+              textTransform: "none",
+              "&hover": {
+                border: "0.12vw #fff solid",
+                color: "#fff",
+                bgcolor: "#000",
+              },
+              "@media (max-width: 767px)": {
+                fontSize: "2.4vw",
+              },
+            }}
+            className="hover:bg-black"
+          >
             My Profile
           </Button>
         </div>
@@ -187,6 +239,16 @@ export default function TopNavbar() {
           {freelance()}
         </div>
       )}
+      {path.slice(0, 8) === "/message" && (
+        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          {messages()}
+        </div>
+      )}
+      {path.slice(0, 6) === "/tower" && (
+        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          {tower()}
+        </div>
+      )}
     </div>
   );
 }
@@ -196,6 +258,18 @@ type ButtonMotion = {
   onClick?: () => void;
 };
 
+export function MotionButton({ children, onClick }: ButtonMotion) {
+  return (
+    <motion.button
+      className="bg-white px-[1vw] py-[0.5vw] text-black text-[2vw] md:text-[1vw]"
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.96 }}
+      onClick={onClick}
+    >
+      {children}
+    </motion.button>
+  );
+}
 export function MotionButton1({ children, onClick }: ButtonMotion) {
   return (
     <motion.button

@@ -6,12 +6,12 @@ import Freelancers from "@/components/Home/freelancers/Freelancers";
 
 export default function Home() {
   return (
-    <div className="float-right w-[80vw] pb-[7vw]">
+    <div className="float-right w-full md:w-[80vw] pb-[7vw]">
       <Head>
         <title>Nexus</title>
       </Head>
       <Tower />
-      <div className="mt-[7vw] mb-[3vw] text-center fontPopSemibold text-black text-[3vw]">
+      <div className="mt-[7vw] mb-[3vw] text-center fontPopSemibold text-black text-[5.4vw] md:text-[3vw]">
         Recommendations
       </div>
       <Projects />
