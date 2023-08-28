@@ -18,9 +18,11 @@ body {
   font-family: popSemibold;
   src: url(./Poppins-SemiBold.ttf);
 }
+
 .fontPopSemibold {
   font-family: popSemibold;
 }
+
 .tower {
   border-radius: 0.6vw;
   background: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.72) 100%);
