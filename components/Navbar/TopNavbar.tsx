@@ -142,8 +142,12 @@ export default function TopNavbar() {
           {/* {pathFunction1()} */}
         </div>
         <div className="flex justify-start items-center gap-x-[0.7vw] ">
-          <MotionButton1>Team</MotionButton1>
-          <MotionButton1>Messages</MotionButton1>
+          <MotionButton1 onClick={() => router.push("/messages/team")}>
+            Team
+          </MotionButton1>
+          <MotionButton1 onClick={() => router.push("/messages")}>
+            Messages
+          </MotionButton1>
           <MotionButton1>Incoming Requests</MotionButton1>
         </div>
       </div>
@@ -153,14 +157,22 @@ export default function TopNavbar() {
   function tower() {
     return (
       <div className="mt-[12vw] px-[2vw]">
-        <div className=" text-[5vw] uppercase">REBIRTH TOWER</div>
-        <div className="fontPopSemibold text-[2vw] text-[#00ff47] mb-[2vw]">
+        <div className=" text-[8vw] md:text-[5vw] uppercase fontPopSemibold">
+          REBIRTH TOWER
+        </div>
+        <div className="fontPopSemibold text-[4vw] md:text-[2vw] text-[#00ff47] mb-[2vw]">
           Burn Rug NFTS for a rewards
         </div>
       </div>
     );
   }
-
+  function settings() {
+    return (
+      <div className="mt-[13vw] px-[2vw] text-[5.5vw] fontPopSemibold">
+        Settings
+      </div>
+    );
+  }
   return (
     <div className="bg-black border-b border-white/20 w-full md:w-[80vw] float-right px-[2vw] relative z-[100]">
       <div className="flex justify-end py-[1.4vw] z-50">
@@ -196,7 +208,10 @@ export default function TopNavbar() {
           <IconButton className="text-[4vw] md:text-[2.2vw] text-white w-fit">
             <MdLocalGroceryStore />
           </IconButton>
-          <IconButton className="text-[4vw] md:text-[2.2vw] text-white w-fit">
+          <IconButton
+            className="text-[4vw] md:text-[2.2vw] text-white w-fit"
+            onClick={() => router.push("/settings")}
+          >
             <IoSettingsOutline />
           </IconButton>
           <Button
@@ -247,6 +262,11 @@ export default function TopNavbar() {
       {path.slice(0, 6) === "/tower" && (
         <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
           {tower()}
+        </div>
+      )}
+      {path.slice(0, 6) === "/setti" && (
+        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          {settings()}
         </div>
       )}
     </div>

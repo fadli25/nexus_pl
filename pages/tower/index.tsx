@@ -27,15 +27,15 @@ export default function index() {
   const win =
     "https://s3-alpha-sig.figma.com/img/75be/a1ad/62889e6ce4a4aecbb165bdb45fa3ea05?Expires=1693785600&Signature=VbBjBTucLVDiIKni9rYOvhDr8orPqL-psfdZXOtD-Yx7LPKniq5NL4IPWznZB~top7akKBcSrZ3vo5xoRMTbMA0sNIs8U5fRREsb~3eQbxAsUxj8gox3h0IhxJTJb4ozujJTTV2tAeq~xv~zE8hBrSy3WUGsQ4h2y5vutKYKvZ4O9AmdMavps7hXdHyv6d36aK~VVQda0ifpE6dDmXky7FL9wOxOjGaSXwgISem~ioVNyJ6aT-pS965DKgtfplz5kKUSYT1Radxp0e-aNQAK26wSapbUORMOkt2U3bagyT8WV8~HOa~V1Wj2GfiVzAMELeCBRJiA~LiT0ft2hlIsjw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   return (
-    <div className="w-[80vw] py-[5vw] float-right text-black">
+    <div className="w-[95vw] md:w-[80vw] py-[5vw] md:float-right text-black">
       <Head>
         <title>Rebirth Tower</title>
       </Head>
-      <div className=" w-[50vw] mx-auto">
-        <div className="text-center fontPopSemibold text-[2vw] underline">
+      <div className="w-[70vw] md:w-[50vw] mx-auto">
+        <div className="text-center fontPopSemibold text-[5vw] md:text-[2vw] underline">
           Reward Box
         </div>
-        <div className="w-full border-[0.12vw] h-[20vw] p-[2vw] border-black rounded-[1vw] mt-[0.8vw]">
+        <div className="w-full border-[0.4vw] md:border-[0.12vw] h-[34vw] md:h-[20vw] p-[2vw] border-black rounded-[1vw] mt-[0.8vw]">
           {procced && (
             <div className="w-full h-full rounded-[1vw] bg-black flex justify-between px-[4vw] py-[2vw]">
               <div>
@@ -44,20 +44,20 @@ export default function index() {
                   width={9000}
                   height={2000}
                   alt=""
-                  className="w-[12vw] h-[12vw] rounded-[1vw] bg-white/60 object-cover object-center"
+                  className="w-[25vw] md:w-[12vw] h-[25vw] md:h-[12vw] rounded-[1.6vw] bg-white/60 object-cover object-center"
                 />
               </div>
-              <div className="flex flex-col justify-between w-[55%] h-full">
+              <div className="flex flex-col justify-between w-[55%] h-full py-[2vw] md:py-0">
                 <div>
-                  <div className="text-[2vw] text-[#00ff47] fontPopSemibold">
+                  <div className="text-[3.1vw] md:text-[2vw] text-[#00ff47] fontPopSemibold">
                     Congratulations !!!
                   </div>
                 </div>
-                <div className="w-[90%] text-[1.4vw] text-white">
+                <div className="w-[90%] text-[2.2vw] md:text-[1.4vw] text-white">
                   <div>You have just won an NFT</div>
                   <div className="text-[#00ff47] ">The Old Ones #354 </div>
                 </div>
-                <div className="text-[0.8vw] text-white">
+                <div className="text-[1.6vw] md:text-[0.8vw] text-white">
                   Click the button below to claim your prize
                 </div>
               </div>
@@ -65,8 +65,8 @@ export default function index() {
           )}
         </div>
       </div>
-      <div className="text-center mt-[4vw] fontPopSemibold text-[1vw]">
-        <div className="text-[2vw] underline ">
+      <div className="text-center mt-[4vw] fontPopSemibold text-[3vw] md:text-[1vw]">
+        <div className="text-[5vw] md:text-[2vw] underline ">
           Rewards available on floor 1
         </div>
         <div className="mt-[2vw]">SMB Gen3</div>
@@ -75,22 +75,22 @@ export default function index() {
         <div className="mt-[0.8vw]">Mrble Tokens</div>
       </div>
       <div className="mt-[4vw]">
-        <div className="text-[2vw] underline text-center fontPopSemibold">
+        <div className="text-[5vw] md:text-[2vw] underline text-center fontPopSemibold">
           NFTs in this wallet
         </div>
-        <div className="flex flex-wrap gap-y-[4vw] gap-x-[3.5vw] mt-[2vw] w-[64vw] mx-auto">
+        <div className="flex flex-wrap gap-y-[6vw] md:gap-y-[4vw] gap-x-[6vw] md:gap-x-[3.5vw] mt-[6vw] md:mt-[2vw] w-[86vw] md:w-[64vw] mx-auto">
           {data.map((el, i) => (
-            <motion.div className="w-[19vw] rounded-[1vw] overflow-hidden">
-              <div className="pb-[4vw] bg-black rounded-[1vw]">
+            <motion.div className="w-[40vw] md:w-[19vw] rounded-[2vw] md:rounded-[1vw] overflow-hidden">
+              <div className="pb-[8vw] md:pb-[4vw] bg-black rounded-[2vw] md:rounded-[1vw]">
                 <Image
                   src={el.img}
                   width={9000}
                   height={2000}
                   alt=""
-                  className="w-[19vw] h-[19vw] object-cover object-center"
+                  className="w-[40vw] md:w-[19vw] h-[40vw] md:h-[19vw] object-cover object-center"
                 />
               </div>
-              <div className="flex justify-center mt-[1vw]">
+              <div className="flex justify-center mt-[2.4vw] md:mt-[1vw]">
                 <MuiButton onClick={() => setShow(true)}>Burn</MuiButton>
               </div>
             </motion.div>
@@ -103,11 +103,11 @@ export default function index() {
             className="absolute top-0 left-0 w-full h-full"
             onClick={() => setShow(false)}
           ></div>
-          <div className="w-[43vw] rounded-[2vw] h-[26vw] bg-black text-center pt-[3vw] z-10">
-            <div className="text-[#00ff47] text-[2vw] fontPopSemibold">
+          <div className="w-[96vw] md:w-[43vw] rounded-[2vw] h-[40vw] md:h-[26vw] bg-black text-center pt-[3vw] z-10">
+            <div className="text-[#00ff47] text-[5vw] md:text-[2vw] fontPopSemibold">
               You are about to burn this Token
             </div>
-            <div className="w-[60%] mx-auto mt-[3vw] text-[1.2vw] text-white">
+            <div className="w-[80%] md:w-[60%] mx-auto mt-[3vw] text-[3vw] md:text-[1.2vw] text-white">
               Burnt Tokens are lost forever and cannot be recovered
             </div>
             <div className="flex justify-center gap-x-[1vw] mt-[6.4vw]">
@@ -148,6 +148,11 @@ export function MuiButton({ children, onClick }: Icon) {
         ":hover": {
           bgcolor: "#00ff47",
         },
+        "@media (max-width:767px)": {
+          fontSize: "3.5vw",
+          padding: "0.7vw 4vw",
+          borderRadius: "0.8vw",
+        },
       }}
       variant="contained"
       onClick={onClick}
@@ -171,6 +176,10 @@ export function MuiButtonProcced({ children, onClick }: Icon) {
         ":hover": {
           bgcolor: "#00ff47",
         },
+        "@media (max-width:767px)": {
+          fontSize: "2.5vw",
+          padding: "0.7vw 3.5vw",
+        },
       }}
       variant="contained"
       onClick={onClick}
@@ -193,6 +202,10 @@ export function MuiButtonCancel({ children, onClick }: Icon) {
         fontFamily: "popSemibold",
         ":hover": {
           bgcolor: "#D9D9D9",
+        },
+        "@media (max-width:767px)": {
+          fontSize: "2.5vw",
+          padding: "0.7vw 3.5vw",
         },
       }}
       variant="contained"
