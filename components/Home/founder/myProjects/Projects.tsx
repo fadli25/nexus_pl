@@ -174,7 +174,7 @@ export default function Projects() {
   const [addProject, setAddProject] = useState(true);
   const router = useRouter();
   return (
-    <div className="px-[3vw] pt-[3vw] relative">
+    <div className="px-[3vw] py-[3vw] relative">
       <div className="flex items-center gap-x-[2vw] md:gap-x-[1vw]">
         <div>
           <Button
