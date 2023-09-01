@@ -94,7 +94,8 @@ export default function LeftNavbar() {
             <MuiButton
               onClick={() => router.push(el.link)}
               className={`mb-[1.2vw] ${
-                el.link === router.asPath && "font-bold text-[#00ff47]"
+                el.link.slice(0, 6) === router.asPath.slice(0, 6) &&
+                "font-bold text-[#00ff47]"
               }`}
             >
               {el.name}

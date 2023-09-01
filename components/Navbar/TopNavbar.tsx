@@ -207,7 +207,9 @@ export default function TopNavbar() {
             <IoNotifications />
           </IconButton>
           <IconButton
-            className="text-[4vw] md:text-[2.2vw] text-white w-fit"
+            className={`text-[4vw] md:text-[2.2vw]  w-fit ${
+              path.slice(0, 6) === "/messa" ? "text-[#00ff47]" : "text-white"
+            }`}
             onClick={() => router.push("/messages")}
           >
             <BsFillChatFill />
@@ -216,7 +218,9 @@ export default function TopNavbar() {
             <MdLocalGroceryStore />
           </IconButton>
           <IconButton
-            className="text-[4vw] md:text-[2.2vw] text-white w-fit"
+            className={`text-[4vw] md:text-[2.2vw] w-fit ${
+              path === "/settings" ? "text-[#00ff47]" : "text-white"
+            }`}
             onClick={() => router.push("/settings")}
           >
             <IoSettingsOutline />
@@ -241,7 +245,11 @@ export default function TopNavbar() {
               },
               borderRadius: "0.4vw",
             }}
-            className="hover:bg-black"
+            className={`hover:bg-black ${
+              path === "/profile"
+                ? "text-[#00ff47] border-[#00ff47]"
+                : "text-white border-white"
+            }`}
           >
             My Profile
           </Button>
