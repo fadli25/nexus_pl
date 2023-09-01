@@ -9,7 +9,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 export default function Projects() {
   const projectImage =
-    "https://s3-alpha-sig.figma.com/img/b4c6/bbe1/ba43061ac1f212ffd3ba799d16f82244?Expires=1693180800&Signature=lzbFRwPGKhD1bqjJBtYGPLaBWOc9dsM9jtZmDBFkIqOAA4tGenGjm7hhYVrLAqhKalDuYAJflGAGhF4Udwk5lGdchl5i7REsUw1beY3gWYcQZZAKmS4s0lkZOvoNtczjFsWGKzaew0~bVUhUqakQDTEHzGmd5681YNJ8UeyXWuYzExOSs39wmjwzGk15HlPAJ7YEgRW5g505kyocKX~FX6Cw3kNIkq0802kEIXyNwcG~P2YRK~3Yf3IIbFuCPsR8Z-N066zqYSlmLcj2WLWf6ck5Rn3SfVEaCXWjYVTc~lVlzkRkGOtYFdUq7Nw3b2XZoB8hJUeLiHCCU6nSqLRpsA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    "https://s3-alpha-sig.figma.com/img/b4c6/bbe1/ba43061ac1f212ffd3ba799d16f82244?Expires=1694390400&Signature=WG7GnG5SK6hsPXyj9jLzc6meHOjEs2TqII5ENXsLeVgqfTSXSjTNopoBXrvpqiR2zQhOdaeQmzCeVANoq2ACF1veT1OY2cvOCagfy-XRi~leYwys6fJUIhME9Pj8qgkwzIt9YLrW40iRGwtlQs5dOPrE1uDb8fUaGpQmX64pJBFZgyyomYAtz~pOtJy4z9s9wsG1egx3cEdm5kP-0biSigHlNfWwyonFyYx8I~OypSu7MHogJ-mtSBF8UiQQn1panqtPAfoNwflJAWGM67ZJAoojlzkm30exvk-7FiPugx4n9bDnVTN9CAVVubbAHj6Z8hJoZ8hp-B~OrhOwpnwbOg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
   const projectData = [1, 2, 3, 4, 5, 6];
 

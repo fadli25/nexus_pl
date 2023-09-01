@@ -46,7 +46,7 @@ export default function TopNavbar() {
   const path = router.asPath;
 
   const homeImage =
-    "https://s3-alpha-sig.figma.com/img/50b5/acde/e32a59999f982410fec0584893be46ea?Expires=1693180800&Signature=MWTPg9WbN7b-wmfNEk0a1do7O4Q-cAX~lufzqkgOTiJg1LEyKkkyknLGV0-RaOFoNg9lwzqjxOJIaMMmMzKarCqfO~~fYXnvPExA1c6947bNQoaZd9ooW0bNCIQ9Nay1lFirXpO38f~-fm2iJextYkufTabmnunnr~wSXZgye6PckpZf77FdMeB8mAFujPlR8M99ZhcrWyakevGn04Z823cssH2KkYtc9tx1o5Y0ubMFmFE4r3GjB5updCtpp5JIrtdNLjjFAA5H7bT00NDV3FhOzM1I8TzQJO3H~mEv0GHC1nYFAgTq0ApN6CkNDZI6snzL8dC43iLcPgiqHiWf7g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    "https://s3-alpha-sig.figma.com/img/50b5/acde/e32a59999f982410fec0584893be46ea?Expires=1694390400&Signature=LllJwCsN-lzNhJx7sNX-hza6Ayjb0pJNBj3PypkcTetsoSHVvW8WBYJs3MdTahek6yuSNwLsvuQ-Lf7OM6QXRr0WufaTLylU2NJBc0-10pPK-uRYrGLjY2urk6AcQY-MaCRP58VOmE0kIm4QSX0vCDaNNAX2zbys1Ux6PygPBgBFPQ9wAVfq3hZPz6HrUkL2VIEfEXoRs~j8YpjKACUSd8JnCTk6oMAzpvOQDrRkDcVj5~xO4vn4DUC08adWsk4s-OWwH6UPkYyPk3qBBgOQ-~l4elbYbO7urrDVPEyfhDfIfMvgO8AqFPZ5Uh4Uqf2tDIkpEvbkMgezYc4v5~SiUA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
 
   function home() {
     return (
@@ -173,6 +173,13 @@ export default function TopNavbar() {
       </div>
     );
   }
+  function profile() {
+    return (
+      <div className="mt-[13vw] px-[2vw] text-[5.5vw] fontPopSemibold">
+        My Profile
+      </div>
+    );
+  }
   return (
     <div className="bg-black border-b border-white/20 w-full md:w-[80vw] float-right px-[2vw] relative z-[100]">
       <div className="flex justify-end py-[1.4vw] z-50">
@@ -215,6 +222,7 @@ export default function TopNavbar() {
             <IoSettingsOutline />
           </IconButton>
           <Button
+            onClick={() => router.push("/profile")}
             variant="contained"
             sx={{
               fontSize: "1vw",
@@ -231,6 +239,7 @@ export default function TopNavbar() {
               "@media (max-width: 767px)": {
                 fontSize: "2.4vw",
               },
+              borderRadius: "0.4vw",
             }}
             className="hover:bg-black"
           >
@@ -267,6 +276,11 @@ export default function TopNavbar() {
       {path.slice(0, 6) === "/setti" && (
         <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
           {settings()}
+        </div>
+      )}
+      {path.slice(0, 6) === "/profi" && (
+        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          {profile()}
         </div>
       )}
     </div>

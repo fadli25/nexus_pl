@@ -1,9 +1,8 @@
 import Image from "next/image";
 import React from "react";
+import imageTower from "@/public/tower.png";
 
 export default function Tower() {
-  const imageTower =
-    "https://s3-alpha-sig.figma.com/img/3d5f/f872/85573b3148b6989a65ba0e2ee52ea225?Expires=1693180800&Signature=UXcA5EV579vB74r31aRJ5P4J0jGnZ1LuWbMjUzfElB7BgRy4eM4iUguzQpIC9NHbJyrvVseH-fGSr8ojFBn3SrscPtXd5v1L-4fUfHcytnBexBVj7GWWaaYhFNHcI6jZidNT3gySWulYTMchO0d0dCyTjoFpnS5fCQ-f96tNHkDDAb7NrJcQtS~LlonMiaSxy3rbEUp01GgJYakST7c-Co96EgKCyXWtfdWmjFtcbTQ-ZhnS4uWcD-kGTbggHjOc0jmLIk8EWPBvDygG8ePL-3pGLx6sQSKfS3Zy7E1dGXltl8ayZ-X9YAi9HXMdLROCo~u3gT6gCzrwa3wVL2LS~g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   return (
     <div className="relative pt-[6vw] overflow-hidden">
       <div className="w-[90vw] md:w-[58vw] mx-auto tower h-[38vw] md:h-[22vw] flex justify-between items-center">
