@@ -4,13 +4,13 @@ import { Button } from "@mui/material";
 
 export default function settings() {
   return (
-    <div className="w-[80vw] float-right py-[5vw]">
+    <div className="w-full md:w-[80vw] float-right py-[5vw]">
       <Head>
         <title>Settings</title>
       </Head>
-      <div className="w-[45vw] mx-auto">
+      <div className="w-[95vw] md:w-[45vw] mx-auto text-[2vw] md:text-[1vw]">
         <div className="mb-[2vw]">
-          <div className="text-[2vw] font-semibold text-black">
+          <div className="text-[4.5vw] md:text-[2vw] font-semibold text-black">
             Link Discord
           </div>
           <input
@@ -20,7 +20,7 @@ export default function settings() {
           />
         </div>
         <div className="mb-[2vw]">
-          <div className="text-[2vw] font-semibold text-black">
+          <div className="text-[4.5vw] md:text-[2vw] font-semibold text-black">
             Link Website
           </div>
           <input
@@ -30,7 +30,7 @@ export default function settings() {
           />
         </div>
         <div className="mb-[2vw]">
-          <div className="text-[2vw] font-semibold text-black">
+          <div className="text-[4.5vw] md:text-[2vw] font-semibold text-black">
             Link Twitter
           </div>
           <input
@@ -40,7 +40,9 @@ export default function settings() {
           />
         </div>
         <div className="mb-[2vw]">
-          <div className="text-[2vw] font-semibold text-black">Link Thread</div>
+          <div className="text-[4.5vw] md:text-[2vw] font-semibold text-black">
+            Link Thread
+          </div>
           <input
             type="text"
             className="outline-none px-[2vw] py-[1vw] w-full rounded-[0.7vw] text-black/80 border-[0.13vw] border-black focus:border-red-500 focus:scale-[101%] transition-all"
@@ -48,9 +50,9 @@ export default function settings() {
           />
         </div>
       </div>
-      <div className="mt-[2vw] w-[60vw] mx-auto text-black">
-        <div className="text-[2vw] font-semibold">Wallets</div>
-        <div className="px-[2vw] mt-[1vw] grid grid-cols-3 gap-[2vw]">
+      <div className="mt-[6vw] md:mt-[2vw] w-[85vw] md:w-[60vw] mx-auto text-black">
+        <div className="text-[4.5vw] md:text-[2vw] font-semibold">Wallets</div>
+        <div className="px-[2vw] mt-[3vw] md:mt-[1vw] grid grid-cols-3 gap-[2vw]">
           <WalletButton>Add Aptos</WalletButton>
           <WalletButton>Add Solana</WalletButton>
           <WalletButton>Add Ethereum</WalletButton>
@@ -60,14 +62,14 @@ export default function settings() {
           <WalletButton>Add BNB</WalletButton>
         </div>
         {/* Connected Wallets */}
-        <div className="text-[1.4vw] mt-[5vw]">
+        <div className="text-[2.9vw] md:text-[1.4vw] mt-[8vw] md:mt-[5vw]">
           <div className="font-semibold">Your Solana Wallet</div>
           <div className="mt-[1vw] flex gap-x-[2vw] items-center">
             <div>SJWVROW4658G2U9HG47839FH</div>
             <WalletButtonUnlink>Unlink Wallet</WalletButtonUnlink>
           </div>
         </div>
-        <div className="text-[1.4vw] mt-[2vw]">
+        <div className="text-[2.9vw] md:text-[1.4vw] mt-[2vw]">
           <div className="font-semibold">Your Solana Aptos</div>
           <div className="mt-[1vw] flex gap-x-[2vw] items-center">
             <div>0xewubf348f373429gh842984y2</div>
@@ -97,6 +99,9 @@ export function WalletButton({ children }: WalletButtonType) {
         ":hover": {
           background: "#000",
         },
+        "@media (max-width:767px)": {
+          fontSize: "2.6vw",
+        },
       }}
       className="bg-[#000] hover:bg-[#000]"
     >
@@ -117,6 +122,9 @@ export function WalletButtonUnlink({ children }: WalletButtonType) {
         fontWeight: 400,
         ":hover": {
           background: "#FF2D2D",
+        },
+        "@media (max-width:767px)": {
+          fontSize: "2.4vw",
         },
       }}
       className="bg-[#FF2D2D] hover:bg-[#FF2D2D]"

@@ -13,22 +13,22 @@ export default function index() {
   ];
   const router = useRouter();
   return (
-    <div className=" w-[80vw] float-right">
+    <div className="pt-[2vw] w-full md:w-[80vw] float-right">
       <Head>
-        <title>Outgoing</title>
+        <title>Job</title>
       </Head>
-      <div className="w-[60vw] mx-auto pt-[2vw]">
+      <div className="w-[90vw] md:w-[60vw] mx-auto">
         {data.map((el, i) => (
           <div
             key={i}
-            className="w-full my-[3vw] relative rounded-[1vw] bg-black px-[3vw] flex justify-between text-white items-center h-[12vw]"
+            className="w-full my-[3vw] relative rounded-[1.5vw] md:rounded-[1vw] bg-black px-[3vw] flex justify-between text-white items-center h-[20vw] md:h-[12vw]"
           >
             <div>
-              <div className="absolute top-[9%] text-[1.5vw] fontPopSemibold left-[5%] text-[#00ff47]">
+              <div className="absolute top-[9%] text-[3vw] md:text-[1.5vw] fontPopSemibold left-[5%] text-[#00ff47]">
                 {el.state}
               </div>
               <div
-                className="text-[3vw]  cursor-pointer"
+                className="text-[5.3vw] md:text-[3vw]  cursor-pointer"
                 onClick={() => router.push("/freelance/ongoing/project")}
               >
                 {el.name}
@@ -69,6 +69,9 @@ export function MuiButtonReject({ children, onClick }: Icon) {
         ":hover": {
           bgcolor: "#FF2D2D",
         },
+        "@media (max-width:767px)": {
+          fontSize: "2.4vw",
+        },
       }}
       variant="contained"
       onClick={onClick}
@@ -90,6 +93,9 @@ export function MuiButtonAprove({ children, onClick }: Icon) {
         borderRadius: "0.1vw",
         ":hover": {
           bgcolor: "#00ff47",
+        },
+        "@media (max-width:767px)": {
+          fontSize: "2.4vw",
         },
       }}
       variant="contained"
@@ -113,6 +119,9 @@ export function MuiButtonClose({ children, onClick }: Icon) {
         borderRadius: "0.1vw",
         ":hover": {
           bgcolor: "#FF2D2D",
+        },
+        "@media (max-width:767px)": {
+          fontSize: "2.4vw",
         },
       }}
       variant="contained"

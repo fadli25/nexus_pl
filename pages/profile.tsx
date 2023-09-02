@@ -13,16 +13,16 @@ export default function profile() {
   const [level, setLevel] = useState<String>();
   const [showLevels, setShowLevels] = useState(false);
   return (
-    <div className="w-[80vw] float-right pb-[5vw]">
+    <div className="w-full md:w-[80vw] float-right pb-[5vw]">
       <Head>
         <title>Profile</title>
       </Head>
-      <div className="w-[50vw] text-[1.4vw] mx-auto pt-[5vw] text-black">
-        <div className="fontPopSemibold text-[3vw]">
+      <div className="w-[90vw] md:w-[50vw] text-[4vw] md:text-[1.4vw] mx-auto pt-[5vw] text-black ">
+        <div className="fontPopSemibold text-[5.5vw] md:text-[3vw]">
           Zetsu | The Shaman King
         </div>
         <div className="flex justify-between mt-[1vw] items-center">
-          <div className="flex gap-x-[3vw] text-[1.4vw] font-semibold">
+          <div className="flex gap-x-[3vw] text-[4vw] md:text-[1.4vw] font-semibold">
             <ButtonMotion className="text-[#00ff47]">
               BOOST PROFILE
             </ButtonMotion>
@@ -31,22 +31,24 @@ export default function profile() {
           </div>
           <ButtonMotion
             onClick={() => setShow(!show)}
-            className={`text-[2.4vw] ${show && "text-[#00ff47]"} `}
+            className={`text-[5vw] md:text-[2.4vw] ${
+              show && "text-[#00ff47]"
+            } `}
           >
             <BiSolidShow />
           </ButtonMotion>
         </div>
         {/*  */}
-        <div className="mt-[4vw]">
+        <div className="mt-[7vw] md:mt-[4vw]">
           <div className="fontPopSemibold">Protfolio (images)</div>
-          <div className="mt-[0.5vw] w-full h-[16vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
+          <div className="mt-[0.5vw] w-full h-[22vw] md:h-[16vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
         </div>
         {/*  */}
-        <div className="mt-[2vw] relative z-10">
+        <div className="mt-[5vw] md:mt-[2vw] relative z-10">
           <div className="fontPopSemibold">Chains</div>
           <div
             onClick={() => setShowChains(!showChains)}
-            className="mt-[0.5vw] w-full px-[3vw] cursor-pointer h-[4.2vw] rounded-[1.2vw] border-[0.14vw] border-black z-10 flex items-center bg-white"
+            className="mt-[0.5vw] w-full px-[3vw] cursor-pointer h-[7vw] md:h-[4.2vw] rounded-[1.2vw] border-[0.14vw] border-black z-10 flex items-center bg-white"
           >
             {chains}
           </div>
@@ -83,21 +85,21 @@ export default function profile() {
           )}
         </div>
         {/*  */}
-        <div className="mt-[2vw]">
+        <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Category</div>
-          <div className="mt-[0.5vw] w-full py-[2vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
+          <div className="mt-[0.5vw] w-full py-[3vw] md:py-[2vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
         </div>
         {/*  */}
-        <div className="mt-[2vw]">
+        <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Roles</div>
-          <div className="mt-[0.5vw] w-full py-[2vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
+          <div className="mt-[0.5vw] w-full py-[3vw] md:py-[2vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
         </div>
         {/*  */}
-        <div className="mt-[2vw] relative z-10">
+        <div className="mt-[5vw] md:mt-[2vw] relative z-10">
           <div className="fontPopSemibold">Level of expertise</div>
           <div
             onClick={() => setShowLevels(!showLevels)}
-            className="mt-[0.5vw] w-full flex items-center h-[4.2vw] px-[3vw] cursor-pointer rounded-[1.2vw] border-[0.14vw] border-black z-10 bg-white"
+            className="mt-[0.5vw] w-full flex items-center h-[7vw] md:h-[4.2vw] px-[3vw] cursor-pointer rounded-[1.2vw] border-[0.14vw] border-black z-10 bg-white"
           >
             {level}
           </div>
@@ -134,25 +136,25 @@ export default function profile() {
           )}
         </div>
         {/*  */}
-        <div className="mt-[2vw]">
+        <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold flex justify-between items-center">
             <div>Payment Rate per hour</div>
-            <div className="flex items-center gap-x-[0.7vw] text-[1vw]">
+            <div className="flex items-center gap-x-[0.7vw] text-[2.4vw] md:text-[1vw]">
               <div>Open to negation</div>
               <div>
                 <Switch sx={{ color: "#00ff47" }} />
               </div>
             </div>
           </div>
-          <div className="mt-[0.5vw] w-full py-[2vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
+          <div className="mt-[0.5vw] w-full py-[3vw] md:py-[2vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
         </div>
         {/*  */}
-        <div className="mt-[2vw]">
+        <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Profile Overview</div>
           <div className="mt-[0.5vw] w-full h-[11vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
         </div>
         {/*  */}
-        <div className="mt-[2vw]">
+        <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Links</div>
           <div className="mt-[0.5vw] w-full h-[7vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
         </div>
@@ -169,6 +171,10 @@ export default function profile() {
               background: "#00ff47",
             },
             color: "#000",
+            "@media (max-width:767px)": {
+              fontSize: "3vw",
+              adding: "0.6vw 3vw",
+            },
           }}
           variant="contained"
         >

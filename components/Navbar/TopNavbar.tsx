@@ -70,7 +70,7 @@ export default function TopNavbar() {
   function founder() {
     return (
       <div className="mt-[14vw] md:mt-[11.6vw] px-[2vw]">
-        <div className="fontPopSemibold text-[8vw] md:text-[4vw] mb-[-0.4vw]">
+        <div className="fontPopSemibold text-[10vw] md:text-[4vw] mb-[-0.4vw]">
           Founder
         </div>
         <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
@@ -106,13 +106,13 @@ export default function TopNavbar() {
   function freelance() {
     return (
       <div className="mt-[14vw] md:mt-[11.6vw] px-[2vw]">
-        <div className="fontPopSemibold text-[8vw] md:text-[4.4vw] mb-[-0.4vw]">
+        <div className="fontPopSemibold text-[10vw] md:text-[4.4vw] mb-[-0.4vw]">
           Freelance
         </div>
         <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction1()}
         </div>
-        <div className="flex justify-start items-center gap-x-[0.7vw] ">
+        <div className="flex justify-start items-center gap-x-[0.7vw] h-fit">
           <MotionButton1 onClick={() => router.push("/freelance")}>
             Find Project
           </MotionButton1>
@@ -135,11 +135,8 @@ export default function TopNavbar() {
   function messages() {
     return (
       <div className="mt-[14vw] md:mt-[12.6vw] px-[2vw]">
-        <div className="fontPopSemibold text-[8vw] md:text-[4.4vw] mb-[-0.4vw]">
+        <div className="fontPopSemibold text-[10vw] md:text-[4.4vw] mb-[-0.4vw]">
           Messages
-        </div>
-        <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] my-[2vw]">
-          {/* {pathFunction1()} */}
         </div>
         <div className="flex justify-start items-center gap-x-[0.7vw] ">
           <MotionButton1 onClick={() => router.push("/messages/team")}>
@@ -168,14 +165,14 @@ export default function TopNavbar() {
   }
   function settings() {
     return (
-      <div className="mt-[13vw] px-[2vw] text-[5.5vw] fontPopSemibold">
+      <div className="mt-[13vw] px-[2vw] text-[10vw] md:text-[5.5vw] fontPopSemibold">
         Settings
       </div>
     );
   }
   function profile() {
     return (
-      <div className="mt-[13vw] px-[2vw] text-[5.5vw] fontPopSemibold">
+      <div className="mt-[13vw] px-[2vw] text-[10vw] md:text-[5.5vw] fontPopSemibold">
         My Profile
       </div>
     );
@@ -315,7 +312,7 @@ export function MotionButton({ children, onClick }: ButtonMotion) {
 export function MotionButton1({ children, onClick }: ButtonMotion) {
   return (
     <motion.button
-      className="bg-white px-[1vw] py-[0.5vw] text-black text-[0.9vw]"
+      className="bg-white px-[2vw] md:px-[1vw] py-[0.5vw] text-black text-[2vw] md:text-[0.9vw]"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.96 }}
       onClick={onClick}
