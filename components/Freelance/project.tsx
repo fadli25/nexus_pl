@@ -15,10 +15,10 @@ export default function project() {
   const router = useRouter();
   return (
     <div>
-      <div className="w-[66vw] mx-auto py-[5vw]">
-        <div className="w-full bg-black text-white fontPopSemibold rounded-[1vw] flex justify-between items-center py-[3vw] px-[4vw] text-[1.4vw]">
+      <div className="w-[90vw] md:w-[66vw] mx-auto py-[5vw]">
+        <div className="w-full bg-black text-white fontPopSemibold rounded-[1vw] flex justify-between items-center py-[3vw] px-[4vw] text-[2.4vw] md:text-[1.4vw]">
           <div>
-            <div className="text-[3.4vw]">Bone Shamans</div>
+            <div className="text-[5vw] md:text-[3.4vw]">Bone Shamans</div>
             <div className="mt-[1vw]">
               <span className="text-[#00ff47]">Project Categories: </span>
               <span>NFT, DeFI, DAO, Social FI</span>
@@ -30,19 +30,19 @@ export default function project() {
               width={9000}
               height={900}
               alt=""
-              className="w-[16vw] rounded-full"
+              className="w-[20vw] md:w-[16vw] rounded-full"
             />
           </div>
         </div>
         <div className="mt-[3vw] flex justify-between w-full">
           <div className="flex items-center gap-x-[0.4vw]">
-            <div className="w-[4vw]">
+            <div className="w-[6vw] md:w-[4vw]">
               <Image src={solanaIcon} width={2000} height={200} alt="" />
             </div>
-            <div className="w-[4vw]">
+            <div className="w-[6vw] md:w-[4vw]">
               <Image src={solanaIcon} width={2000} height={200} alt="" />
             </div>
-            <div className="w-[4vw]">
+            <div className="w-[6vw] md:w-[4vw]">
               <Image src={solanaIcon} width={2000} height={200} alt="" />
             </div>
           </div>
@@ -58,9 +58,9 @@ export default function project() {
             </Icon>
           </div>
         </div>
-        <div className="mt-[5vw] flex justify-between items-center text-black">
-          <div className="w-[60%]">
-            <div className="text-[1.6vw] fontPopSemibold">
+        <div className="mt-[5vw] flex flex-col-reverse md:flex-row justify-between md:items-center text-black">
+          <div className="w-full md:w-[60%]">
+            <div className="text-[4vw] md:text-[1.6vw] mt-[2vw] md:mt-0 fontPopSemibold">
               Project Description
             </div>
             <textarea
@@ -68,10 +68,12 @@ export default function project() {
               rows={10}
             ></textarea>
           </div>
-          <div className="w-[36%] leading-[3.2vw]">
-            <div className="text-[2.4vw] fontPopSemibold">Roles Needed</div>
-            <div className="text-[1.8vw]">Collab Manager</div>
-            <div className="text-[1.8vw]">Project Manager</div>
+          <div className="w-[36%] leading-[5vw] md:leading-[3.2vw]">
+            <div className="text-[4vw] md:text-[2.4vw] fontPopSemibold">
+              Roles Needed
+            </div>
+            <div className="text-[3vw] md:text-[1.8vw]">Collab Manager</div>
+            <div className="text-[3vw] md:text-[1.8vw]">Project Manager</div>
             <div className="mt-[3vw] flex items-center gap-x-[1.2vw]">
               <MuiButton>Contact</MuiButton>
               <MuiButton>Review</MuiButton>
@@ -84,7 +86,7 @@ export default function project() {
           </div>
         </div>
         <div className="mt-[5vw]">
-          <div className="text-[1.6vw] fontPopSemibold text-center text-black">
+          <div className="text-[4vw] md:text-[1.6vw] fontPopSemibold text-center text-black">
             Review
           </div>
           <textarea
@@ -108,7 +110,7 @@ export function Icon({ children, onClick }: Icon) {
       whileTap={{ scale: 0.96 }}
       whileHover={{ scale: 1.06 }}
       onClick={onClick}
-      className="text-black text-[2.8vw]"
+      className="text-black text-[5vw] md:text-[2.8vw]"
     >
       {children}
     </motion.button>
@@ -127,6 +129,11 @@ export function MuiButton({ children, onClick }: Icon) {
         borderRadius: "0.6vw",
         ":hover": {
           bgcolor: "#00ff47",
+        },
+        "@media (max-width:767px)": {
+          fontSize: "2.8vw",
+          padding: "0.7vw 5vw",
+          borderRadius: "1vw",
         },
       }}
       variant="contained"

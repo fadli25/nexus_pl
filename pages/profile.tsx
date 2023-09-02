@@ -202,6 +202,10 @@ export function ButtonMotion({
   );
 }
 
+interface chainType {
+  className: string;
+}
+
 export function Chain1() {
   const chainImg =
     "https://s3-alpha-sig.figma.com/img/9f2c/d78e/2949648c95c65ad5bb038ddaff7c3a17?Expires=1694390400&Signature=DMGkXeuvwBYIwWYs9JtttkbkfLtcXEUuYJrIXx1iq8N8YSrRa8owneJ3EQj7ResMsiXRzFlheO3sEkPLIbf~lDdpfVVNXcjiAbDL4t1k7K3nChRpwKaCuz50rUvzW-qnYqXhDyF3KIUNZPiqb2A8LF5nYppt7iZ0GxbRh76oajgsf0X4WAse0UWhhfAmrTBsxAr5z3yT-Im6MV1zfCyOWW5VzWbfUNEkaJFAxk8WmcuRYfxCz62fM18CBxuMYHx1QPEZuGUSnCF3GdYeYaeKzajUqSGGrqYOtm9MwpV3hHyycYlFKEFjwn36sr4dLU6W2ih-KWp8DQRa75epECXXuw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
@@ -224,6 +228,7 @@ export function Chain2() {
     </motion.div>
   );
 }
+
 export function Chain3() {
   const chainImg =
     "https://s3-alpha-sig.figma.com/img/9f2c/d78e/2949648c95c65ad5bb038ddaff7c3a17?Expires=1694390400&Signature=DMGkXeuvwBYIwWYs9JtttkbkfLtcXEUuYJrIXx1iq8N8YSrRa8owneJ3EQj7ResMsiXRzFlheO3sEkPLIbf~lDdpfVVNXcjiAbDL4t1k7K3nChRpwKaCuz50rUvzW-qnYqXhDyF3KIUNZPiqb2A8LF5nYppt7iZ0GxbRh76oajgsf0X4WAse0UWhhfAmrTBsxAr5z3yT-Im6MV1zfCyOWW5VzWbfUNEkaJFAxk8WmcuRYfxCz62fM18CBxuMYHx1QPEZuGUSnCF3GdYeYaeKzajUqSGGrqYOtm9MwpV3hHyycYlFKEFjwn36sr4dLU6W2ih-KWp8DQRa75epECXXuw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";

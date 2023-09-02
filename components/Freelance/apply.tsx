@@ -3,8 +3,8 @@ import React, { ReactNode } from "react";
 
 export default function apply() {
   return (
-    <div className="py-[5vw] text-black w-[66vw] mx-auto">
-      <div className="text-[1.6vw] fontPopSemibold text-center text-black">
+    <div className="py-[5vw] text-black w-[90vw] md:w-[66vw] mx-auto">
+      <div className="text-[4vw] md:text-[1.6vw] fontPopSemibold text-center text-black">
         Review
       </div>
       <textarea
@@ -35,6 +35,10 @@ export function MuiButton({ children, onClick }: Icon) {
         borderRadius: "0.6vw",
         ":hover": {
           bgcolor: "#00ff47",
+        },
+        "@media (max-width:767px)": {
+          fontSize: "3vw",
+          padding: "0.7vw 3vw",
         },
       }}
       variant="contained"
