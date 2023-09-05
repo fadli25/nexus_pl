@@ -13,7 +13,7 @@ export default function freelance() {
   const router = useRouter();
   return (
     <div className="flex justify-center md:justify-between relative">
-      <div className="absolute top-0 left-[-13vw] md:left-0 md:block w-[13vw] bg-black min-h-[100vw]">
+      <div className="absolute top-0 left-[-13vw] md:left-0 md:relative w-[13vw] bg-black min-h-[100vw]">
         <div className="py-[1vw] px-[2vw] text-[2vw] fontPopSemibold text-[#00ff47] border-b-[0.3vw] border-white">
           Filter
         </div>
@@ -147,7 +147,7 @@ export default function freelance() {
                     <div className="fontPopSemibold text-white text-[2.6vw] md:text-[1.8vw]">
                       John Sew
                     </div>
-                    <div className="text-[#00ff47] text-[4vw] md:text[1.2vw]">
+                    <div className="text-[#00ff47] text-[4vw] md:text-[1.2vw]">
                       Digital Artist
                     </div>
                   </div>
