@@ -340,7 +340,7 @@ export default function TopNavbar() {
         </div>
       )}
       {path.slice(0, 6) === "/notif" && (
-        <div className="absolute top-0 left-0 w-[90%] h-full flex items-center">
+        <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
           {notification()}
         </div>
       )}
