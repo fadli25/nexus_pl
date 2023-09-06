@@ -186,6 +186,8 @@ export default function TopNavbar() {
       return <>My Project Notifications</>;
     } else if (path.slice(0, 17) === "/notification/pay") {
       return <>Payment Notification</>;
+    } else if (path.slice(0, 17) === "/notification/tow") {
+      return <>Rebirth Tower Notification</>;
     } else {
       return <>Annoucements</>;
     }
@@ -217,7 +219,53 @@ export default function TopNavbar() {
           <MotionButton2 onClick={() => router.push("/notification/payment")}>
             Payment Notifications
           </MotionButton2>
-          <MotionButton2>Rebirth Tower Notifications</MotionButton2>
+          <MotionButton2 onClick={() => router.push("/notification/tower")}>
+            Rebirth Tower Notifications
+          </MotionButton2>
+        </div>
+      </div>
+    );
+  }
+
+  function pathFunction3() {
+    if (path.slice(0, 12) == "/payment/pay") {
+      return <>Pay Staffs</>;
+    } else if (path.slice(0, 12) === "/payment/inc") {
+      return <>incoming Payment streams</>;
+    } else if (path.slice(0, 12) === "/payment/out") {
+      return <>Outgoing Payment streams</>;
+    } else if (path.slice(0, 12) === "/payment/tra") {
+      return <>Transaction History</>;
+    } else {
+      return <>Assets</>;
+    }
+  }
+
+  function payment() {
+    return (
+      <div className="mt-[14vw] md:mt-[11.6vw] px-[2vw]">
+        <div className="fontPopSemibold text-[10vw] md:text-[4.4vw] mb-[-0.4vw]">
+          Payment
+        </div>
+        <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
+          {pathFunction3()}
+        </div>
+        <div className="flex justify-start items-center gap-x-[0.7vw] h-fit">
+          <MotionButton2 onClick={() => router.push("/payment")}>
+            Assets
+          </MotionButton2>
+          <MotionButton2 onClick={() => router.push("/payment/pay")}>
+            Pay Staffs
+          </MotionButton2>
+          <MotionButton2 onClick={() => router.push("/payment/icoming")}>
+            Incoming Payment streams
+          </MotionButton2>
+          <MotionButton2 onClick={() => router.push("/payment/outgoing")}>
+            Outgoing Payment streams
+          </MotionButton2>
+          <MotionButton2 onClick={() => router.push("/payment/transaction")}>
+            Transaction History
+          </MotionButton2>
         </div>
       </div>
     );
@@ -342,6 +390,11 @@ export default function TopNavbar() {
       {path.slice(0, 6) === "/notif" && (
         <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
           {notification()}
+        </div>
+      )}
+      {path.slice(0, 6) === "/payme" && (
+        <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
+          {payment()}
         </div>
       )}
     </div>
