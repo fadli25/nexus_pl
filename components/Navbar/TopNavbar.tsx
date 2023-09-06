@@ -170,6 +170,7 @@ export default function TopNavbar() {
       </div>
     );
   }
+
   function profile() {
     return (
       <div className="mt-[13vw] px-[2vw] text-[10vw] md:text-[5.5vw] fontPopSemibold">
@@ -177,6 +178,51 @@ export default function TopNavbar() {
       </div>
     );
   }
+
+  function pathFunction2() {
+    if (path.slice(0, 17) == "/notification/myn") {
+      return <>My Notifications</>;
+    } else if (path.slice(0, 17) === "/notification/myp") {
+      return <>My Project Notifications</>;
+    } else if (path.slice(0, 17) === "/notification/pay") {
+      return <>Payment Notification</>;
+    } else {
+      return <>Annoucements</>;
+    }
+  }
+
+  function notification() {
+    return (
+      <div className="mt-[14vw] md:mt-[11.6vw] px-[2vw]">
+        <div className="fontPopSemibold text-[10vw] md:text-[4.4vw] mb-[-0.4vw]">
+          Notifications
+        </div>
+        <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
+          {pathFunction2()}
+        </div>
+        <div className="flex justify-start items-center gap-x-[0.7vw] h-fit">
+          <MotionButton2 onClick={() => router.push("/notification")}>
+            Announcements
+          </MotionButton2>
+          <MotionButton2
+            onClick={() => router.push("/notification/mynotification")}
+          >
+            My Notifications
+          </MotionButton2>
+          <MotionButton2
+            onClick={() => router.push("/notification/myprojectnotification")}
+          >
+            My Project Notificantions
+          </MotionButton2>
+          <MotionButton2 onClick={() => router.push("/notification/payment")}>
+            Payment Notifications
+          </MotionButton2>
+          <MotionButton2>Rebirth Tower Notifications</MotionButton2>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-black border-b border-white/20 w-full md:w-[80vw] float-right px-[2vw] relative z-[100]">
       <div className="flex justify-end py-[1.4vw] z-50">
@@ -200,7 +246,12 @@ export default function TopNavbar() {
             </Button>
           </div>
           {/* Notification */}
-          <IconButton className="text-[4vw] md:text-[2.2vw] text-white w-fit">
+          <IconButton
+            className={`text-[4vw] md:text-[2.2vw]  w-fit ${
+              path.slice(0, 6) === "/notif" ? "text-[#00ff47]" : "text-white"
+            }`}
+            onClick={() => router.push("/notification")}
+          >
             <IoNotifications />
           </IconButton>
           <IconButton
@@ -288,6 +339,11 @@ export default function TopNavbar() {
           {profile()}
         </div>
       )}
+      {path.slice(0, 6) === "/notif" && (
+        <div className="absolute top-0 left-0 w-[90%] h-full flex items-center">
+          {notification()}
+        </div>
+      )}
     </div>
   );
 }
@@ -310,6 +366,18 @@ export function MotionButton({ children, onClick }: ButtonMotion) {
   );
 }
 export function MotionButton1({ children, onClick }: ButtonMotion) {
+  return (
+    <motion.button
+      className="bg-white px-[2vw] md:px-[1vw] py-[0.5vw] text-black text-[2vw] md:text-[0.9vw]"
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.96 }}
+      onClick={onClick}
+    >
+      {children}
+    </motion.button>
+  );
+}
+export function MotionButton2({ children, onClick }: ButtonMotion) {
   return (
     <motion.button
       className="bg-white px-[2vw] md:px-[1vw] py-[0.5vw] text-black text-[2vw] md:text-[0.9vw]"
