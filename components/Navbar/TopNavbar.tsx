@@ -6,24 +6,26 @@ import { MdLocalGroceryStore } from "react-icons/md";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { BiMenu, BiMenuAltRight } from "react-icons/bi";
+import LeftNavbar from "./LeftNavbar";
 
 export default function TopNavbar() {
   const connectWalletStyle = {
-    fontSite: "1.1vw",
-    padding: "0.6vw 2vw",
-    border: "0.12vw #fff solid",
+    fontSite: "0.7vw",
+    padding: "0.1vw 2vw",
     borderRaduis: "9999px",
-    color: "#fff",
+    background: "#fff",
+    color: "#000",
     "&hover": {
-      border: "0.12vw #00ff47 solid",
-      color: "#fff",
+      background: "#fff",
+      color: "#000",
     },
     "@media (max-width: 767px)": {
       fontSize: "2.4vw",
     },
   };
   const cwc =
-    "rounded-full hover:border-[#fff] hover:border-[0.12vw] text-[2.4vw] md:text-[1vw]";
+    "rounded-full bg-white font-semibold text-[2.4vw] md:text-[0.8vw] hover:bg-white hover:border-none";
   const buttonProfile = {
     fontSize: "1vw",
     padding: "0.7vw 2vw",
@@ -69,14 +71,14 @@ export default function TopNavbar() {
 
   function founder() {
     return (
-      <div className="mt-[14vw] md:mt-[11.6vw] px-[2vw]">
+      <div className="mt-[14vw] md:mt-[6.8vw] px-[2vw]">
         <div className="fontPopSemibold text-[10vw] md:text-[4vw] mb-[-0.4vw]">
           Founder
         </div>
         <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction()}
         </div>
-        <div className="flex justify-start items-center mt-[3vw] md:mt-0 gap-x-[0.7vw]">
+        <div className="flex justify-start flex-wrap gap-y-[2vw] items-center mt-[3vw] md:mt-0 gap-x-[0.7vw]">
           <MotionButton onClick={() => router.push("/founder")}>
             My Projects
           </MotionButton>
@@ -105,14 +107,14 @@ export default function TopNavbar() {
 
   function freelance() {
     return (
-      <div className="mt-[14vw] md:mt-[11.6vw] px-[2vw]">
+      <div className="mt-[14vw] md:mt-[6.8vw] px-[2vw]">
         <div className="fontPopSemibold text-[10vw] md:text-[4.4vw] mb-[-0.4vw]">
           Freelance
         </div>
         <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction1()}
         </div>
-        <div className="flex justify-start items-center gap-x-[0.7vw] h-fit">
+        <div className="flex justify-start flex-wrap gap-y-[2vw] items-center gap-x-[0.7vw] h-fit">
           <MotionButton1 onClick={() => router.push("/freelance")}>
             Find Project
           </MotionButton1>
@@ -134,11 +136,11 @@ export default function TopNavbar() {
 
   function messages() {
     return (
-      <div className="mt-[14vw] md:mt-[12.6vw] px-[2vw]">
+      <div className="mt-[14vw] md:mt-[6.8vw] px-[2vw]">
         <div className="fontPopSemibold text-[10vw] md:text-[4.4vw] mb-[-0.4vw]">
           Messages
         </div>
-        <div className="flex justify-start items-center gap-x-[0.7vw] ">
+        <div className="flex justify-start flex-wrap gap-y-[2vw] items-center gap-x-[0.7vw] ">
           <MotionButton1 onClick={() => router.push("/messages/team")}>
             Team
           </MotionButton1>
@@ -153,7 +155,7 @@ export default function TopNavbar() {
 
   function tower() {
     return (
-      <div className="mt-[12vw] px-[2vw]">
+      <div className="mt-[6.8vw] px-[2vw]">
         <div className=" text-[8vw] md:text-[5vw] uppercase fontPopSemibold">
           REBIRTH TOWER
         </div>
@@ -165,7 +167,7 @@ export default function TopNavbar() {
   }
   function settings() {
     return (
-      <div className="mt-[13vw] px-[2vw] text-[10vw] md:text-[5.5vw] fontPopSemibold">
+      <div className="mt-[6.8vw] px-[2vw] text-[10vw] md:text-[5.5vw] fontPopSemibold">
         Settings
       </div>
     );
@@ -173,7 +175,7 @@ export default function TopNavbar() {
 
   function profile() {
     return (
-      <div className="mt-[13vw] px-[2vw] text-[10vw] md:text-[5.5vw] fontPopSemibold">
+      <div className="mt-[6.8vw] px-[2vw] text-[10vw] md:text-[5.5vw] fontPopSemibold">
         My Profile
       </div>
     );
@@ -195,14 +197,14 @@ export default function TopNavbar() {
 
   function notification() {
     return (
-      <div className="mt-[14vw] md:mt-[11.6vw] px-[2vw]">
+      <div className="mt-[14vw] md:mt-[6.8vw] px-[2vw]">
         <div className="fontPopSemibold text-[10vw] md:text-[4.4vw] mb-[-0.4vw]">
           Notifications
         </div>
         <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction2()}
         </div>
-        <div className="flex justify-start items-center gap-x-[0.7vw] h-fit">
+        <div className="flex justify-start flex-wrap gap-y-[2vw] items-center gap-x-[0.7vw] h-fit">
           <MotionButton2 onClick={() => router.push("/notification")}>
             Announcements
           </MotionButton2>
@@ -243,14 +245,14 @@ export default function TopNavbar() {
 
   function payment() {
     return (
-      <div className="mt-[14vw] md:mt-[11.6vw] px-[2vw]">
+      <div className="mt-[14vw] md:mt-[6.8vw] px-[2vw]">
         <div className="fontPopSemibold text-[10vw] md:text-[4.4vw] mb-[-0.4vw]">
           Payment
         </div>
         <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction3()}
         </div>
-        <div className="flex justify-start items-center gap-x-[0.7vw] h-fit">
+        <div className="flex justify-start flex-wrap gap-y-[2vw] items-center gap-x-[0.7vw] h-fit">
           <MotionButton2 onClick={() => router.push("/payment")}>
             Assets
           </MotionButton2>
@@ -271,132 +273,193 @@ export default function TopNavbar() {
     );
   }
 
+  const [showLeftNavbar, setShowLeftNavbar] = useState(false);
+
   return (
-    <div className="bg-black border-b border-white/20 w-full md:w-[80vw] float-right px-[2vw] relative z-[100]">
-      <div className="flex justify-end py-[1.4vw] z-50">
-        <div className="flex flex-col gap-y-[0.5vw] md:gap-y-[0.7vw] items-end">
-          {/* Connect Wallet */}
-          <div className="flex gap-x-[3vw] md:gap-x-[1.4vw] ] itemes-center">
-            <motion.button
-              className="text-[3.2vw] md:text-[1.2vw] font-semibold text-[#0FA]"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              onClick={() => router.push("/tower")}
+    <div>
+      {showLeftNavbar && (
+        <>
+          <div
+            onClick={() => setShowLeftNavbar(false)}
+            className="fixed md:hidden top-0 left-0 w-full h-full backdrop-blur-sm z-[101] bg-black/30"
+          ></div>
+          <LeftNavbar showLeftNavbar={showLeftNavbar} />
+        </>
+      )}
+      <div className="bg-black border-b border-white/20 w-full md:w-[80vw] float-right px-[2vw] relative z-[100]">
+        <div className="flex justify-end py-[1.4vw] z-50">
+          <div className="flex flex-col gap-y-[0.5vw] md:gap-y-[0.4vw] items-end">
+            {/* Connect Wallet */}
+            <div className="flex gap-x-[3vw] md:gap-x-[1.4vw] ] itemes-center">
+              <motion.button
+                className="text-[3.2vw] md:text-[1.2vw] font-semibold text-[#0FA]"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                onClick={() => router.push("/tower")}
+              >
+                Rebirth Tower
+              </motion.button>
+              <Button
+                variant="contained"
+                sx={{
+                  fontSite: "0.7vw",
+                  padding: "0.1vw 2vw",
+                  color: "#000",
+                  bgcolor: "#fff !important",
+                  fontWeight: "500",
+                  borderRadius: "9999px",
+                  ":hover": {
+                    backgroundColor: "#fff",
+                  },
+                  "@media (max-width: 767px)": {
+                    fontSize: "2.4vw",
+                    padding: "0vw 5vw",
+                    fontWeight: 400,
+                  },
+                  height: "fit",
+                }}
+              >
+                Connet Wallet
+              </Button>
+              <motion.button
+                onClick={() => setShowLeftNavbar(!showLeftNavbar)}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                className="text-white text-[10vw] md:hidden"
+              >
+                <BiMenu />
+              </motion.button>
+            </div>
+            {/* Notification */}
+            <IconButton
+              sx={{
+                color: "#fff",
+              }}
+              style={{
+                ...(path === "/notification"
+                  ? { color: "#00ff47" }
+                  : { color: "#fff" }),
+              }}
+              className={`text-[6vw] md:text-[1.9vw]  w-fit `}
+              onClick={() => router.push("/notification")}
             >
-              Rebirth Tower
-            </motion.button>
+              <IoNotifications />
+            </IconButton>
+            <IconButton
+              sx={{
+                color: "#fff",
+              }}
+              style={{
+                ...(path.slice(0, 6) === "/messa"
+                  ? { color: "#00ff47" }
+                  : { color: "#fff" }),
+              }}
+              className={`text-[6vw] md:text-[1.9vw]  w-fit`}
+              onClick={() => router.push("/messages")}
+            >
+              <BsFillChatFill />
+            </IconButton>
+            <IconButton
+              sx={{
+                color: "#fff",
+              }}
+              className="text-[6vw] md:text-[1.9vw] text-white w-fit"
+            >
+              <MdLocalGroceryStore />
+            </IconButton>
+            <IconButton
+              sx={{
+                color: "#fff",
+              }}
+              style={{
+                ...(path === "/settings"
+                  ? { color: "#00ff47" }
+                  : { color: "#fff" }),
+              }}
+              className={`text-[6vw] md:text-[1.9vw] w-fit `}
+              onClick={() => router.push("/settings")}
+            >
+              <IoSettingsOutline />
+            </IconButton>
             <Button
+              onClick={() => router.push("/profile")}
               variant="outlined"
-              sx={connectWalletStyle}
-              className={`${cwc}`}
+              sx={{
+                fontSize: "0.9vw",
+                padding: "0.7vw 2vw",
+                color: "#fff",
+                border: "0.12vw #fff solid",
+                fontWeight: "500",
+                textTransform: "none",
+                ":hover": {
+                  border: "0.12vw #fff solid",
+                  color: "#fff",
+                },
+                "@media (max-width: 767px)": {
+                  fontSize: "3vw",
+                  borderRadius: "1vw",
+                  padding: "0.4vw 4vw",
+                },
+                borderRadius: "0.4vw",
+              }}
+              style={{
+                ...(path === "/profile"
+                  ? { color: "#00ff47", border: "0.12vw #00ff47 solid" }
+                  : { color: "#fff" }),
+              }}
+              className={`hover:bg-black`}
             >
-              Connet Wallet
+              My Profile
             </Button>
           </div>
-          {/* Notification */}
-          <IconButton
-            className={`text-[4vw] md:text-[2.2vw]  w-fit ${
-              path.slice(0, 6) === "/notif" ? "text-[#00ff47]" : "text-white"
-            }`}
-            onClick={() => router.push("/notification")}
-          >
-            <IoNotifications />
-          </IconButton>
-          <IconButton
-            className={`text-[4vw] md:text-[2.2vw]  w-fit ${
-              path.slice(0, 6) === "/messa" ? "text-[#00ff47]" : "text-white"
-            }`}
-            onClick={() => router.push("/messages")}
-          >
-            <BsFillChatFill />
-          </IconButton>
-          <IconButton className="text-[4vw] md:text-[2.2vw] text-white w-fit">
-            <MdLocalGroceryStore />
-          </IconButton>
-          <IconButton
-            className={`text-[4vw] md:text-[2.2vw] w-fit ${
-              path === "/settings" ? "text-[#00ff47]" : "text-white"
-            }`}
-            onClick={() => router.push("/settings")}
-          >
-            <IoSettingsOutline />
-          </IconButton>
-          <Button
-            onClick={() => router.push("/profile")}
-            variant="contained"
-            sx={{
-              fontSize: "1vw",
-              padding: "0.7vw 2vw",
-              color: "#fff",
-              border: "0.12vw #fff solid",
-              fontWeight: "500",
-              textTransform: "none",
-              "&hover": {
-                border: "0.12vw #fff solid",
-                color: "#fff",
-                bgcolor: "#000",
-              },
-              "@media (max-width: 767px)": {
-                fontSize: "2.4vw",
-              },
-              borderRadius: "0.4vw",
-            }}
-            className={`hover:bg-black ${
-              path === "/profile"
-                ? "text-[#00ff47] border-[#00ff47]"
-                : "text-white border-white"
-            }`}
-          >
-            My Profile
-          </Button>
         </div>
-      </div>
 
-      {path.length === 1 && (
-        <div className="absolute top-0 left-0 w-full h-full grid place-items-center -z-10">
-          {home()}
-        </div>
-      )}
-      {path.slice(0, 8) === "/founder" && (
-        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
-          {founder()}
-        </div>
-      )}
-      {path.slice(0, 8) === "/freelan" && (
-        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
-          {freelance()}
-        </div>
-      )}
-      {path.slice(0, 8) === "/message" && (
-        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
-          {messages()}
-        </div>
-      )}
-      {path.slice(0, 6) === "/tower" && (
-        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
-          {tower()}
-        </div>
-      )}
-      {path.slice(0, 6) === "/setti" && (
-        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
-          {settings()}
-        </div>
-      )}
-      {path.slice(0, 6) === "/profi" && (
-        <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
-          {profile()}
-        </div>
-      )}
-      {path.slice(0, 6) === "/notif" && (
-        <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
-          {notification()}
-        </div>
-      )}
-      {path.slice(0, 6) === "/payme" && (
-        <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
-          {payment()}
-        </div>
-      )}
+        {path.length === 1 && (
+          <div className="absolute top-0 left-0 w-full h-full grid place-items-center -z-10">
+            {home()}
+          </div>
+        )}
+        {path.slice(0, 8) === "/founder" && (
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+            {founder()}
+          </div>
+        )}
+        {path.slice(0, 8) === "/freelan" && (
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+            {freelance()}
+          </div>
+        )}
+        {path.slice(0, 8) === "/message" && (
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+            {messages()}
+          </div>
+        )}
+        {path.slice(0, 6) === "/tower" && (
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+            {tower()}
+          </div>
+        )}
+        {path.slice(0, 6) === "/setti" && (
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+            {settings()}
+          </div>
+        )}
+        {path.slice(0, 6) === "/profi" && (
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+            {profile()}
+          </div>
+        )}
+        {path.slice(0, 6) === "/notif" && (
+          <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
+            {notification()}
+          </div>
+        )}
+        {path.slice(0, 6) === "/payme" && (
+          <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
+            {payment()}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -409,7 +472,7 @@ type ButtonMotion = {
 export function MotionButton({ children, onClick }: ButtonMotion) {
   return (
     <motion.button
-      className="bg-white px-[1vw] py-[0.5vw] text-black text-[2vw] md:text-[1vw]"
+      className="bg-white px-[2vw] py-[0.5vw] text-black text-[2.4vw] md:text-[1vw]"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.96 }}
       onClick={onClick}
@@ -418,10 +481,11 @@ export function MotionButton({ children, onClick }: ButtonMotion) {
     </motion.button>
   );
 }
+
 export function MotionButton1({ children, onClick }: ButtonMotion) {
   return (
     <motion.button
-      className="bg-white px-[2vw] md:px-[1vw] py-[0.5vw] text-black text-[2vw] md:text-[0.9vw]"
+      className="bg-white px-[3vw] md:px-[1vw] py-[0.5vw] text-black text-[2.4vw] md:text-[0.9vw]"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.96 }}
       onClick={onClick}
@@ -430,10 +494,11 @@ export function MotionButton1({ children, onClick }: ButtonMotion) {
     </motion.button>
   );
 }
+
 export function MotionButton2({ children, onClick }: ButtonMotion) {
   return (
     <motion.button
-      className="bg-white px-[2vw] md:px-[1vw] py-[0.5vw] text-black text-[2vw] md:text-[0.9vw]"
+      className="bg-white px-[3vw] md:px-[1vw] py-[0.5vw] text-black text-[2.4vw] md:text-[0.9vw]"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.96 }}
       onClick={onClick}
