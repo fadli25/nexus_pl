@@ -52,7 +52,7 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
     fontWeight: "500",
     mt: "1.4vw",
     textTransform: "none",
-    "&hover": {
+    ":hover": {
       background: "#FF2D2D99 !important",
       borderRaduis: "9999px",
     },
