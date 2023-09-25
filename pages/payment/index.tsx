@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 import pay from "@/public/pay.png";
 import Image from "next/image";
 import Button from "@mui/material/Button";
+import { useRouter } from "next/router";
 
 export default function index() {
   const data = [
@@ -22,6 +23,8 @@ export default function index() {
       price: "2000",
     },
   ];
+
+  const router = useRouter();
   return (
     <div className="w-full float-right md:w-[80vw] py-[4vw]">
       <Head>
@@ -51,7 +54,9 @@ export default function index() {
               <div>${el.price}</div>
             </div>
             <div className="pt-[3vw] md:pt-[2vw] flex justify-center gap-x-[1.4vw] md:gap-x-[1vw] items-center">
-              <Buttons>Onetime payment</Buttons>
+              <Buttons onClick={() => router.push("payment/assets")}>
+                Onetime payment
+              </Buttons>
               <Buttons>Reccuring Payment</Buttons>
               <Buttons>Escorw</Buttons>
             </div>
@@ -64,12 +69,13 @@ export default function index() {
 
 type ButtonType = {
   children: ReactNode;
-  onClick?: void;
+  onClick?: () => void;
 };
 
-export function Buttons({ children }: ButtonType) {
+export function Buttons({ children, onClick }: ButtonType) {
   return (
     <Button
+      onClick={onClick}
       variant="contained"
       className="!text-[2.4vw] md:!text-[1vw] !font-[popSemibold] !px-[4vw] !py-[1.2vw] md:!py-[0.7vw] md:!px-[3vw] !rounded-[0.4vw] !bg-[#00ff47] !text-black hover:!bg-[#00ff47]"
     >

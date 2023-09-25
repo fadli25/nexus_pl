@@ -44,41 +44,7 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
     scale: 0.89,
   };
 
-  const singOut = {
-    fontSize: "1vw",
-    padding: "0.6vw 2vw",
-    borderRaduis: "9999px",
-    background: "#FF2D2D",
-    fontWeight: "500",
-    mt: "1.4vw",
-    textTransform: "none",
-    ":hover": {
-      background: "#FF2D2D99 !important",
-      borderRaduis: "9999px",
-    },
-    "@media (max-width:767px)": {
-      fontSize: "4vw",
-      padding: "0.8vw 5vw",
-      borderRaduis: "9999px",
-      mt: "3vw",
-    },
-  };
-
   const router = useRouter();
-
-  const buttonVariants = {
-    whileTap: { scale: 0.95 },
-    whileHover: { scale: 1.06 },
-  };
-
-  const buttonStyle = {
-    fontSize: "1vw",
-    color: "#fff",
-    textTransform: "none",
-    "&hover": {
-      color: "#fff",
-    },
-  };
 
   return (
     <motion.div
