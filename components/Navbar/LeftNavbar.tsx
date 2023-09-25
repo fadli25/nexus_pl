@@ -85,7 +85,7 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.2 }}
       className={`fixed top-0 left-0 border-r border-white/20 h-full bg-[#0F0F0F] w-[60vw] md:w-[20vw] z-[9999] ${
         !showLeftNavbar && "hidden md:block"
       }`}
@@ -119,7 +119,10 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
             </MuiButton>
           ))}
         </div>
-        <Button variant="contained" sx={singOut} className={`${buttonClass} `}>
+        <Button
+          variant="contained"
+          className="!normal-case !text-[4vw] md:!text-[1vw] !px-[5vw] md:!px-[2vw] !py-[0.8vw] md:!py-[0.6vw] !rounded-full !bg-[#FF2D2D] hover:!bg-[#FF2D2D99] !mt-[3vw] md:!mt-[1.4vw]"
+        >
           Sing Out
         </Button>
       </div>
