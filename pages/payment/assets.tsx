@@ -11,7 +11,7 @@ export default function assets() {
       <div className="text-center underline text-[3vw] font-semibold text-black">
         One time Payment
       </div>
-      <div className="mt-[3vw] w-[60vw] mx-auto text-[2.5vw] md:text-[1.2vw] text-black font-semibold">
+      <div className="mt-[3vw] w-[90vw] md:w-[60vw] mx-auto text-[2.5vw] md:text-[1.2vw] text-black font-semibold">
         <div className="my-[0.5vw] ">Asset</div>
         <div className="w-full bg-black text-white font-semibold rounded-[1vw] flex justify-between items-center px-[3.4vw] md:px-[2.4vw] py-[3.8vw] md:py-[3.4vw] text-[5vw] md:text-[2.4vw]">
           <div className="flex items-center gap-x-[1vw]">
@@ -55,7 +55,7 @@ export default function assets() {
       <div className="mt-[4vw] flex justify-center">
         <Button
           variant="contained"
-          className="!text-[1.2vw] !rounded-full !normal-case !text-black !px-[3vw] !py-[0.6vw] !bg-[#00ff47] hover:!bg-[#00ff48ed]"
+          className="!text-[3vw] md:!text-[1.2vw] !rounded-full !normal-case !text-black !px-[3vw] md:!px-[5vw] !py-[1vw] md:!py-[0.6vw] !bg-[#00ff47] hover:!bg-[#00ff48ed]"
         >
           Apporve in wallet
         </Button>
