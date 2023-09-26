@@ -21,6 +21,10 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
       link: "/",
     },
     {
+      name: "Dashboard",
+      link: "/dashboard",
+    },
+    {
       name: "Founder",
       link: "/founder",
     },
@@ -69,17 +73,14 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
             }}
           />
         </div>
-        <div className="flex flex-col items-center md:-mt-[10vw]">
+        <div className="flex flex-col items-center md:-mt-[7vw]">
           {menu.map((el, index) => (
             <MuiButton
-              style={{
-                ...(el.link.slice(0, 6) === router.asPath.slice(0, 6) && {
-                  color: "#00ff47",
-                  fontWeight: "bold",
-                }),
-              }}
               onClick={() => router.push(el.link)}
-              className={` md:mb-[1.2vw] fontsi`}
+              className={` md:mb-[1.2vw] ${
+                el.link.slice(0, 6) === router.asPath.slice(0, 6) &&
+                "!text-[#00ff47] !font-semibold"
+              }`}
             >
               {el.name}
             </MuiButton>
@@ -100,15 +101,13 @@ interface Button {
   children: ReactNode;
   onClick?: () => void;
   className: string;
-  style: any;
 }
-export function MuiButton({ children, onClick, className, style }: Button) {
+export function MuiButton({ children, onClick, className }: Button) {
   return (
     <motion.div whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.06 }}>
       <Button
         variant="text"
         onClick={onClick}
-        style={style}
         sx={{
           fontSize: "1vw",
           color: "#fff",
