@@ -48,18 +48,18 @@ export default function profile() {
           <div className="fontPopSemibold">Chains</div>
           <div
             onClick={() => setShowChains(!showChains)}
-            className="mt-[0.5vw] w-full px-[3vw] cursor-pointer h-[7vw] md:h-[4.2vw] rounded-[1.2vw] border-[0.14vw] border-black z-10 flex items-center bg-white"
+            className="mt-[0.5vw] w-full px-[3vw] cursor-pointer h-[10vw] md:h-[4.2vw] rounded-[1.2vw] border-[0.14vw] border-black z-10 flex items-center bg-white"
           >
             {chains}
           </div>
           {showChains && (
-            <div className="top-[-1vw] pt-[1vw] px-[3vw] relative -z-10 left-0 w-full h-[13vw] text-[0.9vw] border-black border-[0.1vw] rounded-b-[1vw] bg-[#e9e9e9]">
+            <div className="top-[-1vw] pt-[1vw] px-[3vw] relative -z-10 left-0 w-full h-[29.5vw] md:h-[13vw] text-[0.9vw] border-black border-[0.1vw] rounded-b-[1vw] bg-[#e9e9e9]">
               <div
                 onClick={() => {
                   setChains(<Chain1 />);
                   setShowChains(false);
                 }}
-                className="my-[0.6vw] cursor-pointer w-full h-[3vw] flex items-center rounded-full px-[2vw] bg-white border-black border-[0.1vw]"
+                className="my-[1vw] md:my-[0.6vw] cursor-pointer w-full h-[8vw] md:h-[3vw] flex items-center rounded-full px-[4vw] md:px-[2vw] bg-white border-black border-[0.1vw]"
               >
                 <Chain1 />
               </div>
@@ -68,7 +68,7 @@ export default function profile() {
                   setChains(<Chain2 />);
                   setShowChains(false);
                 }}
-                className="my-[0.6vw] cursor-pointer w-full h-[3vw] flex items-center rounded-full px-[2vw] bg-white border-black border-[0.1vw]"
+                className="my-[1vw] md:my-[0.6vw] cursor-pointer w-full h-[8vw] md:h-[3vw] flex items-center rounded-full px-[4vw] md:px-[2vw] bg-white border-black border-[0.1vw]"
               >
                 <Chain2 />
               </div>
@@ -77,7 +77,7 @@ export default function profile() {
                   setChains(<Chain1 />);
                   setShowChains(false);
                 }}
-                className="my-[0.6vw] cursor-pointer w-full h-[3vw] flex items-center rounded-full px-[2vw] bg-white border-black border-[0.1vw]"
+                className="my-[1vw] md:my-[0.6vw] cursor-pointer w-full h-[8vw] md:h-[3vw] flex items-center rounded-full px-[4vw] md:px-[2vw] bg-white border-black border-[0.1vw]"
               >
                 <Chain1 />
               </div>
@@ -87,30 +87,36 @@ export default function profile() {
         {/*  */}
         <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Category</div>
-          <div className="mt-[0.5vw] w-full py-[3vw] md:py-[2vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
+          <input
+            type="text"
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+          />
         </div>
         {/*  */}
         <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Roles</div>
-          <div className="mt-[0.5vw] w-full py-[3vw] md:py-[2vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
+          <input
+            type="text"
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+          />
         </div>
         {/*  */}
         <div className="mt-[5vw] md:mt-[2vw] relative z-10">
           <div className="fontPopSemibold">Level of expertise</div>
           <div
             onClick={() => setShowLevels(!showLevels)}
-            className="mt-[0.5vw] w-full flex items-center h-[7vw] md:h-[4.2vw] px-[3vw] cursor-pointer rounded-[1.2vw] border-[0.14vw] border-black z-10 bg-white"
+            className="mt-[0.5vw] w-full flex items-center h-[10vw] md:h-[4.2vw] px-[3vw] cursor-pointer rounded-[1.2vw] border-[0.14vw] border-black z-10 bg-white"
           >
             {level}
           </div>
           {showLevels && (
-            <div className="top-[-1vw] pt-[1vw] px-[3vw] relative -z-10 left-0 w-full h-[11vw] text-[0.9vw] border-black border-[0.1vw] rounded-b-[1vw] bg-[#e9e9e9]">
+            <div className="top-[-1vw] pt-[1vw] px-[3vw] relative -z-10 left-0 w-full h-[22.4vw] md:h-[11vw] text-[2.8vw] md:text-[0.9vw] border-black border-[0.1vw] rounded-b-[1vw] bg-[#e9e9e9]">
               <div
                 onClick={() => {
                   setLevel("Entry Level");
                   setShowLevels(false);
                 }}
-                className="my-[0.6vw] cursor-pointer w-full rounded-full py-[0.5vw] px-[2vw] bg-[#00FF47] border-black border-[0.1vw]"
+                className="my-[1.1vw] md:my-[0.6vw] cursor-pointer w-full rounded-full py-[0.5vw] px-[2vw] bg-[#00FF47] border-black border-[0.1vw]"
               >
                 Entry Level
               </div>
@@ -119,7 +125,7 @@ export default function profile() {
                   setLevel("Intermediate");
                   setShowLevels(false);
                 }}
-                className="my-[0.6vw] cursor-pointer w-full rounded-full py-[0.5vw] px-[2vw] bg-[#F0B90B] border-black border-[0.1vw]"
+                className="my-[1.1vw] md:my-[0.6vw] cursor-pointer w-full rounded-full py-[0.5vw] px-[2vw] bg-[#F0B90B] border-black border-[0.1vw]"
               >
                 Intermediate
               </div>
@@ -128,7 +134,7 @@ export default function profile() {
                   setLevel("Expert");
                   setShowLevels(false);
                 }}
-                className="my-[0.6vw] cursor-pointer w-full rounded-full py-[0.5vw] px-[2vw] bg-[#1DA1F2] border-black border-[0.1vw]"
+                className="my-[1.1vw] md:my-[0.6vw] cursor-pointer w-full rounded-full py-[0.5vw] px-[2vw] bg-[#1DA1F2] border-black border-[0.1vw]"
               >
                 Expert
               </div>
@@ -146,17 +152,26 @@ export default function profile() {
               </div>
             </div>
           </div>
-          <div className="mt-[0.5vw] w-full py-[3vw] md:py-[2vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
+          <input
+            type="text"
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+          />
         </div>
         {/*  */}
         <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Profile Overview</div>
-          <div className="mt-[0.5vw] w-full h-[11vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
+          <textarea
+            rows={5}
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+          />
         </div>
         {/*  */}
         <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Links</div>
-          <div className="mt-[0.5vw] w-full h-[7vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
+          <textarea
+            rows={3}
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+          />
         </div>
       </div>
       <div className="mt-[4vw] flex justify-center">
@@ -217,7 +232,7 @@ export function Chain1() {
     "https://s3-alpha-sig.figma.com/img/9f2c/d78e/2949648c95c65ad5bb038ddaff7c3a17?Expires=1694390400&Signature=DMGkXeuvwBYIwWYs9JtttkbkfLtcXEUuYJrIXx1iq8N8YSrRa8owneJ3EQj7ResMsiXRzFlheO3sEkPLIbf~lDdpfVVNXcjiAbDL4t1k7K3nChRpwKaCuz50rUvzW-qnYqXhDyF3KIUNZPiqb2A8LF5nYppt7iZ0GxbRh76oajgsf0X4WAse0UWhhfAmrTBsxAr5z3yT-Im6MV1zfCyOWW5VzWbfUNEkaJFAxk8WmcuRYfxCz62fM18CBxuMYHx1QPEZuGUSnCF3GdYeYaeKzajUqSGGrqYOtm9MwpV3hHyycYlFKEFjwn36sr4dLU6W2ih-KWp8DQRa75epECXXuw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   return (
     <motion.div className="flex items-center gap-x-[0.5vw]">
-      <div className="w-[5vw]">
+      <div className="w-[20vw] md:w-[5vw]">
         <Image src={chainImg} width={9000} height={2000} alt="" />
       </div>
     </motion.div>
@@ -228,7 +243,7 @@ export function Chain2() {
     "https://s3-alpha-sig.figma.com/img/8c77/db9b/1bd6ae82b38daaf0abae070b391ed1e1?Expires=1694390400&Signature=J~iUv6kPz5a~yHAjFnLVqd02aHAQHbrzEuVPAeN3JPN0Ciyy8BPa4VzLKiPCf4Ai~n4Ryo5p31HRL50RTfGy8FL7~fG4AiMuO9fEO9kaiL~foLjDIpHZ22ChBrdNdHqI2FRmBf~E5ZK59GjAvVfAXGds4jTiNqfOcrNpcKBaYOPDpkwa8Vy-~9pH2aKsK9xeLM6y~d3kA6pfHB55S6Ln901Mbd04dXh8euagdKcSaXOYAsIGha-bdY6R~MCzE5E2blYx4ydrpMbUSLokr8jPFbgf~jXHaXIlF8r4pZY20R~obL37VGCwhjPGF8JLnHJrFk31VEfzv8q8c8V9BfcnOA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   return (
     <motion.div className="flex items-center gap-x-[0.5vw]">
-      <div className="w-[5vw]">
+      <div className="w-[20vw] md:w-[5vw]">
         <Image src={chainImg} width={9000} height={2000} alt="" />
       </div>
     </motion.div>
@@ -240,7 +255,7 @@ export function Chain3() {
     "https://s3-alpha-sig.figma.com/img/9f2c/d78e/2949648c95c65ad5bb038ddaff7c3a17?Expires=1694390400&Signature=DMGkXeuvwBYIwWYs9JtttkbkfLtcXEUuYJrIXx1iq8N8YSrRa8owneJ3EQj7ResMsiXRzFlheO3sEkPLIbf~lDdpfVVNXcjiAbDL4t1k7K3nChRpwKaCuz50rUvzW-qnYqXhDyF3KIUNZPiqb2A8LF5nYppt7iZ0GxbRh76oajgsf0X4WAse0UWhhfAmrTBsxAr5z3yT-Im6MV1zfCyOWW5VzWbfUNEkaJFAxk8WmcuRYfxCz62fM18CBxuMYHx1QPEZuGUSnCF3GdYeYaeKzajUqSGGrqYOtm9MwpV3hHyycYlFKEFjwn36sr4dLU6W2ih-KWp8DQRa75epECXXuw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   return (
     <motion.div className="flex items-center gap-x-[0.5vw]">
-      <div className="w-[5vw]">
+      <div className="w-[20vw] md:w-[5vw]">
         <Image src={chainImg} width={9000} height={2000} alt="" />
       </div>
     </motion.div>
