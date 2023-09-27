@@ -79,7 +79,7 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
               onClick={() => router.push(el.link)}
               className={` md:mb-[1.2vw] ${
                 el.link.slice(0, 6) === router.asPath.slice(0, 6) &&
-                "!text-[#00ff47] !font-semibold"
+                "!text-[#00ff47] !font-semibold !scale-105"
               }`}
             >
               {el.name}
