@@ -259,7 +259,7 @@ export default function TopNavbar() {
           <MotionButton2 onClick={() => router.push("/payment/pay")}>
             Pay Staffs
           </MotionButton2>
-          <MotionButton2 onClick={() => router.push("/payment/icoming")}>
+          <MotionButton2 onClick={() => router.push("/payment/incoming")}>
             Incoming Payment streams
           </MotionButton2>
           <MotionButton2 onClick={() => router.push("/payment/outgoing")}>

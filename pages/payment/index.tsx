@@ -57,7 +57,11 @@ export default function index() {
               <Buttons onClick={() => router.push("payment/assets")}>
                 Onetime payment
               </Buttons>
-              <Buttons>Reccuring Payment</Buttons>
+              <Buttons
+                onClick={() => router.push("/payment/pay/recurringpayment")}
+              >
+                Reccuring Payment
+              </Buttons>
               <Buttons>Escorw</Buttons>
             </div>
           </div>
