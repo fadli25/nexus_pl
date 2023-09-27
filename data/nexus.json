@@ -1,0 +1,495 @@
+{
+  "version": "0.1.0",
+  "name": "nexus",
+  "instructions": [],
+  "accounts": [
+    {
+      "name": "Founder",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "address",
+            "type": "publicKey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "name": "roles",
+            "type": "string"
+          },
+          {
+            "name": "levelOfExpertise",
+            "type": "string"
+          },
+          {
+            "name": "paymentRatePerHour",
+            "type": "string"
+          },
+          {
+            "name": "profileOverview",
+            "type": "string"
+          },
+          {
+            "name": "links",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "User",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "address",
+            "type": "publicKey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "name": "roles",
+            "type": "string"
+          },
+          {
+            "name": "levelOfExpertise",
+            "type": "string"
+          },
+          {
+            "name": "paymentRatePerHour",
+            "type": "string"
+          },
+          {
+            "name": "profileOverview",
+            "type": "string"
+          },
+          {
+            "name": "links",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OneTimePayment",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "founder",
+            "type": "publicKey"
+          },
+          {
+            "name": "reciever",
+            "type": "publicKey"
+          },
+          {
+            "name": "paymentRatePerHour",
+            "type": "u64"
+          },
+          {
+            "name": "workingHours",
+            "type": "u64"
+          },
+          {
+            "name": "startAt",
+            "type": "i64"
+          },
+          {
+            "name": "lastUpdateAt",
+            "type": "i64"
+          },
+          {
+            "name": "endAt",
+            "type": "i64"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Identifier",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "count",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "FounderInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "name": "roles",
+            "type": "string"
+          },
+          {
+            "name": "levelOfExpertise",
+            "type": "string"
+          },
+          {
+            "name": "paymentRatePerHour",
+            "type": "string"
+          },
+          {
+            "name": "profileOverview",
+            "type": "string"
+          },
+          {
+            "name": "links",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UpdateFounderInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "name": "roles",
+            "type": "string"
+          },
+          {
+            "name": "levelOfExpertise",
+            "type": "string"
+          },
+          {
+            "name": "paymentRatePerHour",
+            "type": "string"
+          },
+          {
+            "name": "profileOverview",
+            "type": "string"
+          },
+          {
+            "name": "links",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "name": "roles",
+            "type": "string"
+          },
+          {
+            "name": "levelOfExpertise",
+            "type": "string"
+          },
+          {
+            "name": "paymentRatePerHour",
+            "type": "string"
+          },
+          {
+            "name": "profileOverview",
+            "type": "string"
+          },
+          {
+            "name": "links",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UpdateUserInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "name": "roles",
+            "type": "string"
+          },
+          {
+            "name": "levelOfExpertise",
+            "type": "string"
+          },
+          {
+            "name": "paymentRatePerHour",
+            "type": "string"
+          },
+          {
+            "name": "profileOverview",
+            "type": "string"
+          },
+          {
+            "name": "links",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidNftCollection",
+      "msg": "not the right collection"
+    },
+    {
+      "code": 6001,
+      "name": "MissingNft",
+      "msg": "missing nft"
+    },
+    {
+      "code": 6002,
+      "name": "PublicKeyMismatch",
+      "msg": "PublicKey Mismatch!"
+    },
+    {
+      "code": 6003,
+      "name": "Uninitialized",
+      "msg": "Uninitialized!"
+    },
+    {
+      "code": 6004,
+      "name": "AccountNotFound",
+      "msg": "account not found"
+    },
+    {
+      "code": 6005,
+      "name": "RemainingAccountNotFound",
+      "msg": "remaining account not found"
+    },
+    {
+      "code": 6006,
+      "name": "MissionAlreadyDone",
+      "msg": "you already did that mission!"
+    },
+    {
+      "code": 6007,
+      "name": "IncorrectOwner",
+      "msg": "Incorrect Owner!"
+    },
+    {
+      "code": 6008,
+      "name": "InstructionBuilderFailed",
+      "msg": "invalide transfer builder instraction"
+    },
+    {
+      "code": 6009,
+      "name": "BumpNotFound",
+      "msg": "bump not found"
+    },
+    {
+      "code": 6010,
+      "name": "InvalidCalculation",
+      "msg": "Invalid calculation"
+    },
+    {
+      "code": 6011,
+      "name": "InvalidShare",
+      "msg": "Invalid share"
+    },
+    {
+      "code": 6012,
+      "name": "NoShareLeft",
+      "msg": "No share left!"
+    },
+    {
+      "code": 6013,
+      "name": "NotEnoughShareLeft",
+      "msg": "No enough share left!"
+    },
+    {
+      "code": 6014,
+      "name": "NotEnoughShare",
+      "msg": "No enough share!"
+    },
+    {
+      "code": 6015,
+      "name": "NotTheCreator",
+      "msg": "Not the fract nft Creator!"
+    },
+    {
+      "code": 6016,
+      "name": "MintAlreadyStart",
+      "msg": "Mint already start!"
+    },
+    {
+      "code": 6017,
+      "name": "MintNotEndYet",
+      "msg": "Mint Not End Yet!"
+    },
+    {
+      "code": 6018,
+      "name": "TokenAccountNotOwnedByCreator",
+      "msg": "Token Account Not Owned By Creator!"
+    },
+    {
+      "code": 6019,
+      "name": "NoFractNftPlaced",
+      "msg": "No Fract Nft Placed!"
+    },
+    {
+      "code": 6020,
+      "name": "CannotInitVoteWithListedShare",
+      "msg": "Cannot Init Vote With Listed Share!"
+    },
+    {
+      "code": 6021,
+      "name": "CannotInitPriceReserveWithListedShare",
+      "msg": "Cannot Init Price Reserve With Listed Share!"
+    },
+    {
+      "code": 6022,
+      "name": "CannotVoteWithListedShare",
+      "msg": "Cannot Vote With Listed Share!"
+    },
+    {
+      "code": 6023,
+      "name": "CannotListedWithVoteState",
+      "msg": "Cannot Listed With Vote State!"
+    },
+    {
+      "code": 6024,
+      "name": "InvalidPercentage",
+      "msg": "Invalid Percentage!"
+    },
+    {
+      "code": 6025,
+      "name": "NotTheRightState",
+      "msg": "Not The Right State!"
+    },
+    {
+      "code": 6026,
+      "name": "NotHighestBidder",
+      "msg": "Not Highest Bidder!"
+    },
+    {
+      "code": 6027,
+      "name": "BelowReservePrice",
+      "msg": "Below Reserve Price!"
+    },
+    {
+      "code": 6028,
+      "name": "BelowBidIncrement",
+      "msg": "Below Bid Increment!"
+    },
+    {
+      "code": 6029,
+      "name": "BidTooLow",
+      "msg": "Bid Too Low!"
+    },
+    {
+      "code": 6030,
+      "name": "AuctionActive",
+      "msg": "Auction Active!"
+    },
+    {
+      "code": 6031,
+      "name": "ReservePriceActive",
+      "msg": "Reserve Price Active!"
+    },
+    {
+      "code": 6032,
+      "name": "AuctionEnded",
+      "msg": "Auction Ended!"
+    },
+    {
+      "code": 6033,
+      "name": "AuctionNotStarted",
+      "msg": "Auction Not Started!"
+    },
+    {
+      "code": 6034,
+      "name": "CannotCancelHighestBid",
+      "msg": "Cannot Cancel Highest Bid!"
+    },
+    {
+      "code": 6035,
+      "name": "NotEnoughFunds",
+      "msg": "Not Enough Funds!"
+    }
+  ]
+}
