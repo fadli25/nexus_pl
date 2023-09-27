@@ -77,7 +77,7 @@ export default function Freelancers() {
                   <div className="flex flex-col items-center">
                     <div className="rounded-full w-fit border-[0.15vw] border-[#00ff47] overflow-hidden">
                       <Image
-                        className="object-center object-cover w-[15vw] md:w-[7.4vw]"
+                        className="object-center object-cover w-[15vw] md:w-[7.4vw] rounded-full bg-white/60"
                         src={projectImage}
                         width={9000}
                         height={899}

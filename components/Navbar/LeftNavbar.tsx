@@ -21,6 +21,10 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
       link: "/",
     },
     {
+      name: "Dashboard",
+      link: "/dashboard",
+    },
+    {
       name: "Founder",
       link: "/founder",
     },
@@ -44,48 +48,14 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
     scale: 0.89,
   };
 
-  const singOut = {
-    fontSize: "1vw",
-    padding: "0.6vw 2vw",
-    borderRaduis: "9999px",
-    background: "#FF2D2D",
-    fontWeight: "500",
-    mt: "1.4vw",
-    textTransform: "none",
-    "&hover": {
-      background: "#FF2D2D99 !important",
-      borderRaduis: "9999px",
-    },
-    "@media (max-width:767px)": {
-      fontSize: "4vw",
-      padding: "0.8vw 5vw",
-      borderRaduis: "9999px",
-      mt: "3vw",
-    },
-  };
-
   const router = useRouter();
-
-  const buttonVariants = {
-    whileTap: { scale: 0.95 },
-    whileHover: { scale: 1.06 },
-  };
-
-  const buttonStyle = {
-    fontSize: "1vw",
-    color: "#fff",
-    textTransform: "none",
-    "&hover": {
-      color: "#fff",
-    },
-  };
 
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.2 }}
       className={`fixed top-0 left-0 border-r border-white/20 h-full bg-[#0F0F0F] w-[60vw] md:w-[20vw] z-[9999] ${
         !showLeftNavbar && "hidden md:block"
       }`}
@@ -103,23 +73,23 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
             }}
           />
         </div>
-        <div className="flex flex-col items-center md:-mt-[10vw]">
+        <div className="flex flex-col items-center md:-mt-[7vw]">
           {menu.map((el, index) => (
             <MuiButton
-              style={{
-                ...(el.link.slice(0, 6) === router.asPath.slice(0, 6) && {
-                  color: "#00ff47",
-                  fontWeight: "bold",
-                }),
-              }}
               onClick={() => router.push(el.link)}
-              className={` md:mb-[1.2vw] fontsi`}
+              className={` md:mb-[1.2vw] ${
+                el.link.slice(0, 6) === router.asPath.slice(0, 6) &&
+                "!text-[#00ff47] !font-semibold !scale-105"
+              }`}
             >
               {el.name}
             </MuiButton>
           ))}
         </div>
-        <Button variant="contained" sx={singOut} className={`${buttonClass} `}>
+        <Button
+          variant="contained"
+          className="!normal-case !text-[4vw] md:!text-[1vw] !px-[5vw] md:!px-[2vw] !py-[0.8vw] md:!py-[0.6vw] !rounded-full !bg-[#FF2D2D] hover:!bg-[#FF2D2D99] !mt-[3vw] md:!mt-[1.4vw]"
+        >
           Sing Out
         </Button>
       </div>
@@ -131,15 +101,13 @@ interface Button {
   children: ReactNode;
   onClick?: () => void;
   className: string;
-  style: any;
 }
-export function MuiButton({ children, onClick, className, style }: Button) {
+export function MuiButton({ children, onClick, className }: Button) {
   return (
     <motion.div whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.06 }}>
       <Button
         variant="text"
         onClick={onClick}
-        style={style}
         sx={{
           fontSize: "1vw",
           color: "#fff",
