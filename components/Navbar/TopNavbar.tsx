@@ -181,6 +181,13 @@ export default function TopNavbar() {
       </div>
     );
   }
+  function dashboard() {
+    return (
+      <div className="mt-[6.8vw] px-[2vw] text-[10vw] md:text-[5.5vw] fontPopSemibold">
+        Dashboard
+      </div>
+    );
+  }
 
   function pathFunction2() {
     if (path.slice(0, 17) == "/notification/myn") {
@@ -260,7 +267,7 @@ export default function TopNavbar() {
           <MotionButton2 onClick={() => router.push("/payment/pay")}>
             Pay Staffs
           </MotionButton2>
-          <MotionButton2 onClick={() => router.push("/payment/icoming")}>
+          <MotionButton2 onClick={() => router.push("/payment/incoming")}>
             Incoming Payment streams
           </MotionButton2>
           <MotionButton2 onClick={() => router.push("/payment/outgoing")}>
@@ -459,6 +466,11 @@ export default function TopNavbar() {
         {path.slice(0, 6) === "/payme" && (
           <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
             {payment()}
+          </div>
+        )}
+        {path.slice(0, 6) === "/dashb" && (
+          <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
+            {dashboard()}
           </div>
         )}
       </div>
