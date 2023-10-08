@@ -184,7 +184,7 @@ export default function Projects() {
       {projects && projects.map((project, i) => <div>
         <div
           key={i + 1}
-          onClick={() => router.push("/founder/project")}
+          onClick={() => router.push("/founder/project/" + project.pubkey.toBase58())}
           className="w-full rounded-[1vw] md:rounded-none py-[2vw] px-[2.4vw] mt-[2vw] bg-[#000] text-white flex justify-between items-center"
         >
           <div>

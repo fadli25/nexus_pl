@@ -1,15 +1,13 @@
 import { IDL } from "@/data/IDL";
 import { BorshAccountsCoder } from "@coral-xyz/anchor";
-import type { Commitment, Connection } from "@solana/web3.js";
-import { PublicKey } from "@solana/web3.js";
+import { Commitment, Connection, PublicKey } from "@solana/web3.js";
 
 export const getUsers = async (
     connection: Connection,
     commitment?: Commitment,
 ) => {
 
-    const NEXUS_ADDRESS = new PublicKey("45hsn2dzNvkjQsK6kn5YJWgZ4qbjxSrNKTv6G7RVt1km");
-
+    const NEXUS_ADDRESS = new PublicKey("4KayBgpJ5A3vTc6DaKAZQKGPPJjcvqHZmKFRda5XbFHU");
 
     const USER_LENGTH = 256;
     const programAccounts = await connection.getProgramAccounts(
@@ -25,6 +23,7 @@ export const getUsers = async (
     const coder = new BorshAccountsCoder(IDL);
     programAccounts.forEach((account) => {
         try {
+            console.log(account.pubkey.toBase58())
             const UserData: any = coder.decode(
                 "User",
                 account.account.data

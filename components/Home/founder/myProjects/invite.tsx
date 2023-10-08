@@ -1,3 +1,5 @@
+import { invites } from "@/lib/NexusProgram/invite/init_invite";
+import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
 import { getUsers } from "@/lib/NexusProgram/user/utils/get_users";
 import { Button } from "@mui/material";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
@@ -14,7 +16,10 @@ export default function invite(
   const { connection } = useConnection()
   const anchorWallet = useAnchorWallet();
 
-  const [projects, setProjects] = useState<any[]>()
+  const [users, setUsers] = useState<any[]>()
+  const [projects, setProjects] = useState<(any | null)>()
+  const [name, setName] = useState<string>("");
+  const [role, setRole] = useState<string>("");
 
   const buttonStyle = {
     fontSize: "1vw",
@@ -27,6 +32,8 @@ export default function invite(
       background: "#00ff47",
     },
   };
+  const inputStyle =
+    "bg-none border-[0.15vw] mt-[0.6vw] w-[20vw] px-[1vw] text-[0.9vw] py-[0.8vw] border-black rounded-[0.4vw] outline-none focus:border-red-600 focus:scale-[101%] transition-all";
 
   const buttonStyleClass = "bg-[#00ff47] hover:bg-[#00ff47]";
 
@@ -35,24 +42,69 @@ export default function invite(
   const solanaIcon = "https://cryptologos.cc/logos/solana-sol-logo.png";
 
 
-  const get_projects = async () => {
+  const get_user = async () => {
     try {
-      console.log(connection);
-      const _projects = await getUsers(
+      const _users = await getUsers(
         connection,
         "confirmed"
-      )
-      console.log(_projects);
-      setProjects(_projects);
+      );
+      console.log(_users);
+      setUsers(_users);
     } catch (e) {
       console.log(e)
     }
   }
 
+
+  const get_project = async () => {
+    try {
+      const _projects = await get_project_info(
+        anchorWallet,
+        connection,
+        project
+      );
+      setProjects(_projects);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
+  const invitation = async () => {
+    try {
+      let User_pubkeu: any;
+
+      users?.map((user) => {
+        console.log(user.name);
+        if (user.name == name) {
+          console.log("exist");
+          User_pubkeu = user.address
+        }
+      })
+      console.log(User_pubkeu)
+      if (!User_pubkeu) {
+        return console.log("user not found")
+      }
+
+      await invites(
+        anchorWallet,
+        connection,
+        project,
+        User_pubkeu,
+        role
+      )
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
   useEffect(() => {
     if (!anchorWallet) return;
     console.log("strat")
-    get_projects();
+    get_user();
+    get_project()
   }, [anchorWallet])
 
   return (
@@ -74,7 +126,7 @@ export default function invite(
 
           <div className="mt-[3vw] text-white bg-black rounded-[1vw] min-h-[20vw] w-full p-[1vw]">
             <div className="text-[3vw] fontPopSemibold mt-[1vw]">
-              Bone Shamans
+              {projects && projects.name}
             </div>
             <div className="text-[1vw] text-[#00ff47]">Project Description</div>
             <div className="flex justify-start gap-x-[2vw] items-end">
@@ -93,41 +145,37 @@ export default function invite(
       </div>
       <div className="mt-[5vw] fontPopSemibold">
         <div className="flex items-center gap-x-[1vw] text-[2vw]">
-          <div className="w-[27vw]">New Role</div>
-          <div>
-            <Button
-              variant="contained"
-              sx={buttonStyle}
-              className={`${buttonStyleClass}`}
-            >
-              Invite
-            </Button>
-          </div>
+          <div className="w-[27vw]">User Name</div>
+          <input
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            placeholder="Name"
+            className={`${inputStyle}`}
+          />
+
         </div>
         <div className="flex mt-[2vw] items-center gap-x-[1vw] text-[2vw]">
-          <div className="w-[27vw]">Core Team</div>
-          <div>
-            <Button
-              variant="contained"
-              sx={buttonStyle}
-              className={`${buttonStyleClass}`}
-            >
-              Invite
-            </Button>
-          </div>
+          <div className="w-[27vw]">Role</div>
+          <input
+            onChange={(e) => setRole(e.target.value)}
+            value={role}
+            placeholder="Role"
+            className={`${inputStyle}`}
+          />
         </div>
-        <div className="flex mt-[2vw] items-center gap-x-[1vw] text-[2vw]">
-          <div className="w-[27vw]">Community Moderators</div>
-          <div>
-            <Button
-              variant="contained"
-              sx={buttonStyle}
-              className={`${buttonStyleClass}`}
-            >
-              Invite
-            </Button>
-          </div>
-        </div>
+      </div>
+      <div>
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            invitation()
+          }}
+          variant="contained"
+          sx={buttonStyle}
+          className={`${buttonStyleClass}`}
+        >
+          Invite
+        </Button>
       </div>
     </div>
   );

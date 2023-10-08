@@ -358,6 +358,10 @@ export type CardinalStakePool =
               type: "bool"
             },
             {
+              name: "paymentRatePerHour",
+              type: "u64"
+            },
+            {
               name: "name",
               type: "string"
             },
@@ -376,10 +380,6 @@ export type CardinalStakePool =
             {
               name: "levelOfExpertise",
               type: "string"
-            },
-            {
-              name: "paymentRatePerHour",
-              type: "u64"
             },
             {
               name: "profileOverview",
@@ -518,6 +518,10 @@ export type CardinalStakePool =
               type: "publicKey"
             },
             {
+              name: "user",
+              type: "publicKey"
+            },
+            {
               name: "status",
               type: "u8"
             },
@@ -526,11 +530,11 @@ export type CardinalStakePool =
               type: "string"
             },
             {
-              name: "user",
-              type: "publicKey"
+              name: "name",
+              type: "string"
             },
             {
-              name: "name",
+              name: "projectDescription",
               type: "string"
             }
           ]
@@ -975,7 +979,7 @@ export type CardinalStakePool =
       }
     ],
     metadata: {
-      address: "45hsn2dzNvkjQsK6kn5YJWgZ4qbjxSrNKTv6G7RVt1km"
+      address: "4KayBgpJ5A3vTc6DaKAZQKGPPJjcvqHZmKFRda5XbFHU"
     }
   }
 
@@ -1339,6 +1343,10 @@ export const IDL: CardinalStakePool =
             type: "bool"
           },
           {
+            name: "paymentRatePerHour",
+            type: "u64"
+          },
+          {
             name: "name",
             type: "string"
           },
@@ -1357,10 +1365,6 @@ export const IDL: CardinalStakePool =
           {
             name: "levelOfExpertise",
             type: "string"
-          },
-          {
-            name: "paymentRatePerHour",
-            type: "u64"
           },
           {
             name: "profileOverview",
@@ -1499,6 +1503,10 @@ export const IDL: CardinalStakePool =
             type: "publicKey"
           },
           {
+            name: "user",
+            type: "publicKey"
+          },
+          {
             name: "status",
             type: "u8"
           },
@@ -1507,11 +1515,11 @@ export const IDL: CardinalStakePool =
             type: "string"
           },
           {
-            name: "user",
-            type: "publicKey"
+            name: "name",
+            type: "string"
           },
           {
-            name: "name",
+            name: "projectDescription",
             type: "string"
           }
         ]
@@ -1956,6 +1964,6 @@ export const IDL: CardinalStakePool =
     }
   ],
   metadata: {
-    address: "45hsn2dzNvkjQsK6kn5YJWgZ4qbjxSrNKTv6G7RVt1km"
+    address: "4KayBgpJ5A3vTc6DaKAZQKGPPJjcvqHZmKFRda5XbFHU"
   }
 }

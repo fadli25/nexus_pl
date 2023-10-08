@@ -221,6 +221,17 @@ export default function profile() {
         </div>
         {/*  */}
         <div className="mt-[5vw] md:mt-[2vw]">
+          <div className="fontPopSemibold">Name</div>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+          />
+        </div>
+        {/*  */}
+        {/*  */}
+        <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Category</div>
           <input
             value={category}

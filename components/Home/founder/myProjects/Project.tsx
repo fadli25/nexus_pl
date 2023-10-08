@@ -1,11 +1,18 @@
 import { Button } from "@mui/material";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { MdAddCircle, MdOutlineArrowDropDownCircle } from "react-icons/md";
-import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 
-export default function Project() {
+type Project = {
+  project: string
+}
+
+export default function Project({
+  project
+}: Project) {
+
   const buttonStyle = {
     fontSize: "1vw",
     padding: "0.6vw 2vw",
@@ -62,6 +69,8 @@ export default function Project() {
     padding: "0.6vw 1.4vw",
   };
   const fireButtonStyleClass = "bg-[#FF2D2D] hover:bg-[#FF2D2D]";
+
+
 
   function team() {
     return (
@@ -195,7 +204,7 @@ export default function Project() {
                   variant="contained"
                   sx={buttonStyle}
                   className={`${buttonStyleClass}`}
-                  onClick={() => router.push("/founder/project/invite")}
+                  onClick={() => router.push("/founder/project/invite/" + project)}
                 >
                   Invite
                 </Button>
@@ -223,7 +232,7 @@ export default function Project() {
                   variant="contained"
                   sx={buttonStyle}
                   className={`${buttonStyleClass}`}
-                  onClick={() => router.push("/founder/project/invite")}
+                  onClick={() => router.push("/founder/project/invite/" + project)}
                 >
                   Invite
                 </Button>
