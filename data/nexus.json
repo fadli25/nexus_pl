@@ -57,6 +57,237 @@
           }
         }
       ]
+    },
+    {
+      "name": "closeUser",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initProject",
+      "accounts": [
+        {
+          "name": "project",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "founder",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "info",
+          "type": {
+            "defined": "ProjectInfo"
+          }
+        }
+      ]
+    },
+    {
+      "name": "updateProject",
+      "accounts": [
+        {
+          "name": "project",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "founder",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "info",
+          "type": {
+            "defined": "UpdateProjectInfo"
+          }
+        }
+      ]
+    },
+    {
+      "name": "initInvitation",
+      "accounts": [
+        {
+          "name": "invitation",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "project",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "role",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "acceptInvt",
+      "accounts": [
+        {
+          "name": "apa",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "invitation",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "project",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "refuseInvt",
+      "accounts": [
+        {
+          "name": "invitation",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "project",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "removeUser",
+      "accounts": [
+        {
+          "name": "apa",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "invitation",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "project",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "escrow",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "founder",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
     }
   ],
   "accounts": [
@@ -122,6 +353,10 @@
             "type": "publicKey"
           },
           {
+            "name": "nigotion",
+            "type": "bool"
+          },
+          {
             "name": "name",
             "type": "string"
           },
@@ -152,10 +387,6 @@
           {
             "name": "links",
             "type": "string"
-          },
-          {
-            "name": "nigotion",
-            "type": "bool"
           }
         ]
       }
@@ -170,12 +401,24 @@
             "type": "u8"
           },
           {
-            "name": "name",
-            "type": "string"
-          },
-          {
             "name": "founder",
             "type": "publicKey"
+          },
+          {
+            "name": "hiring",
+            "type": "bool"
+          },
+          {
+            "name": "jobs",
+            "type": "u16"
+          },
+          {
+            "name": "members",
+            "type": "u16"
+          },
+          {
+            "name": "name",
+            "type": "string"
           },
           {
             "name": "logo",
@@ -202,28 +445,12 @@
             "type": "string"
           },
           {
-            "name": "roles",
-            "type": "string"
-          },
-          {
             "name": "chain",
             "type": "string"
           },
           {
             "name": "projectOverview",
             "type": "string"
-          },
-          {
-            "name": "hiring",
-            "type": "bool"
-          },
-          {
-            "name": "jobs",
-            "type": "u16"
-          },
-          {
-            "name": "members",
-            "type": "u16"
           }
         ]
       }
@@ -286,12 +513,16 @@
             "type": "u8"
           },
           {
-            "name": "role",
-            "type": "string"
-          },
-          {
             "name": "project",
             "type": "publicKey"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "role",
+            "type": "string"
           },
           {
             "name": "user",
@@ -300,10 +531,6 @@
           {
             "name": "name",
             "type": "string"
-          },
-          {
-            "name": "status",
-            "type": "u8"
           }
         ]
       }
@@ -412,7 +639,47 @@
             "type": "string"
           },
           {
-            "name": "roles",
+            "name": "projectOverview",
+            "type": "string"
+          },
+          {
+            "name": "hiring",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UpdateProjectInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "logo",
+            "type": "string"
+          },
+          {
+            "name": "linkDiscord",
+            "type": "string"
+          },
+          {
+            "name": "linkThread",
+            "type": "string"
+          },
+          {
+            "name": "linkWebsite",
+            "type": "string"
+          },
+          {
+            "name": "linkTwitter",
+            "type": "string"
+          },
+          {
+            "name": "category",
             "type": "string"
           },
           {

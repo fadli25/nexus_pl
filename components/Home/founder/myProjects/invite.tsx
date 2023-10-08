@@ -1,8 +1,21 @@
-import Image from "next/image";
-import React from "react";
+import { getUsers } from "@/lib/NexusProgram/user/utils/get_users";
 import { Button } from "@mui/material";
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+type Inv = {
+  project: string;
+}
 
-export default function invite() {
+export default function invite(
+  { project }: Inv
+) {
+
+  const { connection } = useConnection()
+  const anchorWallet = useAnchorWallet();
+
+  const [projects, setProjects] = useState<any[]>()
+
   const buttonStyle = {
     fontSize: "1vw",
     padding: "0.6vw 2vw",
@@ -20,6 +33,27 @@ export default function invite() {
   const imageProject =
     "https://s3-alpha-sig.figma.com/img/d140/fc3b/b8c33afb32618666e5c141edc13bbc0c?Expires=1693785600&Signature=IDQu3TiQtMIE-usGR0i-st9egt2VnZY0yTRc~V8ESwdLAkhfPwaMGZtwD15LZHMiVEe~qpQXCi4XIdj8fGmq5Tc-4Bl6ZsayB9OTG7a47oq1OBGwB89KLGDdiGmJZJvYRdTABH0PuR-4gaduqerStTvuW3rq1HUkY2tk2uCEFHZ7BsqELpNpeDzmdqAoETwKQmsLCtwtkrpYmfVCdPas-Qyc6jmLbxbEEWcrQGDMKVzFo8ZuyjMUuus6M9XIzXYLdJlxVGMI0153f4EZNCwQCletEt5f~3lwm8TtmrxoSEl-gVrZitQPZsgEyryZuAcLFQz8LRwy1W7onehYD1pKqQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   const solanaIcon = "https://cryptologos.cc/logos/solana-sol-logo.png";
+
+
+  const get_projects = async () => {
+    try {
+      console.log(connection);
+      const _projects = await getUsers(
+        connection,
+        "confirmed"
+      )
+      console.log(_projects);
+      setProjects(_projects);
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+    console.log("strat")
+    get_projects();
+  }, [anchorWallet])
 
   return (
     <div className="px-[10vw] pt-[3vw] text-black">

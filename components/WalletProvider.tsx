@@ -12,9 +12,9 @@ import React, { FC, useMemo } from "react"
 require("@solana/wallet-adapter-react-ui/styles.css")
 
 const Wallet = ({ children }: { children: React.ReactChild }) => {
-  const endpoint = "https://neat-still-vineyard.solana-mainnet.quiknode.pro/0799322a528958e6c600e7ecb87c49c99e6e6105/"
+  // const endpoint = "https://neat-still-vineyard.solana-mainnet.quiknode.pro/0799322a528958e6c600e7ecb87c49c99e6e6105/"
   // const endpoint = "https://solana-mainnet.g.alchemy.com/v2/fgDzvWeTBD6c_WB0ynEF4EnTvzcl6tX1"
-  // const endpoint = "https://api.devnet.solana.com"
+  const endpoint = "https://api.devnet.solana.com"
 
   const wallets = useMemo(
     () => [
@@ -30,7 +30,7 @@ const Wallet = ({ children }: { children: React.ReactChild }) => {
       new SolflareWalletAdapter(),
       new LedgerWalletAdapter(),
     ],
-    [] 
+    []
   )
 
   return (
@@ -38,7 +38,7 @@ const Wallet = ({ children }: { children: React.ReactChild }) => {
       endpoint={endpoint}
       config={{ commitment: "confirmed" }}
     >
-      <WalletProvider wallets={wallets} autoConnect>
+      <WalletProvider wallets={wallets} autoConnect={true}>
         <WalletModalProvider>
           {children}{" "}
           {/* Your app's components go here, nested within the context providers. */}

@@ -35,7 +35,7 @@ export default function profile() {
   const wallet = useWallet()
 
   async function initialize_user() {
-    try{
+    try {
       notify_laoding("transaction pending...");
       setLoading(true);
       await init_user(
@@ -64,7 +64,7 @@ export default function profile() {
 
 
   async function update_user_info() {
-    try{
+    try {
       notify_laoding("transaction pending...");
       setLoading(true);
       await update_user(
@@ -110,7 +110,7 @@ export default function profile() {
         setNigotion(user_info.nigotion)
 
       }
-    } catch(e) {
+    } catch (e) {
       console.log(e);
     }
   }
@@ -120,7 +120,7 @@ export default function profile() {
 
     check_user();
 
-  }, [anchorWallet])
+  }, [anchorWallet, anchorWallet?.publicKey])
 
   const notify_success = (msg: string) => {
     toast.success(msg, {
@@ -167,9 +167,8 @@ export default function profile() {
           </div>
           <ButtonMotion
             onClick={() => setShow(!show)}
-            className={`text-[5vw] md:text-[2.4vw] ${
-              show && "text-[#00ff47]"
-            } `}
+            className={`text-[5vw] md:text-[2.4vw] ${show && "text-[#00ff47]"
+              } `}
           >
             <BiSolidShow />
           </ButtonMotion>
@@ -322,12 +321,12 @@ export default function profile() {
       </div>
       <div className="mt-[4vw] flex justify-center">
         <Button
-        onClick={() => {
-          exist ?
-          update_user_info()
-          :
-          initialize_user()
-        }}
+          onClick={() => {
+            exist ?
+              update_user_info()
+              :
+              initialize_user()
+          }}
           className="bg-[#00ff47] hover:bg-[#00ff47]"
           sx={{
             background: "#00ff47",
@@ -347,9 +346,9 @@ export default function profile() {
         >
           {
             !exist ?
-          "Submit"
-          :
-          "Update"
+              "Submit"
+              :
+              "Update"
           }
         </Button>
       </div>
