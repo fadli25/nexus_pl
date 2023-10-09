@@ -1,10 +1,14 @@
+import { init_project } from "@/lib/NexusProgram/project/init_project";
+import { update_project } from "@/lib/NexusProgram/project/update_project";
 import { Button, FormControlLabel } from "@mui/material";
-import Image from "next/image";
-import React from "react";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
+import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
+import { Connection, clusterApiUrl } from "@solana/web3.js";
+import Image from "next/image";
+import React, { useState } from "react";
 
-const label = { inputProps: { "aria-label": "Switch demo" } };
+
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
@@ -57,6 +61,46 @@ const IOSSwitch = styled((props: SwitchProps) => (
 }));
 
 export default function addProject() {
+
+  const connection = new Connection(clusterApiUrl("devnet"));
+
+  const anchorWallet = useAnchorWallet()
+  const wallet = useWallet()
+
+  const [discod_link, setDiscodLink] = useState<string>("");
+  const [twitter_link, setTwitterLink] = useState<string>("");
+  const [website_link, setWebsiteLink] = useState<string>("");
+  const [thread_link, setThreadLink] = useState<string>("");
+  const [hiring, setHiring] = useState(false);
+  const [logo, setLogo] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+  const [project_overview, setProjectOverview] = useState<string>("");
+  const [name, setName] = useState<string>("");
+
+
+  const initProject = async () => {
+    try {
+
+      await init_project(
+        anchorWallet,
+        connection,
+        name,
+        logo,
+        category,
+        discod_link,
+        thread_link,
+        twitter_link,
+        website_link,
+        project_overview,
+        hiring
+      )
+
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+
   const projetImage =
     "https://s3-alpha-sig.figma.com/img/3b02/7d7a/4ea0cde542a6ecaf8e32f1db3e0ce672?Expires=1694390400&Signature=mImbzZ3BrwylI3-fwtRkWzIlAqZ0d0PlWzzCgttg4yi2tRcZjgi8FRZh1TTQqIgRdyVAHHRlFvPmwxyfze6AazIUQBsnEpvvKHyZ3JM2PLB8XIoKMbT-08iSiaLbds5Ouou4NCTftG3LVFViAqTcig-qvtrulRCvBykIVv1NuVVWufgbLp3eTqFJt~5JxBSmkSW~QojaAxdmy7FCjfBvBC8MCvBC215usbapkWL27UmuqHycwdKA1u3ZeUwKmLuRfW6fn5qCgxqt5MXjQXRmtcq-jehdOdpb7nfIGEOUPfD29PbN3blRTI59deXmV~ug-aGBKztJyx5OCHfFy7UzKA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
 
@@ -131,8 +175,19 @@ export default function addProject() {
         </div>
         <div className="grid grid-cols-2 gap-x-[2vw] gap-y-[2vw] text-black text-[1.6vw]">
           <div>
+            <div className="fontPopSemibold">Name</div>
+            <input
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              placeholder="Name"
+              className={`${inputStyle}`}
+            />
+          </div>
+          <div>
             <div className="fontPopSemibold">Link Discord</div>
             <input
+              onChange={(e) => setDiscodLink(e.target.value)}
+              value={discod_link}
               placeholder="https://discord.com/g/12345"
               className={`${inputStyle}`}
             />
@@ -140,6 +195,8 @@ export default function addProject() {
           <div>
             <div className="fontPopSemibold">Link Thread</div>
             <input
+              onChange={(e) => setThreadLink(e.target.value)}
+              value={thread_link}
               placeholder="https://thread/12345"
               className={`${inputStyle}`}
             />
@@ -148,6 +205,8 @@ export default function addProject() {
           <div>
             <div className="fontPopSemibold">Link Website</div>
             <input
+              onChange={(e) => setWebsiteLink(e.target.value)}
+              value={website_link}
               placeholder="https://example.com"
               className={`${inputStyle}`}
             />
@@ -156,6 +215,8 @@ export default function addProject() {
           <div>
             <div className="fontPopSemibold">Link Twitter</div>
             <input
+              onChange={(e) => setTwitterLink(e.target.value)}
+              value={twitter_link}
               placeholder="https://twitter.com/12345"
               className={`${inputStyle}`}
             />
@@ -164,11 +225,11 @@ export default function addProject() {
           <div>
             <div className="fontPopSemibold">Select Category</div>
             <select className={`${inputStyle}`}>
-              <option value="">Category 1</option>
-              <option value="">Category 2</option>
-              <option value="">Category 3</option>
-              <option value="">Category 4</option>
-              <option value="">Category 5</option>
+              <option onClick={() => setCategory("Category 1")} value="">Category 1</option>
+              <option onClick={() => setCategory("Category 2")} value="">Category 2</option>
+              <option onClick={() => setCategory("Category 3")} value="">Category 3</option>
+              <option onClick={() => setCategory("Category 4")} value="">Category 4</option>
+              <option onClick={() => setCategory("Category 5")} value="">Category 5</option>
             </select>
           </div>
           <div></div>
@@ -187,7 +248,12 @@ export default function addProject() {
       <div className="mt-[3vw] text-[1.6vw] text-black">
         <div>
           <div className="fontPopSemibold">Project Overview</div>
-          <textarea rows={5} className={`${inputStyle} w-full`} />
+          <textarea
+            onChange={(e) => setProjectOverview(e.target.value)}
+            value={project_overview}
+            rows={5}
+            className={`${inputStyle} w-full`}
+          />
         </div>
         <div>
           <div className="fontPopSemibold mt-[1vw]">Add Role</div>
@@ -241,6 +307,10 @@ export default function addProject() {
       </div>
       <div className="flex justify-center mt-[5vw]">
         <Button
+          onClick={(e) => {
+            e.preventDefault();
+            initProject()
+          }}
           variant="contained"
           sx={styleButton1}
           className="bg-[#00ff47] hover:bg-[#00ff47]"

@@ -1,0 +1,4 @@
+{
+    "typescript.tsserver.maxTsServerMemory": 6096,
+    "javascript.suggest.autoImports": true
+}

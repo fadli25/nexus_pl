@@ -1,17 +1,153 @@
-import Head from "next/head";
-import React, { useState, ReactNode } from "react";
-import { BiSolidShow } from "react-icons/bi";
-import { motion } from "framer-motion";
-import Switch, { SwitchProps } from "@mui/material/Switch";
 import { Button } from "@mui/material";
+import Switch, { SwitchProps } from "@mui/material/Switch";
+import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
+import { Connection, clusterApiUrl } from "@solana/web3.js";
+import { motion } from "framer-motion";
+import Head from "next/head";
 import Image from "next/image";
+import React, { ReactNode, useEffect, useState } from "react";
+import { BiSolidShow } from "react-icons/bi";
+import { toast } from "react-toastify";
+import { init_user } from "../lib/NexusProgram/user/init_user";
+import { update_user } from "../lib/NexusProgram/user/update_user";
+import { get_user_info } from "../lib/NexusProgram/user/utils/user_info";
 
 export default function profile() {
+  const [exist, setExist] = useState<boolean>(false);
   const [show, setShow] = useState(false);
   const [showChains, setShowChains] = useState(false);
   const [chains, setChains] = useState<ReactNode>();
-  const [level, setLevel] = useState<String>();
+  const [level, setLevel] = useState<string>("");
   const [showLevels, setShowLevels] = useState(false);
+  const [image, setImage] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+  const [roles, setRoles] = useState<string>("");
+  const [payment_rate_per_hour, setPaymentRatePerHour] = useState<number>(0);
+  const [profile_overview, setProfileOverview] = useState<string>("");
+  const [links, setLinks] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [nogotion, setNigotion] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const connection = new Connection(clusterApiUrl("devnet"));
+
+  const anchorWallet = useAnchorWallet()
+  const wallet = useWallet()
+
+  async function initialize_user() {
+    try {
+      notify_laoding("transaction pending...");
+      setLoading(true);
+      await init_user(
+        anchorWallet,
+        connection,
+        name,
+        image,
+        category,
+        roles,
+        level,
+        links,
+        profile_overview,
+        payment_rate_per_hour,
+        nogotion
+      )
+      notify_delete();
+      notify_success("transaction successful");
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      notify_delete();
+      notify_error("transaction failed");
+      console.log(e);
+    }
+  }
+
+
+  async function update_user_info() {
+    try {
+      notify_laoding("transaction pending...");
+      setLoading(true);
+      await update_user(
+        anchorWallet,
+        connection,
+        name,
+        image,
+        category,
+        roles,
+        level,
+        links,
+        profile_overview,
+        payment_rate_per_hour,
+        nogotion
+      )
+      notify_delete();
+      notify_success("transaction successful");
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      notify_delete();
+      notify_error("transaction failed");
+      console.log(e);
+    }
+  }
+
+  async function check_user() {
+    try {
+
+      const user_info = await get_user_info(anchorWallet, connection);
+
+      if (user_info) {
+        setExist(true);
+        setChains(user_info.chain);
+        setLevel(user_info.levelOfExpertise)
+        setImage(user_info.image)
+        setCategory(user_info.category)
+        setRoles(user_info.roles)
+        setPaymentRatePerHour(user_info.paymentRatePerHour)
+        setProfileOverview(user_info.profileOverview)
+        setLinks(user_info.links)
+        setName(user_info.name)
+        setNigotion(user_info.nigotion)
+
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+
+    check_user();
+
+  }, [anchorWallet, anchorWallet?.publicKey])
+
+  const notify_success = (msg: string) => {
+    toast.success(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const notify_warning = (msg: string) => {
+    toast.warning(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  const notify_error = (msg: string) => {
+    toast.error(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  const notify_laoding = (msg: string) => {
+    toast.loading(msg, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+  const notify_delete = () => {
+    toast.dismiss();
+  };
+
+
   return (
     <div className="w-full md:w-[80vw] float-right pb-[5vw]">
       <Head>
@@ -31,9 +167,8 @@ export default function profile() {
           </div>
           <ButtonMotion
             onClick={() => setShow(!show)}
-            className={`text-[5vw] md:text-[2.4vw] ${
-              show && "text-[#00ff47]"
-            } `}
+            className={`text-[5vw] md:text-[2.4vw] ${show && "text-[#00ff47]"
+              } `}
           >
             <BiSolidShow />
           </ButtonMotion>
@@ -86,8 +221,21 @@ export default function profile() {
         </div>
         {/*  */}
         <div className="mt-[5vw] md:mt-[2vw]">
+          <div className="fontPopSemibold">Name</div>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+          />
+        </div>
+        {/*  */}
+        {/*  */}
+        <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Category</div>
           <input
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
             type="text"
             className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
           />
@@ -96,6 +244,8 @@ export default function profile() {
         <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Roles</div>
           <input
+            value={roles}
+            onChange={(e) => setRoles(e.target.value)}
             type="text"
             className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
           />
@@ -153,6 +303,8 @@ export default function profile() {
             </div>
           </div>
           <input
+            value={Number(payment_rate_per_hour)}
+            onChange={(e) => setPaymentRatePerHour(Number(e.target.value))}
             type="text"
             className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
           />
@@ -161,6 +313,8 @@ export default function profile() {
         <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Profile Overview</div>
           <textarea
+            value={profile_overview}
+            onChange={(e) => setProfileOverview(e.target.value)}
             rows={5}
             className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
           />
@@ -169,6 +323,8 @@ export default function profile() {
         <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold">Links</div>
           <textarea
+            value={links}
+            onChange={(e) => setLinks(e.target.value)}
             rows={3}
             className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
           />
@@ -176,6 +332,12 @@ export default function profile() {
       </div>
       <div className="mt-[4vw] flex justify-center">
         <Button
+          onClick={() => {
+            exist ?
+              update_user_info()
+              :
+              initialize_user()
+          }}
           className="bg-[#00ff47] hover:bg-[#00ff47]"
           sx={{
             background: "#00ff47",
@@ -193,7 +355,12 @@ export default function profile() {
           }}
           variant="contained"
         >
-          Submit
+          {
+            !exist ?
+              "Submit"
+              :
+              "Update"
+          }
         </Button>
       </div>
     </div>

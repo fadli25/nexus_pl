@@ -1,12 +1,13 @@
-import React, { ReactNode, useState } from "react";
 import { Button, IconButton } from "@mui/material";
-import { IoNotifications, IoSettingsOutline } from "react-icons/io5";
-import { BsFillChatFill } from "react-icons/bs";
-import { MdLocalGroceryStore } from "react-icons/md";
-import { useRouter } from "next/router";
-import Image from "next/image";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { ReactNode, useState } from "react";
 import { BiMenu, BiMenuAltRight } from "react-icons/bi";
+import { BsFillChatFill } from "react-icons/bs";
+import { IoNotifications, IoSettingsOutline } from "react-icons/io5";
+import { MdLocalGroceryStore } from "react-icons/md";
 import LeftNavbar from "./LeftNavbar";
 
 export default function TopNavbar() {
@@ -306,7 +307,8 @@ export default function TopNavbar() {
               >
                 Rebirth Tower
               </motion.button>
-              <Button
+              <WalletMultiButton />
+              {/* <Button
                 variant="contained"
                 sx={{
                   fontSite: "0.7vw",
@@ -326,8 +328,13 @@ export default function TopNavbar() {
                   height: "fit",
                 }}
               >
-                Connect Wallet
-              </Button>
+
+//                 Connect Wallet
+//               </Button>
+// =======
+//                 Connet Wallet
+//               </Button> */}
+
               <motion.button
                 onClick={() => setShowLeftNavbar(!showLeftNavbar)}
                 whileHover={{ scale: 1.04 }}

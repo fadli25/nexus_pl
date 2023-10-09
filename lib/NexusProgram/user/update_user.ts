@@ -4,7 +4,7 @@ import {
     Program, web3
 } from '@project-serum/anchor';
 import { USER_PREFIX } from "../../constants/constants";
-const idl = require("../../../data/staking.json")
+const idl = require("../../../data/nexus.json")
 
 /**
     name: String,
@@ -52,10 +52,10 @@ export async function update_user(
                 image: image,
                 category: category,
                 roles: roles,
-                level_of_expertise: level_of_expertise,
+                levelOfExpertise: level_of_expertise,
+                paymentRatePerHour: new BN(payment_rate_per_hour),
+                profileOverview: profile_overview,
                 links: links,
-                profile_overview: profile_overview,
-                payment_rate_per_hour: payment_rate_per_hour,
                 nigotion: nigotion,
             }).accounts({
                 user: user,

@@ -4,7 +4,7 @@ import {
     Program, web3
 } from '@project-serum/anchor';
 import { USER_PREFIX } from "../../constants/constants";
-const idl = require("../../../data/staking.json")
+const idl = require("../../../data/nexus.json")
 
 /**
     name: String,
@@ -47,16 +47,16 @@ export async function init_user(
         PROGRAM_ID
     );
 
-        const tx = await program.methods.initUser({      
+        const tx = await program.methods.initUser({
                 name: name,
                 image: image,
                 category: category,
                 roles: roles,
-                level_of_expertise: level_of_expertise,
+                levelOfExpertise: level_of_expertise,
+                paymentRatePerHour: new BN(11),
+                profileOverview: profile_overview,
                 links: links,
-                profile_overview: profile_overview,
-                payment_rate_per_hour: payment_rate_per_hour,
-                nigotion: nigotion,
+                nigotion: true,
             }).accounts({
                 user: user,
                 authority: anchorWallet.publicKey,
