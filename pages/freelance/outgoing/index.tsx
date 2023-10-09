@@ -46,7 +46,7 @@ export default function index() {
             </div>
             {el.sl === true ? (
               <div className="flex items-center gap-x-[1vw]">
-                <MuiButtonAprove>Aprove</MuiButtonAprove>
+                <MuiButtonAprove>Approve</MuiButtonAprove>
                 <MuiButtonReject>Reject</MuiButtonReject>
               </div>
             ) : (

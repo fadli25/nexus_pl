@@ -126,7 +126,7 @@ export default function TopNavbar() {
           </MotionButton1>
           <MotionButton1>Watchlist</MotionButton1>
           <MotionButton1 onClick={() => router.push("/freelance/job")}>
-            Job Invitatons
+            Job Invitations
           </MotionButton1>
           <MotionButton1>Job History</MotionButton1>
         </div>
@@ -326,7 +326,7 @@ export default function TopNavbar() {
                   height: "fit",
                 }}
               >
-                Connet Wallet
+                Connect Wallet
               </Button>
               <motion.button
                 onClick={() => setShowLeftNavbar(!showLeftNavbar)}
