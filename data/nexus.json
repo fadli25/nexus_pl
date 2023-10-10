@@ -550,12 +550,12 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "bump",
-            "type": "u8"
-          },
-          {
             "name": "user",
             "type": "publicKey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
           },
           {
             "name": "project",
@@ -979,6 +979,6 @@
     }
   ],
   "metadata": {
-    "address": "4KayBgpJ5A3vTc6DaKAZQKGPPJjcvqHZmKFRda5XbFHU"
+    "address": "C35kaD3YLHBVMxwsxnre227XwgJo8gSN8jnrfThmfuUg"
   }
 }

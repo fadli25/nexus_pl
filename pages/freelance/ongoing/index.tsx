@@ -1,27 +1,40 @@
+import { getProjectForUser } from "@/lib/NexusProgram/project/utils/get_projects_for_user";
 import { Button } from "@mui/material";
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 export default function index() {
-  const data = [
-    {
-      state: "",
-      name: "Bone Shamans",
-    },
-    {
-      state: "",
-      name: "Aptos Monkeys",
-    },
-    {
-      state: "Custom Request",
-      name: "Graphic Designer",
-    },
-    {
-      state: "Custom Requet",
-      name: "UI/UX Designer",
-    },
-  ];
+
+
+  const { connection } = useConnection()
+  const anchorWallet = useAnchorWallet()
+
+  const [project, setProject] = useState<any[]>();
+
+  const get_project = async () => {
+    try {
+
+      const _project = await getProjectForUser(
+        connection,
+        anchorWallet!,
+        "confirmed"
+      )
+
+      console.log(_project);
+      setProject(_project);
+
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    if (!anchorWallet) return
+    get_project()
+  }, [anchorWallet])
+
   const router = useRouter();
   return (
     <div className="pt-[2vw] w-full md:w-[80vw] float-right">
@@ -29,14 +42,14 @@ export default function index() {
         <title>Ongoing</title>
       </Head>
       <div className="w-[85vw] md:w-[60vw] mx-auto">
-        {data.map((el, i) => (
+        {project && project.map((el, i) => (
           <div
             key={i}
             className="w-full my-[3vw] relative rounded-[1vw] bg-black px-[3vw] flex justify-between text-white items-center h-[18vw] md:h-[12vw]"
           >
             <div>
               <div className="absolute top-[9%] text-[2.5vw] md:text-[1.5vw] fontPopSemibold left-[5%] text-[#00ff47]">
-                {el.state}
+                {el.role}
               </div>
               <div
                 className="text-[5vw] md:text-[3vw] fontPopSemibold cursor-pointer"

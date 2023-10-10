@@ -1,49 +1,62 @@
 import { IDL } from "@/data/IDL";
+import { USER_PREFIX } from "@/lib/constants/constants";
 import { BorshAccountsCoder } from "@coral-xyz/anchor";
+import { AnchorWallet } from "@solana/wallet-adapter-react";
 
 import type { Commitment, Connection } from "@solana/web3.js";
 import { PublicKey } from "@solana/web3.js";
 
-export const getInvitationFroProject = async (
+export const getProjectForUser = async (
     connection: Connection,
-    project: PublicKey,
+    anchorWallet: AnchorWallet,
     commitment?: Commitment,
 ) => {
 
     const NEXUS_ADDRESS = new PublicKey("C35kaD3YLHBVMxwsxnre227XwgJo8gSN8jnrfThmfuUg");
+    const [founder] = PublicKey.findProgramAddressSync(
+        [
+            anchorWallet.publicKey.toBuffer(),
+            Buffer.from(USER_PREFIX),
+        ],
+        NEXUS_ADDRESS
+    )
 
-    const INVITATION_OFFSET = 1;
+    console.log(founder.toBase58());
+
+    const PROJECT_OFFSET = 8;
     const programAccounts = await connection.getProgramAccounts(
         NEXUS_ADDRESS,
         {
-            filters: [{ memcmp: { offset: INVITATION_OFFSET, bytes: project.toBase58() } }],
+            filters: [{ memcmp: { offset: PROJECT_OFFSET, bytes: founder.toBase58() } }],
             commitment,
         }
     );
 
+    console.log(programAccounts[0].account.data.length)
+
     console.log(programAccounts.length)
-    const InvitationDatas: any[] = [];
+    const ProjectDatas: any[] = [];
     const coder = new BorshAccountsCoder(IDL);
     programAccounts.forEach((account) => {
         try {
-            const InvitationData: any = coder.decode(
-                "Invt",
+            const ProjectData: any = coder.decode(
+                "APA",
                 account.account.data
             );
 
-            InvitationData.pubkey = account.pubkey;
-            if (InvitationData) {
-                InvitationDatas.push(
+            ProjectData.pubkey = account.pubkey;
+            if (ProjectData) {
+                ProjectDatas.push(
                     // ...account,
                     // parsed:
-                    InvitationData
+                    ProjectData
                 );
             }
         } catch (e) {
             console.log(`Failed to decode token manager data`);
         }
     });
-    return InvitationDatas
+    return ProjectDatas
     // .sort((a, b) =>
     //     a.pubkey.toBase58().localeCompare(b.pubkey.toBase58())
     // );
