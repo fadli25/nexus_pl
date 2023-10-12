@@ -546,12 +546,12 @@ export type CardinalStakePool =
           kind: "struct",
           fields: [
             {
-              name: "bump",
-              type: "u8"
-            },
-            {
               name: "user",
               type: "publicKey"
+            },
+            {
+              name: "bump",
+              type: "u8"
             },
             {
               name: "project",
@@ -979,7 +979,7 @@ export type CardinalStakePool =
       }
     ],
     metadata: {
-      address: "4KayBgpJ5A3vTc6DaKAZQKGPPJjcvqHZmKFRda5XbFHU"
+      address: "C35kaD3YLHBVMxwsxnre227XwgJo8gSN8jnrfThmfuUg"
     }
   }
 
@@ -1531,12 +1531,12 @@ export const IDL: CardinalStakePool =
         kind: "struct",
         fields: [
           {
-            name: "bump",
-            type: "u8"
-          },
-          {
             name: "user",
             type: "publicKey"
+          },
+          {
+            name: "bump",
+            type: "u8"
           },
           {
             name: "project",
@@ -1964,6 +1964,6 @@ export const IDL: CardinalStakePool =
     }
   ],
   metadata: {
-    address: "4KayBgpJ5A3vTc6DaKAZQKGPPJjcvqHZmKFRda5XbFHU"
+    address: "C35kaD3YLHBVMxwsxnre227XwgJo8gSN8jnrfThmfuUg"
   }
 }
