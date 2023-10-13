@@ -9,7 +9,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 export default function Projects() {
   const projectImage =
-    "https://s3-alpha-sig.figma.com/img/b4c6/bbe1/ba43061ac1f212ffd3ba799d16f82244?Expires=1694390400&Signature=WG7GnG5SK6hsPXyj9jLzc6meHOjEs2TqII5ENXsLeVgqfTSXSjTNopoBXrvpqiR2zQhOdaeQmzCeVANoq2ACF1veT1OY2cvOCagfy-XRi~leYwys6fJUIhME9Pj8qgkwzIt9YLrW40iRGwtlQs5dOPrE1uDb8fUaGpQmX64pJBFZgyyomYAtz~pOtJy4z9s9wsG1egx3cEdm5kP-0biSigHlNfWwyonFyYx8I~OypSu7MHogJ-mtSBF8UiQQn1panqtPAfoNwflJAWGM67ZJAoojlzkm30exvk-7FiPugx4n9bDnVTN9CAVVubbAHj6Z8hJoZ8hp-B~OrhOwpnwbOg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    "https://media.discordapp.net/attachments/1085293900706627595/1162185959572516976/Ellipse_27_1.png?ex=653b0505&is=65289005&hm=1ce34d84dbb4f26571b994fe2521313f5885e3eea9c4e96641074f6fafd06244&=&width=190&height=183";
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
   const projectData = [1, 2, 3, 4, 5, 6];
 

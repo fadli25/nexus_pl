@@ -8,7 +8,6 @@ import { Connection, clusterApiUrl } from "@solana/web3.js";
 import Image from "next/image";
 import React, { useState } from "react";
 
-
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
@@ -61,11 +60,10 @@ const IOSSwitch = styled((props: SwitchProps) => (
 }));
 
 export default function addProject() {
-
   const connection = new Connection(clusterApiUrl("devnet"));
 
-  const anchorWallet = useAnchorWallet()
-  const wallet = useWallet()
+  const anchorWallet = useAnchorWallet();
+  const wallet = useWallet();
 
   const [discod_link, setDiscodLink] = useState<string>("");
   const [twitter_link, setTwitterLink] = useState<string>("");
@@ -77,10 +75,8 @@ export default function addProject() {
   const [project_overview, setProjectOverview] = useState<string>("");
   const [name, setName] = useState<string>("");
 
-
   const initProject = async () => {
     try {
-
       await init_project(
         anchorWallet,
         connection,
@@ -93,16 +89,14 @@ export default function addProject() {
         website_link,
         project_overview,
         hiring
-      )
-
+      );
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
-
+  };
 
   const projetImage =
-    "https://s3-alpha-sig.figma.com/img/3b02/7d7a/4ea0cde542a6ecaf8e32f1db3e0ce672?Expires=1694390400&Signature=mImbzZ3BrwylI3-fwtRkWzIlAqZ0d0PlWzzCgttg4yi2tRcZjgi8FRZh1TTQqIgRdyVAHHRlFvPmwxyfze6AazIUQBsnEpvvKHyZ3JM2PLB8XIoKMbT-08iSiaLbds5Ouou4NCTftG3LVFViAqTcig-qvtrulRCvBykIVv1NuVVWufgbLp3eTqFJt~5JxBSmkSW~QojaAxdmy7FCjfBvBC8MCvBC215usbapkWL27UmuqHycwdKA1u3ZeUwKmLuRfW6fn5qCgxqt5MXjQXRmtcq-jehdOdpb7nfIGEOUPfD29PbN3blRTI59deXmV~ug-aGBKztJyx5OCHfFy7UzKA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    "https://media.discordapp.net/attachments/1085293900706627595/1162188869798736053/Ellipse_18_3.png?ex=653b07ba&is=652892ba&hm=879a3e9d39738e485a66832817a0913f193639592d3b5b36bd607bd37d554ba8&=&width=486&height=443";
 
   const buttonStyle = {
     fontSize: "1vw",
@@ -225,11 +219,21 @@ export default function addProject() {
           <div>
             <div className="fontPopSemibold">Select Category</div>
             <select className={`${inputStyle}`}>
-              <option onClick={() => setCategory("Category 1")} value="">Category 1</option>
-              <option onClick={() => setCategory("Category 2")} value="">Category 2</option>
-              <option onClick={() => setCategory("Category 3")} value="">Category 3</option>
-              <option onClick={() => setCategory("Category 4")} value="">Category 4</option>
-              <option onClick={() => setCategory("Category 5")} value="">Category 5</option>
+              <option onClick={() => setCategory("Category 1")} value="">
+                Category 1
+              </option>
+              <option onClick={() => setCategory("Category 2")} value="">
+                Category 2
+              </option>
+              <option onClick={() => setCategory("Category 3")} value="">
+                Category 3
+              </option>
+              <option onClick={() => setCategory("Category 4")} value="">
+                Category 4
+              </option>
+              <option onClick={() => setCategory("Category 5")} value="">
+                Category 5
+              </option>
             </select>
           </div>
           <div></div>
@@ -309,7 +313,7 @@ export default function addProject() {
         <Button
           onClick={(e) => {
             e.preventDefault();
-            initProject()
+            initProject();
           }}
           variant="contained"
           sx={styleButton1}

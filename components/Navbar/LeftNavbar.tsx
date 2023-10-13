@@ -11,7 +11,7 @@ type showLeftNavbar = {
 export default function LeftNavbar({ showLeftNavbar }: any) {
   //   Profile Image
   const imageSrc =
-    "https://s3-alpha-sig.figma.com/img/3b02/7d7a/4ea0cde542a6ecaf8e32f1db3e0ce672?Expires=1694390400&Signature=mImbzZ3BrwylI3-fwtRkWzIlAqZ0d0PlWzzCgttg4yi2tRcZjgi8FRZh1TTQqIgRdyVAHHRlFvPmwxyfze6AazIUQBsnEpvvKHyZ3JM2PLB8XIoKMbT-08iSiaLbds5Ouou4NCTftG3LVFViAqTcig-qvtrulRCvBykIVv1NuVVWufgbLp3eTqFJt~5JxBSmkSW~QojaAxdmy7FCjfBvBC8MCvBC215usbapkWL27UmuqHycwdKA1u3ZeUwKmLuRfW6fn5qCgxqt5MXjQXRmtcq-jehdOdpb7nfIGEOUPfD29PbN3blRTI59deXmV~ug-aGBKztJyx5OCHfFy7UzKA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    "https://media.discordapp.net/attachments/1085293900706627595/1162185596601647255/Ellipse_18_2.png?ex=653b04ae&is=65288fae&hm=fb327e5a676c925fbfd3cd968a2df42b7731031bb7a53dc07964bab70c84a5cf&=&width=287&height=286";
 
   const buttonClass = "rounded-full bg-[#FF2D2D] hover:bg-[#FF2D2D99] ";
 

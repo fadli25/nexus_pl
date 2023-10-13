@@ -49,7 +49,7 @@ export default function TopNavbar() {
   const path = router.asPath;
 
   const homeImage =
-    "https://s3-alpha-sig.figma.com/img/50b5/acde/e32a59999f982410fec0584893be46ea?Expires=1694390400&Signature=LllJwCsN-lzNhJx7sNX-hza6Ayjb0pJNBj3PypkcTetsoSHVvW8WBYJs3MdTahek6yuSNwLsvuQ-Lf7OM6QXRr0WufaTLylU2NJBc0-10pPK-uRYrGLjY2urk6AcQY-MaCRP58VOmE0kIm4QSX0vCDaNNAX2zbys1Ux6PygPBgBFPQ9wAVfq3hZPz6HrUkL2VIEfEXoRs~j8YpjKACUSd8JnCTk6oMAzpvOQDrRkDcVj5~xO4vn4DUC08adWsk4s-OWwH6UPkYyPk3qBBgOQ-~l4elbYbO7urrDVPEyfhDfIfMvgO8AqFPZ5Uh4Uqf2tDIkpEvbkMgezYc4v5~SiUA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    "https://media.discordapp.net/attachments/1085293900706627595/1162188481905315850/Group_120_1.png?ex=653b075e&is=6528925e&hm=4b730b569c232d226255a98a2bb18971413f11e82de5c020fdfa50beac1ef5fd&=&width=1036&height=368";
 
   function home() {
     return (
@@ -127,7 +127,7 @@ export default function TopNavbar() {
           </MotionButton1>
           <MotionButton1>Watchlist</MotionButton1>
           <MotionButton1 onClick={() => router.push("/freelance/job")}>
-            Job Invitatons
+            Job Invitations
           </MotionButton1>
           <MotionButton1>Job History</MotionButton1>
         </div>
@@ -307,7 +307,7 @@ export default function TopNavbar() {
               >
                 Rebirth Tower
               </motion.button>
-              <WalletMultiButton/>
+              <WalletMultiButton />
               {/* <Button
                 variant="contained"
                 sx={{
@@ -328,8 +328,13 @@ export default function TopNavbar() {
                   height: "fit",
                 }}
               >
-                Connet Wallet
-              </Button> */}
+
+//                 Connect Wallet
+//               </Button>
+// =======
+//                 Connet Wallet
+//               </Button> */}
+
               <motion.button
                 onClick={() => setShowLeftNavbar(!showLeftNavbar)}
                 whileHover={{ scale: 1.04 }}

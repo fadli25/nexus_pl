@@ -7,25 +7,32 @@ import { motion } from "framer-motion";
 export default function index() {
   const data = [
     {
-      img: "https://s3-alpha-sig.figma.com/img/cf60/377a/47c9f821e846c6fb1ee293762ab2a741?Expires=1693785600&Signature=kxCj75U7ywGFzsNLwEgxDex8NtCPSFyGqiiEjLEMi7g9fdJOBoTsgTk~gKvaiDmOGWSSRZHGt8e~P91eflHoEnLzvBLJpn7aoZoKX1aboBkC1g0z9T7XkNUNKQQ3dE5uFfIE2xyWThIPAETcC831~frmHDwtqJEqDcLLRAV6KhXrJp7iCgdXP34opcxPH314OMF0dKqsDB2oM-b2jutv21dxlFTAelTyvmlvSKg6J53LZu-g-jELlIA0b-thsiVaWcjpKTQF7QwCYlJ12OxeZq4n0JLeEGjYEweg5rCoUyyejrxXc~kn9EobhYoP6ZLvCWhHw2otKw7LfNMAo8s0ag__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+      img: "https://media.discordapp.net/attachments/1085293900706627595/1162194804067794964/Rectangle_120.png?ex=653b0d41&is=65289841&hm=8b7b4494720afade04362e0a9e375d3b99d4d95f150a58b8439cb5038d782eb2&=&width=407&height=391",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/adc9/60ed/34596fa94aefaa8fabf152a6c84bfd85?Expires=1693785600&Signature=B0kP8Lplbj7GIOOAepTp0JKOrsW4Sc~ILYLYWKNioARMZsxub6AEe1eKfy4UmW-NRl57PnD2baoGCc3VP7Rx-slwxAdBQ12WE8OxXC-UBfkUI0vM2VyExOGG8PHQJBv8OMfEaYzSCGQcDfdU3yruZvr~yILyboVpcjgMm4CbswZ10qHC18TsF6mH~Kbu3xnrpjgT8k1fTS5SYJDWccr6NILVnoNNL9VJzomg4IsLfLspKxXFyOztHiOsUiHstwTHvN~hI8wSYI8KFBZQ1uhhZKJ-gfy01H0uql1PwzOxiOWlyq7JODf3s2tg86CeVREIF55zr3KofhS4ZRSpxIRmwQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+      img: "https://media.discordapp.net/attachments/1085293900706627595/1162194804067794964/Rectangle_120.png?ex=653b0d41&is=65289841&hm=8b7b4494720afade04362e0a9e375d3b99d4d95f150a58b8439cb5038d782eb2&=&width=407&height=391",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/8009/f45e/438e698b935d231be45e531018e5a9f1?Expires=1693785600&Signature=DK03GRbYhjhSL2HRyCuKNQQCbvhGyjD6rKjdpY80n3~cOv5pgrycTruvCyUfoRH5qCfxe7UvapilGi4Km25w9Y3d~iqTvbmChmp4Apl67d9FxZZaA63nfuC2AL1xf9VdGykx4lvXXC7HFiDNBp1Pm5rPv167uF5OjXpXUA8bdO7URi1Rf0DvJfBX9-TLqkmzv3IbNO~nqcPr0BWpk8TfL~opUbCYz5EQP4k-62JYMWiHTvdPkzsSw2VNyJPTYeLOIYfja-nKUrdtKH-kRumcKKYyBaYKQYexJmCj2oy-Bzx0X1S7cHK44THySUgFkC5iXDdtkWxYyJtMcdkrv4Aijg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+      img: "https://media.discordapp.net/attachments/1085293900706627595/1162194804067794964/Rectangle_120.png?ex=653b0d41&is=65289841&hm=8b7b4494720afade04362e0a9e375d3b99d4d95f150a58b8439cb5038d782eb2&=&width=407&height=391",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/8009/f45e/438e698b935d231be45e531018e5a9f1?Expires=1693785600&Signature=DK03GRbYhjhSL2HRyCuKNQQCbvhGyjD6rKjdpY80n3~cOv5pgrycTruvCyUfoRH5qCfxe7UvapilGi4Km25w9Y3d~iqTvbmChmp4Apl67d9FxZZaA63nfuC2AL1xf9VdGykx4lvXXC7HFiDNBp1Pm5rPv167uF5OjXpXUA8bdO7URi1Rf0DvJfBX9-TLqkmzv3IbNO~nqcPr0BWpk8TfL~opUbCYz5EQP4k-62JYMWiHTvdPkzsSw2VNyJPTYeLOIYfja-nKUrdtKH-kRumcKKYyBaYKQYexJmCj2oy-Bzx0X1S7cHK44THySUgFkC5iXDdtkWxYyJtMcdkrv4Aijg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+      img: "https://media.discordapp.net/attachments/1085293900706627595/1162194804067794964/Rectangle_120.png?ex=653b0d41&is=65289841&hm=8b7b4494720afade04362e0a9e375d3b99d4d95f150a58b8439cb5038d782eb2&=&width=407&height=391",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/eba1/189c/1b64676b3ea1bfe8b6f719547a02ee35?Expires=1693785600&Signature=OAxYoTw3UqhY1ZErIjbcvMjHaQZf-FV48EzIQtxMFYr~sD7CWTpjrkWNv4agPRRbRu1KGl~onkmuCO5rbvP7bG36Oqkm2jvmEEb5O7vzQV4Vq~onHgsMh4Bz2IiZJTkZkwJO5tsoubPFys~PY~~8m6DAZrk98hjj-EF3DO0IaWtS6diryJfaIgxOitYUCX0riCEWM1fMb-tirtv4RZ4FBYxiqvYd3p0eObQqNYSL0Jk4BDPW3CWIwDwf0YKybng~gug6H5Sq6VMDFPROQC1dwN~UGq0IoUn5JpeNpyjJ-bAj9e6tXVoUtgkIVC7Mi8IUxzI9fFxBx7cYl1E8K8vq0A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+      img: "https://media.discordapp.net/attachments/1085293900706627595/1162194804067794964/Rectangle_120.png?ex=653b0d41&is=65289841&hm=8b7b4494720afade04362e0a9e375d3b99d4d95f150a58b8439cb5038d782eb2&=&width=407&height=391",
+    },
+    {
+      img: "https://media.discordapp.net/attachments/1085293900706627595/1162194804067794964/Rectangle_120.png?ex=653b0d41&is=65289841&hm=8b7b4494720afade04362e0a9e375d3b99d4d95f150a58b8439cb5038d782eb2&=&width=407&height=391",
+    },
+    {
+      img: "https://media.discordapp.net/attachments/1085293900706627595/1162194804067794964/Rectangle_120.png?ex=653b0d41&is=65289841&hm=8b7b4494720afade04362e0a9e375d3b99d4d95f150a58b8439cb5038d782eb2&=&width=407&height=391",
     },
   ];
   const [show, setShow] = useState<boolean>();
   const [procced, setProcced] = useState<boolean>();
   const win =
-    "https://s3-alpha-sig.figma.com/img/75be/a1ad/62889e6ce4a4aecbb165bdb45fa3ea05?Expires=1693785600&Signature=VbBjBTucLVDiIKni9rYOvhDr8orPqL-psfdZXOtD-Yx7LPKniq5NL4IPWznZB~top7akKBcSrZ3vo5xoRMTbMA0sNIs8U5fRREsb~3eQbxAsUxj8gox3h0IhxJTJb4ozujJTTV2tAeq~xv~zE8hBrSy3WUGsQ4h2y5vutKYKvZ4O9AmdMavps7hXdHyv6d36aK~VVQda0ifpE6dDmXky7FL9wOxOjGaSXwgISem~ioVNyJ6aT-pS965DKgtfplz5kKUSYT1Radxp0e-aNQAK26wSapbUORMOkt2U3bagyT8WV8~HOa~V1Wj2GfiVzAMELeCBRJiA~LiT0ft2hlIsjw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    "https://media.discordapp.net/attachments/1085293900706627595/1162203481017438298/Untitled670_20230803112855_1.png?ex=653b1556&is=6528a056&hm=ccf35f1f18f4c8a14e74b0b24f7df8014e366586081955d90dabd72d4d798a11&=&width=267&height=273";
+
   return (
     <div className="w-[95vw] md:w-[80vw] py-[5vw] md:float-right text-black">
       <Head>
@@ -82,7 +89,7 @@ export default function index() {
           {data.map((el, i) => (
             <motion.div className="w-[40vw] md:w-[19vw] rounded-[2vw] md:rounded-[1vw] overflow-hidden">
               <div className="pb-[8vw] md:pb-[4vw] bg-black rounded-[2vw] md:rounded-[1vw]">
-                <Image
+                <img
                   src={el.img}
                   width={9000}
                   height={2000}
