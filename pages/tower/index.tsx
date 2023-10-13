@@ -40,7 +40,7 @@ export default function index() {
             <div className="w-full h-full rounded-[1vw] bg-black flex justify-between px-[4vw] py-[2vw]">
               <div>
                 <img
-                  src={win}
+                  src="https://s3-alpha-sig.figma.com/img/75be/a1ad/62889e6ce4a4aecbb165bdb45fa3ea05?Expires=1693785600&Signature=VbBjBTucLVDiIKni9rYOvhDr8orPqL-psfdZXOtD-Yx7LPKniq5NL4IPWznZB~top7akKBcSrZ3vo5xoRMTbMA0sNIs8U5fRREsb~3eQbxAsUxj8gox3h0IhxJTJb4ozujJTTV2tAeq~xv~zE8hBrSy3WUGsQ4h2y5vutKYKvZ4O9AmdMavps7hXdHyv6d36aK~VVQda0ifpE6dDmXky7FL9wOxOjGaSXwgISem~ioVNyJ6aT-pS965DKgtfplz5kKUSYT1Radxp0e-aNQAK26wSapbUORMOkt2U3bagyT8WV8~HOa~V1Wj2GfiVzAMELeCBRJiA~LiT0ft2hlIsjw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
                   width={9000}
                   height={2000}
                   alt=""
