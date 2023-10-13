@@ -505,6 +505,58 @@ export type CardinalStakePool =
         }
       },
       {
+        name: "RecuringPayment",
+        type: {
+          kind: "struct",
+          fields: [
+            {
+              name: "bump",
+              type: "u8"
+            },
+            {
+              name: "timeRate",
+              type: "u64"
+            },
+            {
+              name: "founder",
+              type: "publicKey"
+            },
+            {
+              name: "workingTime",
+              type: "u64"
+            },
+            {
+              name: "reciever",
+              type: "publicKey"
+            },
+            {
+              name: "startAt",
+              type: "i64"
+            },
+            {
+              name: "lastUpdateAt",
+              type: "i64"
+            },
+            {
+              name: "endAt",
+              type: "i64"
+            },
+            {
+              name: "totalAmount",
+              type: "u64"
+            },
+            {
+              name: "authority",
+              type: "publicKey"
+            },
+            {
+              name: "live",
+              type: "bool"
+            }
+          ]
+        }
+      },
+      {
         name: "Invt",
         type: {
           kind: "struct",
@@ -558,11 +610,23 @@ export type CardinalStakePool =
               type: "publicKey"
             },
             {
+              name: "address",
+              type: "publicKey"
+            },
+            {
               name: "name",
               type: "string"
             },
             {
               name: "role",
+              type: "string"
+            },
+            {
+              name: "projectName",
+              type: "string"
+            },
+            {
+              name: "projectRole",
               type: "string"
             }
           ]
@@ -1490,6 +1554,58 @@ export const IDL: CardinalStakePool =
       }
     },
     {
+      name: "RecuringPayment",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "bump",
+            type: "u8"
+          },
+          {
+            name: "timeRate",
+            type: "u64"
+          },
+          {
+            name: "founder",
+            type: "publicKey"
+          },
+          {
+            name: "workingTime",
+            type: "u64"
+          },
+          {
+            name: "reciever",
+            type: "publicKey"
+          },
+          {
+            name: "startAt",
+            type: "i64"
+          },
+          {
+            name: "lastUpdateAt",
+            type: "i64"
+          },
+          {
+            name: "endAt",
+            type: "i64"
+          },
+          {
+            name: "totalAmount",
+            type: "u64"
+          },
+          {
+            name: "authority",
+            type: "publicKey"
+          },
+          {
+            name: "live",
+            type: "bool"
+          }
+        ]
+      }
+    },
+    {
       name: "Invt",
       type: {
         kind: "struct",
@@ -1543,11 +1659,23 @@ export const IDL: CardinalStakePool =
             type: "publicKey"
           },
           {
+            name: "address",
+            type: "publicKey"
+          },
+          {
             name: "name",
             type: "string"
           },
           {
             name: "role",
+            type: "string"
+          },
+          {
+            name: "projectName",
+            type: "string"
+          },
+          {
+            name: "projectRole",
             type: "string"
           }
         ]

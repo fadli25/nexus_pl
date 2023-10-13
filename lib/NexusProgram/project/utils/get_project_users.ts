@@ -6,32 +6,24 @@ import { AnchorWallet } from "@solana/wallet-adapter-react";
 import type { Commitment, Connection } from "@solana/web3.js";
 import { PublicKey } from "@solana/web3.js";
 
-export const getProjectForUser = async (
+export const getProjectUsers = async (
     connection: Connection,
-    anchorWallet: AnchorWallet,
+    project: string,
     commitment?: Commitment,
 ) => {
 
     const NEXUS_ADDRESS = new PublicKey("C35kaD3YLHBVMxwsxnre227XwgJo8gSN8jnrfThmfuUg");
-    const [founder] = PublicKey.findProgramAddressSync(
-        [
-            anchorWallet.publicKey.toBuffer(),
-            Buffer.from(USER_PREFIX),
-        ],
-        NEXUS_ADDRESS
-    )
 
 
-    const PROJECT_OFFSET = 8;
+    const PROJECT_OFFSET = 41;
     const programAccounts = await connection.getProgramAccounts(
         NEXUS_ADDRESS,
         {
-            filters: [{ memcmp: { offset: PROJECT_OFFSET, bytes: founder.toBase58() } }],
+            filters: [{ memcmp: { offset: PROJECT_OFFSET, bytes: project } }],
             commitment,
         }
     );
 
-    console.log(programAccounts[0].account.data.length)
 
     console.log(programAccounts.length)
     const ProjectDatas: any[] = [];
@@ -55,7 +47,14 @@ export const getProjectForUser = async (
             console.log(`Failed to decode token manager data`);
         }
     });
-    console.log(ProjectDatas);
+
+    const arr: any[] = [];
+
+    ProjectDatas.map((p) => {
+        arr.push(p.user)
+    })
+
+
     return ProjectDatas
     // .sort((a, b) =>
     //     a.pubkey.toBase58().localeCompare(b.pubkey.toBase58())
