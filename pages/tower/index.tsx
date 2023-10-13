@@ -39,7 +39,7 @@ export default function index() {
           {procced && (
             <div className="w-full h-full rounded-[1vw] bg-black flex justify-between px-[4vw] py-[2vw]">
               <div>
-                <Image
+                <img
                   src={win}
                   width={9000}
                   height={2000}
@@ -82,7 +82,7 @@ export default function index() {
           {data.map((el, i) => (
             <motion.div className="w-[40vw] md:w-[19vw] rounded-[2vw] md:rounded-[1vw] overflow-hidden">
               <div className="pb-[8vw] md:pb-[4vw] bg-black rounded-[2vw] md:rounded-[1vw]">
-                <Image
+                <img
                   src={el.img}
                   width={9000}
                   height={2000}
