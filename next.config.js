@@ -7,6 +7,7 @@ const nextConfig = {
       "img.icons8.com",
       "cryptologos.cc",
       "media.discordapp.net",
+      "figma.com",
     ],
   },
 };
