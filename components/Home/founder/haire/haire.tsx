@@ -5,9 +5,9 @@ import { useRouter } from "next/router";
 
 export default function haire() {
   const featuredImage =
-    "https://s3-alpha-sig.figma.com/img/edb6/755a/b8b17264ac7349601e96ee909cd501c8?Expires=1693785600&Signature=MITYjHyzskQGKQsgw~l5JFMP~Eoy4NsDZHivONy2EAdahx0H7Jg949W-DZjWrDVeXN-QIi6ClxiEbP0uTkqNSnjSTaUUVkHm3YMv~7XpSRM2mj8lRR4PnozqdlP5lF0erhRhrv3ERJr-O8ZhDY9Og156VKcauzTS9Uq5hdxeymQsyoMjv3mOE5lJK5odAc-mKth9CF2AYOCicGDh2fJ7F2jsBLJQYgMunbG8SmL1dGsuDskuJV9lHkodswxWn3IMFjxMAacPBfahGshPJz0dmyU7d~-KD31TMrXSTWIlnYIueB1AecfAv9hl~UXauU3Si9-9JnnckAXQw~WpsAagag__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
-  const img =
-    "https://s3-alpha-sig.figma.com/img/4b3d/6a1b/97bf154c24e49f711a4d2dd8db19b0d2?Expires=1693785600&Signature=DUFjmo4t43utXdvjMN6PFgsTsrj06NvDV6hvta4T5NLoDojSJySfziQzE1zTTG7-F-J9TGW2GGpef6qes7S-uxNUQL9SSVkPcmWZpHbV3GzA~StJJsLkW4ZPRL3ECCs~SRIjgMpLXtzBLrOXqx3YB6fyoik68Nmr-~UdfS4Eo5qoLjaBf99z-eGtMT4MVsrQkJmkmBxJVNezSMXZGJ9KZ~GUZVGl0a69K0AUlIyQ3wwuXpJRWHGfFZLIQRGzvLSYmkRKCFSBD-Xu6yrJgc3N4qmeVqDGX3yufWbw8-fByVF-Tl8wavqG4Zv6o4VMoCiQ4HNj-0srgxJvpCnZZ~Y7zg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    "https://media.discordapp.net/attachments/1085293900706627595/1162191996614619186/Ellipse_1_1.png?ex=653b0aa4&is=652895a4&hm=d67c4517c86bd5ca0b09850880dde46eff4dd8980e31df291d047a5f66196faa&=&width=358&height=342";
+  const imgg =
+    "https://media.discordapp.net/attachments/1085293900706627595/1162204983048032307/Ellipse_4_2.png?ex=653b16bc&is=6528a1bc&hm=9753dfa8469a9eb95a4e795bea1cc5907edea6cd86eccf6baaea94f94514857e&=&width=225&height=216";
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
   function card() {
     return (
@@ -15,7 +15,7 @@ export default function haire() {
         <div className="flex flex-col items-center">
           <div className="w-[8vw] rounded-full border-[0.14vw] border-white">
             <Image
-              src={img}
+              src={imgg}
               width={9000}
               height={2000}
               alt=""
@@ -197,7 +197,7 @@ export default function haire() {
               <div className="flex flex-col items-center">
                 <div className="w-[16vw] md:w-[8vw] rounded-full border-[0.14vw] border-white">
                   <Image
-                    src={img}
+                    src={imgg}
                     width={9000}
                     height={2000}
                     alt=""

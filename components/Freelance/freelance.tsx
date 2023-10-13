@@ -6,8 +6,8 @@ import { useRouter } from "next/router";
 export default function freelance() {
   const featuredImage =
     "https://media.discordapp.net/attachments/1085293900706627595/1162191996614619186/Ellipse_1_1.png?ex=653b0aa4&is=652895a4&hm=d67c4517c86bd5ca0b09850880dde46eff4dd8980e31df291d047a5f66196faa&=&width=358&height=342";
-  const img =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162192637705605280/Ellipse_5_3.png?ex=653b0b3d&is=6528963d&hm=40697a2331ee15067ae9ae3e82fdf9252eb0ab75434b5e23a0297d3f5efc71eb&=&width=235&height=226s";
+  const imgg =
+    "https://media.discordapp.net/attachments/1085293900706627595/1162204983048032307/Ellipse_4_2.png?ex=653b16bc&is=6528a1bc&hm=9753dfa8469a9eb95a4e795bea1cc5907edea6cd86eccf6baaea94f94514857e&=&width=225&height=216";
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
   const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const router = useRouter();
@@ -122,7 +122,7 @@ export default function freelance() {
               <div className="flex flex-col items-center pl-[1vw] py-[2vw] md:py-[1vw]">
                 <div className="w-[20vw] md:w-[8vw] rounded-full border-[0.14vw] border-white">
                   <Image
-                    src={img}
+                    src={imgg}
                     width={9000}
                     height={2000}
                     alt=""
