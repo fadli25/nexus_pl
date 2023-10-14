@@ -89,38 +89,30 @@ export default function recurringpayment() {
         Recurring Payment
       </div>
       <div className="mt-[3vw] w-[90vw] md:w-[60vw] mx-auto text-[2.5vw] md:text-[1.2vw] text-black font-semibold">
-        <div className="my-[0.5vw] ">Asset to pay</div>
-        <div className="w-full bg-black text-white font-semibold rounded-[1vw] flex justify-between items-center px-[3.4vw] md:px-[2.4vw] py-[3.8vw] md:py-[3.4vw] text-[5vw] md:text-[2.4vw]">
-          <div className="flex items-center gap-x-[1vw]">
-            <div className="w-[20vw] md:w-[10vw] h-[20vw] md:h-[10vw] rounded-full bg-white/50"></div>
-            <div>
-              <div>Marble</div>
-              <div>200</div>
-            </div>
-          </div>
-          <div>$3500</div>
-        </div>
-        <div className="mt-[3vw]">
+        {apa && <div className="mt-[3vw]">
           <div className="my-[0.5vw]">Stream Name</div>
           <input
+            value={apa.name}
             type="text"
             className="outline-none border-[0.12vw] px-[3vw] py-[0.6vw] w-full rounded-full border-black focus:scale-[101%] transition-all"
           />
-        </div>
-        <div className="mt-[3vw]">
+        </div>}
+        {anchorWallet && <div className="mt-[3vw]">
           <div className="my-[0.5vw]">Input recipient address</div>
           <input
+            value={anchorWallet.publicKey.toBase58()}
             type="text"
             className="outline-none border-[0.12vw] px-[3vw] py-[0.6vw] w-full rounded-full border-black focus:scale-[101%] transition-all"
           />
-        </div>
-        <div className="mt-[3vw]">
+        </div>}
+        {apa && <div className="mt-[3vw]">
           <div className="my-[0.5vw]">Recipient Profile</div>
           <input
+            value={apa.address.toBase58()}
             type="text"
             className="outline-none border-[0.12vw] px-[3vw] py-[0.6vw] w-full rounded-full border-black focus:scale-[101%] transition-all"
           />
-        </div>
+        </div>}
         <div className="mt-[5vw]">
           <div className="my-[0.5vw]">Payment Rate</div>
           <div
@@ -138,7 +130,7 @@ export default function recurringpayment() {
               {time_rate}
             </div>
             {showLevels && (
-              <div className="top-[-1vw] pt-[1vw] px-[3vw] relative -z-10 left-0 w-full h-[22.4vw] md:h-[11vw] text-[2.8vw] md:text-[0.9vw] border-black border-[0.1vw] rounded-b-[1vw] bg-[#e9e9e9]">
+              <div className="top-[-1vw] pt-[1vw] px-[3vw] relative -z-10 left-0 w-full h-[22.4vw] md:h-[14vw] text-[2.8vw] md:text-[0.9vw] border-black border-[0.1vw] rounded-b-[1vw] bg-[#e9e9e9]">
                 <div
                   onClick={() => {
                     setTimeRate("Month");
@@ -216,7 +208,7 @@ export default function recurringpayment() {
           variant="contained"
           className="!text-[3vw] md:!text-[1.2vw] !rounded-full !normal-case !text-black !px-[4vw] md:!px-[3vw] !py-[1vw] md:!py-[0.6vw] !bg-[#00ff47] hover:!bg-[#00ff48ed]"
         >
-          Apporve in wallet
+          Submet
         </Button>
       </div>
     </div>

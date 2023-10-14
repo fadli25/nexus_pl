@@ -1,9 +1,13 @@
+import { getProjectUsers } from "@/lib/NexusProgram/project/utils/get_project_users";
+import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
 import { Button } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdAddCircle, MdOutlineArrowDropDownCircle } from "react-icons/md";
+
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 
 type Project = {
   project: string
@@ -32,7 +36,7 @@ export default function Project({
   const solanaIcon = "https://cryptologos.cc/logos/solana-sol-logo.png";
 
   const [coreTeam, setCoreTeam] = useState(false);
-
+  const [users, setUsers] = useState<any[]>([])
   const [community, setCommuntiy] = useState(false);
 
   const messageButtonStyle = {
@@ -71,46 +75,70 @@ export default function Project({
   const fireButtonStyleClass = "bg-[#FF2D2D] hover:bg-[#FF2D2D]";
 
 
+  const { connection } = useConnection()
+  const anchorWallet = useAnchorWallet();
 
-  function team() {
-    return (
-      <div className="absolute top-[100%] items-center left-[50%] translate-x-[-50%] z-10 w-[92%] bg-black min-h-[8vw] flex justify-between px-[2vw]">
-        <div className="flex itmes-center gap-x-[1vw]">
-          <div className="bg-white/60 rounded-full w-[6vw] h-[6vw]"></div>
-          <div>
-            <div className="text-[2vw] fontPopSemibold underline text-white">
-              Manay
-            </div>
-            <div className="text-[1.4vw] text-[#00ff47]">Community Manager</div>
-          </div>
-        </div>
-        <div className="flex items-center gap-x-[0.7vw]">
-          <div>
-            <Button
-              variant="contained"
-              sx={messageButtonStyle}
-              className={`${messageButtonStyleClass}`}
-            >
-              Message
-            </Button>
-          </div>
-          <div>
-            <Button variant="outlined" sx={discordButtonStyle} className={``}>
-              Discord Role
-            </Button>
-          </div>
-          <div>
-            <Button
-              variant="contained"
-              sx={fireButtonStyle}
-              className={`${fireButtonStyleClass}`}
-            >
-              Fire
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
+  const [projecte, setProject] = useState<(any | null)>()
+
+  const get_project = async () => {
+    try {
+      const _projects = await get_project_info(
+        anchorWallet,
+        connection,
+        project
+      );
+      setProject(_projects);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+    console.log("strat")
+    get_project()
+    get_users()
+  }, [anchorWallet])
+
+
+  const get_users = async () => {
+    try {
+      console.log("_projects");
+      const _projects = await getProjectUsers(
+        connection,
+        project,
+        "confirmed"
+      )
+      // const arr: any[] = [];
+
+
+      // _projects.map((prj) => {
+      //   const objct = {
+      //     role: prj.role,
+      //     objct: [prj]
+      //   }
+      //   if (arr.length == 0) {
+      //     arr.push(objct)
+      //   } else {
+      //     let not_exist = true;
+      //     arr.map((ar, i) => {
+      //       if (ar.role == prj.role) {
+      //         arr[i].objct.push(prj);
+      //         not_exist = false;
+      //       }
+      //     })
+      //     if (not_exist) {
+      //       arr.push(objct)
+      //     }
+      //   }
+      // })
+      // console.log(arr)
+      setUsers(_projects)
+
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   const router = useRouter();
@@ -156,29 +184,29 @@ export default function Project({
               </Button>
             </div>
           </div>
-          <div className="mt-[1vw] text-white bg-black rounded-[1vw] min-h-[20vw] w-full p-[1vw]">
+          {projecte && <div className="mt-[1vw] text-white bg-black rounded-[1vw] min-h-[20vw] w-full p-[1vw]">
             <div className="text-[3vw] fontPopSemibold mt-[1vw]">
-              Bone Shamans
+              {projecte.name}
             </div>
             <div className="text-[1vw] text-[#00ff47]">Project Description</div>
             <div className="flex justify-start gap-x-[2vw] items-end">
-              <div className="bg-[#191919] rounded-[0.7vw] w-[40vw] mt-[0.8vw] h-[10vw]"></div>
+              <div className="bg-[#191919] rounded-[0.7vw] w-[40vw] mt-[0.8vw] h-[10vw]">{projecte.projectOverview}</div>
               <div className="flex items-center gap-x-[0.9vw] border-[0.19vw] border-white rounded-[0.5vw] py-[0.7vw] px-[1vw]">
-                <div className="w-[2vw]">
+                {/* <div className="w-[2vw]">
                   <Image src={solanaIcon} width={8999} height={2000} alt="" />
-                </div>
+                </div> */}
                 <div className="w-[2vw]">
                   <Image src={solanaIcon} width={8999} height={2000} alt="" />
                 </div>
               </div>
             </div>
-          </div>
+          </div>}
         </div>
       </div>
-      <div className="w-full mt-[5vw] border-black border-[0.2vw] px-[3vw] py-[1vw] fontPopSemibold rounded-[0.8vw]">
+      {projecte && <div className="w-full mt-[5vw] border-black border-[0.2vw] px-[3vw] py-[1vw] fontPopSemibold rounded-[0.8vw]">
         <div className="text-[2vw] mb-[-2vw] pt-[2vw]">Staffs</div>
-        <div className=" text-[10vw] underline">10</div>
-      </div>
+        <div className=" text-[10vw] underline">{projecte.members}</div>
+      </div>}
       <div className="mt-[5vw]">
         <div className="flex justify-between">
           <div></div>
@@ -186,6 +214,7 @@ export default function Project({
             Staff Management
           </div>
           <motion.button
+            onClick={() => router.push("/founder/project/invite/" + project)}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             className="text-[3.5vw] text-black"
@@ -195,60 +224,44 @@ export default function Project({
         </div>
       </div>
       <div className="mt-[3vw]">
-        <div className="relative h-fit">
-          <div className="w-full border-[0.19vw] px-[2vw] py-[2vw] border-black roundend-[0.6vw] flex justify-between">
-            <div className="flex items-center text-[2vw] gap-x-[1vw]">
-              <div className="fontPopSemibold">Core Team</div>
+        {users && users.map((user) => (<div className="relative h-fit">
+          <div className="absolute top-[100%] items-center left-[50%] translate-x-[-50%] z-10 w-[92%] bg-black min-h-[8vw] flex justify-between px-[2vw]">
+            <div className="flex itmes-center gap-x-[1vw]">
+              <div className="bg-white/60 rounded-full w-[6vw] h-[6vw]"></div>
+              <div>
+                <div className="text-[2vw] fontPopSemibold underline text-white">
+                  {user.name}
+                </div>
+                <div className="text-[1.4vw] text-[#00ff47]">{user.role}</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-x-[0.7vw]">
               <div>
                 <Button
                   variant="contained"
-                  sx={buttonStyle}
-                  className={`${buttonStyleClass}`}
-                  onClick={() => router.push("/founder/project/invite/" + project)}
+                  sx={messageButtonStyle}
+                  className={`${messageButtonStyleClass}`}
                 >
-                  Invite
+                  Message
                 </Button>
               </div>
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.96 }}
-              className={`text-[3vw] text-black `}
-              onClick={() => setCoreTeam(!coreTeam)}
-            >
-              <MdOutlineArrowDropDownCircle />
-            </motion.button>
-          </div>
-          {coreTeam && <div>{team()}</div>}
-        </div>
-      </div>
-      <div className="mt-[10vw]">
-        <div className="relative h-fit">
-          <div className="w-full border-[0.19vw] px-[2vw] py-[2vw] border-black roundend-[0.6vw] flex justify-between">
-            <div className="flex items-center text-[2vw] gap-x-[1vw]">
-              <div className="fontPopSemibold">Community Moderators</div>
+              <div>
+                <Button variant="outlined" sx={discordButtonStyle} className={``}>
+                  Discord Role
+                </Button>
+              </div>
               <div>
                 <Button
                   variant="contained"
-                  sx={buttonStyle}
-                  className={`${buttonStyleClass}`}
-                  onClick={() => router.push("/founder/project/invite/" + project)}
+                  sx={fireButtonStyle}
+                  className={`${fireButtonStyleClass}`}
                 >
-                  Invite
+                  Fire
                 </Button>
               </div>
             </div>
-            <motion.button
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.96 }}
-              className={`text-[3vw] text-black `}
-              onClick={() => setCommuntiy(!community)}
-            >
-              <MdOutlineArrowDropDownCircle />
-            </motion.button>
           </div>
-          {community && <div>{team()}</div>}
-        </div>
+        </div>))}
       </div>
     </div>
   );

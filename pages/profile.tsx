@@ -155,7 +155,7 @@ export default function profile() {
       </Head>
       <div className="w-[90vw] md:w-[50vw] text-[4vw] md:text-[1.4vw] mx-auto pt-[5vw] text-black ">
         <div className="fontPopSemibold text-[5.5vw] md:text-[3vw]">
-          Zetsu | The Shaman King
+          {name && name}
         </div>
         <div className="flex justify-between mt-[1vw] items-center">
           <div className="flex gap-x-[3vw] text-[4vw] md:text-[1.4vw] font-semibold">
