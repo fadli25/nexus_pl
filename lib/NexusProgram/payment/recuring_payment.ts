@@ -56,7 +56,7 @@ export async function one_time_payment(
         await init_identifier(anchorWallet, connection);
     } else {
         const account = await program.account.identifier.fetch(identifier, "confirmed");
-        number = Number(account.count) + 1;
+        number = Number(account.count);
     }
 
 

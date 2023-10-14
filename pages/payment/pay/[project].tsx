@@ -77,9 +77,9 @@ export default function info() {
       <div className="w-[90vw] md:w-[70vw] mx-auto">
         {users && users.map((user) => (
           <>
-            <div className="text-[4vw] font-semibold md:text-[2vw] underline text-black">
+            {/* <div className="text-[4vw] font-semibold md:text-[2vw] underline text-black">
               {user.role}
-            </div>
+            </div> */}
             <div className="flex flex-col gapy-y-[3vw] md:gap-y-[1.4vw]">
               {user.objct.map((el: any, i: number) => (
                 <div key={i}>
