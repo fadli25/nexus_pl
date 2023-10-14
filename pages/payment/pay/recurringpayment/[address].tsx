@@ -208,7 +208,7 @@ export default function recurringpayment() {
           variant="contained"
           className="!text-[3vw] md:!text-[1.2vw] !rounded-full !normal-case !text-black !px-[4vw] md:!px-[3vw] !py-[1vw] md:!py-[0.6vw] !bg-[#00ff47] hover:!bg-[#00ff48ed]"
         >
-          Submet
+          Submit
         </Button>
       </div>
     </div>

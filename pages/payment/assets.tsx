@@ -24,7 +24,7 @@ export default function assets() {
           <div>$3500</div>
         </div>
         <div className="mt-[3vw]">
-          <div className="my-[0.5vw]">Input recipient address</div>
+          <div className="my-[0.5vw]">Sender's Address</div>
           <input
             type="text"
             className="outline-none border-[0.12vw] px-[3vw] py-[0.6vw] w-full rounded-full border-black focus:scale-[101%] transition-all"

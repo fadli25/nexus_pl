@@ -83,7 +83,15 @@ export default function incoming() {
       const n = working_time / time_rate;
       objct.amount_to_withdraw = n * payment_per_one
     } else {
+      const previouse_working_time = now - start;
+      const nn = previouse_working_time / time_rate;
+      const amount_already_taken = nn * payment_per_one
 
+      const working_time = now - last_update;
+      const n = working_time / time_rate;
+      objct.amount_to_withdraw = n * payment_per_one;
+      objct.available_fund = total_amount - amount_already_taken;
+      objct.amount_taken = amount_already_taken
     }
     return objct
   }
