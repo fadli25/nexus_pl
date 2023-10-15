@@ -10,13 +10,10 @@ import { MdAddCircle, MdOutlineArrowDropDownCircle } from "react-icons/md";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 
 type Project = {
-  project: string
-}
+  project: string;
+};
 
-export default function Project({
-  project
-}: Project) {
-
+export default function Project({ project }: Project) {
   const buttonStyle = {
     fontSize: "1vw",
     padding: "0.6vw 2vw",
@@ -36,7 +33,7 @@ export default function Project({
   const solanaIcon = "https://cryptologos.cc/logos/solana-sol-logo.png";
 
   const [coreTeam, setCoreTeam] = useState(false);
-  const [users, setUsers] = useState<any[]>([])
+  const [users, setUsers] = useState<any[]>([]);
   const [community, setCommuntiy] = useState(false);
 
   const messageButtonStyle = {
@@ -74,11 +71,10 @@ export default function Project({
   };
   const fireButtonStyleClass = "bg-[#FF2D2D] hover:bg-[#FF2D2D]";
 
-
-  const { connection } = useConnection()
+  const { connection } = useConnection();
   const anchorWallet = useAnchorWallet();
 
-  const [projecte, setProject] = useState<(any | null)>()
+  const [projecte, setProject] = useState<any | null>();
 
   const get_project = async () => {
     try {
@@ -91,27 +87,20 @@ export default function Project({
     } catch (e) {
       console.log(e);
     }
-  }
-
+  };
 
   useEffect(() => {
     if (!anchorWallet) return;
-    console.log("strat")
-    get_project()
-    get_users()
-  }, [anchorWallet])
-
+    console.log("strat");
+    get_project();
+    get_users();
+  }, [anchorWallet]);
 
   const get_users = async () => {
     try {
       console.log("_projects");
-      const _projects = await getProjectUsers(
-        connection,
-        project,
-        "confirmed"
-      )
+      const _projects = await getProjectUsers(connection, project, "confirmed");
       // const arr: any[] = [];
-
 
       // _projects.map((prj) => {
       //   const objct = {
@@ -134,12 +123,11 @@ export default function Project({
       //   }
       // })
       // console.log(arr)
-      setUsers(_projects)
-
+      setUsers(_projects);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   const router = useRouter();
   return (
@@ -184,29 +172,37 @@ export default function Project({
               </Button>
             </div>
           </div>
-          {projecte && <div className="mt-[1vw] text-white bg-black rounded-[1vw] min-h-[20vw] w-full p-[1vw]">
-            <div className="text-[3vw] fontPopSemibold mt-[1vw]">
-              {projecte.name}
-            </div>
-            <div className="text-[1vw] text-[#00ff47]">Project Description</div>
-            <div className="flex justify-start gap-x-[2vw] items-end">
-              <div className="bg-[#191919] rounded-[0.7vw] w-[40vw] mt-[0.8vw] h-[10vw]">{projecte.projectOverview}</div>
-              <div className="flex items-center gap-x-[0.9vw] border-[0.19vw] border-white rounded-[0.5vw] py-[0.7vw] px-[1vw]">
-                {/* <div className="w-[2vw]">
+          {projecte && (
+            <div className="mt-[1vw] text-white bg-black rounded-[1vw] min-h-[20vw] w-full p-[1vw]">
+              <div className="text-[3vw] fontPopSemibold mt-[1vw]">
+                {projecte.name}
+              </div>
+              <div className="text-[1vw] text-[#00ff47]">
+                Project Description
+              </div>
+              <div className="flex justify-start gap-x-[2vw] items-end">
+                <div className="bg-[#191919] rounded-[0.7vw] w-[40vw] mt-[0.8vw] h-[10vw]">
+                  {projecte.projectOverview}
+                </div>
+                <div className="flex items-center gap-x-[0.9vw] border-[0.19vw] border-white rounded-[0.5vw] py-[0.7vw] px-[1vw]">
+                  {/* <div className="w-[2vw]">
                   <Image src={solanaIcon} width={8999} height={2000} alt="" />
                 </div> */}
-                <div className="w-[2vw]">
-                  <Image src={solanaIcon} width={8999} height={2000} alt="" />
+                  <div className="w-[2vw]">
+                    <Image src={solanaIcon} width={8999} height={2000} alt="" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>}
+          )}
         </div>
       </div>
-      {projecte && <div className="w-full mt-[5vw] border-black border-[0.2vw] px-[3vw] py-[1vw] fontPopSemibold rounded-[0.8vw]">
-        <div className="text-[2vw] mb-[-2vw] pt-[2vw]">Staffs</div>
-        <div className=" text-[10vw] underline">{projecte.members}</div>
-      </div>}
+      {projecte && (
+        <div className="w-full mt-[5vw] border-black border-[0.2vw] px-[3vw] py-[1vw] fontPopSemibold rounded-[0.8vw]">
+          <div className="text-[2vw] mb-[-2vw] pt-[2vw]">Staffs</div>
+          <div className=" text-[10vw] underline">{projecte.members}</div>
+        </div>
+      )}
       <div className="mt-[5vw]">
         <div className="flex justify-between">
           <div></div>
@@ -224,44 +220,66 @@ export default function Project({
         </div>
       </div>
       <div className="mt-[3vw]">
-        {users && users.map((user) => (<div className="relative h-fit">
-          <div className="absolute top-[100%] items-center left-[50%] translate-x-[-50%] z-10 w-[92%] bg-black min-h-[8vw] flex justify-between px-[2vw]">
-            <div className="flex itmes-center gap-x-[1vw]">
-              <div className="bg-white/60 rounded-full w-[6vw] h-[6vw]"></div>
-              <div>
-                <div className="text-[2vw] fontPopSemibold underline text-white">
-                  {user.name}
+        {users &&
+          users.map((user) => (
+            <div className="relative h-fit">
+              <div className="absolute top-[100%] items-center left-[50%] translate-x-[-50%] z-10 w-[92%] bg-black min-h-[8vw] flex justify-between px-[2vw]">
+                <div className="flex itmes-center gap-x-[1vw]">
+                  <div className="bg-white/60 rounded-full w-[6vw] h-[6vw]"></div>
+                  <div>
+                    <div className="text-[2vw] fontPopSemibold underline text-white">
+                      {user.name}
+                    </div>
+                    <div className="text-[1.4vw] text-[#00ff47]">
+                      {user.role}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-[1.4vw] text-[#00ff47]">{user.role}</div>
+                <div className="flex items-center gap-x-[0.7vw]">
+                  <div>
+                    <Button
+                      variant="contained"
+                      sx={messageButtonStyle}
+                      className="!font-[0.8vw] !bg-[#00ff47] hover:!bg-[#00ff47] !rounded-[0.5vw] !text-black"
+                    >
+                      Message
+                    </Button>
+                  </div>
+                  <div>
+                    {/* 
+                      const discordButtonStyle = {
+                      fontSize: "0.8vw",
+                      border: "0.1vw solid #fff",
+                      borderRadius: "0.6vw",
+                      padding: "0.6vw 1.4vw",
+                      color: "#fff",
+                      ":hover": {
+                        border: "0.1vw solid #fff",
+                      },
+                    };
+                
+                */}
+                    <Button
+                      variant="outlined"
+                      sx={discordButtonStyle}
+                      className="!font-[0.8vw] !bg-[#00ff47] hover:!bg-[#00ff47] !rounded-[0.5vw] !text-black"
+                    >
+                      Discord Role
+                    </Button>
+                  </div>
+                  <div>
+                    <Button
+                      variant="contained"
+                      sx={fireButtonStyle}
+                      className="!font-[0.8vw] !bg-[#FF2D2D] hover:!bg-[#FF2D2D] !rounded-[0.5vw] !text-white"
+                    >
+                      Fire
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="flex items-center gap-x-[0.7vw]">
-              <div>
-                <Button
-                  variant="contained"
-                  sx={messageButtonStyle}
-                  className={`${messageButtonStyleClass}`}
-                >
-                  Message
-                </Button>
-              </div>
-              <div>
-                <Button variant="outlined" sx={discordButtonStyle} className={``}>
-                  Discord Role
-                </Button>
-              </div>
-              <div>
-                <Button
-                  variant="contained"
-                  sx={fireButtonStyle}
-                  className={`${fireButtonStyleClass}`}
-                >
-                  Fire
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>))}
+          ))}
       </div>
     </div>
   );
