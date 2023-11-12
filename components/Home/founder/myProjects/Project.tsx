@@ -222,8 +222,8 @@ export default function Project({ project }: Project) {
       <div className="mt-[3vw]">
         {users &&
           users.map((user) => (
-            <div className="relative h-fit">
-              <div className="absolute top-[100%] items-center left-[50%] translate-x-[-50%] z-10 w-[92%] bg-black min-h-[8vw] flex justify-between px-[2vw]">
+            <div className="relative h-fit my-[1vw]">
+              <div className="items-center z-10 w-[92%] bg-black min-h-[8vw] flex justify-between px-[2vw]">
                 <div className="flex itmes-center gap-x-[1vw]">
                   <div className="bg-white/60 rounded-full w-[6vw] h-[6vw]"></div>
                   <div>
