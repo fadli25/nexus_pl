@@ -130,6 +130,8 @@ export default function Project({ project }: Project) {
   };
 
   const router = useRouter();
+  console.log(users)
+  users.map((el,index) => console.log(el.name))
   return (
     <div className="px-[10vw] pt-[3vw] text-black">
       <div className="w-[61vw] mx-auto">
@@ -221,14 +223,14 @@ export default function Project({ project }: Project) {
       </div>
       <div className="mt-[3vw]">
         {users &&
-          users.map((user) => (
-            <div className="relative h-fit my-[1vw]">
+          users.map((user,index) => (
+            <div key={index} className="relative h-fit my-[1vw]">
               <div className="items-center z-10 w-[92%] bg-black min-h-[8vw] flex justify-between px-[2vw]">
                 <div className="flex itmes-center gap-x-[1vw]">
                   <div className="bg-white/60 rounded-full w-[6vw] h-[6vw]"></div>
                   <div>
                     <div className="text-[2vw] fontPopSemibold underline text-white">
-                      {user.name}
+                      {user.projectName}
                     </div>
                     <div className="text-[1.4vw] text-[#00ff47]">
                       {user.role}
