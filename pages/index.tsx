@@ -11,7 +11,7 @@ export default function Home() {
         <title>Nexus</title>
       </Head>
       <Tower />
-      <div className="mt-[7vw] mb-[3vw] text-center fontPopSemibold text-black text-[5.4vw] md:text-[3vw]">
+      <div className="mt-[7vw] mb-[3vw] text-start px-[3.5vw] fontPopSemibold text-black text-[5.4vw] md:text-[3vw]">
         Recommendations
       </div>
       <Projects />

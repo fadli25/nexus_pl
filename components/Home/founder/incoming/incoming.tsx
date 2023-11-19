@@ -10,9 +10,13 @@ export default function incoming() {
     <div className="py-[4vw]">
       <div>
         <div className="w-[90vw] md:w-[64vw]  mx-auto bg-black rounded-[1vw] px-[2vw] py-[1vw] flex justify-between">
+          <div>
           <div className="text-[5vw] md:text-[3vw] fontPopSemibold">
             Bone Shamans
           </div>
+            <div className="text-[3vw] md:text-[1vw] font-semibold text-[#00ff47]">50 Incoming Application</div>
+          </div>
+
           <div className="text-[4vw] md:text-[2vw] text-[#00ff47] pb-[2vw]">
             <div className="text-white fontPopSemibold">Roles Needed</div>
             <div className="mt-[0.6vw] text-[2vw] md:text-[1.4vw] flex flex-col items-start gap-y-[0.5vw]">
@@ -48,8 +52,11 @@ export default function incoming() {
       </div>
       <div className="mt-[5vw]">
         <div className="w-[90vw] md:w-[64vw]  mx-auto bg-black rounded-[1vw] px-[2vw] py-[1vw] flex justify-between">
+          <div>
           <div className="text-[5vw] md:text-[3vw] fontPopSemibold">
             Aptos Monkeys
+          </div>
+          <div className="text-[3vw] md:text-[1vw] font-semibold text-[#00ff47]">50 Incoming Application</div>
           </div>
           <div className="text-[4vw] md:text-[2vw] text-[#00ff47] pb-[2vw]">
             <div className="text-white fontPopSemibold">Roles Needed</div>
