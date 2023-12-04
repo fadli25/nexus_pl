@@ -68,11 +68,11 @@ export default function Projects() {
           {projectData.map((el) => (
             <SwiperSlide>
               <motion.div
-                whileHover={{ scale: 1.04 }}
-                className="child w-[45vw] md:w-[34.4vw] mt-[0.7vw] px-[1vw] bg-black h-[30vw] md:h-[17vw] flex items-center gap-x-[1vw]"
+                whileHover={{ scale: 0.98 }}
+                className="child w-[45vw] md:w-[34.4vw] mt-[0.7vw] px-[1vw] border-[0.12vw] border-black h-[30vw] md:h-[17vw] flex items-center gap-x-[1vw] rounded-[1vw] text-black"
               >
                 <div className="flex flex-col items-center">
-                  <div className="rounded-full w-fit border-[0.15vw] border-[#00ff47] overflow-hidden">
+                  <div className="rounded-full w-fit border-[0.15vw] border-[#000] overflow-hidden">
                     <Image
                       className="object-center object-cover w-[15vw] md:w-[7.4vw]"
                       src={projectImage}
@@ -124,12 +124,12 @@ export default function Projects() {
                   <div className="text-[3vw] md:text-[2.3vw] fontPopSemibold">
                     Marble Labs
                   </div>
-                  <div className="my-[0.5vw] text-[2.4vw] md:text-[1.2vw] text-[#00ff47] ">
+                  <div className="my-[0.5vw] text-[2.4vw] md:text-[1.2vw]">
                     <span>Social, </span>
                     <span>NFT, </span>
                     <span>DeFI</span>
                   </div>
-                  <div className="w-full mt-[1vw] h-[15vw] md:h-[6vw] text-[1.6vw] md:text-[0.8vw] bg-[#282828] p-[2vw] md:p-[0.7vw] leading-[2.5vw] md:leading-[1.5vw]">
+                  <div className="w-full mt-[1vw] h-[15vw] md:h-[6vw] text-[1.6vw] md:text-[0.8vw] border-[0.12vw] border-black rounded-[0.7vw] p-[2vw] md:p-[0.7vw] leading-[2.5vw] md:leading-[1.5vw]">
                     Mrble Labs aims to revolutionize the way people connect,
                     collaborate, and thrive in the evolving landscape of digital
                     services.

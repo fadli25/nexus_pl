@@ -80,7 +80,7 @@ export default function freelance() {
           />
         </div>
         <div className="mt-[3vw]">
-          <div className="bg-black w-full py-[1vw] px-[2vw] rounded-[1vw] md:rounded-[0.6vw]">
+          <div className="border-[0.12vw] border-black w-full text-black py-[1vw] font-semibold px-[2vw] rounded-[1vw] md:rounded-[1vw]">
             <div className="text-white/80 text-[2vw] md:text-[1vw]">
               Featured
             </div>
@@ -89,10 +89,10 @@ export default function freelance() {
                 <div className="fontPopSemibold text-[5.4vw] md:text-[3.4vw]">
                   John Stewart
                 </div>
-                <div className="flex justify-between items-center w-[40vw] md:w-[25vw] text-[#00ff47] text-[3vw] md:text-[1.7vw]">
+                <div className="flex justify-between items-center w-[40vw] md:w-[25vw text-[3vw] md:text-[1.7vw]">
                   <div>Content Writer</div>
                   <div className="flex items-center gap-x-[1vw]">
-                    <div className="text-[1.8vw] md:text-[0.8vw] text-black rounded-full px-[2vw] md:px-[1vw] py-[0.5vw] bg-[#1DA1F2]">
+                    <div className="text-[1.8vw] md:text-[0.8vw] text-white rounded-full px-[2vw] md:px-[1vw] py-[0.5vw] bg-[#1DA1F2]">
                       Expert
                     </div>
                     <div>4.6</div>
@@ -117,10 +117,10 @@ export default function freelance() {
               onClick={() => router.push("/freelance/project")}
               whileHover={{ scale: 1.04 }}
               key={i}
-              className="w-[70vw] md:w-[32vw] rounded-[1.4vw] md:rounded-[0.6vw] overflow-hidden  flex justify-between bg-black"
+              className="w-[70vw] md:w-[32vw] rounded-[1.4vw] md:rounded-[0.6vw] overflow-hidden  flex justify-between border-[0.11vw] border-black"
             >
               <div className="flex flex-col items-center pl-[1vw] py-[2vw] md:py-[1vw]">
-                <div className="w-[20vw] md:w-[8vw] rounded-full border-[0.14vw] border-white">
+                <div className="w-[20vw] md:w-[8vw] rounded-full border-[0.14vw] border-black">
                   <Image
                     src={imgg}
                     width={9000}
@@ -129,7 +129,7 @@ export default function freelance() {
                     className="rounded-full"
                   />
                 </div>
-                <div className="mt-[0.6vw] flex justify-center gap-x-[0.4vw] px-[1vw] md:px-[0.4vw] py-[0.1vw] border-[0.09vw] md:border-[0.1vw] border-white rounded-[0.5vw]">
+                <div className="mt-[0.6vw] flex justify-center gap-x-[0.2vw] px-[1vw] md:px-[0.4vw] py-[0.1vw]">
                   <div className="w-[3.4vw] md:w-[2vw]">
                     <Image src={solanaIcon} width={2000} height={2000} alt="" />
                   </div>
@@ -142,17 +142,17 @@ export default function freelance() {
                 </div>
               </div>
               <div className="w-[36%] py-[1vw]">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center text-black">
                   <div>
-                    <div className="fontPopSemibold text-white text-[2.6vw] md:text-[1.8vw]">
+                    <div className="fontPopSemibold  text-[2.6vw] md:text-[1.8vw]">
                       John Sew
                     </div>
-                    <div className="text-[#00ff47] text-[4vw] md:text-[1.2vw]">
+                    <div className="text-[4vw] md:text-[1.2vw]">
                       Digital Artist
                     </div>
                   </div>
                 </div>
-                <div className="mt-[0.5vw] text-[1.8vw] md:text-[0.7vw] w-full bg-[#282828] h-[13vw] md:h-[5.9vw] rounded-[0.6vw] p-[1vw] md:p-[0.5vw]">
+                <div className="mt-[0.5vw] text-[1.8vw] md:text-[0.7vw] w-full border-[#282828] border-[0.11vw] text-black h-[13vw] md:h-[5.9vw] rounded-[0.6vw] p-[1vw] md:p-[0.5vw]">
                   Experienced writer, SEO Expert, worked for over 50 projects
                 </div>
               </div>

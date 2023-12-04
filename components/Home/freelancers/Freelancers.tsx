@@ -72,10 +72,10 @@ export default function Freelancers() {
               <SwiperSlide>
                 <motion.div
                   whileHover={{ scale: 1.04 }}
-                  className="child w-[45vw] md:w-[34.6vw] mt-[0.7vw] px-[1vw] bg-black h-[30vw] md:h-[17vw] flex items-center gap-x-[1vw]"
+                  className="child w-[45vw] md:w-[34.6vw] mt-[0.7vw] px-[1vw] border-[0.12vw] border-black rounded-[1vw] text-black h-[30vw] md:h-[17vw] flex items-center gap-x-[1vw]"
                 >
                   <div className="flex flex-col items-center">
-                    <div className="rounded-full w-fit border-[0.15vw] border-[#00ff47] overflow-hidden">
+                    <div className="rounded-full w-fit border-[0.15vw] border-[#000] overflow-hidden">
                       <Image
                         className="object-center object-cover w-[15vw] md:w-[7.4vw] rounded-full bg-white/60"
                         src={projectImage}
@@ -124,25 +124,25 @@ export default function Freelancers() {
                     </div>
                   </div>
                   <div>
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center text-black">
                       <div>
                         <div className="text-[3vw] md:text-[2.3vw] fontPopSemibold">
                           Stella Marris
                         </div>
-                        <div className="mb-[0.5vw] text-[#00ff47] text-[2.4vw] md:text-[1.4vw]">
+                        <div className="mb-[0.5vw] text-[2.4vw] md:text-[1.4vw]">
                           <span>Content Writer </span>
                         </div>
                       </div>
                       <div>
-                        <div className="text-[#00ff47] text-[2.9vw] md:text-[1.9vw] text-end">
+                        <div className=" text-[2.9vw] md:text-[1.9vw] text-end">
                           4.6
                         </div>
-                        <div className="text-black bg-[#1DA1F2] px-[1vw] py-[0.2vw] text-[1.5vw] md:text-[0.6vw]">
+                        <div className="text-white bg-[#1DA1F2] px-[1vw] py-[0.2vw] text-[1.5vw] md:text-[0.7vw]">
                           Expert
                         </div>
                       </div>
                     </div>
-                    <div className="w-full mt-[1vw] h-[15vw] md:h-[6vw] text-[1.6vw] md:text-[0.8vw] bg-[#282828] p-[2vw] md:p-[0.7vw] leading-[2.5vw] md:leading-[1.5vw]">
+                    <div className="w-full mt-[1vw] h-[15vw] md:h-[6vw] text-[1.6vw] md:text-[0.8vw] border-[0.1vw] border-black rounded-[0.7vw] p-[2vw] md:p-[0.7vw] leading-[2.5vw] md:leading-[1.5vw]">
                       Experienced writer, SEO Expert, worked for over 50
                       projects.
                     </div>
