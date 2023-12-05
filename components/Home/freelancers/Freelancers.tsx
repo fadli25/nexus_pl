@@ -71,7 +71,7 @@ export default function Freelancers() {
             {projectData.map((el) => (
               <SwiperSlide>
                 <motion.div
-                  whileHover={{ scale: 1.04 }}
+                  whileHover={{ scale: 0.99 }}
                   className="child w-[45vw] md:w-[34.6vw] mt-[0.7vw] px-[1vw] border-[0.12vw] border-black rounded-[1vw] text-black h-[30vw] md:h-[17vw] flex items-center gap-x-[1vw]"
                 >
                   <div className="flex flex-col items-center">
