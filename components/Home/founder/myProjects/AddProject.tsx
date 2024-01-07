@@ -107,10 +107,22 @@ export default function addProject() {
     ":hover": {
       background: "#4AF846",
     },
+    "@media (max-width:767px)": {
+      fontSize: "2.4vw",
+      width: "40vw",
+      padding: "1.5vw",
+    },
   };
 
   const inputStyle =
-    "bg-none border-[0.15vw] mt-[0.6vw] w-[20vw] px-[1vw] text-[0.9vw] py-[0.8vw] border-black rounded-[0.4vw] outline-none focus:border-red-600 focus:scale-[101%] transition-all";
+    "bg-none border-[0.15vw] mt-[0.6vw] w-full md:w-[20vw] px-[3vw] md:px-[1vw] text-[3vw] md:text-[0.9vw] py-[1.4vw] md:py-[0.8vw] border-black rounded-[1vw] md:rounded-[0.4vw] outline-none focus:border-red-600 focus:scale-[101%] transition-all";
+
+  const inputStyle2 =
+    "bg-none border-[0.15vw] mt-[0.6vw] px-[3vw] md:px-[1vw] text-[3vw] md:text-[0.9vw] py-[1.4vw] md:py-[0.8vw] border-black rounded-[1vw] md:rounded-[0.4vw] outline-none focus:border-red-600 focus:scale-[101%] transition-all";
+
+  const inputStyle3 =
+    "bg-none border-[0.15vw] mt-[0.6vw] px-[3vw] md:px-[1vw] text-[3vw] md:text-[0.9vw] py-[1.4vw] md:py-[0.8vw] border-black rounded-[1vw] md:rounded-[0.4vw] rounded-r-0 outline-none focus:border-red-600 focus:scale-[101%] transition-all";
+
   const styleButton1 = {
     fontSize: "1vw",
     padding: "0.7vw 2vw",
@@ -120,6 +132,11 @@ export default function addProject() {
     color: "#000",
     ":hover": {
       background: "#00ff47",
+    },
+    "@media (max-width:767px)": {
+      fontSize: "3vw",
+      padding: "0.7vw 5vw",
+      borderRadius: "1vw",
     },
   };
   const styleButton2 = {
@@ -132,21 +149,25 @@ export default function addProject() {
     ":hover": {
       background: "#FF2D2D",
     },
+    "@media (max-width:767px)": {
+      fontSize: "3vw",
+      padding: "0.7vw 4vw",
+    },
   };
   return (
     <div className="px-[4vw]">
-      <div className="flex justify-between">
-        <div className="flex flex-col items-center">
-          <div className="w-[14vw] rounded-full border-[0.2vw] border-[#00ff47] overflow-hidden">
+      <div className="flex flex-col md:flex-row gap-y-[3vw] md:gap-y-0 justify-between">
+        <div className="flex flex-row md:flex-col gap-x-[3vw] md:gap-x-0 justify-center md:justify-start items-center">
+          <div className="w-[34vw] md:w-[15vw] rounded-full border-[0.2vw] border-[#00ff47] overflow-hidden">
             <Image
               src={projetImage}
               width={9000}
               height={2000}
-              className="w-[14vw] object-cover object-center"
+              className="w-[54vw] object-cover object-center"
               alt=""
             />
           </div>
-          <div className="mt-[1vw] flex justify-center gap-x-[0.6vw]">
+          <div className="mt-[1vw] flex flex-col md:flex-row justify-center gap-y-[2vw] md:gap-y-0 gap-x-[0.6vw]">
             <div>
               <Button
                 sx={buttonStyle}
@@ -167,7 +188,7 @@ export default function addProject() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-x-[2vw] gap-y-[2vw] text-black text-[1.6vw]">
+        <div className="mt-[3vw] md:mt-0 grid grid-cols-1 md:grid-cols-2 gap-x-[2vw] gap-y-[6vw] md:gap-y-[2vw] text-black text-[5vw] md:text-[1.6vw]">
           <div>
             <div className="fontPopSemibold">Name</div>
             <input
@@ -249,64 +270,87 @@ export default function addProject() {
           </div>
         </div>
       </div>
-      <div className="mt-[3vw] text-[1.6vw] text-black">
+      <div className="mt-[6vw] md:mt-[3vw] text-[5vw] md:text-[1.6vw] text-black">
         <div>
           <div className="fontPopSemibold">Project Overview</div>
           <textarea
             onChange={(e) => setProjectOverview(e.target.value)}
             value={project_overview}
             rows={5}
-            className={`${inputStyle} w-full`}
+            className={`${inputStyle}`}
+            style={{ width: "100%" }}
           />
         </div>
         <div>
-          <div className="fontPopSemibold mt-[1vw]">Add Role</div>
-          <textarea rows={3} className={`${inputStyle} w-full`} />
+          <div className="fontPopSemibold mt-[1vw]">Add Departments</div>
+          <textarea
+            rows={3}
+            className={`${inputStyle}`}
+            style={{ width: "100%" }}
+          />
         </div>
       </div>
       <div className="mt-[3vw]">
-        <div className="flex items-center text-[3vw] fontPopSemibold gap-x-[1vw] text-black">
-          <div>Hiring</div>
-          <div>
-            <FormControlLabel
-              control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
-              label=""
-            />
+        <div className="flex justify-between items-center">
+          <div className="flex items-center text-[5vw] md:text-[3vw] fontPopSemibold gap-x-[3vw] md:gap-x-[1vw] text-black">
+            <div>Recruiting</div>
+            <div>
+              <FormControlLabel
+                control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                label=""
+              />
+            </div>
           </div>
-        </div>
-        <div className="flex items-center gap-x-[1vw] mt-[1vw]">
-          <div>
-            <Button
-              variant="contained"
-              sx={styleButton1}
-              className="bg-[#00ff47] hover:bg-[#00ff47]"
-            >
-              New Role
-            </Button>
-          </div>
-          <div>
-            <Button
-              variant="contained"
-              sx={styleButton2}
-              className="bg-[#FF2D2D] hover:bg-[#FF2D2D]"
-            >
-              Delete Role
-            </Button>
-          </div>
+          <Button
+            variant="contained"
+            sx={styleButton2}
+            className="bg-[#FF2D2D] hover:bg-[#FF2D2D]"
+          >
+            Delete Role
+          </Button>
         </div>
       </div>
-      <div className="mt-[5vw] w-full p-[3vw] border-[0.2vw] border-black rounded-[0.6vw] text-[2vw] text-black">
-        <div>
-          <div className="fontPopSemibold">Category</div>
-          <textarea className={`${inputStyle} w-full`} rows={3} />
+      <div className="mt-[5vw] w-full p-[3vw] border-[0.2vw] border-black rounded-[0.6vw] text-[2.5vw] md:text-[1.4vw] text-black">
+        <div className="flex justify-between items-center gap-x-[1vw]">
+          <div>
+            <div className="fontPopSemibold">Role Needed</div>
+            <input className={`${inputStyle2} w-full`} />
+          </div>
+
+          <div>
+            <div className="flex justify-end items-center">
+              <div>
+                <div className="fontPopSemibold">Payment</div>
+                <input className={`${inputStyle3} !rounded-r-none`} />
+              </div>
+              <div>
+                <div className="fontPopSemibold">Time</div>
+                <div className={`${inputStyle2} border-l-0 !rounded-l-none`}>
+                  Mnth
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div className="mt-[2vw] flex justify-between items-center gap-x-[1vw]">
+          <div className="w-[70%]">
+            <div className="fontPopSemibold">Category</div>
+            <input className={`${inputStyle2} w-full`} />
+          </div>
+          <div className="w-[35vw] md:w-[28.5%]">
+            <div className="fontPopSemibold">Country</div>
+            <input className={`${inputStyle2} w-full`} />
+          </div>
+        </div>
+
         <div className="mt-[2vw]">
-          <div className="fontPopSemibold">Role Needed</div>
-          <textarea className={`${inputStyle} w-full`} rows={3} />
+          <div className="fontPopSemibold">Level of experience</div>
+          <input className={`${inputStyle2} w-full`} />
         </div>
         <div className="mt-[2vw]">
           <div className="fontPopSemibold">Role Description</div>
-          <textarea className={`${inputStyle} w-full`} rows={3} />
+          <textarea className={`${inputStyle2} w-full`} rows={4} />
         </div>
       </div>
       <div className="flex justify-center mt-[5vw]">

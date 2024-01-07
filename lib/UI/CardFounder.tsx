@@ -19,15 +19,17 @@ type RouterFunc = {
 export default function CardFounder({ onClick, key }: RouterFunc) {
   return (
     <motion.div
-      whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.96 }}
-      className="flex font-semibold cursor-pointer text-black gap-x-[2vw] md:gap-x-[1vw] pt-[2vw] w-full px-[2.8vw] md:px-[1vw] py-[2vw] md:py-[1vw] rounded-[1.4vw] border border-black md:!w-[100px] overflow-hidden CardFounder"
+      className="flex font-semibold cursor-pointer text-black gap-x-[2vw] md:gap-x-[1vw] pt-[2vw] w-full px-[2.8vw] md:px-[1vw] py-[2vw] md:py-[1vw] rounded-[0.6vw] border border-black md:!w-[100px] overflow-hidden CardFounder"
     >
       <div className="flex items-center flex-col">
         <div className="w-[30vw] img rounded-full border border-black">
           <Image src={imgg} width={1000} height={1000} alt="" />
         </div>
-        <div className="mt-[1vw] md:mt-[0.5vw] text-black text-[8vw] md:text-[2.5vw] flex items-center justify-center">
+        <div
+          style={{ padding: "0.2vw 0.5vw" }}
+          className="mt-[1vw] border-[0.1vw] border-black rounded-[0.4vw] md:mt-[0.5vw] text-black text-[8vw] md:text-[2vw] flex items-center justify-center"
+        >
           <TbCurrencySolana />
           <TbCurrencySolana />
           <TbCurrencySolana />
@@ -35,24 +37,24 @@ export default function CardFounder({ onClick, key }: RouterFunc) {
       </div>
       <div className="w-full">
         <div className="text-[6vw] md:text-[2vw]">Black Zetsu</div>
-        <div className="text-[3.5vw] md:text-[1.4vw]">Product Designer</div>
+        <div className="text-[3.5vw] md:text-[1.2vw]">Product Designer</div>
         <div className="flex justify-between w-full items-end">
           <div>
             <div className="flex items-center gap-x-[0.4vw] mt-[2vw] md:mt-[0.3vw]">
-              <div className="bg-black font-normal text-white text-[2vw] md:text-[0.7vw] px-[2vw] md:px-[1vw] py-[0.5vw] md:py-[0.3vw] rounded-full">
+              <div className="bg-black font-normal text-white text-[2vw] md:text-[0.7vw] px-[2vw] md:px-[1vw] py-[0.2vw] rounded-full">
                 Intemidiate
               </div>
-              <div className="text-[3vw] md:text-[1.4vw]">4.2</div>
+              <div className="text-[3vw] md:text-[1.2vw]">4.2</div>
               <div>
                 <CiStar className="star" />
               </div>
             </div>
           </div>
-          <div className="text-[3vw] py-[1vw] px-[2vw] CardFounderPrice rounded-[1.6vw] border border-black md:text-[0.9vw]">
+          <div className="text-[3vw] py-[1vw] px-[2vw] CardFounderPrice rounded border border-black md:text-[0.9vw]">
             200$/wk
           </div>
         </div>
-        <div className="w-full font-normal text-[2.8vw] md:text-[0.9vw] px-[2vw] py-[1vw] mt-[1vw] border border-black rounded-[1.5vw] md:rounded-[1vw] md:px-[1vw] h-[18vw] CardFounderDescription">
+        <div className="w-full font-normal text-[2.8vw] md:text-[0.8vw] px-[2vw] py-[1vw] mt-[1vw] border border-black rounded-[1.5vw] md:rounded-[0.5vw] md:px-[1vw] h-[18vw] CardFounderDescription">
           Experienced writer, SEO Expert, worked for over 50 projects.
         </div>
       </div>

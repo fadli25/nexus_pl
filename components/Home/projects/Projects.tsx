@@ -30,8 +30,8 @@ export default function Projects() {
     "font-semibold w-[5vw] text-sm  md:w-[2.3vw] h-[5vw] md:h-[2.3vw] text-white rounded-full bg-blue-600/80 grid place-items-center";
 
   return (
-    <div className="px-[4vw] ">
-      <div className="text-[4vw] md:text-[2vw] text-black fontPopSemibold flex justify-between">
+    <div className="">
+      <div className="text-[4vw] md:text-[1.6vw] text-black fontPopSemibold flex justify-between">
         <div>Projects</div>
         <div className="flex gap-x-[1vw] text-[2vw] md:text-[0.9vw] mr-[1vw]">
           <motion.button
@@ -54,7 +54,14 @@ export default function Projects() {
       </div>
       <div className="my-[1.3vw]">
         <Swiper
-          slidesPerView={2}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+            767: {
+              slidesPerView: 2,
+            },
+          }}
           spaceBetween={5}
           loop={true}
           autoplay={{
@@ -63,18 +70,18 @@ export default function Projects() {
           pagination={true}
           modules={[Pagination, Autoplay]}
           onSwiper={(swiperInstance) => (swiper = swiperInstance)}
-          className="h-[40vw] md:h-[21vw]"
+          className="h-[55vw] md:h-[21vw]"
         >
           {projectData.map((el) => (
             <SwiperSlide>
               <motion.div
-                whileHover={{ scale: 0.98 }}
-                className="child w-[45vw] md:w-[34.4vw] mt-[0.7vw] px-[1vw] border-[0.12vw] border-black h-[30vw] md:h-[17vw] flex items-center gap-x-[1vw] rounded-[1vw] text-black"
+                whileTap={{ scale: 0.98 }}
+                className="child w-[99%] md:w-[31.4vw] mt-[0.7vw] px-[3vw] md:px-[1vw] border-[0.12vw] border-black h-[42vw] md:h-[17vw] flex items-center gap-x-[2.5vw] md:gap-x-[1vw] rounded-[1vw] md:rounded-[0.5vw] text-black"
               >
-                <div className="flex flex-col items-center">
-                  <div className="rounded-full w-fit border-[0.15vw] border-[#000] overflow-hidden">
+                <div className="flex flex-col items-center ">
+                  <div className="rounded-full w-[23vw] md:w-[7.4vw] border-[0.15vw]  border-[#000] overflow-hidden">
                     <Image
-                      className="object-center object-cover w-[15vw] md:w-[7.4vw]"
+                      className="object-center object-cover w-[45vw] md:w-[7.4vw]"
                       src={projectImage}
                       width={9000}
                       height={899}
@@ -85,7 +92,7 @@ export default function Projects() {
                     <motion.button
                       whileTap={{ scale: 0.95 }}
                       whileHover={{ scale: 1.1 }}
-                      className="w-[4vw] md:w-[2.5vw]"
+                      className="w-[6vw] md:w-[2.5vw]"
                     >
                       <Image
                         src={solanaIcon}
@@ -97,7 +104,7 @@ export default function Projects() {
                     <motion.button
                       whileTap={{ scale: 0.95 }}
                       whileHover={{ scale: 1.1 }}
-                      className="w-[4vw] md:w-[2.5vw]"
+                      className="w-[6vw] md:w-[2.5vw]"
                     >
                       <Image
                         src={solanaIcon}
@@ -109,7 +116,7 @@ export default function Projects() {
                     <motion.button
                       whileTap={{ scale: 0.95 }}
                       whileHover={{ scale: 1.1 }}
-                      className="w-[4vw] md:w-[2.5vw]"
+                      className="w-[6vw] md:w-[2.5vw]"
                     >
                       <Image
                         src={solanaIcon}
@@ -121,15 +128,15 @@ export default function Projects() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-[3vw] md:text-[2.3vw] fontPopSemibold">
+                  <div className="text-[6vw] md:text-[2.3vw] fontPopSemibold">
                     Marble Labs
                   </div>
-                  <div className="my-[0.5vw] text-[2.4vw] md:text-[1.2vw]">
+                  <div className="my-[0.5vw] text-[3.4vw] md:text-[1.2vw]">
                     <span>Social, </span>
                     <span>NFT, </span>
                     <span>DeFI</span>
                   </div>
-                  <div className="w-full mt-[1vw] h-[15vw] md:h-[6vw] text-[1.6vw] md:text-[0.8vw] border-[0.12vw] border-black rounded-[0.7vw] p-[2vw] md:p-[0.7vw] leading-[2.5vw] md:leading-[1.5vw]">
+                  <div className="w-full mt-[1vw] h-[20vw] md:h-[6vw] text-[2.4vw] md:text-[0.8vw] border-[0.1vw] border-black rounded-[0.5vw] p-[2vw] md:p-[0.7vw] leading-[3.5vw] md:leading-[1.5vw]">
                     Mrble Labs aims to revolutionize the way people connect,
                     collaborate, and thrive in the evolving landscape of digital
                     services.
