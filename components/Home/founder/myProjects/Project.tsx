@@ -1,17 +1,71 @@
 import { getProjectUsers } from "@/lib/NexusProgram/project/utils/get_project_users";
 import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
-import { Button } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { MdAddCircle, MdOutlineArrowDropDownCircle } from "react-icons/md";
+import { Button, FormControlLabel } from "@mui/material";
+import Switch, { SwitchProps } from "@mui/material/Switch";
+import { styled } from "@mui/material/styles";
 
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
+import { FaDiscord } from "react-icons/fa";
 
 type Project = {
   project: string;
 };
+
+const IOSSwitch = styled((props: SwitchProps) => (
+  <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+))(({ theme }) => ({
+  width: 42,
+  height: 26,
+  padding: 0,
+  "& .MuiSwitch-switchBase": {
+    padding: 0,
+    margin: 2,
+    transitionDuration: "300ms",
+    "&.Mui-checked": {
+      transform: "translateX(16px)",
+      color: "#fff",
+      "& + .MuiSwitch-track": {
+        backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#65C466",
+        opacity: 1,
+        border: 0,
+      },
+      "&.Mui-disabled + .MuiSwitch-track": {
+        opacity: 0.5,
+      },
+    },
+    "&.Mui-focusVisible .MuiSwitch-thumb": {
+      color: "#33cf4d",
+      border: "6px solid #fff",
+    },
+    "&.Mui-disabled .MuiSwitch-thumb": {
+      color:
+        theme.palette.mode === "light"
+          ? theme.palette.grey[100]
+          : theme.palette.grey[600],
+    },
+    "&.Mui-disabled + .MuiSwitch-track": {
+      opacity: theme.palette.mode === "light" ? 0.7 : 0.3,
+    },
+  },
+  "& .MuiSwitch-thumb": {
+    boxSizing: "border-box",
+    width: 22,
+    height: 22,
+  },
+  "& .MuiSwitch-track": {
+    borderRadius: 26 / 2,
+    backgroundColor: theme.palette.mode === "light" ? "#E9E9EA" : "#39393D",
+    opacity: 1,
+    transition: theme.transitions.create(["background-color"], {
+      duration: 500,
+    }),
+  },
+}));
 
 export default function Project({ project }: Project) {
   const buttonStyle = {
@@ -24,12 +78,17 @@ export default function Project({ project }: Project) {
     ":hover": {
       background: "#00ff47",
     },
+    "@media (max-width:767px)": {
+      fontSize: "4vw",
+      width: "44vw",
+      borderRadius: "1.2vw",
+    },
   };
 
   const buttonStyleClass = "bg-[#00ff47] hover:bg-[#00ff47]";
 
   const imageProject =
-    "https://s3-alpha-sig.figma.com/img/d140/fc3b/b8c33afb32618666e5c141edc13bbc0c?Expires=1693785600&Signature=IDQu3TiQtMIE-usGR0i-st9egt2VnZY0yTRc~V8ESwdLAkhfPwaMGZtwD15LZHMiVEe~qpQXCi4XIdj8fGmq5Tc-4Bl6ZsayB9OTG7a47oq1OBGwB89KLGDdiGmJZJvYRdTABH0PuR-4gaduqerStTvuW3rq1HUkY2tk2uCEFHZ7BsqELpNpeDzmdqAoETwKQmsLCtwtkrpYmfVCdPas-Qyc6jmLbxbEEWcrQGDMKVzFo8ZuyjMUuus6M9XIzXYLdJlxVGMI0153f4EZNCwQCletEt5f~3lwm8TtmrxoSEl-gVrZitQPZsgEyryZuAcLFQz8LRwy1W7onehYD1pKqQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    "https://media.discordapp.net/attachments/1085293900706627595/1162185105696116826/Ellipse_1.png?ex=65a9c239&is=65974d39&hm=6a77d8451e8ca2161c281c277a67fc99170ff3ea97d36f513597e736c8b426d6&=&format=webp&quality=lossless&width=465&height=465";
   const solanaIcon = "https://cryptologos.cc/logos/solana-sol-logo.png";
 
   const [coreTeam, setCoreTeam] = useState(false);
@@ -130,22 +189,22 @@ export default function Project({ project }: Project) {
   };
 
   const router = useRouter();
-  console.log(users)
-  users.map((el,index) => console.log(el.name))
+  console.log(users);
+  users.map((el, index) => console.log(el.name));
   return (
-    <div className="px-[10vw] pt-[3vw] text-black">
-      <div className="w-[61vw] mx-auto">
-        <div className="w-[54vw] relative">
-          <div className="absolute top-0 right-[-9vw] border-[0.4vw] border-white rounded-full">
+    <div className="px-[5vw] pt-[3vw] text-black">
+      <div className="w-[97vw] md:w-[61vw] mx-auto">
+        <div className="w-[92.4vw] md:w-[54vw] relative">
+          <div className="absolute top-0 right-0 md:right-[-9vw] rounded-full">
             <Image
-              className="w-[17vw] rounded-full border-[0.5vw] "
+              className="w-[40vw] md:w-[17vw] rounded-full "
               src={imageProject}
               width={9000}
               height={2000}
               alt=""
             />
           </div>
-          <div className="flex justify-start gap-x-[0.7vw]">
+          <div className="flex flex-col md:flex-row gap-y-[4vw] md:gap-y-0 justify-start gap-x-[0.7vw]">
             <div>
               <Button
                 variant="contained"
@@ -175,22 +234,26 @@ export default function Project({ project }: Project) {
             </div>
           </div>
           {projecte && (
-            <div className="mt-[1vw] text-white bg-black rounded-[1vw] min-h-[20vw] w-full p-[1vw]">
-              <div className="text-[3vw] fontPopSemibold mt-[1vw]">
+            <div className="mt-[4vw] md:mt-[1vw] text-white bg-black rounded-[1vw] min-h-[20vw] w-full p-[4vw] md:p-[1vw]">
+              <div className="text-[9vw] md:text-[3vw] fontPopSemibold mt-[1vw]">
                 {projecte.name}
               </div>
-              <div className="text-[1vw] text-[#00ff47]">
+              <div className="text-[6vw] md:text-[1vw] text-[#00ff47]">
                 Project Description
               </div>
               <div className="flex justify-start gap-x-[2vw] items-end">
-                <div className="bg-[#191919] rounded-[0.7vw] w-[40vw] mt-[0.8vw] h-[10vw]">
-                  {projecte.projectOverview}
+                <div className="rounded-[0.7vw] w-[70vw] md:w-[40vw] mt-[3vw] md:mt-[0.8vw] h-[25vw] md:h-[10vw] p-[3vw] md:p-[1vw] bg-white text-black text-[2.4vw] md:text-[1vw] font-semibold">
+                  {/* {projecte.projectOverview} */}
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Dolor, fugit. Quis totam ratione corporis, maxime nulla
+                  explicabo deserunt repellat, laudantium ex dolor error
+                  aliquid, itaque debitis! Praesentium eligendi et officiis.
                 </div>
                 <div className="flex items-center gap-x-[0.9vw] border-[0.19vw] border-white rounded-[0.5vw] py-[0.7vw] px-[1vw]">
                   {/* <div className="w-[2vw]">
                   <Image src={solanaIcon} width={8999} height={2000} alt="" />
                 </div> */}
-                  <div className="w-[2vw]">
+                  <div className="w-[5vw] md:w-[2vw]">
                     <Image src={solanaIcon} width={8999} height={2000} alt="" />
                   </div>
                 </div>
@@ -200,22 +263,88 @@ export default function Project({ project }: Project) {
         </div>
       </div>
       {projecte && (
-        <div className="w-full mt-[5vw] border-black border-[0.2vw] px-[3vw] py-[1vw] fontPopSemibold rounded-[0.8vw]">
-          <div className="text-[2vw] mb-[-2vw] pt-[2vw]">Staffs</div>
-          <div className=" text-[10vw] underline">{projecte.members}</div>
+        <div className="w-full mt-[5vw] border-black border-[0.2vw] px-[3vw] py-[1.8vw] fontPopSemibold gap-y-[4vw] md:gap-y-0 rounded-[0.8vw] flex flex-col md:flex-row gap-x-[2vw] items-center">
+          <div className="w-fit flex items-end gap-x-[2vw] mr-auto flex-row md:flex-col">
+            <div className="w-full">
+              <div className="text-[4vw] md:text-[0.8vw]">Team Members</div>
+              <div className="flex items-end px-[1vw] border-[0.1vw] justify-between w-full border-black rounded-[0.4vw]">
+                <div className=" text-[16vw] md:text-[9vw]">
+                  {projecte.members}
+                </div>
+                <div className="mb-[1vw]">
+                  <div className="text-[3vw] md:text-[0.8vw]">Turn Over</div>
+                  <div className="px-[1vw] border text-center border-black rounded-[0.4vw] text-[5vw] md:text-[2vw]">
+                    3
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-x-[1vw] mt-[1vw]">
+              <div className="flex gap-x-[1vw] text-[2.3vw] md:text-[0.8vw] border w-[30vw] md:w-[9vw] rounded-[0.4vw] px-[1vw] py-[0.5vw] border-black items-center">
+                <div>
+                  <FaDiscord className="text-black text-[5.5vw] md:text-[2vw]" />
+                </div>
+                <div>
+                  <div>5 Online</div>
+                  <div>15 Offline</div>
+                </div>
+              </div>
+              <div className="text-[4.5vw] md:text-[1.5vw] border border-black px-[1vw] py-[0.5vw] rounded-[0.4vw]">
+                Notion
+              </div>
+            </div>
+          </div>
+          <div className="w-full border border-black rounded-[0.4vw] p-[3vw] md:p-[1vw]">
+            <div className="flex items-center justify-between">
+              <div className="text-[5vw] md:text-[1.5vw]">
+                Recruiting: <span className="font-sans">Yes </span>{" "}
+                <span>
+                  <FormControlLabel
+                    control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                    label=""
+                  />
+                </span>
+              </div>
+              <motion.button
+                whileTap={{ scale: 0.98 }}
+                className="text-[2.4vw] md:text-[0.9vw] font-semibold"
+              >
+                + Add new job roles
+              </motion.button>
+            </div>
+            <div className="flex flex-col md:flex-row gap-y-[3vw] items-center gap-x-[1vw] mt-[4vw] md:mt-[1.3vw] text-[15vw] md:text-[5vw] text-center">
+              <div className="border border-black rounded-[0.4vw] px-[1vw] py-[2vw] md:py-[0.4vw] w-full h-full">
+                <div>25</div>
+                <div className="text-[5vw] md:text-[1.2vw]">
+                  Incomming <br /> Application
+                </div>
+              </div>
+              <div className="border border-black rounded-[0.4vw] px-[1vw] py-[2vw] md:py-[0.4vw] w-full h-full">
+                <div>10</div>
+                <div className="text-[5vw] md:text-[1.2vw] text-red-600">
+                  Rejected <br /> Application
+                </div>
+              </div>
+              <div className="border border-black rounded-[0.4vw] px-[1vw] py-[2vw] md:py-[0.4vw] w-full h-full">
+                <div>5</div>
+                <div className="text-[5vw] md:text-[1.2vw]">
+                  Invitions <br /> Sent
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
-      <div className="mt-[5vw]">
-        <div className="flex justify-between">
-          <div></div>
-          <div className="text-[2.7vw] underline fontPopSemibold">
-            Staff Management
+      <div className="mt-[5vw] border-[0.16vw] border-black rounded-[1vw] p-[2vw]">
+        <div className="flex justify-between items-center">
+          <div className="text-[4vw] md:text-[1.7vw] fontPopSemibold">
+            Team Management
           </div>
           <motion.button
             onClick={() => router.push("/founder/project/invite/" + project)}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            className="text-[3.5vw] text-black"
+            className="text-[5vw] md:text-[2.5vw] text-black"
           >
             <MdAddCircle />
           </motion.button>
@@ -223,7 +352,7 @@ export default function Project({ project }: Project) {
       </div>
       <div className="mt-[3vw]">
         {users &&
-          users.map((user,index) => (
+          users.map((user, index) => (
             <div key={index} className="relative h-fit my-[1vw]">
               <div className="items-center z-10 w-[92%] bg-black min-h-[8vw] flex justify-between px-[2vw]">
                 <div className="flex itmes-center gap-x-[1vw]">

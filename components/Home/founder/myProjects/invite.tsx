@@ -7,17 +7,14 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 type Inv = {
   project: string;
-}
+};
 
-export default function invite(
-  { project }: Inv
-) {
-
-  const { connection } = useConnection()
+export default function invite({ project }: Inv) {
+  const { connection } = useConnection();
   const anchorWallet = useAnchorWallet();
 
-  const [users, setUsers] = useState<any[]>()
-  const [projects, setProjects] = useState<(any | null)>()
+  const [users, setUsers] = useState<any[]>();
+  const [projects, setProjects] = useState<any | null>();
   const [name, setName] = useState<string>("");
   const [role, setRole] = useState<string>("");
 
@@ -38,23 +35,18 @@ export default function invite(
   const buttonStyleClass = "bg-[#00ff47] hover:bg-[#00ff47]";
 
   const imageProject =
-    "https://s3-alpha-sig.figma.com/img/d140/fc3b/b8c33afb32618666e5c141edc13bbc0c?Expires=1693785600&Signature=IDQu3TiQtMIE-usGR0i-st9egt2VnZY0yTRc~V8ESwdLAkhfPwaMGZtwD15LZHMiVEe~qpQXCi4XIdj8fGmq5Tc-4Bl6ZsayB9OTG7a47oq1OBGwB89KLGDdiGmJZJvYRdTABH0PuR-4gaduqerStTvuW3rq1HUkY2tk2uCEFHZ7BsqELpNpeDzmdqAoETwKQmsLCtwtkrpYmfVCdPas-Qyc6jmLbxbEEWcrQGDMKVzFo8ZuyjMUuus6M9XIzXYLdJlxVGMI0153f4EZNCwQCletEt5f~3lwm8TtmrxoSEl-gVrZitQPZsgEyryZuAcLFQz8LRwy1W7onehYD1pKqQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    "https://media.discordapp.net/attachments/1085293900706627595/1162185105696116826/Ellipse_1.png?ex=65a9c239&is=65974d39&hm=6a77d8451e8ca2161c281c277a67fc99170ff3ea97d36f513597e736c8b426d6&=&format=webp&quality=lossless&width=465&height=465";
   const solanaIcon = "https://cryptologos.cc/logos/solana-sol-logo.png";
-
 
   const get_user = async () => {
     try {
-      const _users = await getUsers(
-        connection,
-        "confirmed"
-      );
+      const _users = await getUsers(connection, "confirmed");
       console.log(_users);
       setUsers(_users);
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
-
+  };
 
   const get_project = async () => {
     try {
@@ -67,8 +59,7 @@ export default function invite(
     } catch (e) {
       console.log(e);
     }
-  }
-
+  };
 
   const invitation = async () => {
     try {
@@ -78,34 +69,26 @@ export default function invite(
         console.log(user.name);
         if (user.name == name) {
           console.log("exist");
-          User_pubkeu = user.address
+          User_pubkeu = user.address;
         }
-      })
-      console.log(User_pubkeu)
+      });
+      console.log(User_pubkeu);
       if (!User_pubkeu) {
-        return console.log("user not found")
+        return console.log("user not found");
       }
 
-      await invites(
-        anchorWallet,
-        connection,
-        project,
-        User_pubkeu,
-        role
-      )
-
+      await invites(anchorWallet, connection, project, User_pubkeu, role);
     } catch (e) {
       console.log(e);
     }
-  }
-
+  };
 
   useEffect(() => {
     if (!anchorWallet) return;
-    console.log("strat")
+    console.log("strat");
     get_user();
-    get_project()
-  }, [anchorWallet])
+    get_project();
+  }, [anchorWallet]);
 
   return (
     <div className="px-[10vw] pt-[3vw] text-black">
@@ -114,9 +97,9 @@ export default function invite(
       </div>
       <div className="w-[61vw] mx-auto">
         <div className="w-[54vw] relative">
-          <div className="absolute top-[-24%] right-[-9vw] border-[0.4vw] border-white rounded-full">
+          <div className="absolute top-[-24%] right-[-9vw] rounded-full">
             <Image
-              className="w-[17vw] rounded-full border-[0.5vw] "
+              className="w-[17vw] rounded-full"
               src={imageProject}
               width={9000}
               height={2000}
@@ -130,7 +113,12 @@ export default function invite(
             </div>
             <div className="text-[1vw] text-[#00ff47]">Project Description</div>
             <div className="flex justify-start gap-x-[2vw] items-end">
-              <div className="bg-[#191919] rounded-[0.7vw] w-[40vw] mt-[0.8vw] h-[10vw]"></div>
+              <div className="bg-[#fff] text-black font-semibold text-[0.9vw] rounded-[0.7vw] w-[40vw] mt-[0.8vw] p-[1vw] h-[10vw]">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
+                fugit. Quis totam ratione corporis, maxime nulla explicabo
+                deserunt repellat, laudantium ex dolor error aliquid, itaque
+                debitis! Praesentium eligendi et officiis.
+              </div>
               <div className="flex items-center gap-x-[0.9vw] border-[0.19vw] border-white rounded-[0.5vw] py-[0.7vw] px-[1vw]">
                 <div className="w-[2vw]">
                   <Image src={solanaIcon} width={8999} height={2000} alt="" />
@@ -152,7 +140,6 @@ export default function invite(
             placeholder="Name"
             className={`${inputStyle}`}
           />
-
         </div>
         <div className="flex mt-[2vw] items-center gap-x-[1vw] text-[2vw]">
           <div className="w-[27vw]">Role</div>
@@ -168,7 +155,7 @@ export default function invite(
         <Button
           onClick={(e) => {
             e.preventDefault();
-            invitation()
+            invitation();
           }}
           variant="contained"
           sx={buttonStyle}

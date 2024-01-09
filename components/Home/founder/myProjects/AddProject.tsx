@@ -312,12 +312,12 @@ export default function addProject() {
       </div>
       <div className="mt-[5vw] w-full p-[3vw] border-[0.2vw] border-black rounded-[0.6vw] text-[2.5vw] md:text-[1.4vw] text-black">
         <div className="flex justify-between items-center gap-x-[1vw]">
-          <div>
+          <div className="w-[70%]">
             <div className="fontPopSemibold">Role Needed</div>
             <input className={`${inputStyle2} w-full`} />
           </div>
 
-          <div>
+          <div className="md:w-[28.5%]">
             <div className="flex justify-end items-center">
               <div>
                 <div className="fontPopSemibold">Payment</div>

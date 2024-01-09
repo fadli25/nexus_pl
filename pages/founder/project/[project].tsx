@@ -4,26 +4,22 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 export default function project() {
-
   const router = useRouter();
-  const [project, setProject] = useState<string>()
+  const [project, setProject] = useState<string>();
 
   useEffect(() => {
     if (!router.isReady) return;
     const { project } = router.query;
     console.log(project);
-    setProject((project as string))
-  }, [router.isReady])
-
+    setProject(project as string);
+  }, [router.isReady]);
 
   return (
-    <div className="w-[80vw] float-right pb-[10vw]">
+    <div className="w-full md:w-[80vw] float-right pb-[10vw]">
       <Head>
         <title>Founder | Project name</title>
       </Head>
-      {project && <Project
-        project={project}
-      />}
+      {project && <Project project={project} />}
     </div>
   );
 }
