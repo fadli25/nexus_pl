@@ -7,13 +7,14 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import AddProject from "./AddProject";
+import { TbCurrencySolana } from "react-icons/tb";
 
 export default function Projects() {
   const styleButton1 = {
     fontSize: "1vw",
     padding: "0.7vw 2vw",
     borderRadius: "0.6vw",
-    background: "#00ff47",
+    background: "#fff",
     textTransform: "none",
     color: "#000",
     ":hover": {
@@ -72,37 +73,32 @@ export default function Projects() {
     },
   };
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
-  const anchorWallet = useAnchorWallet()
-  const wallet = useWallet()
+  const anchorWallet = useAnchorWallet();
+  const wallet = useWallet();
   const connection = new Connection(clusterApiUrl("devnet"));
-  const [projects, setProjects] = useState<any[]>([])
-
+  const [projects, setProjects] = useState<any[]>([]);
 
   const get_project = async () => {
     try {
-
-      console.log("_projects")
+      console.log("_projects");
       const _projects = await getProjectForFounder(
         connection,
         anchorWallet!,
         "confirmed"
-      )
+      );
 
-
-      console.log("_projects")
-      console.log(_projects)
-      setProjects(_projects)
-
+      console.log("_projects");
+      console.log(_projects);
+      setProjects(_projects);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   useEffect(() => {
     if (!anchorWallet) return;
     get_project();
-  }, [anchorWallet])
-
+  }, [anchorWallet]);
 
   function notHairing() {
     return (
@@ -181,56 +177,62 @@ export default function Projects() {
         </div>
       </div>
       {/* Projects */}
-      {projects && projects.map((project, i) => <div>
-        <div
-          key={i + 1}
-          onClick={() => router.push("/founder/project/" + project.pubkey.toBase58())}
-          className="w-full rounded-[1vw] md:rounded-none py-[2vw] px-[2.4vw] mt-[2vw] bg-[#000] text-white flex justify-between items-center"
-        >
+      {projects &&
+        projects.map((project, i) => (
           <div>
-            <div className="text-[5vw] md:text-[3vw] fontPopSemibold flex flex-col items-start w-[39vw] md:w-[24vw]">
-              <div>{project.name}</div>
-              <div className="flex items-center gap-x-[0.4vw] ">
-                <motion.button
-                  whileHover={{ scale: 1.06 }}
-                  whileTap={{ scale: 0.96 }}
-                  className="w-[5vw] md:w-[3vw]"
+            <div
+              key={i + 1}
+              onClick={() =>
+                router.push("/founder/project/" + project.pubkey.toBase58())
+              }
+              className="w-full relative rounded-[1vw] md:rounded-[0.4vw] py-[6vw] md:py-[1vw] px-[2.4vw] mt-[2vw] border border-black text-black flex justify-between items-center"
+            >
+              <div>
+                <div className="text-[5vw] md:text-[2.5vw] pb-[3vw] fontPopSemibold flex flex-col items-start w-[39vw] md:w-[24vw]">
+                  <div>{project.name}</div>
+                  <div className="absolute px-[2vw] rounded-[0.4vw] border-l-0 border-b-0 shadow-lg border border-black bottom-0 left-0 flex items-center gap-x-[0.4vw] font-semibold">
+                    <motion.div className="text-[5vw] md:text-[3vw]">
+                      <TbCurrencySolana />
+                    </motion.div>
+                    {/* <motion.button
+                      whileHover={{ scale: 1.06 }}
+                      whileTap={{ scale: 0.96 }}
+                      className="w-[5vw] md:w-[3vw]"
+                    >
+                      <Image
+                        src={solanaIcon}
+                        width={9000}
+                        height={900}
+                        alt=""
+                      />
+                    </motion.button> */}
+                  </div>
+                </div>
+              </div>
+              <div className="text-[3vw] md:text-[1vw] font-semibold text-center w-[12vw] md:w-[8vw]">
+                <div className="">5000</div>
+                <div>Twitter</div>
+              </div>
+              <div className="text-[3vw] md:text-[1vw] font-semibold text-center w-[12vw] md:w-[8vw]">
+                <div className="">5000</div>
+                <div>Discord</div>
+              </div>
+              <div className="text-[3vw] md:text-[1vw] font-semibold text-center w-[12vw] md:w-[8vw]">
+                <div className=" text-[1.8vw]">{project.members}</div>
+                <div>Staffs</div>
+              </div>
+              <div className="w-[16vw] flex justify-end">
+                <Button
+                  variant="contained"
+                  sx={project.hiring ? styleButtonHiring : styleButtonNotHiring}
+                  className="bg-[#00ff47] hover:bg-[#00ff47]"
                 >
-                  <Image src={solanaIcon} width={9000} height={900} alt="" />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.06 }}
-                  whileTap={{ scale: 0.96 }}
-                  className="w-[5vw] md:w-[3vw]"
-                >
-                  <Image src={solanaIcon} width={9000} height={900} alt="" />
-                </motion.button>
+                  {project.hiring ? "Hiring" : "Not Hiring"}
+                </Button>
               </div>
             </div>
           </div>
-          <div className="text-[2vw] md:text-[1vw] text-center w-[8vw]">
-            <div className="text-[#00ff47]">5000</div>
-            <div>Twitter</div>
-          </div>
-          <div className="text-[2vw] md:text-[1vw] text-center w-[8vw]">
-            <div className="text-[#00ff47]">5000</div>
-            <div>Discord</div>
-          </div>
-          <div className="text-[2vw] md:text-[1vw] text-center w-[8vw]">
-            <div className="text-[#00ff47] text-[1.8vw]">{project.members}</div>
-            <div>Staffs</div>
-          </div>
-          <div className="w-[16vw] flex justify-end">
-            <Button
-              variant="contained"
-              sx={project.hiring ? styleButtonHiring : styleButtonNotHiring}
-              className="bg-[#00ff47] hover:bg-[#00ff47]"
-            >
-              {project.hiring ? "Hiring" : "Not Hiring"}
-            </Button>
-          </div>
-        </div>
-      </div>)}
+        ))}
     </div>
   );
 }

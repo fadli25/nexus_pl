@@ -4,7 +4,7 @@ import Head from "next/head";
 
 export default function profile() {
   return (
-    <div className="w-[80vw] float-right">
+    <div className="w-full md:w-[80vw] float-right">
       <Head>
         <title>Profile</title>
       </Head>

@@ -349,68 +349,62 @@ export default function Project({ project }: Project) {
             <MdAddCircle />
           </motion.button>
         </div>
-      </div>
-      <div className="mt-[3vw]">
-        {users &&
-          users.map((user, index) => (
-            <div key={index} className="relative h-fit my-[1vw]">
-              <div className="items-center z-10 w-[92%] bg-black min-h-[8vw] flex justify-between px-[2vw]">
-                <div className="flex itmes-center gap-x-[1vw]">
-                  <div className="bg-white/60 rounded-full w-[6vw] h-[6vw]"></div>
-                  <div>
-                    <div className="text-[2vw] fontPopSemibold underline text-white">
-                      {user.projectName}
+
+        <div className="mt-[3vw] flex flex-col items-center">
+          {users &&
+            users.map((user, index) => (
+              <div
+                key={index}
+                className="relative h-fit my-[3vw] md:my-[1vw] w-full"
+              >
+                <div className="items-center z-10 text-black border-[0.1vw] py-[1.5vw] border-black rounded-[0.5vw] min-h-[8vw] flex justify-between px-[2vw]">
+                  <div className="flex itmes-center gap-x-[2vw] md:gap-x-[1vw]">
+                    <div className="grid grid-cols-2 gap-[0.5vw] place-content-center">
+                      <div className="bg-black rounded-full p-[1vw] md:p-[0.35vw] h-fit"></div>
+                      <div className="bg-black rounded-full p-[1vw] md:p-[0.35vw] h-fit"></div>
+                      <div className="bg-black rounded-full p-[1vw] md:p-[0.35vw] h-fit"></div>
+                      <div className="bg-black rounded-full p-[1vw] md:p-[0.35vw] h-fit"></div>
+                      <div className="bg-black rounded-full p-[1vw] md:p-[0.35vw] h-fit"></div>
+                      <div className="bg-black rounded-full p-[1vw] md:p-[0.35vw] h-fit"></div>
                     </div>
-                    <div className="text-[1.4vw] text-[#00ff47]">
-                      {user.role}
+                    <div className="bg-white/60 rounded-full w-[16vw] md:w-[6vw] h-[16vw] md:h-[6vw]">
+                      <Image
+                        src={imageProject}
+                        width={1000}
+                        height={200}
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <div className="text-[5vw] md:text-[2vw] fontPopSemibold underline">
+                        {user.projectName}
+                      </div>
+                      <div className="text-[3vw] md:text-[1.4vw]">
+                        {user.role}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-x-[0.7vw]">
-                  <div>
-                    <Button
-                      variant="contained"
-                      sx={messageButtonStyle}
-                      className="!font-[0.8vw] !bg-[#00ff47] hover:!bg-[#00ff47] !rounded-[0.5vw] !text-black"
+                  <div className="flex items-center flex-col md:flex-row gap-x-[3vw] gap-y-[2vw] md:gap-y-0">
+                    <motion.button
+                      whileTap={{ scale: 0.98 }}
+                      className="font-semibold text-[3vw] md:text-[1.4vw]"
                     >
-                      Message
-                    </Button>
-                  </div>
-                  <div>
-                    {/* 
-                      const discordButtonStyle = {
-                      fontSize: "0.8vw",
-                      border: "0.1vw solid #fff",
-                      borderRadius: "0.6vw",
-                      padding: "0.6vw 1.4vw",
-                      color: "#fff",
-                      ":hover": {
-                        border: "0.1vw solid #fff",
-                      },
-                    };
-                
-                */}
-                    <Button
-                      variant="outlined"
-                      sx={discordButtonStyle}
-                      className="!font-[0.8vw] !bg-[#00ff47] hover:!bg-[#00ff47] !rounded-[0.5vw] !text-black"
-                    >
-                      Discord Role
-                    </Button>
-                  </div>
-                  <div>
-                    <Button
-                      variant="contained"
-                      sx={fireButtonStyle}
-                      className="!font-[0.8vw] !bg-[#FF2D2D] hover:!bg-[#FF2D2D] !rounded-[0.5vw] !text-white"
-                    >
-                      Fire
-                    </Button>
+                      Click to view more
+                    </motion.button>
+                    <div>
+                      <Button
+                        variant="contained"
+                        sx={fireButtonStyle}
+                        className="!text-[3vw] md:!text-[0.8vw] !bg-[#FF2D2D] !px-[4vw] md:!px-[2vw] hover:!bg-[#FF2D2D] !rounded-[0.5vw] !text-white"
+                      >
+                        Fire
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+        </div>
       </div>
     </div>
   );
