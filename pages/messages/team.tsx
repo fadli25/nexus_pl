@@ -4,7 +4,7 @@ import React from "react";
 export default function team() {
   const data = [1, 2, 3];
   return (
-    <div className="w-full md:w-[80vw] float-right">
+    <div className="w-full md:w-[84vw] float-right">
       <Head>
         <title>Messages</title>
       </Head>

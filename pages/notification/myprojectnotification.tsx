@@ -5,7 +5,7 @@ export default function myprojectnotification() {
   const [showN, setShowN] = useState(false);
   const [showN1, setShowN1] = useState(false);
   return (
-    <div className="w-full md:w-[80vw] float-right py-[5vw]">
+    <div className="w-full md:w-[84vw] float-right py-[5vw]">
       <Head>
         <title>My Project Notifications</title>
       </Head>

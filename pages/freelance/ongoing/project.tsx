@@ -3,7 +3,7 @@ import React from "react";
 
 export default function project() {
   return (
-    <div className="w-full md:w-[80vw] float-right py-[5vw] text-black">
+    <div className="w-full md:w-[84vw] float-right py-[5vw] text-black">
       <Head>
         <title>Ongoing</title>
       </Head>

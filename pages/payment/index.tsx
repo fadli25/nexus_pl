@@ -26,7 +26,7 @@ export default function index() {
 
   const router = useRouter();
   return (
-    <div className="w-full float-right md:w-[80vw] py-[4vw]">
+    <div className="w-full float-right md:w-[84vw] py-[4vw]">
       <Head>
         <title>Payment</title>
       </Head>

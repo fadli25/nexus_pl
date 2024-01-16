@@ -31,8 +31,8 @@ export default function profile() {
 
   const connection = new Connection(clusterApiUrl("devnet"));
 
-  const anchorWallet = useAnchorWallet()
-  const wallet = useWallet()
+  const anchorWallet = useAnchorWallet();
+  const wallet = useWallet();
 
   async function initialize_user() {
     try {
@@ -50,7 +50,7 @@ export default function profile() {
         profile_overview,
         payment_rate_per_hour,
         nogotion
-      )
+      );
       notify_delete();
       notify_success("transaction successful");
       setLoading(false);
@@ -61,7 +61,6 @@ export default function profile() {
       console.log(e);
     }
   }
-
 
   async function update_user_info() {
     try {
@@ -79,7 +78,7 @@ export default function profile() {
         profile_overview,
         payment_rate_per_hour,
         nogotion
-      )
+      );
       notify_delete();
       notify_success("transaction successful");
       setLoading(false);
@@ -93,22 +92,20 @@ export default function profile() {
 
   async function check_user() {
     try {
-
       const user_info = await get_user_info(anchorWallet, connection);
 
       if (user_info) {
         setExist(true);
         setChains(user_info.chain);
-        setLevel(user_info.levelOfExpertise)
-        setImage(user_info.image)
-        setCategory(user_info.category)
-        setRoles(user_info.roles)
-        setPaymentRatePerHour(user_info.paymentRatePerHour)
-        setProfileOverview(user_info.profileOverview)
-        setLinks(user_info.links)
-        setName(user_info.name)
-        setNigotion(user_info.nigotion)
-
+        setLevel(user_info.levelOfExpertise);
+        setImage(user_info.image);
+        setCategory(user_info.category);
+        setRoles(user_info.roles);
+        setPaymentRatePerHour(user_info.paymentRatePerHour);
+        setProfileOverview(user_info.profileOverview);
+        setLinks(user_info.links);
+        setName(user_info.name);
+        setNigotion(user_info.nigotion);
       }
     } catch (e) {
       console.log(e);
@@ -119,8 +116,7 @@ export default function profile() {
     if (!anchorWallet) return;
 
     check_user();
-
-  }, [anchorWallet, anchorWallet?.publicKey])
+  }, [anchorWallet, anchorWallet?.publicKey]);
 
   const notify_success = (msg: string) => {
     toast.success(msg, {
@@ -147,9 +143,8 @@ export default function profile() {
     toast.dismiss();
   };
 
-
   return (
-    <div className="w-full md:w-[80vw] float-right pb-[5vw]">
+    <div className="w-full md:w-[84vw] float-right pb-[5vw]">
       <Head>
         <title>Profile</title>
       </Head>
@@ -167,8 +162,9 @@ export default function profile() {
           </div>
           <ButtonMotion
             onClick={() => setShow(!show)}
-            className={`text-[5vw] md:text-[2.4vw] ${show && "text-[#00ff47]"
-              } `}
+            className={`text-[5vw] md:text-[2.4vw] ${
+              show && "text-[#00ff47]"
+            } `}
           >
             <BiSolidShow />
           </ButtonMotion>
@@ -333,10 +329,7 @@ export default function profile() {
       <div className="mt-[4vw] flex justify-center">
         <Button
           onClick={() => {
-            exist ?
-              update_user_info()
-              :
-              initialize_user()
+            exist ? update_user_info() : initialize_user();
           }}
           className="bg-[#00ff47] hover:bg-[#00ff47]"
           sx={{
@@ -355,12 +348,7 @@ export default function profile() {
           }}
           variant="contained"
         >
-          {
-            !exist ?
-              "Submit"
-              :
-              "Update"
-          }
+          {!exist ? "Submit" : "Update"}
         </Button>
       </div>
     </div>

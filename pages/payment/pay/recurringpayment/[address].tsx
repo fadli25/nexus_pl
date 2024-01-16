@@ -1,7 +1,11 @@
 import { one_time_payment } from "@/lib/NexusProgram/payment/recuring_payment";
 import { get_apa_info } from "@/lib/NexusProgram/project/utils/get_Apa_info";
 import { Button } from "@mui/material";
-import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import {
+  useAnchorWallet,
+  useConnection,
+  useWallet,
+} from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -12,11 +16,8 @@ let WEEK = 60 * 60 * 24 * 7;
 let MONTH = 60 * 60 * 24 * 30;
 
 export default function recurringpayment() {
-
-
-
-  const router = useRouter()
-  const anchorWallet = useAnchorWallet()
+  const router = useRouter();
+  const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
   const [apa, setApa] = useState<any>();
   const [payment_rate, setPaymentrate] = useState<any>();
@@ -27,24 +28,23 @@ export default function recurringpayment() {
   const get_apa = async (_apa: string) => {
     try {
       const apa = await get_apa_info(anchorWallet, connection, _apa);
-      setApa(apa)
+      setApa(apa);
       console.log(apa);
-
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
 
   useEffect(() => {
     if (!anchorWallet) return;
     if (!router.isReady) return;
-    console.log("_projects")
+    console.log("_projects");
 
     const { address } = router.query;
-    console.log(address)
+    console.log(address);
 
-    get_apa((address as string));
-  }, [anchorWallet, router.isReady])
+    get_apa(address as string);
+  }, [anchorWallet, router.isReady]);
 
   const init_payment = async () => {
     try {
@@ -52,18 +52,16 @@ export default function recurringpayment() {
       if (time_rate == "Month") {
         time = MONTH;
       } else if (time_rate == "Week") {
-        time = WEEK
-      }
-      else if (time_rate == "Day") {
-        time = DAY
-      }
-      else if (time_rate == "Hour") {
-        time = HOUR
+        time = WEEK;
+      } else if (time_rate == "Day") {
+        time = DAY;
+      } else if (time_rate == "Hour") {
+        time = HOUR;
       }
 
-      console.log(time)
-      console.log(amount)
-      console.log(payment_rate)
+      console.log(time);
+      console.log(amount);
+      console.log(payment_rate);
 
       await one_time_payment(
         anchorWallet,
@@ -73,15 +71,14 @@ export default function recurringpayment() {
         amount,
         payment_rate,
         time
-      )
-
+      );
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   return (
-    <div className="w-full md:w-[80vw] float-right py-[5vw]">
+    <div className="w-full md:w-[84vw] float-right py-[5vw]">
       <Head>
         <title>Payment | Recurring Payment</title>
       </Head>
@@ -89,30 +86,36 @@ export default function recurringpayment() {
         Recurring Payment
       </div>
       <div className="mt-[3vw] w-[90vw] md:w-[60vw] mx-auto text-[2.5vw] md:text-[1.2vw] text-black font-semibold">
-        {apa && <div className="mt-[3vw]">
-          <div className="my-[0.5vw]">Stream Name</div>
-          <input
-            value={apa.name}
-            type="text"
-            className="outline-none border-[0.12vw] px-[3vw] py-[0.6vw] w-full rounded-full border-black focus:scale-[101%] transition-all"
-          />
-        </div>}
-        {anchorWallet && <div className="mt-[3vw]">
-          <div className="my-[0.5vw]">Input recipient address</div>
-          <input
-            value={anchorWallet.publicKey.toBase58()}
-            type="text"
-            className="outline-none border-[0.12vw] px-[3vw] py-[0.6vw] w-full rounded-full border-black focus:scale-[101%] transition-all"
-          />
-        </div>}
-        {apa && <div className="mt-[3vw]">
-          <div className="my-[0.5vw]">Recipient Profile</div>
-          <input
-            value={apa.address.toBase58()}
-            type="text"
-            className="outline-none border-[0.12vw] px-[3vw] py-[0.6vw] w-full rounded-full border-black focus:scale-[101%] transition-all"
-          />
-        </div>}
+        {apa && (
+          <div className="mt-[3vw]">
+            <div className="my-[0.5vw]">Stream Name</div>
+            <input
+              value={apa.name}
+              type="text"
+              className="outline-none border-[0.12vw] px-[3vw] py-[0.6vw] w-full rounded-full border-black focus:scale-[101%] transition-all"
+            />
+          </div>
+        )}
+        {anchorWallet && (
+          <div className="mt-[3vw]">
+            <div className="my-[0.5vw]">Input recipient address</div>
+            <input
+              value={anchorWallet.publicKey.toBase58()}
+              type="text"
+              className="outline-none border-[0.12vw] px-[3vw] py-[0.6vw] w-full rounded-full border-black focus:scale-[101%] transition-all"
+            />
+          </div>
+        )}
+        {apa && (
+          <div className="mt-[3vw]">
+            <div className="my-[0.5vw]">Recipient Profile</div>
+            <input
+              value={apa.address.toBase58()}
+              type="text"
+              className="outline-none border-[0.12vw] px-[3vw] py-[0.6vw] w-full rounded-full border-black focus:scale-[101%] transition-all"
+            />
+          </div>
+        )}
         <div className="mt-[5vw]">
           <div className="my-[0.5vw]">Payment Rate</div>
           <div
@@ -180,7 +183,9 @@ export default function recurringpayment() {
             />
           </div>
           <div className="mt-[3vw]">
-            <div className="my-[0.5vw]">Payment per {time_rate ? time_rate : "--"}</div>
+            <div className="my-[0.5vw]">
+              Payment per {time_rate ? time_rate : "--"}
+            </div>
             <input
               onChange={(e) => setPaymentrate(Number(e.target.value))}
               value={payment_rate}
@@ -203,7 +208,7 @@ export default function recurringpayment() {
         <Button
           onClick={(e) => {
             e.preventDefault();
-            init_payment()
+            init_payment();
           }}
           variant="contained"
           className="!text-[3vw] md:!text-[1.2vw] !rounded-full !normal-case !text-black !px-[4vw] md:!px-[3vw] !py-[1vw] md:!py-[0.6vw] !bg-[#00ff47] hover:!bg-[#00ff48ed]"

@@ -4,7 +4,7 @@ import Head from "next/head";
 
 export default function project() {
   return (
-    <div className="w-full md:w-[80vw] float-left md:float-right">
+    <div className="w-full md:w-[84vw] float-left md:float-right">
       <Head>
         <title>Freelance | Project</title>
       </Head>

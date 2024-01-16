@@ -8,7 +8,7 @@ export default function index() {
     { name: "Khady", role: "Community Moderator", children: "Bone Shamans" },
   ];
   return (
-    <div className="w-full md:w-[80vw] float-right pt-[5vw]">
+    <div className="w-full md:w-[84vw] float-right pt-[5vw]">
       <Head>
         <title>Messages</title>
       </Head>
