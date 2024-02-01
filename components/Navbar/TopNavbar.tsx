@@ -294,7 +294,7 @@ export default function TopNavbar() {
           <LeftNavbar showLeftNavbar={showLeftNavbar} />
         </>
       )}
-      <div className="bg-black border-b border-white/20 w-full md:w-[80vw] float-right px-[2vw] relative z-[100]">
+      <div className="bg-black border-b border-white/20 w-full md:w-[86vw] float-right px-[2vw] relative z-[100]">
         <div className="flex justify-end py-[1.4vw] z-50">
           <div className="flex flex-col gap-y-[0.5vw] md:gap-y-[0.4vw] items-end">
             {/* Connect Wallet */}

@@ -3,6 +3,15 @@ import { Variant, Variants, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { ReactNode, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faGrip,
+  faCity,
+  faWrench,
+  faBitcoinSign,
+  faCircleQuestion,
+} from "@fortawesome/free-solid-svg-icons";
 
 type showLeftNavbar = {
   showLeftNavbar: boolean;
@@ -19,28 +28,34 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
     {
       name: "Homepage",
       link: "/",
+      icon: faHouse,
     },
     {
       name: "Dashboard",
       link: "/dashboard",
+      icon: faGrip,
     },
     {
       name: "Founder",
       link: "/founder",
+      icon: faCity,
     },
     {
       name: "Freelance",
       link: "/freelance",
+      icon: faWrench,
     },
 
     {
       name: "Payment",
       link: "/payment",
+      icon: faBitcoinSign,
     },
 
     {
       name: "Support",
       link: "/support",
+      icon: faCircleQuestion,
     },
   ];
 
@@ -56,8 +71,9 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
       transition={{ duration: 0.2 }}
-      className={`fixed top-0 left-0 border-r border-white/20 h-full bg-[#0F0F0F] w-[60vw] md:w-[20vw] z-[9999] ${!showLeftNavbar && "hidden md:block"
-        }`}
+      className={`fixed top-0 left-0 border-r border-white/20 h-full bg-[#0F0F0F] w-[40%] md:w-[14vw] z-[9999] ${
+        !showLeftNavbar && "hidden md:block"
+      }`}
     >
       <div className="flex flex-col justify-between min-h-[46vw] pt-[2vw] items-center gap-y-[1vw] text-[1vw] font-[500]">
         <div>
@@ -72,15 +88,21 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
             }}
           />
         </div>
-        <div className="flex flex-col items-center md:-mt-[7vw]">
+        <div className="flex flex-col items-start md:-mt-[7vw] justify-start">
           {menu.map((el, index) => (
             <MuiButton
               onClick={() => router.push(el.link)}
-              className={` md:mb-[1.2vw] ${el.link.slice(0, 6) === router.asPath.slice(0, 6) &&
+              className={`${
+                el.link.slice(0, 6) === router.asPath.slice(0, 6) &&
                 "!text-[#00ff47] !font-semibold !scale-105"
-                }`}
+              }`}
             >
-              {el.name}
+              <div className="flex flex-row items-center justify-start gap-[1rem]">
+                <div>
+                  <FontAwesomeIcon icon={el.icon} />
+                </div>
+                <div>{el.name}</div>
+              </div>
             </MuiButton>
           ))}
         </div>
@@ -110,7 +132,7 @@ export function MuiButton({ children, onClick, className }: Button) {
           fontSize: "1vw",
           color: "#fff",
           textTransform: "none",
-          mb: "1.2vw",
+          mb: "0.5vw",
           "&hover": {
             color: "#fff",
           },
@@ -121,7 +143,7 @@ export function MuiButton({ children, onClick, className }: Button) {
         }}
         className={`${className}`}
 
-      // whileTap={tap}
+        // whileTap={tap}
       >
         {children}
       </Button>
