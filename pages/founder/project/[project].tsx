@@ -15,7 +15,7 @@ export default function project() {
   }, [router.isReady]);
 
   return (
-    <div className="w-full md:w-[80vw] float-right pb-[10vw]">
+    <div className="w-full md:w-[84vw] float-right pb-[10vw]">
       <Head>
         <title>Founder | Project name</title>
       </Head>

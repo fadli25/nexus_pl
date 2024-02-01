@@ -34,7 +34,7 @@ export default function index() {
     "https://media.discordapp.net/attachments/1085293900706627595/1162203481017438298/Untitled670_20230803112855_1.png?ex=653b1556&is=6528a056&hm=ccf35f1f18f4c8a14e74b0b24f7df8014e366586081955d90dabd72d4d798a11&=&width=267&height=273";
 
   return (
-    <div className="w-[95vw] md:w-[80vw] py-[5vw] md:float-right text-black">
+    <div className="w-[95vw] md:w-[84vw] py-[5vw] md:float-right text-black">
       <Head>
         <title>Rebirth Tower</title>
       </Head>

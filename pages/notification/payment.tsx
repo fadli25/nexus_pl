@@ -3,7 +3,7 @@ import React from "react";
 
 export default function payment() {
   return (
-    <div className="w-full md:w-[80vw] float-right py-[5vw]">
+    <div className="w-full md:w-[84vw] float-right py-[5vw]">
       <Head>
         <title>Payment Notifications</title>
       </Head>

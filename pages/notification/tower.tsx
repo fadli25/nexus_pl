@@ -3,7 +3,7 @@ import React from "react";
 
 export default function tower() {
   return (
-    <div className="w-full md:w-[80vw] float-right py-[5vw]">
+    <div className="w-full md:w-[84vw] float-right py-[5vw]">
       <Head>
         <title>Rebirth Tower Notification</title>
       </Head>

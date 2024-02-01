@@ -23,7 +23,7 @@ export default function index() {
   ];
   const router = useRouter();
   return (
-    <div className="pt-[2vw] w-full md:w-[80vw] float-right">
+    <div className="pt-[2vw] w-full md:w-[84vw] float-right">
       <Head>
         <title>Outgoing</title>
       </Head>

@@ -119,7 +119,7 @@ export default function incoming() {
   };
 
   return (
-    <div className="w-full md:w-[80vw] float-right py-[5vw]">
+    <div className="w-full md:w-[84vw] float-right py-[5vw]">
       <Head>
         <title>Incoming Payment Streams</title>
       </Head>

@@ -9,6 +9,8 @@ import { BsFillChatFill } from "react-icons/bs";
 import { IoNotifications, IoSettingsOutline } from "react-icons/io5";
 import { MdLocalGroceryStore } from "react-icons/md";
 import LeftNavbar from "./LeftNavbar";
+import mintbg from "@/public/mintbar.png";
+import MintTitle from "./MintTitle.png";
 
 export default function TopNavbar() {
   const connectWalletStyle = {
@@ -281,6 +283,34 @@ export default function TopNavbar() {
     );
   }
 
+  function mint() {
+    return (
+      <>
+        <div className="w-full h-full relative">
+          <Image
+            src={mintbg}
+            width={8000}
+            height={2000}
+            className="object-cover object-center w-full h-full"
+            alt=""
+          />
+          <div className="absolute top-0 left-0 w-full h-full grid place-items-center">
+            <Image
+              src={MintTitle}
+              width={2000}
+              height={200}
+              className="w-[70vw] md:w-[34vw] -mr-[8%] md:-mr-[13%] mt-[4%]"
+              alt=""
+            />
+          </div>
+          <div className="absolute bottom-0 left-0 px-[4vw] md:px-[2vw] py-[1vw] md:py-[0.6vw] bg-black rounded-tr-[1.5vw] md:rounded-tr-[0.6vw] font-semibold text-white text-[6vw] md:text-[2vw]">
+            Rebirth Tower{" "}
+          </div>
+        </div>
+      </>
+    );
+  }
+
   const [showLeftNavbar, setShowLeftNavbar] = useState(false);
 
   return (
@@ -294,7 +324,7 @@ export default function TopNavbar() {
           <LeftNavbar showLeftNavbar={showLeftNavbar} />
         </>
       )}
-      <div className="bg-black border-b border-white/20 w-full md:w-[86vw] float-right px-[2vw] relative z-[100]">
+      <div className="bg-black border-b border-white/20 w-full md:w-[84vw] float-right px-[2vw] relative z-[100]">
         <div className="flex justify-end py-[1.4vw] z-50">
           <div className="flex flex-col gap-y-[0.5vw] md:gap-y-[0.4vw] items-end">
             {/* Connect Wallet */}
@@ -476,6 +506,11 @@ export default function TopNavbar() {
         {path.slice(0, 6) === "/dashb" && (
           <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
             {dashboard()}
+          </div>
+        )}
+        {path.slice(0, 5) === "/mint" && (
+          <div className="absolute top-0 left-0 w-full h-full flex items-center -z-10">
+            {mint()}
           </div>
         )}
       </div>

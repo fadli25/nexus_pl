@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 
 export default function settings() {
   return (
-    <div className="w-full md:w-[80vw] float-right py-[5vw]">
+    <div className="w-full md:w-[84vw] float-right py-[5vw]">
       <Head>
         <title>Settings</title>
       </Head>

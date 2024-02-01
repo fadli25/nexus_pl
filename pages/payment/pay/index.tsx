@@ -37,7 +37,7 @@ export default function pay() {
 
   const router = useRouter();
   return (
-    <div className="w-full md:w-[80vw] py-[5vw] float-right">
+    <div className="w-full md:w-[84vw] py-[5vw] float-right">
       <Head>
         <title>Pay Staffs</title>
       </Head>

@@ -48,7 +48,7 @@ export default function outgoing() {
   }, [anchorWallet]);
 
   return (
-    <div className="w-full md:w-[80vw] float-right py-[5vw]">
+    <div className="w-full md:w-[84vw] float-right py-[5vw]">
       <Head>
         <title>Outgoing Payment Streams</title>
       </Head>

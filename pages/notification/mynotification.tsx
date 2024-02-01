@@ -3,7 +3,7 @@ import React from "react";
 
 export default function mynotification() {
   return (
-    <div className="w-full md:w-[80vw] float-right py-[4vw]">
+    <div className="w-full md:w-[84vw] float-right py-[4vw]">
       <Head>
         <title>My Notification</title>
       </Head>

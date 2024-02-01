@@ -64,7 +64,7 @@ export default function index() {
   };
 
   return (
-    <div className="pt-[2vw] w-full md:w-[80vw] float-right">
+    <div className="pt-[2vw] w-full md:w-[84vw] float-right">
       <Head>
         <title>Job</title>
       </Head>

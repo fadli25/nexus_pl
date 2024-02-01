@@ -144,7 +144,7 @@ export default function profile() {
   };
 
   return (
-    <div className="w-full md:w-[80vw] float-right pb-[5vw]">
+    <div className="w-full md:w-[84vw] float-right pb-[5vw]">
       <Head>
         <title>Profile</title>
       </Head>

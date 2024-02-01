@@ -28,7 +28,7 @@ export default function index() {
   const [connectWallet, setConnetWallet] = useState(false);
 
   return (
-    <div className="w-full text-black md:w-[80vw] float-right px-[5vw] py-[4vw]">
+    <div className="w-full text-black md:w-[84vw] float-right px-[5vw] py-[4vw]">
       <Head>
         <title>Dashboard</title>
       </Head>
