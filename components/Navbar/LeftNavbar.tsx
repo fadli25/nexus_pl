@@ -22,28 +22,34 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
     {
       name: "Homepage",
       link: "/",
+      icon: faHouse,
     },
     {
       name: "Dashboard",
       link: "/dashboard",
+      icon: faGrip,
     },
     {
       name: "Founder",
       link: "/founder",
+      icon: faCity,
     },
     {
       name: "Freelance",
       link: "/freelance",
+      icon: faWrench,
     },
 
     {
       name: "Payment",
       link: "/payment",
+      icon: faBitcoinSign,
     },
 
     {
       name: "Support",
       link: "/support",
+      icon: faCircleQuestion,
     },
   ];
 
@@ -205,7 +211,7 @@ export function MuiButton({ children, onClick, className }: Button) {
           fontSize: "1vw",
           color: "#fff",
           textTransform: "none",
-          mb: "1.2vw",
+          mb: "0.5vw",
           "&hover": {
             color: "#fff",
           },

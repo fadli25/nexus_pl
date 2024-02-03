@@ -171,87 +171,165 @@ export default function profile() {
         </div>
         {/*  */}
         <div className="mt-[7vw] md:mt-[4vw]">
-          <div className="fontPopSemibold">Protfolio (images)</div>
-          <div className="mt-[0.5vw] w-full h-[22vw] md:h-[16vw] rounded-[1.2vw] border-[0.14vw] border-black"></div>
-        </div>
-        {/*  */}
-        <div className="mt-[5vw] md:mt-[2vw] relative z-10">
-          <div className="fontPopSemibold">Chains</div>
-          <div
-            onClick={() => setShowChains(!showChains)}
-            className="mt-[0.5vw] w-full px-[3vw] cursor-pointer h-[10vw] md:h-[4.2vw] rounded-[1.2vw] border-[0.14vw] border-black z-10 flex items-center bg-white"
-          >
-            {chains}
-          </div>
-          {showChains && (
-            <div className="top-[-1vw] pt-[1vw] px-[3vw] relative -z-10 left-0 w-full h-[29.5vw] md:h-[13vw] text-[0.9vw] border-black border-[0.1vw] rounded-b-[1vw] bg-[#e9e9e9]">
-              <div
-                onClick={() => {
-                  setChains(<Chain1 />);
-                  setShowChains(false);
-                }}
-                className="my-[1vw] md:my-[0.6vw] cursor-pointer w-full h-[8vw] md:h-[3vw] flex items-center rounded-full px-[4vw] md:px-[2vw] bg-white border-black border-[0.1vw]"
-              >
-                <Chain1 />
-              </div>
-              <div
-                onClick={() => {
-                  setChains(<Chain2 />);
-                  setShowChains(false);
-                }}
-                className="my-[1vw] md:my-[0.6vw] cursor-pointer w-full h-[8vw] md:h-[3vw] flex items-center rounded-full px-[4vw] md:px-[2vw] bg-white border-black border-[0.1vw]"
-              >
-                <Chain2 />
-              </div>
-              <div
-                onClick={() => {
-                  setChains(<Chain1 />);
-                  setShowChains(false);
-                }}
-                className="my-[1vw] md:my-[0.6vw] cursor-pointer w-full h-[8vw] md:h-[3vw] flex items-center rounded-full px-[4vw] md:px-[2vw] bg-white border-black border-[0.1vw]"
-              >
-                <Chain1 />
-              </div>
-            </div>
-          )}
-        </div>
-        {/*  */}
-        <div className="mt-[5vw] md:mt-[2vw]">
-          <div className="fontPopSemibold">Name</div>
+          <label className="fontPopSemibold text-base">Username</label>
           <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
             type="text"
-            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+            className=" p-2 mt-[0.5vw] w-full h-[3.5rem] md:h-[4rem] shadow-md rounded-xl border border-black"
           />
+          {/* <div className="mt-[0.5vw] w-full h-[4rem] rounded-[1.2vw] border-[0.14vw] border-black"></div> */}
         </div>
         {/*  */}
         {/*  */}
-        <div className="mt-[5vw] md:mt-[2vw]">
-          <div className="fontPopSemibold">Category</div>
-          <input
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            type="text"
-            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
-          />
-        </div>
-        {/*  */}
-        <div className="mt-[5vw] md:mt-[2vw]">
-          <div className="fontPopSemibold">Roles</div>
+        <div className="mt-[6vw] md:mt-[2vw]">
+          <label className="fontPopSemibold text-base">Role</label>
           <input
             value={roles}
             onChange={(e) => setRoles(e.target.value)}
             type="text"
-            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+            className=" p-2 mt-[0.5vw] w-full h-[3.5rem] md:h-[4rem] rounded-xl shadow-md border border-black"
           />
         </div>
         {/*  */}
+        <div className="mt-[6vw] md:mt-[2vw] flex flex-col md:flex-row justify-start items-start md:items-center gap-[1rem]">
+          <div className=" w-full md:w-[60%] relative z-10">
+            <div className="fontPopSemibold text-base">
+              Chains (What chains you are active on)
+            </div>
+            <div
+              onClick={() => setShowChains(!showChains)}
+              className="mt-[0.5vw] w-full px-[3vw] cursor-pointer h-[3.5rem] md:h-[4rem] shadow-md rounded-xl border-[0.14vw] border-black z-10 flex items-center bg-white"
+            >
+              {chains}
+            </div>
+            {showChains && (
+              <div className="top-[-1vw] pt-[1vw] px-[3vw] relative -z-10 left-0 w-full h-[29.5vw] md:h-[13vw] text-[0.9vw] border-black border-[0.1vw] rounded-b-[1vw] bg-[#e9e9e9]">
+                <div
+                  onClick={() => {
+                    setChains(<Chain1 />);
+                    setShowChains(false);
+                  }}
+                  className="my-[1vw] md:my-[0.6vw] cursor-pointer w-full h-[8vw] md:h-[3vw] flex items-center rounded-full px-[4vw] md:px-[2vw] bg-white border-black border-[0.1vw]"
+                >
+                  <Chain1 />
+                </div>
+                <div
+                  onClick={() => {
+                    setChains(<Chain2 />);
+                    setShowChains(false);
+                  }}
+                  className="my-[1vw] md:my-[0.6vw] cursor-pointer w-full h-[8vw] md:h-[3vw] flex items-center rounded-full px-[4vw] md:px-[2vw] bg-white border-black border-[0.1vw]"
+                >
+                  <Chain2 />
+                </div>
+                <div
+                  onClick={() => {
+                    setChains(<Chain1 />);
+                    setShowChains(false);
+                  }}
+                  className="my-[1vw] md:my-[0.6vw] cursor-pointer w-full h-[8vw] md:h-[3vw] flex items-center rounded-full px-[4vw] md:px-[2vw] bg-white border-black border-[0.1vw]"
+                >
+                  <Chain1 />
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="w-full md:w-[40%] flex flex-col ">
+            <label className="fontPopSemibold text-base">Country</label>
+            <input
+              type="text"
+              className=" p-2 mt-[0.5vw] w-full h-[3.5rem] md:h-[4rem] shadow-md rounded-xl border border-black"
+            />
+          </div>
+        </div>
+        {/*  */}
+        <div className="mt-[6vw] md:mt-[2vw] flex flex-col md:flex-row justify-start md:justify-center items-start md:items-center gap-[1rem]">
+          <div className="md:w-[60%] w-full">
+            <label className="fontPopSemibold text-base">
+              Category (What type of projects do you work with)
+            </label>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[3.5rem] md:h-[4rem]  shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80 "
+            />
+          </div>
+          <div className="md:w-[40%] w-full flex flex-col ">
+            <label htmlFor="" className="fontPopSemibold text-base">
+              Timezone
+            </label>
+            <input
+              type="text"
+              className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[3.5rem] md:h-[4rem] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+            />
+          </div>
+        </div>
+        {/*  */}
+        <div>
+          <div className="mt-[5vw] md:mt-[2vw] flex flex-col">
+            <label className="fontPopSemibold text-base">
+              Typeof service provider
+            </label>
+            {/* <input
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              type="text"
+              className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+            /> */}
+            <select
+              name=""
+              id=""
+              className="h-[4rem] border p-[1rem] border-black h-[3.5rem] md:h-[4rem] shadow-md rounded-xl bg-white text-base"
+            >
+              <option value="individual">Individual</option>
+              <option value="agency">Agency</option>
+            </select>
+          </div>
+          {/* <div>
+            <div></div>
+            <div></div>
+          </div> */}
+        </div>
+        {/*  */}
+        <div className="mt-[5vw] md:mt-[2vw]">
+          <div className="fontPopSemibold text-base">
+            Profile Overview (Tell us about yourself)
+          </div>
+          <textarea
+            value={profile_overview}
+            onChange={(e) => setProfileOverview(e.target.value)}
+            rows={5}
+            className="fontPop text-base mt-[0.5vw] w-full h-[10rem] py-[2vw] md:py-[1vw] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+          />
+        </div>
+        {/*  */}
+        <div className="mt-[5vw] md:mt-[2vw]">
+          <div className="fontPopSemibold text-base">Resume</div>
+          <input
+            value={roles}
+            onChange={(e) => setRoles(e.target.value)}
+            type="text"
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[3.5rem] md:h-[4rem] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+          />
+        </div>
+        {/*  */}
+        <div className="mt-[5vw] md:mt-[2vw]">
+          <div className="fontPopSemibold text-base">
+            Portfolio (Behance, Dribbble)
+          </div>
+          <input
+            // value={roles}
+            // onChange={(e) => setRoles(e.target.value)}
+            type="text"
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[3.5rem] md:h-[4rem] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+          />
+        </div>
+        {/* */}
         <div className="mt-[5vw] md:mt-[2vw] relative z-10">
-          <div className="fontPopSemibold">Level of expertise</div>
+          <div className="fontPopSemibold text-base">Level of experience</div>
           <div
             onClick={() => setShowLevels(!showLevels)}
-            className="mt-[0.5vw] w-full flex items-center h-[10vw] md:h-[4.2vw] px-[3vw] cursor-pointer rounded-[1.2vw] border-[0.14vw] border-black z-10 bg-white"
+            className="mt-[0.5vw] w-full flex items-center shadow-md rounded-xl h-[3.5rem] md:h-[4rem] px-[3vw] cursor-pointer rounded-[1.2vw] border-[0.14vw] border-black z-10 bg-white"
           >
             {level}
           </div>
@@ -289,8 +367,8 @@ export default function profile() {
         </div>
         {/*  */}
         <div className="mt-[5vw] md:mt-[2vw]">
-          <div className="fontPopSemibold flex justify-between items-center">
-            <div>Payment Rate per hour</div>
+          <div className="fontPopSemibold  text-base flex justify-between items-center">
+            <div>Payment Rate</div>
             <div className="flex items-center gap-x-[0.7vw] text-[2.4vw] md:text-[1vw]">
               <div>Open to negation</div>
               <div>
@@ -298,31 +376,43 @@ export default function profile() {
               </div>
             </div>
           </div>
-          <input
-            value={Number(payment_rate_per_hour)}
-            onChange={(e) => setPaymentRatePerHour(Number(e.target.value))}
-            type="text"
-            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
-          />
+          <div className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[3.5rem] md:h-[4rem] rounded-xl border-[0.14vw] border-black px-[2vw] shadow-md focus:scale-[101%] transition-all text-black/80 flex flex-row gap-[1rem] items-center justify-between">
+            <div>
+              <input
+                value={Number(payment_rate_per_hour)}
+                onChange={(e) => setPaymentRatePerHour(Number(e.target.value))}
+                type="text"
+                placeholder="0"
+                className="w-full rounded-xl outline-none focus:scale-[101%] transition-all text-black/80 "
+              />
+            </div>
+            <div className="flex flex-row items-center gap-[.5rem] ">
+              <div>per</div>
+              <div>
+                <select
+                  name=""
+                  id=""
+                  className="outline-none border border-solid border-black bg-white h-[2rem] md:h-[3rem] rounded-xl w-[6rem] text-center font-semibold"
+                >
+                  <option value="month">Month</option>
+                  <option value="day">Day</option>
+                  <option value="year">Year</option>
+                  <option value="week">Week</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
-        {/*  */}
+
         <div className="mt-[5vw] md:mt-[2vw]">
-          <div className="fontPopSemibold">Profile Overview</div>
-          <textarea
-            value={profile_overview}
-            onChange={(e) => setProfileOverview(e.target.value)}
-            rows={5}
-            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
-          />
-        </div>
-        {/*  */}
-        <div className="mt-[5vw] md:mt-[2vw]">
-          <div className="fontPopSemibold">Links</div>
+          <div className="fontPopSemibold text-base">
+            Others (Case Studies, Testimonials)
+          </div>
           <textarea
             value={links}
             onChange={(e) => setLinks(e.target.value)}
             rows={3}
-            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[10rem] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80 h-[10rem]"
           />
         </div>
       </div>
