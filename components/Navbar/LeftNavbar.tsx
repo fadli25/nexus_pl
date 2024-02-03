@@ -22,34 +22,28 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
     {
       name: "Homepage",
       link: "/",
-      icon: faHouse,
     },
     {
       name: "Dashboard",
       link: "/dashboard",
-      icon: faGrip,
     },
     {
       name: "Founder",
       link: "/founder",
-      icon: faCity,
     },
     {
       name: "Freelance",
       link: "/freelance",
-      icon: faWrench,
     },
 
     {
       name: "Payment",
       link: "/payment",
-      icon: faBitcoinSign,
     },
 
     {
       name: "Support",
       link: "/support",
-      icon: faCircleQuestion,
     },
   ];
 

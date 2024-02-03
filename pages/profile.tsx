@@ -279,7 +279,7 @@ export default function profile() {
             <select
               name=""
               id=""
-              className="h-[4rem] border p-[1rem] border-black h-[3.5rem] md:h-[4rem] shadow-md rounded-xl bg-white text-base"
+              className=" border p-[1rem] border-black h-[3.5rem] md:h-[4rem] shadow-md rounded-xl bg-white text-base"
             >
               <option value="individual">Individual</option>
               <option value="agency">Agency</option>
@@ -329,7 +329,7 @@ export default function profile() {
           <div className="fontPopSemibold text-base">Level of experience</div>
           <div
             onClick={() => setShowLevels(!showLevels)}
-            className="mt-[0.5vw] w-full flex items-center shadow-md rounded-xl h-[3.5rem] md:h-[4rem] px-[3vw] cursor-pointer rounded-[1.2vw] border-[0.14vw] border-black z-10 bg-white"
+            className="mt-[0.5vw] w-full flex items-center shadow-md h-[3.5rem] md:h-[4rem] px-[3vw] cursor-pointer rounded-[1.2vw] border-[0.14vw] border-black z-10 bg-white"
           >
             {level}
           </div>
@@ -412,7 +412,7 @@ export default function profile() {
             value={links}
             onChange={(e) => setLinks(e.target.value)}
             rows={3}
-            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[10rem] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80 h-[10rem]"
+            className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80 h-[10rem]"
           />
         </div>
       </div>
