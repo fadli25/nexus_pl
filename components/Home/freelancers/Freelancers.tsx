@@ -8,6 +8,9 @@ import { Pagination, Autoplay } from "swiper/modules";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { IoArrowForward } from "react-icons/io5";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import PolygonIcon from "@/public/Polygon.svg";
+import AptosIcon from "@/public/Aptos.svg";
+import SolanaIcon from "@/public/Solana.svg";
 
 export default function Freelancers() {
   const projectImage =
@@ -77,10 +80,7 @@ export default function Freelancers() {
           >
             {projectData.map((el) => (
               <SwiperSlide>
-                <motion.div
-                  whileHover={{ scale: 0.99 }}
-                  className="child w-[99%] md:w-[31.6vw] mt-[0.7vw] px-[3vw] md:px-[1vw] border-[0.12vw] border-black rounded-[1vw] md:rounded-[0.5vw] text-black h-[42vw] md:h-[17vw] flex items-center gap-x-[1vw]"
-                >
+                <motion.div className="child w-[99%] md:w-[31.6vw] mt-[0.7vw] px-[3vw] md:px-[1vw] border-[0.12vw] border-black rounded-[1vw] md:rounded-[0.5vw] text-black h-[42vw] md:h-[17vw] flex items-center gap-x-[1vw]">
                   <div className="flex flex-col items-center">
                     <div className="rounded-full w-[23vw] md:w-[7.4vw] border-[0.15vw] border-[#000] overflow-hidden">
                       <Image
@@ -92,42 +92,21 @@ export default function Freelancers() {
                       />
                     </div>
                     <div className="flex justify-center items-center mt-[3vw] md:mt-[0.5vw]">
-                      <motion.button
-                        whileTap={{ scale: 0.95 }}
-                        whileHover={{ scale: 1.1 }}
-                        className="w-[6vw] md:w-[2.5vw]"
-                      >
-                        <Image
-                          src={solanaIcon}
-                          width={9000}
-                          height={2000}
-                          alt=""
-                        />
-                      </motion.button>
-                      <motion.button
-                        whileTap={{ scale: 0.95 }}
-                        whileHover={{ scale: 1.1 }}
-                        className="w-[6vw] md:w-[2.5vw]"
-                      >
-                        <Image
-                          src={solanaIcon}
-                          width={9000}
-                          height={2000}
-                          alt=""
-                        />
-                      </motion.button>
-                      <motion.button
-                        whileTap={{ scale: 0.95 }}
-                        whileHover={{ scale: 1.1 }}
-                        className="w-[6vw] md:w-[2.5vw]"
-                      >
-                        <Image
-                          src={solanaIcon}
-                          width={9000}
-                          height={2000}
-                          alt=""
-                        />
-                      </motion.button>
+                      <Image
+                        src={SolanaIcon}
+                        className="w-[5vw] md:w-[2.5vw]"
+                        alt=""
+                      />
+                      <Image
+                        src={PolygonIcon}
+                        className="w-[5vw] md:w-[2.4vw]"
+                        alt=""
+                      />
+                      <Image
+                        src={AptosIcon}
+                        className="w-[4vw] md:w-[1.9vw]"
+                        alt=""
+                      />
                     </div>
                   </div>
                   <div>

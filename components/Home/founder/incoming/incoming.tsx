@@ -17,6 +17,13 @@ export default function incoming() {
             <div className="text-[3vw] md:text-[1vw] font-semibold text-[#00ff47]">
               50 Incoming Application
             </div>
+
+            <div className="text-[4vw] md:text-[1.5vw] font-semibold text-[#00ff47] mt-[3vw]">
+              Collab Manager{" "}
+              <span className="text-white  text-[3vw] md:text-[1.4vw] px-[0.7vw] border border-white rounded-md font-sans">
+                8
+              </span>
+            </div>
           </div>
 
           <div className="text-[4vw] md:text-[2vw] text-[#00ff47] pb-[2vw]">
@@ -36,7 +43,7 @@ export default function incoming() {
             <div className="flex items-center gap-x-[1vw]">
               <div className="w-[15vw] md:w-[7vw] h-[15vw] md:h-[7vw] bg-black/80 rounded-full"></div>
               <div>
-                <div className=" fontPopSemiBold text-[4vw] md:text-[2vw] underline">
+                <div className=" font-semibold text-[4vw] md:text-[2vw] underline">
                   Manay
                 </div>
                 <div className="text-[2.4vw] md:text-[1.4vw]">
@@ -61,6 +68,13 @@ export default function incoming() {
             <div className="text-[3vw] md:text-[1vw] font-semibold text-[#00ff47]">
               50 Incoming Application
             </div>
+
+            <div className="text-[4vw] md:text-[1.5vw] font-semibold text-[#00ff47] mt-[3vw]">
+              Collab Manager{" "}
+              <span className="text-white  text-[3vw] md:text-[1.4vw] px-[0.7vw] border border-white rounded-md font-sans">
+                8
+              </span>
+            </div>
           </div>
           <div className="text-[4vw] md:text-[2vw] text-[#00ff47] pb-[2vw]">
             <div className="text-white fontPopSemibold">Roles Needed</div>
@@ -79,7 +93,7 @@ export default function incoming() {
             <div className="flex items-center gap-x-[1vw]">
               <div className="w-[15vw] md:w-[7vw] h-[15vw] md:h-[7vw] bg-black/80 rounded-full"></div>
               <div>
-                <div className=" fontPopSemiBold text-[4vw] md:text-[2vw] underline">
+                <div className=" font-semibold text-[4vw] md:text-[2vw] underline">
                   Manay
                 </div>
                 <div className=" text-[2.4vw] md:text-[1.4vw]">

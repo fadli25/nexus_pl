@@ -2,6 +2,9 @@ import React, { ReactNode } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import PolygonIcon from "@/public/Polygon.svg";
+import AptosIcon from "@/public/Aptos.svg";
+import SolanaIcon from "@/public/Solana.svg";
 
 export default function freelance() {
   const featuredImage =
@@ -130,15 +133,21 @@ export default function freelance() {
                   />
                 </div>
                 <div className="mt-[0.6vw] flex justify-center gap-x-[0.2vw] px-[1vw] md:px-[0.4vw] py-[0.1vw]">
-                  <div className="w-[3.4vw] md:w-[2vw]">
-                    <Image src={solanaIcon} width={2000} height={2000} alt="" />
-                  </div>
-                  <div className="w-[3.4vw] md:w-[2vw]">
-                    <Image src={solanaIcon} width={2000} height={2000} alt="" />
-                  </div>
-                  <div className="w-[3.4vw] md:w-[2vw]">
-                    <Image src={solanaIcon} width={2000} height={2000} alt="" />
-                  </div>
+                  <Image
+                    src={SolanaIcon}
+                    className="w-[5vw] md:w-[2vw]"
+                    alt=""
+                  />
+                  <Image
+                    src={PolygonIcon}
+                    className="w-[5vw] md:w-[2vw]"
+                    alt=""
+                  />
+                  <Image
+                    src={AptosIcon}
+                    className="w-[4vw] md:w-[1.5vw]"
+                    alt=""
+                  />
                 </div>
               </div>
               <div className="w-[36%] py-[1vw]">

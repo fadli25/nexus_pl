@@ -4,6 +4,9 @@ import Image from "next/image";
 import { RiStarSLine } from "react-icons/ri";
 import { TbCurrencySolana } from "react-icons/tb";
 import { CiStar } from "react-icons/ci";
+import PolygonIcon from "@/public/Polygon.svg";
+import AptosIcon from "@/public/Aptos.svg";
+import SolanaIcon from "@/public/Solana.svg";
 
 const featuredImage =
   "https://media.discordapp.net/attachments/1085293900706627595/1162191996614619186/Ellipse_1_1.png?ex=653b0aa4&is=652895a4&hm=d67c4517c86bd5ca0b09850880dde46eff4dd8980e31df291d047a5f66196faa&=&width=358&height=342";
@@ -19,7 +22,8 @@ type RouterFunc = {
 export default function CardFounder({ onClick, key }: RouterFunc) {
   return (
     <motion.div
-      whileTap={{ scale: 0.96 }}
+      whileTap={{ y: 3 }}
+      onClick={onClick}
       className="flex font-semibold cursor-pointer text-black gap-x-[2vw] md:gap-x-[1vw] pt-[2vw] w-full px-[2.8vw] md:px-[1vw] py-[2vw] md:py-[1vw] rounded-[0.6vw] border border-black md:!w-[100px] overflow-hidden CardFounder"
     >
       <div className="flex items-center flex-col">
@@ -28,11 +32,11 @@ export default function CardFounder({ onClick, key }: RouterFunc) {
         </div>
         <div
           style={{ padding: "0.2vw 0.5vw" }}
-          className="mt-[1vw] border-[0.1vw] border-black rounded-[0.4vw] md:mt-[0.5vw] text-black text-[8vw] md:text-[2vw] flex items-center justify-center"
+          className="mt-[1vw] border-[0.1vw] border-black rounded-[0.4vw] md:mt-[0.5vw] text-black text-[8vw] md:text-[2vw] flex items-center justify-center gap-x-[0.2vw]"
         >
-          <TbCurrencySolana />
-          <TbCurrencySolana />
-          <TbCurrencySolana />
+          <Image src={SolanaIcon} className="w-[5vw] md:w-[2.4vw]" alt="" />
+          <Image src={PolygonIcon} className="w-[5vw] md:w-[2.3vw]" alt="" />
+          <Image src={AptosIcon} className="w-[4vw] md:w-[1.9vw]" alt="" />
         </div>
       </div>
       <div className="w-full">

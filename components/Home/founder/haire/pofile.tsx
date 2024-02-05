@@ -7,6 +7,9 @@ import { GrLanguage } from "react-icons/gr";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 import { TbCurrencySolana } from "react-icons/tb";
+import PolygonIcon from "@/public/Polygon.svg";
+import AptosIcon from "@/public/Aptos.svg";
+import SolanaIcon from "@/public/Solana.svg";
 
 export default function Profile() {
   const img =
@@ -20,7 +23,7 @@ export default function Profile() {
   const router = useRouter();
   return (
     <div className="w-[95vw] md:w-[65vw] mx-auto text-black pt-[3vw] pb-[5vw]">
-      <div className="flex gap-x-[1vw] items-center">
+      <div className="flex gap-x-[1vw] items-center justify-between">
         <div>
           <Image
             src={img}
@@ -71,9 +74,9 @@ export default function Profile() {
             Chains
           </div>
           <div className="mt-[0.3vw] border text-[6vw] md:text-[3vw] flex items-center border-black rounded-[0.6vw] px-[0.7vw] py-[0.2vw] gap-x-[0.2vw]">
-            <TbCurrencySolana />
-            <TbCurrencySolana />
-            <TbCurrencySolana />
+            <Image src={SolanaIcon} className="w-[4vw] md:w-[2.4vw]" alt="" />
+            <Image src={PolygonIcon} className="w-[4vw] md:w-[2.5vw]" alt="" />
+            <Image src={AptosIcon} className="w-[4vw] md:w-[2vw]" alt="" />
           </div>
         </div>
         <div className="flex flex-col items-start text-[2.5vw] md:text-[1.4vw]">
@@ -106,7 +109,7 @@ export default function Profile() {
 
       <div>
         <motion.button
-          whileTap={{ scale: 0.98 }}
+          whileTap={{ scale: 0.99 }}
           className="mt-[3vw] text-[3.5vw] md:text-[1.7vw] w-full text-start border-[0.12vw] border-black rounded-[0.4vw] p-[2.4vw] md:p-[1vw] text-black font-semibold"
         >
           View Resume
@@ -114,7 +117,7 @@ export default function Profile() {
       </div>
       <div>
         <motion.button
-          whileTap={{ scale: 0.98 }}
+          whileTap={{ scale: 0.99 }}
           className="mt-[3vw] text-[3.5vw] md:text-[1.7vw] w-full text-start border-[0.12vw] border-black rounded-[0.4vw] p-[2.4vw] md:p-[1vw] text-black font-semibold"
         >
           View Porfolio
@@ -122,7 +125,7 @@ export default function Profile() {
       </div>
       <div>
         <motion.button
-          whileTap={{ scale: 0.98 }}
+          whileTap={{ scale: 0.99 }}
           className="mt-[3vw] text-[3.5vw] md:text-[1.7vw] w-full text-start border-[0.12vw] border-black rounded-[0.4vw] p-[2.4vw] md:p-[1vw] text-black font-semibold"
         >
           View Nexus Job History

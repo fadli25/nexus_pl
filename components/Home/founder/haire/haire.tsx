@@ -102,7 +102,7 @@ export default function haire() {
           Artists and Designers
         </div>
       </div>
-      <div className="w-[95vw] mx-auto md:mx-0 md:w-[62vw] px-[3vw] pt-[3vw]">
+      <div className="w-[95vw] mx-auto md:mx-0 md:w-[67vw] px-[3vw] pt-[3vw]">
         {/* search */}
         <div>
           <input
@@ -143,7 +143,7 @@ export default function haire() {
             </div>
           </div>
         </div>
-        <div className="mt-[3vw] flex flex-wrap justify-between gap-[3vw] md:gap-[1vw] pb-[4vw]">
+        <div className="mt-[3vw] flex flex-wrap justify-start gap-[3vw] md:gap-[2vw] pb-[4vw]">
           {data.map((el, i) => (
             <CardFounder
               key={i}

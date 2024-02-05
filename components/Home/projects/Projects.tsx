@@ -6,6 +6,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import PolygonIcon from "@/public/Polygon.svg";
+import AptosIcon from "@/public/Aptos.svg";
+import SolanaIcon from "@/public/Solana.svg";
 
 export default function Projects() {
   const projectImage =
@@ -89,42 +92,21 @@ export default function Projects() {
                     />
                   </div>
                   <div className="flex justify-center items-center mt-[3vw] md:mt-[0.5vw]">
-                    <motion.button
-                      whileTap={{ scale: 0.95 }}
-                      whileHover={{ scale: 1.1 }}
-                      className="w-[6vw] md:w-[2.5vw]"
-                    >
-                      <Image
-                        src={solanaIcon}
-                        width={9000}
-                        height={2000}
-                        alt=""
-                      />
-                    </motion.button>
-                    <motion.button
-                      whileTap={{ scale: 0.95 }}
-                      whileHover={{ scale: 1.1 }}
-                      className="w-[6vw] md:w-[2.5vw]"
-                    >
-                      <Image
-                        src={solanaIcon}
-                        width={9000}
-                        height={2000}
-                        alt=""
-                      />
-                    </motion.button>
-                    <motion.button
-                      whileTap={{ scale: 0.95 }}
-                      whileHover={{ scale: 1.1 }}
-                      className="w-[6vw] md:w-[2.5vw]"
-                    >
-                      <Image
-                        src={solanaIcon}
-                        width={9000}
-                        height={2000}
-                        alt=""
-                      />
-                    </motion.button>
+                    <Image
+                      src={SolanaIcon}
+                      className="w-[5vw] md:w-[2.5vw]"
+                      alt=""
+                    />
+                    <Image
+                      src={PolygonIcon}
+                      className="w-[5vw] md:w-[2.4vw]"
+                      alt=""
+                    />
+                    <Image
+                      src={AptosIcon}
+                      className="w-[4vw] md:w-[1.9vw]"
+                      alt=""
+                    />
                   </div>
                 </div>
                 <div>
