@@ -6,6 +6,12 @@ import { MdLanguage } from "react-icons/md";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 
+// interface Role {
+//   role: string;
+// }
+
+// // function renderRoles(roles:){}
+
 export default function project() {
   const img =
     "https://media.discordapp.net/attachments/1085293900706627595/1162192637705605280/Ellipse_5_3.png?ex=653b0b3d&is=6528963d&hm=40697a2331ee15067ae9ae3e82fdf9252eb0ab75434b5e23a0297d3f5efc71eb&=&width=235&height=226";
@@ -58,30 +64,36 @@ export default function project() {
             </Icon>
           </div>
         </div>
-        <div className="mt-[5vw] flex flex-col-reverse md:flex-row justify-between md:items-center text-black">
+        <div className="mt-[5vw] flex flex-col-reverse md:flex-row justify-between md:items-start text-black">
           <div className="w-full md:w-[60%]">
             <div className="text-[4vw] md:text-[1.6vw] mt-[2vw] md:mt-0 fontPopSemibold">
               Project Description
             </div>
             <textarea
-              className="w-full border-[0.12vw] focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
+              className="w-full border-2 border-solid border-black text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
               rows={10}
             ></textarea>
           </div>
-          <div className="w-[36%] leading-[5vw] md:leading-[3.2vw]">
-            <div className="text-[4vw] md:text-[2.4vw] fontPopSemibold">
+          <div className="w-[36%] leading-[5vw] md:leading-[3.2vw] ">
+            <div className="text-[4vw] md:text-[1.6vw] fontPopSemibold">
               Roles Needed
             </div>
-            <div className="text-[3vw] md:text-[1.8vw]">Collab Manager</div>
-            <div className="text-[3vw] md:text-[1.8vw]">Project Manager</div>
-            <div className="mt-[3vw] flex items-center gap-x-[1.2vw]">
+            <div className="border-2 border-solid border-black rounded-xl p-4 flex flex-col gap-[.5rem] h-[13rem] max-h-screen overflow-y-auto no-scrollbar">
+              <div className="text-[3vw] md:text-[1.8vw] border border-solid border-black rounded-xl pl-4">
+                Collab Manager
+              </div>
+              <div className="text-[3vw] md:text-[1.8vw] border border-solid border-black rounded-xl pl-4">
+                Project Manager
+              </div>
+            </div>
+            <div className="mt-[3vw] flex justify-center items-center gap-x-[1.2vw]">
               <MuiButton>Contact</MuiButton>
               <MuiButton>Review</MuiButton>
-              <MuiButton
+              {/* <MuiButton
                 onClick={() => router.push("/freelance/project/apply")}
               >
                 Apply
-              </MuiButton>
+              </MuiButton> */}
             </div>
           </div>
         </div>
@@ -90,7 +102,7 @@ export default function project() {
             Review
           </div>
           <textarea
-            className="w-full border-[0.12vw] focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
+            className="w-full border-2 border-solid border-black text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
             rows={14}
           ></textarea>
         </div>
@@ -125,10 +137,11 @@ export function MuiButton({ children, onClick }: Icon) {
         textTransform: "none",
         padding: "0.7vw 2vw",
         color: "#000",
-        bgcolor: "#00ff47",
+        bgcolor: "transparent",
+        border: "1px solid",
         borderRadius: "0.6vw",
         ":hover": {
-          bgcolor: "#00ff47",
+          bgcolor: "transparent",
         },
         "@media (max-width:767px)": {
           fontSize: "2.8vw",
