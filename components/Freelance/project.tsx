@@ -74,11 +74,11 @@ export default function project() {
               rows={10}
             ></textarea>
           </div>
-          <div className="w-[36%] leading-[5vw] md:leading-[3.2vw] ">
+          <div className="w-full md:w-[36%] leading-[5vw] md:leading-[3.2vw] ">
             <div className="text-[4vw] md:text-[1.6vw] fontPopSemibold">
               Roles Needed
             </div>
-            <div className="border-2 border-solid border-black rounded-xl p-4 flex flex-col gap-[.5rem] h-[13rem] max-h-screen overflow-y-auto no-scrollbar">
+            <div className="w-full border-2 border-solid border-black rounded-xl p-4 flex flex-col gap-[.5rem] h-[13rem] max-h-screen overflow-y-auto no-scrollbar">
               <div className="text-[3vw] md:text-[1.8vw] border border-solid border-black rounded-xl pl-4">
                 Collab Manager
               </div>
