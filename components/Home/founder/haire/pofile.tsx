@@ -62,9 +62,7 @@ export default function Profile() {
             <motion.button
               whileTap={{ scale: 0.98 }}
               className="text-[2.5vw] md:text-[1vw] font-semibold"
-            >
-              Read Cover Letter!
-            </motion.button>
+            ></motion.button>
           </div>
         </div>
       </div>

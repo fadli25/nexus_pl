@@ -5,6 +5,9 @@ import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdLanguage } from "react-icons/md";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
+import solanaIcon from "@/public/Solana.svg";
+import aptosIcon from "@/public/Aptos.svg";
+import polygonIcon from "@/public/Polygon.svg";
 
 // interface Role {
 //   role: string;
@@ -14,10 +17,7 @@ import { useRouter } from "next/router";
 
 export default function project() {
   const img =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162192637705605280/Ellipse_5_3.png?ex=653b0b3d&is=6528963d&hm=40697a2331ee15067ae9ae3e82fdf9252eb0ab75434b5e23a0297d3f5efc71eb&=&width=235&height=226";
-  const solanaIcon =
-    "https://img.icons8.com/external-black-fill-lafs/64/external-Solana-cryptocurrency-black-fill-lafs.png";
-
+    "https://media.discordapp.net/attachments/1085293900706627595/1162203481017438298/Untitled670_20230803112855_1.png?ex=65ea6cd6&is=65d7f7d6&hm=6ac7420b0b39e7278af3a22e2dbb30016935be02cdefb68de9e06b5f8bfd428c&=&format=webp&quality=lossless&width=267&height=273";
   const router = useRouter();
   return (
     <div>
@@ -40,16 +40,16 @@ export default function project() {
             />
           </div>
         </div>
-        <div className="mt-[3vw] flex justify-between w-full">
-          <div className="flex items-center gap-x-[0.4vw]">
-            <div className="w-[6vw] md:w-[4vw]">
+        <div className="mt-[3vw] flex justify-between items-center w-full">
+          <div className="flex items-center gap-x-[0.7vw]">
+            <div className="w-[6vw] md:w-[3vw]">
               <Image src={solanaIcon} width={2000} height={200} alt="" />
             </div>
-            <div className="w-[6vw] md:w-[4vw]">
-              <Image src={solanaIcon} width={2000} height={200} alt="" />
+            <div className="w-[6vw] md:w-[2vw]">
+              <Image src={aptosIcon} width={2000} height={200} alt="" />
             </div>
-            <div className="w-[6vw] md:w-[4vw]">
-              <Image src={solanaIcon} width={2000} height={200} alt="" />
+            <div className="w-[6vw] md:w-[3vw]">
+              <Image src={polygonIcon} width={2000} height={200} alt="" />
             </div>
           </div>
           <div className="flex items-center gap-x-[1.4vw]">
@@ -70,7 +70,7 @@ export default function project() {
               Project Description
             </div>
             <textarea
-              className="w-full border-2 border-solid border-black text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
+              className="w-full border-2 border-solid text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
               rows={10}
             ></textarea>
           </div>
@@ -102,7 +102,7 @@ export default function project() {
             Review
           </div>
           <textarea
-            className="w-full border-2 border-solid border-black text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
+            className="w-full border-2 border-solid  text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
             rows={14}
           ></textarea>
         </div>
