@@ -464,7 +464,7 @@ export default function TopNavbar() {
           </div>
         )}
         {path.slice(0, 8) === "/founder" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center -z-10">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center z-0">
             {founder()}
           </div>
         )}
