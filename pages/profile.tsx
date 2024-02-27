@@ -11,6 +11,9 @@ import { toast } from "react-toastify";
 import { init_user } from "../lib/NexusProgram/user/init_user";
 import { update_user } from "../lib/NexusProgram/user/update_user";
 import { get_user_info } from "../lib/NexusProgram/user/utils/user_info";
+import solanaImg from "@/public/Solana.svg";
+import aptosImg from "@/public/Aptos.svg";
+import polygonImg from "@/public/Polygon.svg";
 
 export default function profile() {
   const [exist, setExist] = useState<boolean>(false);
@@ -239,12 +242,12 @@ export default function profile() {
                 </div>
                 <div
                   onClick={() => {
-                    setChains(<Chain1 />);
+                    setChains(<Chain3 />);
                     setShowChains(false);
                   }}
                   className="my-[1vw] md:my-[0.6vw] cursor-pointer w-full h-[8vw] md:h-[3vw] flex items-center rounded-full px-[4vw] md:px-[2vw] bg-white border-black border-[0.1vw]"
                 >
-                  <Chain1 />
+                  <Chain3 />
                 </div>
               </div>
             )}
@@ -495,35 +498,32 @@ interface chainType {
 }
 
 export function Chain1() {
-  const chainImg =
-    "https://s3-alpha-sig.figma.com/img/9f2c/d78e/2949648c95c65ad5bb038ddaff7c3a17?Expires=1694390400&Signature=DMGkXeuvwBYIwWYs9JtttkbkfLtcXEUuYJrIXx1iq8N8YSrRa8owneJ3EQj7ResMsiXRzFlheO3sEkPLIbf~lDdpfVVNXcjiAbDL4t1k7K3nChRpwKaCuz50rUvzW-qnYqXhDyF3KIUNZPiqb2A8LF5nYppt7iZ0GxbRh76oajgsf0X4WAse0UWhhfAmrTBsxAr5z3yT-Im6MV1zfCyOWW5VzWbfUNEkaJFAxk8WmcuRYfxCz62fM18CBxuMYHx1QPEZuGUSnCF3GdYeYaeKzajUqSGGrqYOtm9MwpV3hHyycYlFKEFjwn36sr4dLU6W2ih-KWp8DQRa75epECXXuw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   return (
     <motion.div className="flex items-center gap-x-[0.5vw]">
-      <div className="w-[20vw] md:w-[5vw]">
-        <Image src={chainImg} width={9000} height={2000} alt="" />
+      <div className="w-[6vw] md:w-[2vw] flex items-center gap-x-[0.6vw] font-semibold text-[3vw] md:text-[1vw]">
+        <Image src={solanaImg} width={9000} height={2000} alt="" />
+        <div>Solana</div>
       </div>
     </motion.div>
   );
 }
 export function Chain2() {
-  const chainImg =
-    "https://s3-alpha-sig.figma.com/img/8c77/db9b/1bd6ae82b38daaf0abae070b391ed1e1?Expires=1694390400&Signature=J~iUv6kPz5a~yHAjFnLVqd02aHAQHbrzEuVPAeN3JPN0Ciyy8BPa4VzLKiPCf4Ai~n4Ryo5p31HRL50RTfGy8FL7~fG4AiMuO9fEO9kaiL~foLjDIpHZ22ChBrdNdHqI2FRmBf~E5ZK59GjAvVfAXGds4jTiNqfOcrNpcKBaYOPDpkwa8Vy-~9pH2aKsK9xeLM6y~d3kA6pfHB55S6Ln901Mbd04dXh8euagdKcSaXOYAsIGha-bdY6R~MCzE5E2blYx4ydrpMbUSLokr8jPFbgf~jXHaXIlF8r4pZY20R~obL37VGCwhjPGF8JLnHJrFk31VEfzv8q8c8V9BfcnOA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   return (
     <motion.div className="flex items-center gap-x-[0.5vw]">
-      <div className="w-[20vw] md:w-[5vw]">
-        <Image src={chainImg} width={9000} height={2000} alt="" />
+      <div className="w-[5vw] md:w-[1.6vw] flex items-center gap-x-[0.6vw] font-semibold text-[3vw] md:text-[1vw]">
+        <Image src={aptosImg} width={9000} height={2000} alt="" />
+        <div>Aptos</div>
       </div>
     </motion.div>
   );
 }
 
 export function Chain3() {
-  const chainImg =
-    "https://s3-alpha-sig.figma.com/img/9f2c/d78e/2949648c95c65ad5bb038ddaff7c3a17?Expires=1694390400&Signature=DMGkXeuvwBYIwWYs9JtttkbkfLtcXEUuYJrIXx1iq8N8YSrRa8owneJ3EQj7ResMsiXRzFlheO3sEkPLIbf~lDdpfVVNXcjiAbDL4t1k7K3nChRpwKaCuz50rUvzW-qnYqXhDyF3KIUNZPiqb2A8LF5nYppt7iZ0GxbRh76oajgsf0X4WAse0UWhhfAmrTBsxAr5z3yT-Im6MV1zfCyOWW5VzWbfUNEkaJFAxk8WmcuRYfxCz62fM18CBxuMYHx1QPEZuGUSnCF3GdYeYaeKzajUqSGGrqYOtm9MwpV3hHyycYlFKEFjwn36sr4dLU6W2ih-KWp8DQRa75epECXXuw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   return (
     <motion.div className="flex items-center gap-x-[0.5vw]">
-      <div className="w-[20vw] md:w-[5vw]">
-        <Image src={chainImg} width={9000} height={2000} alt="" />
+      <div className="w-[6vw] md:w-[2vw] flex items-center gap-x-[0.6vw] font-semibold text-[3vw] md:text-[1vw]">
+        <Image src={polygonImg} width={9000} height={2000} alt="" />
+        <div>Polygon</div>
       </div>
     </motion.div>
   );

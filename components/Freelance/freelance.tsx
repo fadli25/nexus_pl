@@ -142,9 +142,9 @@ export default function freelance() {
           {projects && projects.map((el, i) => (
             <motion.div
               onClick={() => router.push("/freelance/project/" + el.pubkey.toBase58())}
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 0.98 }}
               key={i}
-              className="w-[70vw] md:w-[32vw] rounded-[1.4vw] md:rounded-[0.6vw] overflow-hidden  flex justify-between border-[0.11vw] border-black"
+              className="w-[70vw] md:w-[32vw] cursor-pointer rounded-[1.4vw] md:rounded-[0.6vw] overflow-hidden  flex justify-between border-[0.11vw] border-black"
             >
               <div className="flex flex-col items-center pl-[1vw] py-[2vw] md:py-[1vw]">
                 <div className="w-[20vw] md:w-[8vw] rounded-full border-[0.14vw] border-black">

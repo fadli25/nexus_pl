@@ -1,4 +1,7 @@
 import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
+import aptosIcon from "@/public/Aptos.svg";
+import polygonIcon from "@/public/Polygon.svg";
+import solanaIcon from "@/public/Solana.svg";
 import { Button } from "@mui/material";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
@@ -67,16 +70,16 @@ export default function project({ project }: any) {
             />
           </div>
         </div>
-        <div className="mt-[3vw] flex justify-between w-full">
-          <div className="flex items-center gap-x-[0.4vw]">
-            <div className="w-[6vw] md:w-[4vw]">
+        <div className="mt-[3vw] flex justify-between items-center w-full">
+          <div className="flex items-center gap-x-[0.7vw]">
+            <div className="w-[6vw] md:w-[3vw]">
               <Image src={solanaIcon} width={2000} height={200} alt="" />
             </div>
-            <div className="w-[6vw] md:w-[4vw]">
-              <Image src={solanaIcon} width={2000} height={200} alt="" />
+            <div className="w-[6vw] md:w-[2vw]">
+              <Image src={aptosIcon} width={2000} height={200} alt="" />
             </div>
-            <div className="w-[6vw] md:w-[4vw]">
-              <Image src={solanaIcon} width={2000} height={200} alt="" />
+            <div className="w-[6vw] md:w-[3vw]">
+              <Image src={polygonIcon} width={2000} height={200} alt="" />
             </div>
           </div>
           <div className="flex items-center gap-x-[1.4vw]">
@@ -98,7 +101,8 @@ export default function project({ project }: any) {
             </div>
             <textarea
               value={project_info && project_info.projectOverview}
-              className="w-full border-2 border-solid border-black text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
+              // className="w-full border-2 border-solid border-black text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
+              className="w-full border-2 border-solid text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
               rows={10}
             ></textarea>
           </div>
@@ -130,7 +134,7 @@ export default function project({ project }: any) {
             Review
           </div>
           <textarea
-            className="w-full border-2 border-solid border-black text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
+            className="w-full border-2 border-solid  text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
             rows={14}
           ></textarea>
         </div> */}

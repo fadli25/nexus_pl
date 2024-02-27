@@ -464,47 +464,47 @@ export default function TopNavbar() {
           </div>
         )}
         {path.slice(0, 8) === "/founder" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center z-0">
             {founder()}
           </div>
         )}
         {path.slice(0, 8) === "/freelan" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center -z-10">
             {freelance()}
           </div>
         )}
         {path.slice(0, 8) === "/message" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center -z-10">
             {messages()}
           </div>
         )}
         {path.slice(0, 6) === "/tower" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center -z-10">
             {tower()}
           </div>
         )}
         {path.slice(0, 6) === "/setti" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center -z-10">
             {settings()}
           </div>
         )}
         {path.slice(0, 6) === "/profi" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center -z-10">
             {profile()}
           </div>
         )}
         {path.slice(0, 6) === "/notif" && (
-          <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
+          <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center -z-10">
             {notification()}
           </div>
         )}
         {path.slice(0, 6) === "/payme" && (
-          <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
+          <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center -z-10">
             {payment()}
           </div>
         )}
         {path.slice(0, 6) === "/dashb" && (
-          <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center">
+          <div className="absolute top-0 left-0 w-[70%] md:w-[90%] h-full flex items-center -z-10">
             {dashboard()}
           </div>
         )}

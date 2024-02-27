@@ -1,12 +1,14 @@
 import { init_project } from "@/lib/NexusProgram/project/init_project";
 import { update_project } from "@/lib/NexusProgram/project/update_project";
-import { Button, FormControlLabel } from "@mui/material";
+import { Button, FormControlLabel, Stack } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 import Image from "next/image";
 import React, { useState } from "react";
+import { IoIosAddCircle } from "react-icons/io";
+import { motion } from "framer-motion";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -120,10 +122,7 @@ export default function addProject() {
     "bg-none border-[0.15vw] mt-[0.6vw] w-full md:w-[20vw] px-[3vw] md:px-[1vw] text-[3vw] md:text-[0.9vw] py-[1.4vw] md:py-[0.8vw] border-black rounded-[1vw] md:rounded-[0.4vw] outline-none focus:border-red-600 focus:scale-[101%] transition-all";
 
   const inputStyle2 =
-    "bg-none border-[0.15vw] mt-[0.6vw] px-[3vw] md:px-[1vw] text-[3vw] md:text-[0.9vw] py-[1.4vw] md:py-[0.8vw] border-black rounded-[1vw] md:rounded-[0.4vw] outline-none focus:border-red-600 focus:scale-[101%] transition-all";
-
-  const inputStyle3 =
-    "bg-none border-[0.15vw] mt-[0.6vw] px-[3vw] md:px-[1vw] text-[3vw] md:text-[0.9vw] py-[1.4vw] md:py-[0.8vw] border-black rounded-[1vw] md:rounded-[0.4vw] rounded-r-0 outline-none focus:border-red-600 focus:scale-[101%] transition-all";
+    "border-[0.16vw] md:border-[0.12vw] mt-[0.6vw] border-black rounded-[1vw] md:rounded-[0.4vw] px-[2vw] md:px-[1vw] py-[1.4vw] md:py-[0.7vw] outline-none";
 
   const styleButton1 = {
     fontSize: "1vw",
@@ -313,49 +312,122 @@ export default function addProject() {
           </Button>
         </div>
       </div>
-      <div className="mt-[5vw] w-full p-[3vw] border-[0.2vw] border-black rounded-[0.6vw] text-[2.5vw] md:text-[1.4vw] text-black">
-        <div className="flex justify-between items-center gap-x-[1vw]">
-          <div className="w-[70%]">
-            <div className="fontPopSemibold">Role Needed</div>
-            <input className={`${inputStyle2} w-full`} />
-          </div>
 
-          <div className="md:w-[28.5%]">
-            <div className="flex justify-end items-center">
-              <div>
-                <div className="fontPopSemibold">Payment</div>
-                <input className={`${inputStyle3} !rounded-r-none`} />
+      <div className="pt-[5vw] text-[3.5vw] md:text-[1.2vw] font-semibold text-black">
+        <Stack className="!flex-col md:!flex-row !justify-between !items-end gap-x-[1vw] gap-y-[3vw]">
+          <Stack className="p-[3vw] md:p-[1vw] border-[0.2vw] md:border-[0.16vw] border-black rounded-[1vw] md:rounded-[0.6vw] w-full h-fit gap-y-[1vw]">
+            <Stack direction="row" spacing={1} justifyContent="space-between">
+              <div className="w-full">
+                <div>Role Needed</div>
+                <input className={`${inputStyle2} w-full`} />
               </div>
-              <div>
-                <div className="fontPopSemibold">Time</div>
-                <div className={`${inputStyle2} border-l-0 !rounded-l-none`}>
-                  Mnth
-                </div>
+              <div className="w-[60%]">
+                <Stack direction="row" justifyContent="space-between">
+                  <label>Payement</label>
+                  <label>Time</label>
+                </Stack>
+                <Stack direction="row" alignItems="center">
+                  <input
+                    className={`${inputStyle2} !border-r-0 !rounded-r-none w-full`}
+                  />
+                  <div
+                    className={`border-[0.12vw] mt-[0.6vw] border-black rounded-l-none rounded-[0.4vw] px-[1vw] py-[1.8vw] md:py-[0.85vw] text-[3vw] md:text-[1vw]`}
+                  >
+                    Mnth
+                  </div>
+                </Stack>
               </div>
-            </div>
-          </div>
-        </div>
+            </Stack>
 
-        <div className="mt-[2vw] flex justify-between items-center gap-x-[1vw]">
-          <div className="w-[70%]">
-            <div className="fontPopSemibold">Category</div>
-            <input className={`${inputStyle2} w-full`} />
-          </div>
-          <div className="w-[35vw] md:w-[28.5%]">
-            <div className="fontPopSemibold">Country</div>
-            <input className={`${inputStyle2} w-full`} />
-          </div>
-        </div>
+            <Stack direction="row" spacing={1} justifyContent="space-between">
+              <div className="w-full">
+                <div>Category</div>
+                <input className={`${inputStyle2} w-full`} />
+              </div>
+              <div className="w-[60%]">
+                <Stack direction="row" justifyContent="space-between">
+                  <label>Country</label>
+                </Stack>
+                <input className={`${inputStyle2} w-full`} />
+              </div>
+            </Stack>
 
-        <div className="mt-[2vw]">
-          <div className="fontPopSemibold">Level of experience</div>
-          <input className={`${inputStyle2} w-full`} />
-        </div>
-        <div className="mt-[2vw]">
-          <div className="fontPopSemibold">Role Description</div>
-          <textarea className={`${inputStyle2} w-full`} rows={4} />
-        </div>
+            <Stack>
+              <div className="w-full">
+                <div>Level of experience</div>
+                <input className={`${inputStyle2} w-full`} />
+              </div>
+            </Stack>
+
+            <Stack>
+              <div className="w-full">
+                <div>Role Description</div>
+                <textarea rows={3} className={`${inputStyle2} w-full`} />
+              </div>
+            </Stack>
+          </Stack>
+
+          <Stack className="p-[3vw] md:p-[1vw] border-[0.2vw] md:border-[0.16vw] border-black rounded-[1vw] md:rounded-[0.6vw] w-full h-fit gap-y-[1vw]">
+            <Stack direction="row" spacing={1} justifyContent="space-between">
+              <div className="w-full">
+                <div>Role Needed</div>
+                <input className={`${inputStyle2} w-full`} />
+              </div>
+              <div className="w-[60%]">
+                <Stack direction="row" justifyContent="space-between">
+                  <label>Payement</label>
+                  <label>Time</label>
+                </Stack>
+                <Stack direction="row" alignItems="center">
+                  <input
+                    className={`${inputStyle2} !border-r-0 !rounded-r-none w-full`}
+                  />
+                  <div
+                    className={`border-[0.12vw] mt-[0.6vw] border-black rounded-l-none rounded-[0.4vw] px-[1vw] py-[1.8vw] md:py-[0.85vw] text-[3vw] md:text-[1vw]`}
+                  >
+                    Mnth
+                  </div>
+                </Stack>
+              </div>
+            </Stack>
+
+            <Stack direction="row" spacing={1} justifyContent="space-between">
+              <div className="w-full">
+                <div>Category</div>
+                <input className={`${inputStyle2} w-full`} />
+              </div>
+              <div className="w-[60%]">
+                <Stack direction="row" justifyContent="space-between">
+                  <label>Country</label>
+                </Stack>
+                <input className={`${inputStyle2} w-full`} />
+              </div>
+            </Stack>
+
+            <Stack>
+              <div className="w-full">
+                <div>Level of experience</div>
+                <input className={`${inputStyle2} w-full`} />
+              </div>
+            </Stack>
+
+            <Stack>
+              <div className="w-full">
+                <div>Role Description</div>
+                <textarea rows={3} className={`${inputStyle2} w-full`} />
+              </div>
+            </Stack>
+          </Stack>
+        </Stack>
       </div>
+      <Stack className="mt-[5vw] relative w-full md:w-[49.4%] place-items-center py-[4vw] border-[0.2vw] border-black rounded-[0.6vw]">
+        <div className="absolute top-[5%] left-[5%] text-[3vw] md:text-[1.4vw] text-black">
+          Add new role
+        </div>
+        <motion.button whileTap={{ scale: 0.96 }}>
+          <IoIosAddCircle className="text-[35vw] md:text-[15vw] text-black/40" />
+        </motion.button>
+      </Stack>
       <div className="flex justify-center mt-[5vw]">
         <Button
           onClick={(e) => {
