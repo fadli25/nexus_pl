@@ -7,6 +7,8 @@ import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 import Image from "next/image";
 import React, { useState } from "react";
+import { IoIosAddCircle } from "react-icons/io";
+import { motion } from "framer-motion";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -415,6 +417,14 @@ export default function addProject() {
           </Stack>
         </Stack>
       </div>
+      <Stack className="mt-[5vw] relative w-full md:w-[49.4%] place-items-center py-[4vw] border-[0.2vw] border-black rounded-[0.6vw]">
+        <div className="absolute top-[5%] left-[5%] text-[3vw] md:text-[1.4vw] text-black">
+          Add new role
+        </div>
+        <motion.button whileTap={{ scale: 0.96 }}>
+          <IoIosAddCircle className="text-[35vw] md:text-[15vw] text-black/40" />
+        </motion.button>
+      </Stack>
       <div className="flex justify-center mt-[5vw]">
         <Button
           onClick={(e) => {
