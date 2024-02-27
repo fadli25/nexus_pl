@@ -1,8 +1,10 @@
-import React from "react";
+import { getUsers } from "@/lib/NexusProgram/user/utils/get_users";
+import CardFounder from "@/lib/UI/CardFounder";
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import CardFounder from "@/lib/UI/CardFounder";
+import React, { useEffect, useState } from "react";
 
 export default function haire() {
   const featuredImage =
@@ -10,6 +12,29 @@ export default function haire() {
   const imgg =
     "https://media.discordapp.net/attachments/1085293900706627595/1162204983048032307/Ellipse_4_2.png?ex=653b16bc&is=6528a1bc&hm=9753dfa8469a9eb95a4e795bea1cc5907edea6cd86eccf6baaea94f94514857e&=&width=225&height=216";
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
+
+  const [users, setUsers] = useState<any[]>();
+
+  const anchorWallet = useAnchorWallet()
+  const { connection } = useConnection()
+
+  const get_users = async () => {
+    try {
+      const _users = await getUsers(connection, "confirmed");
+      console.log(_users);
+      setUsers(_users);
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+
+    get_users();
+
+  }, [anchorWallet])
 
   const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const router = useRouter();
@@ -144,10 +169,11 @@ export default function haire() {
           </div>
         </div>
         <div className="mt-[3vw] flex flex-wrap justify-start gap-[3vw] md:gap-[2vw] pb-[4vw]">
-          {data.map((el, i) => (
+          {users && users.map((el, i) => (
             <CardFounder
               key={i}
-              onClick={() => router.push("/founder/haire/profile")}
+              info={el}
+              onClick={() => router.push("/founder/haire/" + el.pubkey.toBase58())}
             />
           ))}
         </div>

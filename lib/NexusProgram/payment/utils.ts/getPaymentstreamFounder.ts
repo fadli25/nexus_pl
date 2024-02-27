@@ -11,7 +11,7 @@ export const getPaymentstreamFounder = async (
     commitment?: Commitment,
 ) => {
 
-    const NEXUS_ADDRESS = new PublicKey("C35kaD3YLHBVMxwsxnre227XwgJo8gSN8jnrfThmfuUg");
+    const NEXUS_ADDRESS = new PublicKey("33cQK4yLQkRVBKtRWoSA2aYjTPDgEp3CM6EK8w6M2ALf");
     const PROGRAM_ID = new PublicKey(idl.metadata.address)
 
     const [user] = PublicKey.findProgramAddressSync(

@@ -7,9 +7,9 @@ export const getUsers = async (
     commitment?: Commitment,
 ) => {
 
-    const NEXUS_ADDRESS = new PublicKey("C35kaD3YLHBVMxwsxnre227XwgJo8gSN8jnrfThmfuUg");
+    const NEXUS_ADDRESS = new PublicKey("33cQK4yLQkRVBKtRWoSA2aYjTPDgEp3CM6EK8w6M2ALf");
 
-    const USER_LENGTH = 256;
+    const USER_LENGTH = 376;
     const programAccounts = await connection.getProgramAccounts(
         NEXUS_ADDRESS,
         {

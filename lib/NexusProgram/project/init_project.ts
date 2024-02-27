@@ -29,6 +29,7 @@ export async function init_project(
     linkTwitter: string,
     linkWebsite: string,
     projectOverview: string,
+    departments: string,
     hiring: boolean,
 ) {
 
@@ -65,6 +66,7 @@ export async function init_project(
         category: category,
         projectOverview: projectOverview,
         hiring: hiring,
+        departments
     }).accounts({
         project: project,
         founder: founder,

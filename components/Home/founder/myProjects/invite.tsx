@@ -69,10 +69,18 @@ export default function invite({ project }: Inv) {
         console.log(user.name);
         if (user.name == name) {
           console.log("exist");
+          console.log(user.address.toBase58());
+          User_pubkeu = user.address;
+        }
+        if (user.address.toBase58() == name) {
+          console.log("exist");
+          console.log(user.address.toBase58());
           User_pubkeu = user.address;
         }
       });
-      console.log(User_pubkeu);
+
+
+      console.log(User_pubkeu.toBase58());
       if (!User_pubkeu) {
         return console.log("user not found");
       }

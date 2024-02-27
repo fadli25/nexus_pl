@@ -26,7 +26,12 @@ export default function profile() {
   const [profile_overview, setProfileOverview] = useState<string>("");
   const [links, setLinks] = useState<string>("");
   const [name, setName] = useState<string>("");
-  const [nogotion, setNigotion] = useState<boolean>(false);
+  const [nogotion, setNigotion] = useState<boolean>(true);
+  const [portfolio, setPortfolio] = useState<string>("");
+  const [resume, setResume] = useState<string>("");
+  const [tosp, setTosp] = useState<string>("Individual");
+  const [timezone, setTimeZone] = useState<string>("");
+  const [country, setCountry] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
   const connection = new Connection(clusterApiUrl("devnet"));
@@ -49,7 +54,12 @@ export default function profile() {
         links,
         profile_overview,
         payment_rate_per_hour,
-        nogotion
+        nogotion,
+        portfolio,
+        resume,
+        tosp,
+        timezone,
+        country
       );
       notify_delete();
       notify_success("transaction successful");
@@ -106,6 +116,11 @@ export default function profile() {
         setLinks(user_info.links);
         setName(user_info.name);
         setNigotion(user_info.nigotion);
+        setCountry(user_info.country);
+        setResume(user_info.resume);
+        setTimeZone(user_info.timezone);
+        setTosp(user_info.tosp);
+        setPortfolio(user_info.portfolio);
       }
     } catch (e) {
       console.log(e);
@@ -162,9 +177,8 @@ export default function profile() {
           </div>
           <ButtonMotion
             onClick={() => setShow(!show)}
-            className={`text-[5vw] md:text-[2.4vw] ${
-              show && "text-[#00ff47]"
-            } `}
+            className={`text-[5vw] md:text-[2.4vw] ${show && "text-[#00ff47]"
+              } `}
           >
             <BiSolidShow />
           </ButtonMotion>
@@ -173,6 +187,8 @@ export default function profile() {
         <div className="mt-[7vw] md:mt-[4vw]">
           <label className="fontPopSemibold text-base">Username</label>
           <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             type="text"
             className=" p-2 mt-[0.5vw] w-full h-[3.5rem] md:h-[4rem] shadow-md rounded-xl border border-black"
           />
@@ -236,6 +252,8 @@ export default function profile() {
           <div className="w-full md:w-[40%] flex flex-col ">
             <label className="fontPopSemibold text-base">Country</label>
             <input
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
               type="text"
               className=" p-2 mt-[0.5vw] w-full h-[3.5rem] md:h-[4rem] shadow-md rounded-xl border border-black"
             />
@@ -248,8 +266,8 @@ export default function profile() {
               Category (What type of projects do you work with)
             </label>
             <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
               type="text"
               className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[3.5rem] md:h-[4rem]  shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80 "
             />
@@ -259,6 +277,8 @@ export default function profile() {
               Timezone
             </label>
             <input
+              value={timezone}
+              onChange={(e) => setTimeZone(e.target.value)}
               type="text"
               className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[3.5rem] md:h-[4rem] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
             />
@@ -268,7 +288,7 @@ export default function profile() {
         <div>
           <div className="mt-[5vw] md:mt-[2vw] flex flex-col">
             <label className="fontPopSemibold text-base">
-              Typeof service provider
+              Type of service provider
             </label>
             {/* <input
               value={category}
@@ -277,12 +297,13 @@ export default function profile() {
               className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] rounded-[1.2vw] outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
             /> */}
             <select
+              value={tosp}
               name=""
               id=""
               className=" border p-[1rem] border-black h-[3.5rem] md:h-[4rem] shadow-md rounded-xl bg-white text-base"
             >
-              <option value="individual">Individual</option>
-              <option value="agency">Agency</option>
+              <option onClick={() => setTosp("Individual")} value="individual">Individual</option>
+              <option onClick={() => setTosp("Agency")} value="agency">Agency</option>
             </select>
           </div>
           {/* <div>
@@ -306,8 +327,8 @@ export default function profile() {
         <div className="mt-[5vw] md:mt-[2vw]">
           <div className="fontPopSemibold text-base">Resume</div>
           <input
-            value={roles}
-            onChange={(e) => setRoles(e.target.value)}
+            value={resume}
+            onChange={(e) => setResume(e.target.value)}
             type="text"
             className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[3.5rem] md:h-[4rem] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
           />
@@ -318,8 +339,9 @@ export default function profile() {
             Portfolio (Behance, Dribbble)
           </div>
           <input
-            // value={roles}
-            // onChange={(e) => setRoles(e.target.value)}
+
+            value={portfolio}
+            onChange={(e) => setPortfolio(e.target.value)}
             type="text"
             className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] h-[3.5rem] md:h-[4rem] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80"
           />

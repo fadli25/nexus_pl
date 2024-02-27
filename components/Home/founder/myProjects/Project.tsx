@@ -1,14 +1,15 @@
 import { getProjectUsers } from "@/lib/NexusProgram/project/utils/get_project_users";
 import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
+import { Button, FormControlLabel } from "@mui/material";
+import Switch, { SwitchProps } from "@mui/material/Switch";
+import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { MdAddCircle, MdOutlineArrowDropDownCircle } from "react-icons/md";
-import { Button, FormControlLabel } from "@mui/material";
-import Switch, { SwitchProps } from "@mui/material/Switch";
-import { styled } from "@mui/material/styles";
 
+import { fire } from "@/lib/NexusProgram/invite/fire";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { FaDiscord } from "react-icons/fa";
 
@@ -188,6 +189,16 @@ export default function Project({ project }: Project) {
     }
   };
 
+  const firing = async (i: number) => {
+    try {
+
+      await fire(anchorWallet, connection, users[i].pubkey, users[i].project)
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   const router = useRouter();
   console.log(users);
   users.map((el, index) => console.log(el.name));
@@ -214,7 +225,7 @@ export default function Project({ project }: Project) {
                 Edit Project
               </Button>
             </div>
-            <div>
+            {/* <div>
               <Button
                 variant="contained"
                 sx={buttonStyle}
@@ -231,7 +242,7 @@ export default function Project({ project }: Project) {
               >
                 Use Rebirth Tower
               </Button>
-            </div>
+            </div> */}
           </div>
           {projecte && (
             <div className="mt-[4vw] md:mt-[1vw] text-white bg-black rounded-[1vw] min-h-[20vw] w-full p-[4vw] md:p-[1vw]">
@@ -244,10 +255,7 @@ export default function Project({ project }: Project) {
               <div className="flex justify-start gap-x-[2vw] items-end">
                 <div className="rounded-[0.7vw] w-[70vw] md:w-[40vw] mt-[3vw] md:mt-[0.8vw] h-[25vw] md:h-[10vw] p-[3vw] md:p-[1vw] bg-white text-black text-[2.4vw] md:text-[1vw] font-semibold">
                   {/* {projecte.projectOverview} */}
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Dolor, fugit. Quis totam ratione corporis, maxime nulla
-                  explicabo deserunt repellat, laudantium ex dolor error
-                  aliquid, itaque debitis! Praesentium eligendi et officiis.
+                  {projecte.projectOverview}
                 </div>
                 <div className="flex items-center gap-x-[0.9vw] border-[0.19vw] border-white rounded-[0.5vw] py-[0.7vw] px-[1vw]">
                   {/* <div className="w-[2vw]">
@@ -393,6 +401,7 @@ export default function Project({ project }: Project) {
                     </motion.button>
                     <div>
                       <Button
+                        onClick={() => firing(index)}
                         variant="contained"
                         sx={fireButtonStyle}
                         className="!text-[3vw] md:!text-[0.8vw] !bg-[#FF2D2D] !px-[4vw] md:!px-[2vw] hover:!bg-[#FF2D2D] !rounded-[0.5vw] !text-white"
