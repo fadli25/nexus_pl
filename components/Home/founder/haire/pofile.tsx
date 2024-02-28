@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { IoLogoLinkedin, IoStarSharp } from "react-icons/io5";
 import { FaTwitter } from "react-icons/fa";
 import { GrLanguage } from "react-icons/gr";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import { useRouter } from "next/router";
 import { TbCurrencySolana } from "react-icons/tb";
 import PolygonIcon from "@/public/Polygon.svg";
@@ -84,14 +84,29 @@ export default function Profile() {
           </div>
         </div>
       </div>
+      <Stack className="flex-col md:flex-row gap-[3vw] justify-between mt-[5vw]">
+        <Stack
+          direction="row"
+          className="text-[3vw] md:text-[1.4vw] font-semibold gap-[3vw] md:gap-[1vw]"
+        >
+          <div>
+            <div>Discord ID</div>
+            <input className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]" />
+          </div>
+          <div>
+            <div>Telegram ID</div>
+            <input className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]" />
+          </div>
+        </Stack>
+        <Stack className=" gap-[3vw] md:gap-[1vw]">
+          <Button1>Contact</Button1>
+          <Button1>Review</Button1>
+        </Stack>
+      </Stack>
       <div className="mt-[4vw] md:mt-[3vw]">
         <div className="flex justify-between items-center">
           <div className="fontPopSemibold text-[4vw] md:text-[1.4vw]">
             Profile Overview
-          </div>
-          <div className="flex gap-x-[3vw] md:gap-x-[1vw]">
-            <Button1>Contact</Button1>
-            <Button1>Review</Button1>
           </div>
         </div>
         <div className="mt-[3vw] md:mt-[1vw] w-full p-[3vw] md:p-[2vw] rounded-[0.4vw] border border-black text-[3vw] md:text-[1.2vw] ">
@@ -165,6 +180,7 @@ export default function Profile() {
         <Button2 onClick={() => router.push("/founder/haire/hire")}>
           Hire
         </Button2>
+        <Button4>Reject</Button4>
       </div>
     </div>
   );
@@ -248,6 +264,30 @@ export function Button3({ children, onClick }: IconProps) {
         },
       }}
       className="bg-[#00ff47] hover:bg-[#00ff47]"
+      variant="contained"
+      onClick={onClick}
+    >
+      {children}
+    </Button>
+  );
+}
+export function Button4({ children, onClick }: IconProps) {
+  return (
+    <Button
+      sx={{
+        padding: "0.7vw 2vw",
+        borderRadius: "0.6vw",
+        fontSize: "1.1vw",
+        color: "#fff",
+        background: "#ff2d2e",
+        textTransform: "none",
+        "@media (max-width:767px)": {
+          fontSize: "3vw",
+        },
+        ":hover": {
+          background: "#ff2d2e",
+        },
+      }}
       variant="contained"
       onClick={onClick}
     >
