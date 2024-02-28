@@ -59,6 +59,8 @@ export async function invites(
         PROGRAM_ID
     );
 
+    console.log(invitation.toBase58())
+
     const tx = await program.methods.initInvitation(role).accounts({
         invitation: invitation,
         project: project,

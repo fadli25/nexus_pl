@@ -7,15 +7,20 @@ import { USER_PREFIX } from "../../constants/constants";
 const idl = require("../../../data/nexus.json")
 
 /**
+    nigotion: bool,
+    payment_rate_per_hour: u64,
     name: String,
+    country: String,
+    timezone: String,
+    tosp: String,
+    resume: String,
+    portfolio: String,
     image: String,
     category: String,
     roles: String,
     level_of_expertise: String,
-    payment_rate_per_hour: String,
     profile_overview: String,
     links: String,
-    nigotion: Boolean,
  */
 
 export async function init_user(
@@ -29,12 +34,17 @@ export async function init_user(
     links: string,
     profile_overview: string,
     payment_rate_per_hour: number,
-    nigotion: boolean
+    nigotion: boolean,
+    portfolio: string,
+    resume: string,
+    tosp: string,
+    timezone: string,
+    country: string,
 ) {
 
     const provider = new AnchorProvider(
-        connection, anchorWallet, {"preflightCommitment": "processed"},
-        );
+        connection, anchorWallet, { "preflightCommitment": "processed" },
+    );
 
     const PROGRAM_ID = new web3.PublicKey(idl.metadata.address)
     const program = new Program(idl, idl.metadata.address, provider);
@@ -47,25 +57,30 @@ export async function init_user(
         PROGRAM_ID
     );
 
-        const tx = await program.methods.initUser({
-                name: name,
-                image: image,
-                category: category,
-                roles: roles,
-                levelOfExpertise: level_of_expertise,
-                paymentRatePerHour: new BN(11),
-                profileOverview: profile_overview,
-                links: links,
-                nigotion: true,
-            }).accounts({
-                user: user,
-                authority: anchorWallet.publicKey,
-                systemProgram: web3.SystemProgram.programId
-        })
+    const tx = await program.methods.initUser({
+        name: name,
+        image: image,
+        category: category,
+        roles: roles,
+        levelOfExpertise: level_of_expertise,
+        paymentRatePerHour: new BN(payment_rate_per_hour),
+        profileOverview: profile_overview,
+        links: links,
+        nigotion: nigotion,
+        portfolio,
+        resume,
+        tosp,
+        timezone,
+        country,
+    }).accounts({
+        user: user,
+        authority: anchorWallet.publicKey,
+        systemProgram: web3.SystemProgram.programId
+    })
         // .transaction()
         .rpc({
             commitment: "confirmed",
         })
 
     return tx;
-    }
+}

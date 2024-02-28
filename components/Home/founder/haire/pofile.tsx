@@ -1,17 +1,76 @@
-import Image from "next/image";
-import React, { ReactNode } from "react";
+import { invites } from "@/lib/NexusProgram/invite/init_invite";
+import { getProjectForFounder } from "@/lib/NexusProgram/project/utils/get_projects";
+import { get_profile_info } from "@/lib/NexusProgram/user/utils/profile_info";
+import AptosIcon from "@/public/Aptos.svg";
+import PolygonIcon from "@/public/Polygon.svg";
+import SolanaIcon from "@/public/Solana.svg";
+import { web3 } from "@project-serum/anchor";
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
-import { IoLogoLinkedin, IoStarSharp } from "react-icons/io5";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { ReactNode, useEffect, useState } from "react";
 import { FaTwitter } from "react-icons/fa";
 import { GrLanguage } from "react-icons/gr";
 import { Button, Stack } from "@mui/material";
-import { useRouter } from "next/router";
+import { IoLogoLinkedin, IoStarSharp } from "react-icons/io5";
 import { TbCurrencySolana } from "react-icons/tb";
-import PolygonIcon from "@/public/Polygon.svg";
-import AptosIcon from "@/public/Aptos.svg";
-import SolanaIcon from "@/public/Solana.svg";
 
-export default function Profile() {
+export default function Profile({ user }: any) {
+  const [info, setInfo] = useState<any>();
+  const [project, setProjects] = useState<any[]>();
+
+  const anchorWallet = useAnchorWallet();
+  const { connection } = useConnection();
+
+  const get_info = async () => {
+    try {
+      const _user = new web3.PublicKey(user);
+      const infos = await get_profile_info(anchorWallet, connection, _user);
+      console.log(infos);
+      setInfo(infos);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const invite = async (i: number) => {
+    try {
+      await invites(
+        anchorWallet,
+        connection,
+        user.project,
+        project![i].pubkey,
+        user.roles
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const get_project = async () => {
+    try {
+      console.log("_projects");
+      const _projects = await getProjectForFounder(
+        connection,
+        anchorWallet!,
+        "confirmed"
+      );
+
+      console.log("_projects");
+      console.log(_projects);
+      setProjects(_projects);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+    get_info();
+    get_project();
+  }, [anchorWallet]);
+
   const img =
     "https://media.discordapp.net/attachments/1085293900706627595/1162185105696116826/Ellipse_1.png?ex=65a9c239&is=65974d39&hm=6a77d8451e8ca2161c281c277a67fc99170ff3ea97d36f513597e736c8b426d6&=&format=webp&quality=lossless&width=465&height=465";
   const solanaIcon =
@@ -35,12 +94,12 @@ export default function Profile() {
         </div>
         <div className="border border-black rounded-[1vw] shadow-md p-[2vw]">
           <div className="text-[4.4vw] md:text-[3vw] fontPopSemibold">
-            Zetsu | The Shaman King
+            {info && info.name}
           </div>
           <div className="text-[3vw] md:text-[2vw] flex items-center gap-x-[1vw]">
-            <div>Content Writer</div>
+            <div>{info && info.roles}</div>
             <div className="px-[1.5vw] py-[0.4vw] text-[2vw] md:text-[0.8vw] bg-[#1DA1F2] fontPopSemibold">
-              Expert
+              {info && info.levelOfExpertise}
             </div>
           </div>
           <div className="flex items-center text-[3vw] md:text-[1.5vw]">
@@ -59,10 +118,6 @@ export default function Profile() {
                 <GrLanguage />
               </Icon>
             </div>
-            <motion.button
-              whileTap={{ scale: 0.98 }}
-              className="text-[2.5vw] md:text-[1vw] font-semibold"
-            ></motion.button>
           </div>
         </div>
       </div>
@@ -80,7 +135,8 @@ export default function Profile() {
         <div className="flex flex-col items-start text-[2.5vw] md:text-[1.4vw]">
           <div className="fontPopSemibold text-[4vw] md:text-[1.4vw]">Rate</div>
           <div className="p-[1vw] border border-black shadow-md rounded-[0.5vw]">
-            $50 / week / Open to negotiations
+            ${info && Number(info.paymentRatePerHour)} / week / Open to
+            negotiations
           </div>
         </div>
       </div>
@@ -110,13 +166,7 @@ export default function Profile() {
           </div>
         </div>
         <div className="mt-[3vw] md:mt-[1vw] w-full p-[3vw] md:p-[2vw] rounded-[0.4vw] border border-black text-[3vw] md:text-[1.2vw] ">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          {info && info.profileOverview}
         </div>
       </div>
 
@@ -148,6 +198,7 @@ export default function Profile() {
       <div className="mt-[3vw] text-[3vw] md:text-[1.5vw]">
         <div className="fontPopSemibold">Categories</div>
         <input
+          value={info && info.category}
           type="text"
           className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all"
         />
@@ -155,6 +206,7 @@ export default function Profile() {
       <div className="mt-[3vw] text-[3vw] md:text-[1.5vw]">
         <div className="fontPopSemibold">Secondary Roles</div>
         <input
+          value={info && info.category}
           type="text"
           className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all"
         />
@@ -164,6 +216,7 @@ export default function Profile() {
           Others (Case Studes, Testimonials)
         </div>
         <textarea
+          value={info && info.links}
           rows={2}
           className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all"
         />

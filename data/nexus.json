@@ -262,11 +262,6 @@
           "isSigner": false
         },
         {
-          "name": "invitation",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
           "name": "project",
           "isMut": true,
           "isSigner": false
@@ -475,6 +470,26 @@
             "type": "string"
           },
           {
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "name": "timezone",
+            "type": "string"
+          },
+          {
+            "name": "tosp",
+            "type": "string"
+          },
+          {
+            "name": "resume",
+            "type": "string"
+          },
+          {
+            "name": "portfolio",
+            "type": "string"
+          },
+          {
             "name": "image",
             "type": "string"
           },
@@ -560,6 +575,10 @@
           },
           {
             "name": "projectOverview",
+            "type": "string"
+          },
+          {
+            "name": "departments",
             "type": "string"
           }
         ]
@@ -779,6 +798,10 @@
           {
             "name": "hiring",
             "type": "bool"
+          },
+          {
+            "name": "departments",
+            "type": "string"
           }
         ]
       }
@@ -833,7 +856,35 @@
         "kind": "struct",
         "fields": [
           {
+            "name": "nigotion",
+            "type": "bool"
+          },
+          {
+            "name": "paymentRatePerHour",
+            "type": "u64"
+          },
+          {
             "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "name": "timezone",
+            "type": "string"
+          },
+          {
+            "name": "tosp",
+            "type": "string"
+          },
+          {
+            "name": "resume",
+            "type": "string"
+          },
+          {
+            "name": "portfolio",
             "type": "string"
           },
           {
@@ -853,20 +904,12 @@
             "type": "string"
           },
           {
-            "name": "paymentRatePerHour",
-            "type": "u64"
-          },
-          {
             "name": "profileOverview",
             "type": "string"
           },
           {
             "name": "links",
             "type": "string"
-          },
-          {
-            "name": "nigotion",
-            "type": "bool"
           }
         ]
       }
@@ -1109,6 +1152,6 @@
     }
   ],
   "metadata": {
-    "address": "C35kaD3YLHBVMxwsxnre227XwgJo8gSN8jnrfThmfuUg"
+    "address": "33cQK4yLQkRVBKtRWoSA2aYjTPDgEp3CM6EK8w6M2ALf"
   }
 }

@@ -1,12 +1,36 @@
-import React, { ReactNode } from "react";
+import { getAllProjects } from "@/lib/NexusProgram/project/utils/get_all_projects";
+import AptosIcon from "@/public/Aptos.svg";
+import PolygonIcon from "@/public/Polygon.svg";
+import SolanaIcon from "@/public/Solana.svg";
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import PolygonIcon from "@/public/Polygon.svg";
-import AptosIcon from "@/public/Aptos.svg";
-import SolanaIcon from "@/public/Solana.svg";
+import React, { ReactNode, useEffect, useState } from "react";
 
 export default function freelance() {
+
+  const [projects, setProjects] = useState<any[]>()
+
+  const anchorWallet = useAnchorWallet();
+  const { connection } = useConnection()
+
+  const get_projects = async () => {
+    try {
+      const projects = await getAllProjects(connection, "confirmed");
+      setProjects(projects);
+      console.log(projects);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+
+    get_projects()
+  }, [anchorWallet])
+
   const featuredImage =
     "https://media.discordapp.net/attachments/1085293900706627595/1162191996614619186/Ellipse_1_1.png?ex=653b0aa4&is=652895a4&hm=d67c4517c86bd5ca0b09850880dde46eff4dd8980e31df291d047a5f66196faa&=&width=358&height=342";
   const imgg =
@@ -115,9 +139,9 @@ export default function freelance() {
           </div>
         </div>
         <div className="mt-[3vw] flex flex-wrap justify-center md:justify-between gap-y-[2vw] pb-[4vw]">
-          {data.map((el, i) => (
+          {projects && projects.map((el, i) => (
             <motion.div
-              onClick={() => router.push("/freelance/project")}
+              onClick={() => router.push("/freelance/project/" + el.pubkey.toBase58())}
               whileHover={{ scale: 0.98 }}
               key={i}
               className="w-[70vw] md:w-[32vw] cursor-pointer rounded-[1.4vw] md:rounded-[0.6vw] overflow-hidden  flex justify-between border-[0.11vw] border-black"
@@ -154,15 +178,15 @@ export default function freelance() {
                 <div className="flex justify-between items-center text-black">
                   <div>
                     <div className="fontPopSemibold  text-[2.6vw] md:text-[1.8vw]">
-                      John Sew
+                      {el.name}
                     </div>
                     <div className="text-[4vw] md:text-[1.2vw]">
-                      Digital Artist
+                      {el.category}
                     </div>
                   </div>
                 </div>
                 <div className="mt-[0.5vw] text-[1.8vw] md:text-[0.7vw] w-full border-[#282828] border-[0.11vw] text-black h-[13vw] md:h-[5.9vw] rounded-[0.6vw] p-[1vw] md:p-[0.5vw]">
-                  Experienced writer, SEO Expert, worked for over 50 projects
+                  {el.projectOverview}
                 </div>
               </div>
               <div className="w-[30%] bg-[#1f1f1f] h-full">

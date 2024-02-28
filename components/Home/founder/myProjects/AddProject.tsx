@@ -76,6 +76,7 @@ export default function addProject() {
   const [category, setCategory] = useState<string>("");
   const [project_overview, setProjectOverview] = useState<string>("");
   const [name, setName] = useState<string>("");
+  const [departments, setDepartments] = useState<string>("");
 
   const initProject = async () => {
     try {
@@ -90,6 +91,7 @@ export default function addProject() {
         twitter_link,
         website_link,
         project_overview,
+        departments,
         hiring
       );
     } catch (e) {
@@ -283,6 +285,7 @@ export default function addProject() {
         <div>
           <div className="fontPopSemibold mt-[1vw]">Add Departments</div>
           <textarea
+            onChange={(e) => setDepartments(e.target.value)}
             rows={3}
             className={`${inputStyle}`}
             style={{ width: "100%" }}

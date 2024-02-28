@@ -1,13 +1,15 @@
-import Image from "next/image";
-import React, { ReactNode } from "react";
-import { motion } from "framer-motion";
-import { FaLinkedin, FaTwitter } from "react-icons/fa";
-import { MdLanguage } from "react-icons/md";
-import { Button } from "@mui/material";
-import { useRouter } from "next/router";
-import solanaIcon from "@/public/Solana.svg";
+import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
 import aptosIcon from "@/public/Aptos.svg";
 import polygonIcon from "@/public/Polygon.svg";
+import solanaIcon from "@/public/Solana.svg";
+import { Button } from "@mui/material";
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { ReactNode, useEffect, useState } from "react";
+import { FaLinkedin, FaTwitter } from "react-icons/fa";
+import { MdLanguage } from "react-icons/md";
 
 // interface Role {
 //   role: string;
@@ -15,19 +17,47 @@ import polygonIcon from "@/public/Polygon.svg";
 
 // // function renderRoles(roles:){}
 
-export default function project() {
+export default function project({ project }: any) {
   const img =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162203481017438298/Untitled670_20230803112855_1.png?ex=65ea6cd6&is=65d7f7d6&hm=6ac7420b0b39e7278af3a22e2dbb30016935be02cdefb68de9e06b5f8bfd428c&=&format=webp&quality=lossless&width=267&height=273";
+    "https://media.discordapp.net/attachments/1085293900706627595/1162192637705605280/Ellipse_5_3.png?ex=653b0b3d&is=6528963d&hm=40697a2331ee15067ae9ae3e82fdf9252eb0ab75434b5e23a0297d3f5efc71eb&=&width=235&height=226";
+  const solanaIcon =
+    "https://img.icons8.com/external-black-fill-lafs/64/external-Solana-cryptocurrency-black-fill-lafs.png";
+
+  const [project_info, setProjectInfo] = useState<any>()
+
+  const anchorWallet = useAnchorWallet()
+  const { connection } = useConnection();
+
+
+  const get_infos = async () => {
+    try {
+
+      const info = await get_project_info(anchorWallet, connection, project);
+      console.log(info);
+      setProjectInfo(info)
+
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+    get_infos()
+  }, [anchorWallet])
+
+
   const router = useRouter();
   return (
     <div>
       <div className="w-[90vw] md:w-[66vw] mx-auto py-[5vw]">
         <div className="w-full bg-black text-white fontPopSemibold rounded-[1vw] flex justify-between items-center py-[3vw] px-[4vw] text-[2.4vw] md:text-[1.4vw]">
           <div>
-            <div className="text-[5vw] md:text-[3.4vw]">Bone Shamans</div>
+            <div className="text-[5vw] md:text-[3.4vw]">{project_info && project_info.name}</div>
             <div className="mt-[1vw]">
               <span className="text-[#00ff47]">Project Categories: </span>
-              <span>NFT, DeFI, DAO, Social FI</span>
+              <span>{project_info && project_info.category}</span>
             </div>
           </div>
           <div className="rounded-full border-[0.14vw] border-white">
@@ -70,6 +100,8 @@ export default function project() {
               Project Description
             </div>
             <textarea
+              value={project_info && project_info.projectOverview}
+              // className="w-full border-2 border-solid border-black text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
               className="w-full border-2 border-solid text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
               rows={10}
             ></textarea>
@@ -97,7 +129,7 @@ export default function project() {
             </div>
           </div>
         </div>
-        <div className="mt-[5vw]">
+        {/* <div className="mt-[5vw]">
           <div className="text-[4vw] md:text-[1.6vw] fontPopSemibold text-center text-black">
             Review
           </div>
@@ -105,7 +137,7 @@ export default function project() {
             className="w-full border-2 border-solid  text-black focus:scale-[101%] focus:border-red-500 transition-all p-[2vw] border-black rounded-[1vw] mt-[0.8vw]"
             rows={14}
           ></textarea>
-        </div>
+        </div> */}
       </div>
     </div>
   );

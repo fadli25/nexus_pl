@@ -160,6 +160,11 @@ export type CardinalStakePool =
             isSigner: false
           },
           {
+            name: "founder",
+            isMut: true,
+            isSigner: false
+          },
+          {
             name: "user",
             isMut: true,
             isSigner: false
@@ -258,11 +263,6 @@ export type CardinalStakePool =
             isSigner: false
           },
           {
-            name: "invitation",
-            isMut: true,
-            isSigner: false
-          },
-          {
             name: "project",
             isMut: true,
             isSigner: false
@@ -279,6 +279,111 @@ export type CardinalStakePool =
           },
           {
             name: "authority",
+            isMut: true,
+            isSigner: true
+          },
+          {
+            name: "systemProgram",
+            isMut: false,
+            isSigner: false
+          }
+        ],
+        args: []
+      },
+      {
+        name: "recuringPayment",
+        accounts: [
+          {
+            name: "payment",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "founder",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "reciever",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "identifier",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "authority",
+            isMut: true,
+            isSigner: true
+          },
+          {
+            name: "escrow",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "systemProgram",
+            isMut: false,
+            isSigner: false
+          }
+        ],
+        args: [
+          {
+            name: "info",
+            type: {
+              defined: "PaymentInfo"
+            }
+          }
+        ]
+      },
+      {
+        name: "payment",
+        accounts: [
+          {
+            name: "payment",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "founder",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "reciever",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "escrow",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "address",
+            isMut: true,
+            isSigner: true
+          },
+          {
+            name: "systemProgram",
+            isMut: false,
+            isSigner: false
+          }
+        ],
+        args: []
+      },
+      {
+        name: "initIdentifier",
+        accounts: [
+          {
+            name: "identifier",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "payer",
             isMut: true,
             isSigner: true
           },
@@ -363,6 +468,26 @@ export type CardinalStakePool =
             },
             {
               name: "name",
+              type: "string"
+            },
+            {
+              name: "country",
+              type: "string"
+            },
+            {
+              name: "timezone",
+              type: "string"
+            },
+            {
+              name: "tosp",
+              type: "string"
+            },
+            {
+              name: "resume",
+              type: "string"
+            },
+            {
+              name: "portfolio",
               type: "string"
             },
             {
@@ -452,54 +577,10 @@ export type CardinalStakePool =
             {
               name: "projectOverview",
               type: "string"
-            }
-          ]
-        }
-      },
-      {
-        name: "OneTimePayment",
-        type: {
-          kind: "struct",
-          fields: [
-            {
-              name: "bump",
-              type: "u8"
             },
             {
-              name: "founder",
-              type: "publicKey"
-            },
-            {
-              name: "reciever",
-              type: "publicKey"
-            },
-            {
-              name: "paymentRatePerHour",
-              type: "u64"
-            },
-            {
-              name: "workingHours",
-              type: "u64"
-            },
-            {
-              name: "startAt",
-              type: "i64"
-            },
-            {
-              name: "lastUpdateAt",
-              type: "i64"
-            },
-            {
-              name: "endAt",
-              type: "i64"
-            },
-            {
-              name: "authority",
-              type: "publicKey"
-            },
-            {
-              name: "live",
-              type: "bool"
+              name: "departments",
+              type: "string"
             }
           ]
         }
@@ -552,6 +633,10 @@ export type CardinalStakePool =
             {
               name: "live",
               type: "bool"
+            },
+            {
+              name: "name",
+              type: "string"
             }
           ]
         }
@@ -656,16 +741,16 @@ export type CardinalStakePool =
           kind: "struct",
           fields: [
             {
-              name: "paymentRatePerHour",
+              name: "workingTime",
               type: "u64"
             },
             {
-              name: "workingHours",
+              name: "timeRate",
               type: "u64"
             },
             {
-              name: "endAt",
-              type: "i64"
+              name: "totalAmount",
+              type: "u64"
             },
             {
               name: "roles",
@@ -714,6 +799,10 @@ export type CardinalStakePool =
             {
               name: "hiring",
               type: "bool"
+            },
+            {
+              name: "departments",
+              type: "string"
             }
           ]
         }
@@ -752,10 +841,6 @@ export type CardinalStakePool =
               type: "string"
             },
             {
-              name: "roles",
-              type: "string"
-            },
-            {
               name: "projectOverview",
               type: "string"
             },
@@ -772,7 +857,35 @@ export type CardinalStakePool =
           kind: "struct",
           fields: [
             {
+              name: "nigotion",
+              type: "bool"
+            },
+            {
+              name: "paymentRatePerHour",
+              type: "u64"
+            },
+            {
               name: "name",
+              type: "string"
+            },
+            {
+              name: "country",
+              type: "string"
+            },
+            {
+              name: "timezone",
+              type: "string"
+            },
+            {
+              name: "tosp",
+              type: "string"
+            },
+            {
+              name: "resume",
+              type: "string"
+            },
+            {
+              name: "portfolio",
               type: "string"
             },
             {
@@ -792,20 +905,12 @@ export type CardinalStakePool =
               type: "string"
             },
             {
-              name: "paymentRatePerHour",
-              type: "u64"
-            },
-            {
               name: "profileOverview",
               type: "string"
             },
             {
               name: "links",
               type: "string"
-            },
-            {
-              name: "nigotion",
-              type: "bool"
             }
           ]
         }
@@ -1040,12 +1145,17 @@ export type CardinalStakePool =
         code: 6036,
         name: "NotEnoughFunds",
         msg: "Not Enough Funds!"
+      },
+      {
+        code: 6037,
+        name: "PaymentNotAvailable",
+        msg: "Payment Not Available!"
       }
     ],
     metadata: {
-      address: "C35kaD3YLHBVMxwsxnre227XwgJo8gSN8jnrfThmfuUg"
+      address: "33cQK4yLQkRVBKtRWoSA2aYjTPDgEp3CM6EK8w6M2ALf"
     }
-  }
+  };
 
 export const IDL: CardinalStakePool =
 {
@@ -1209,6 +1319,11 @@ export const IDL: CardinalStakePool =
           isSigner: false
         },
         {
+          name: "founder",
+          isMut: true,
+          isSigner: false
+        },
+        {
           name: "user",
           isMut: true,
           isSigner: false
@@ -1307,11 +1422,6 @@ export const IDL: CardinalStakePool =
           isSigner: false
         },
         {
-          name: "invitation",
-          isMut: true,
-          isSigner: false
-        },
-        {
           name: "project",
           isMut: true,
           isSigner: false
@@ -1328,6 +1438,111 @@ export const IDL: CardinalStakePool =
         },
         {
           name: "authority",
+          isMut: true,
+          isSigner: true
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false
+        }
+      ],
+      args: []
+    },
+    {
+      name: "recuringPayment",
+      accounts: [
+        {
+          name: "payment",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "founder",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "reciever",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "identifier",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "authority",
+          isMut: true,
+          isSigner: true
+        },
+        {
+          name: "escrow",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false
+        }
+      ],
+      args: [
+        {
+          name: "info",
+          type: {
+            defined: "PaymentInfo"
+          }
+        }
+      ]
+    },
+    {
+      name: "payment",
+      accounts: [
+        {
+          name: "payment",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "founder",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "reciever",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "escrow",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "address",
+          isMut: true,
+          isSigner: true
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false
+        }
+      ],
+      args: []
+    },
+    {
+      name: "initIdentifier",
+      accounts: [
+        {
+          name: "identifier",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "payer",
           isMut: true,
           isSigner: true
         },
@@ -1412,6 +1627,26 @@ export const IDL: CardinalStakePool =
           },
           {
             name: "name",
+            type: "string"
+          },
+          {
+            name: "country",
+            type: "string"
+          },
+          {
+            name: "timezone",
+            type: "string"
+          },
+          {
+            name: "tosp",
+            type: "string"
+          },
+          {
+            name: "resume",
+            type: "string"
+          },
+          {
+            name: "portfolio",
             type: "string"
           },
           {
@@ -1501,54 +1736,10 @@ export const IDL: CardinalStakePool =
           {
             name: "projectOverview",
             type: "string"
-          }
-        ]
-      }
-    },
-    {
-      name: "OneTimePayment",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "bump",
-            type: "u8"
           },
           {
-            name: "founder",
-            type: "publicKey"
-          },
-          {
-            name: "reciever",
-            type: "publicKey"
-          },
-          {
-            name: "paymentRatePerHour",
-            type: "u64"
-          },
-          {
-            name: "workingHours",
-            type: "u64"
-          },
-          {
-            name: "startAt",
-            type: "i64"
-          },
-          {
-            name: "lastUpdateAt",
-            type: "i64"
-          },
-          {
-            name: "endAt",
-            type: "i64"
-          },
-          {
-            name: "authority",
-            type: "publicKey"
-          },
-          {
-            name: "live",
-            type: "bool"
+            name: "departments",
+            type: "string"
           }
         ]
       }
@@ -1601,6 +1792,10 @@ export const IDL: CardinalStakePool =
           {
             name: "live",
             type: "bool"
+          },
+          {
+            name: "name",
+            type: "string"
           }
         ]
       }
@@ -1705,16 +1900,16 @@ export const IDL: CardinalStakePool =
         kind: "struct",
         fields: [
           {
-            name: "paymentRatePerHour",
+            name: "workingTime",
             type: "u64"
           },
           {
-            name: "workingHours",
+            name: "timeRate",
             type: "u64"
           },
           {
-            name: "endAt",
-            type: "i64"
+            name: "totalAmount",
+            type: "u64"
           },
           {
             name: "roles",
@@ -1763,6 +1958,10 @@ export const IDL: CardinalStakePool =
           {
             name: "hiring",
             type: "bool"
+          },
+          {
+            name: "departments",
+            type: "string"
           }
         ]
       }
@@ -1801,10 +2000,6 @@ export const IDL: CardinalStakePool =
             type: "string"
           },
           {
-            name: "roles",
-            type: "string"
-          },
-          {
             name: "projectOverview",
             type: "string"
           },
@@ -1821,7 +2016,35 @@ export const IDL: CardinalStakePool =
         kind: "struct",
         fields: [
           {
+            name: "nigotion",
+            type: "bool"
+          },
+          {
+            name: "paymentRatePerHour",
+            type: "u64"
+          },
+          {
             name: "name",
+            type: "string"
+          },
+          {
+            name: "country",
+            type: "string"
+          },
+          {
+            name: "timezone",
+            type: "string"
+          },
+          {
+            name: "tosp",
+            type: "string"
+          },
+          {
+            name: "resume",
+            type: "string"
+          },
+          {
+            name: "portfolio",
             type: "string"
           },
           {
@@ -1841,20 +2064,12 @@ export const IDL: CardinalStakePool =
             type: "string"
           },
           {
-            name: "paymentRatePerHour",
-            type: "u64"
-          },
-          {
             name: "profileOverview",
             type: "string"
           },
           {
             name: "links",
             type: "string"
-          },
-          {
-            name: "nigotion",
-            type: "bool"
           }
         ]
       }
@@ -2089,9 +2304,14 @@ export const IDL: CardinalStakePool =
       code: 6036,
       name: "NotEnoughFunds",
       msg: "Not Enough Funds!"
+    },
+    {
+      code: 6037,
+      name: "PaymentNotAvailable",
+      msg: "Payment Not Available!"
     }
   ],
   metadata: {
-    address: "C35kaD3YLHBVMxwsxnre227XwgJo8gSN8jnrfThmfuUg"
+    address: "33cQK4yLQkRVBKtRWoSA2aYjTPDgEp3CM6EK8w6M2ALf"
   }
 }
