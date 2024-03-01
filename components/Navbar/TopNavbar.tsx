@@ -469,22 +469,22 @@ export default function TopNavbar() {
           </div>
         )}
         {path.slice(0, 8) === "/freelan" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center -z-10">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center ">
             {freelance()}
           </div>
         )}
         {path.slice(0, 8) === "/message" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center -z-10">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center ">
             {messages()}
           </div>
         )}
         {path.slice(0, 6) === "/tower" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center -z-10">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center ">
             {tower()}
           </div>
         )}
         {path.slice(0, 6) === "/setti" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center -z-10">
+          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center ">
             {settings()}
           </div>
         )}

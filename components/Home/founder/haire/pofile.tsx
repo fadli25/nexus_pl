@@ -4,7 +4,6 @@ import { get_profile_info } from "@/lib/NexusProgram/user/utils/profile_info";
 import AptosIcon from "@/public/Aptos.svg";
 import PolygonIcon from "@/public/Polygon.svg";
 import SolanaIcon from "@/public/Solana.svg";
-import { Button } from "@mui/material";
 import { web3 } from "@project-serum/anchor";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
@@ -13,16 +12,16 @@ import { useRouter } from "next/router";
 import React, { ReactNode, useEffect, useState } from "react";
 import { FaTwitter } from "react-icons/fa";
 import { GrLanguage } from "react-icons/gr";
+import { Button, Stack } from "@mui/material";
 import { IoLogoLinkedin, IoStarSharp } from "react-icons/io5";
 import { TbCurrencySolana } from "react-icons/tb";
 
 export default function Profile({ user }: any) {
+  const [info, setInfo] = useState<any>();
+  const [project, setProjects] = useState<any[]>();
 
-  const [info, setInfo] = useState<any>()
-  const [project, setProjects] = useState<any[]>()
-
-  const anchorWallet = useAnchorWallet()
-  const { connection } = useConnection()
+  const anchorWallet = useAnchorWallet();
+  const { connection } = useConnection();
 
   const get_info = async () => {
     try {
@@ -37,7 +36,13 @@ export default function Profile({ user }: any) {
 
   const invite = async (i: number) => {
     try {
-      await invites(anchorWallet, connection, user.project, project![i].pubkey, user.roles);
+      await invites(
+        anchorWallet,
+        connection,
+        user.project,
+        project![i].pubkey,
+        user.roles
+      );
     } catch (e) {
       console.log(e);
     }
@@ -63,8 +68,8 @@ export default function Profile({ user }: any) {
   useEffect(() => {
     if (!anchorWallet) return;
     get_info();
-    get_project()
-  }, [anchorWallet])
+    get_project();
+  }, [anchorWallet]);
 
   const img =
     "https://media.discordapp.net/attachments/1085293900706627595/1162185105696116826/Ellipse_1.png?ex=65a9c239&is=65974d39&hm=6a77d8451e8ca2161c281c277a67fc99170ff3ea97d36f513597e736c8b426d6&=&format=webp&quality=lossless&width=465&height=465";
@@ -130,18 +135,34 @@ export default function Profile({ user }: any) {
         <div className="flex flex-col items-start text-[2.5vw] md:text-[1.4vw]">
           <div className="fontPopSemibold text-[4vw] md:text-[1.4vw]">Rate</div>
           <div className="p-[1vw] border border-black shadow-md rounded-[0.5vw]">
-            ${info && Number(info.paymentRatePerHour)} / week / Open to negotiations
+            ${info && Number(info.paymentRatePerHour)} / week / Open to
+            negotiations
           </div>
         </div>
       </div>
+      <Stack className="flex-col md:flex-row gap-[3vw] justify-between mt-[5vw]">
+        <Stack
+          direction="row"
+          className="text-[3vw] md:text-[1.4vw] font-semibold gap-[3vw] md:gap-[1vw]"
+        >
+          <div>
+            <div>Discord ID</div>
+            <input className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]" />
+          </div>
+          <div>
+            <div>Telegram ID</div>
+            <input className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]" />
+          </div>
+        </Stack>
+        <Stack className=" gap-[3vw] md:gap-[1vw]">
+          <Button1>Contact</Button1>
+          <Button1>Review</Button1>
+        </Stack>
+      </Stack>
       <div className="mt-[4vw] md:mt-[3vw]">
         <div className="flex justify-between items-center">
           <div className="fontPopSemibold text-[4vw] md:text-[1.4vw]">
             Profile Overview
-          </div>
-          <div className="flex gap-x-[3vw] md:gap-x-[1vw]">
-            <Button1>Contact</Button1>
-            <Button1>Review</Button1>
           </div>
         </div>
         <div className="mt-[3vw] md:mt-[1vw] w-full p-[3vw] md:p-[2vw] rounded-[0.4vw] border border-black text-[3vw] md:text-[1.2vw] ">
@@ -212,6 +233,7 @@ export default function Profile({ user }: any) {
         <Button2 onClick={() => router.push("/founder/haire/hire")}>
           Hire
         </Button2>
+        <Button4>Reject</Button4>
       </div>
     </div>
   );
@@ -295,6 +317,30 @@ export function Button3({ children, onClick }: IconProps) {
         },
       }}
       className="bg-[#00ff47] hover:bg-[#00ff47]"
+      variant="contained"
+      onClick={onClick}
+    >
+      {children}
+    </Button>
+  );
+}
+export function Button4({ children, onClick }: IconProps) {
+  return (
+    <Button
+      sx={{
+        padding: "0.7vw 2vw",
+        borderRadius: "0.6vw",
+        fontSize: "1.1vw",
+        color: "#fff",
+        background: "#ff2d2e",
+        textTransform: "none",
+        "@media (max-width:767px)": {
+          fontSize: "3vw",
+        },
+        ":hover": {
+          background: "#ff2d2e",
+        },
+      }}
       variant="contained"
       onClick={onClick}
     >
