@@ -1,114 +1,147 @@
+import { approve_apply } from "@/lib/NexusProgram/project/approve_apply";
+import { reject_apply } from "@/lib/NexusProgram/project/reject_apply";
+import { getApplyForProject } from "@/lib/NexusProgram/project/utils/get_apply_for_project";
+import { getProjectForFounder } from "@/lib/NexusProgram/project/utils/get_projects";
+import { getAllRoles } from "@/lib/NexusProgram/project/utils/get_roles";
+import { MuiButtonAprove, MuiButtonReject } from "@/pages/freelance/outgoing";
 import { Button } from "@mui/material";
-import React, { ReactNode } from "react";
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import React, { ReactNode, useEffect, useState } from "react";
 
 export default function incoming() {
   const router = useRouter();
   const data = [1, 2, 3];
+
+  const [projects, setProjects] = useState<any[]>()
+
+  const anchorWallet = useAnchorWallet();
+  const { connection } = useConnection()
+
+  const get_projects = async () => {
+    try {
+      const projects = await getProjectForFounder(
+        connection,
+        anchorWallet!,
+        "confirmed"
+      );
+
+      await Promise.all(projects.map(async (project, i) => {
+        const applays = await getApplyForProject(connection, project.pubkey, "confirmed");
+        console.log("applays")
+        console.log(applays)
+        projects[i].role = [];
+        projects[i].applys = applays;
+        await new Promise(resolve => setTimeout(resolve, 1000)); // 3 sec
+      }))
+      // console.log(projects);
+      const roles = await getAllRoles(connection, 'confirmed');
+      console.log(roles);
+
+      roles.map((role) => {
+        projects.map((project, i) => {
+          if (role.project.toBase58() == project.pubkey.toBase58()) {
+            console.log("Done");
+            projects[i].role.push(role)
+          }
+        })
+      })
+
+
+
+      console.log(projects);
+      setProjects(projects);
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+    get_projects()
+  }, [anchorWallet])
+
+  const approve = async (i: number, j: number) => {
+    try {
+      if (!anchorWallet) return;
+      await approve_apply(anchorWallet, connection, projects![i].pubkey, projects![i].applys[j].rolePubkey, projects![i].applys[j].user, projects![i].applys[j].pubkey)
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const reject = async (i: number, j: number) => {
+    try {
+      if (!anchorWallet) return;
+      await reject_apply(anchorWallet, connection, projects![i].pubkey, projects![i].applys[j].rolePubkey, projects![i].applys[j].pubkey)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <div className="py-[4vw]">
-      <div>
+      {projects && projects.map((project: any, i: number) => (<div>
         <div className="w-[90vw] md:w-[64vw]  mx-auto bg-black rounded-[1vw] px-[2vw] py-[1vw] flex justify-between">
           <div>
             <div className="text-[5vw] md:text-[3vw] fontPopSemibold">
-              Bone Shamans
+              {project.name}
             </div>
             <div className="text-[3vw] md:text-[1vw] font-semibold text-[#00ff47]">
               50 Incoming Application
             </div>
 
-            <div className="text-[4vw] md:text-[1.5vw] font-semibold text-[#00ff47] mt-[3vw]">
+            {/* <div className="text-[4vw] md:text-[1.5vw] font-semibold text-[#00ff47] mt-[3vw]">
               Collab Manager{" "}
               <span className="text-white  text-[3vw] md:text-[1.4vw] px-[0.7vw] border border-white rounded-md font-sans">
                 8
               </span>
-            </div>
+            </div> */}
           </div>
 
           <div className="text-[4vw] md:text-[2vw] text-[#00ff47] pb-[2vw]">
             <div className="text-white fontPopSemibold">Roles Needed</div>
             <div className="mt-[0.6vw] text-[2vw] md:text-[1.4vw] flex flex-col items-start gap-y-[0.5vw]">
-              <ButtonMotion>Community Mod</ButtonMotion>
-              <ButtonMotion>Collab Manager</ButtonMotion>
-              <ButtonMotion>Project Manger</ButtonMotion>
+              {
+                project.role.map((rl: any) => (
+                  <>
+                    <ButtonMotion>{rl.role}</ButtonMotion>
+                  </>
+                ))
+              }
             </div>
           </div>
         </div>
-        {data.map((el, i) => (
+        {project.applys.map((el: any, j: number) => (
           <div
-            key={i}
+            key={j}
             className="w-[80vw] md:w-[54vw] mx-auto mt-[3vw] md:mt-[2vw] text-black border border-black rounded-[1vw] px-[2vw] py-[1.4vw] flex justify-between items-center"
           >
             <div className="flex items-center gap-x-[1vw]">
               <div className="w-[15vw] md:w-[7vw] h-[15vw] md:h-[7vw] bg-black/80 rounded-full"></div>
               <div>
                 <div className=" font-semibold text-[4vw] md:text-[2vw] underline">
-                  Manay
+                  {el.name}
                 </div>
                 <div className="text-[2.4vw] md:text-[1.4vw]">
-                  Community Manager
+                  {el.role}
                 </div>
               </div>
             </div>
             <div>
-              <Button1 onClick={() => router.push("/founder/haire/profile")}>
-                Read Cover Letter
-              </Button1>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="mt-[5vw]">
-        <div className="w-[90vw] md:w-[64vw]  mx-auto bg-black rounded-[1vw] px-[2vw] py-[1vw] flex justify-between">
-          <div>
-            <div className="text-[5vw] md:text-[3vw] fontPopSemibold">
-              Aptos Monkeys
-            </div>
-            <div className="text-[3vw] md:text-[1vw] font-semibold text-[#00ff47]">
-              50 Incoming Application
-            </div>
+              <MuiButtonAprove onClick={() => { approve(i, j) }}>Approve</MuiButtonAprove>
+              <MuiButtonReject onClick={() => { reject(i, j) }}>Reject</MuiButtonReject>
 
-            <div className="text-[4vw] md:text-[1.5vw] font-semibold text-[#00ff47] mt-[3vw]">
-              Collab Manager{" "}
-              <span className="text-white  text-[3vw] md:text-[1.4vw] px-[0.7vw] border border-white rounded-md font-sans">
-                8
-              </span>
-            </div>
-          </div>
-          <div className="text-[4vw] md:text-[2vw] text-[#00ff47] pb-[2vw]">
-            <div className="text-white fontPopSemibold">Roles Needed</div>
-            <div className="mt-[0.6vw] text-[2vw] md:text-[1.4vw] flex flex-col items-start gap-y-[2vw] md:gap-y-[0.5vw]">
-              <ButtonMotion>Community Mod</ButtonMotion>
-              <ButtonMotion>Collab Manager</ButtonMotion>
-              <ButtonMotion>Project Manger</ButtonMotion>
-            </div>
-          </div>
-        </div>
-        {data.map((el, i) => (
-          <div
-            key={i}
-            className="w-[80vw] md:w-[54vw] mx-auto mt-[3vw] md:mt-[2vw] text-black border border-black rounded-[1vw] px-[2vw] py-[1.4vw] flex justify-between items-center"
-          >
-            <div className="flex items-center gap-x-[1vw]">
-              <div className="w-[15vw] md:w-[7vw] h-[15vw] md:h-[7vw] bg-black/80 rounded-full"></div>
-              <div>
-                <div className=" font-semibold text-[4vw] md:text-[2vw] underline">
-                  Manay
-                </div>
-                <div className=" text-[2.4vw] md:text-[1.4vw]">
-                  Community Manager
-                </div>
-              </div>
-            </div>
-            <div>
-              <Button1 onClick={() => router.push("/founder/haire/profile")}>
+              {/* <Button1 onClick={() => router.push("/founder/haire/profile")}>
                 Read Cover Letter
-              </Button1>
+              </Button1> */}
             </div>
           </div>
         ))}
-      </div>
+      </div>))}
     </div>
   );
 }

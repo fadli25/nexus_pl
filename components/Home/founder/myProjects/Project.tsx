@@ -314,6 +314,7 @@ export default function Project({ project }: Project) {
                 </span>
               </div>
               <motion.button
+                onClick={() => router.push("/founder/project/addRole/" + project)}
                 whileTap={{ scale: 0.98 }}
                 className="text-[2.4vw] md:text-[0.9vw] font-semibold"
               >
@@ -385,7 +386,7 @@ export default function Project({ project }: Project) {
                     </div>
                     <div>
                       <div className="text-[5vw] md:text-[2vw] fontPopSemibold underline">
-                        {user.projectName}
+                        {user.name}
                       </div>
                       <div className="text-[3vw] md:text-[1.4vw]">
                         {user.role}

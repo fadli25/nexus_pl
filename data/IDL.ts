@@ -394,6 +394,193 @@ export type CardinalStakePool =
           }
         ],
         args: []
+      },
+      {
+        name: "initRole",
+        accounts: [
+          {
+            name: "role",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "founder",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "project",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "authority",
+            isMut: true,
+            isSigner: true
+          },
+          {
+            name: "systemProgram",
+            isMut: false,
+            isSigner: false
+          }
+        ],
+        args: [
+          {
+            name: "info",
+            type: {
+              defined: "RoleInfo"
+            }
+          }
+        ]
+      },
+      {
+        name: "apply",
+        accounts: [
+          {
+            name: "apply",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "role",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "project",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "user",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "authority",
+            isMut: true,
+            isSigner: true
+          },
+          {
+            name: "systemProgram",
+            isMut: false,
+            isSigner: false
+          }
+        ],
+        args: []
+      },
+      {
+        name: "rejectApply",
+        accounts: [
+          {
+            name: "apply",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "role",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "founder",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "project",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "authority",
+            isMut: true,
+            isSigner: true
+          },
+          {
+            name: "systemProgram",
+            isMut: false,
+            isSigner: false
+          }
+        ],
+        args: []
+      },
+      {
+        name: "approveApply",
+        accounts: [
+          {
+            name: "apa",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "apply",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "role",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "founder",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "project",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "user",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "authority",
+            isMut: true,
+            isSigner: true
+          },
+          {
+            name: "systemProgram",
+            isMut: false,
+            isSigner: false
+          }
+        ],
+        args: []
+      },
+      {
+        name: "closeRole",
+        accounts: [
+          {
+            name: "role",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "founder",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "project",
+            isMut: true,
+            isSigner: false
+          },
+          {
+            name: "authority",
+            isMut: true,
+            isSigner: true
+          },
+          {
+            name: "systemProgram",
+            isMut: false,
+            isSigner: false
+          }
+        ],
+        args: []
       }
     ],
     accounts: [
@@ -718,6 +905,86 @@ export type CardinalStakePool =
         }
       },
       {
+        name: "Role",
+        type: {
+          kind: "struct",
+          fields: [
+            {
+              name: "bump",
+              type: "u8"
+            },
+            {
+              name: "payment",
+              type: "u64"
+            },
+            {
+              name: "time",
+              type: "i64"
+            },
+            {
+              name: "project",
+              type: "publicKey"
+            },
+            {
+              name: "user",
+              type: "publicKey"
+            },
+            {
+              name: "role",
+              type: "string"
+            },
+            {
+              name: "levelOfExperience",
+              type: "string"
+            },
+            {
+              name: "description",
+              type: "string"
+            }
+          ]
+        }
+      },
+      {
+        name: "Apply",
+        type: {
+          kind: "struct",
+          fields: [
+            {
+              name: "bump",
+              type: "u8"
+            },
+            {
+              name: "payment",
+              type: "u64"
+            },
+            {
+              name: "time",
+              type: "i64"
+            },
+            {
+              name: "rolePubkey",
+              type: "publicKey"
+            },
+            {
+              name: "project",
+              type: "publicKey"
+            },
+            {
+              name: "user",
+              type: "publicKey"
+            },
+            {
+              name: "name",
+              type: "string"
+            },
+            {
+              name: "role",
+              type: "string"
+            }
+          ]
+        }
+      },
+      {
         name: "Identifier",
         type: {
           kind: "struct",
@@ -802,6 +1069,34 @@ export type CardinalStakePool =
             },
             {
               name: "departments",
+              type: "string"
+            }
+          ]
+        }
+      },
+      {
+        name: "RoleInfo",
+        type: {
+          kind: "struct",
+          fields: [
+            {
+              name: "time",
+              type: "i64"
+            },
+            {
+              name: "payment",
+              type: "u64"
+            },
+            {
+              name: "role",
+              type: "string"
+            },
+            {
+              name: "levelOfExperience",
+              type: "string"
+            },
+            {
+              name: "description",
               type: "string"
             }
           ]
@@ -1155,7 +1450,7 @@ export type CardinalStakePool =
     metadata: {
       address: "33cQK4yLQkRVBKtRWoSA2aYjTPDgEp3CM6EK8w6M2ALf"
     }
-  };
+  }
 
 export const IDL: CardinalStakePool =
 {
@@ -1553,6 +1848,193 @@ export const IDL: CardinalStakePool =
         }
       ],
       args: []
+    },
+    {
+      name: "initRole",
+      accounts: [
+        {
+          name: "role",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "founder",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "project",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "authority",
+          isMut: true,
+          isSigner: true
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false
+        }
+      ],
+      args: [
+        {
+          name: "info",
+          type: {
+            defined: "RoleInfo"
+          }
+        }
+      ]
+    },
+    {
+      name: "apply",
+      accounts: [
+        {
+          name: "apply",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "role",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "project",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "user",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "authority",
+          isMut: true,
+          isSigner: true
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false
+        }
+      ],
+      args: []
+    },
+    {
+      name: "rejectApply",
+      accounts: [
+        {
+          name: "apply",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "role",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "founder",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "project",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "authority",
+          isMut: true,
+          isSigner: true
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false
+        }
+      ],
+      args: []
+    },
+    {
+      name: "approveApply",
+      accounts: [
+        {
+          name: "apa",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "apply",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "role",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "founder",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "project",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "user",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "authority",
+          isMut: true,
+          isSigner: true
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false
+        }
+      ],
+      args: []
+    },
+    {
+      name: "closeRole",
+      accounts: [
+        {
+          name: "role",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "founder",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "project",
+          isMut: true,
+          isSigner: false
+        },
+        {
+          name: "authority",
+          isMut: true,
+          isSigner: true
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false
+        }
+      ],
+      args: []
     }
   ],
   accounts: [
@@ -1877,6 +2359,86 @@ export const IDL: CardinalStakePool =
       }
     },
     {
+      name: "Role",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "bump",
+            type: "u8"
+          },
+          {
+            name: "payment",
+            type: "u64"
+          },
+          {
+            name: "time",
+            type: "i64"
+          },
+          {
+            name: "project",
+            type: "publicKey"
+          },
+          {
+            name: "user",
+            type: "publicKey"
+          },
+          {
+            name: "role",
+            type: "string"
+          },
+          {
+            name: "levelOfExperience",
+            type: "string"
+          },
+          {
+            name: "description",
+            type: "string"
+          }
+        ]
+      }
+    },
+    {
+      name: "Apply",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "bump",
+            type: "u8"
+          },
+          {
+            name: "payment",
+            type: "u64"
+          },
+          {
+            name: "time",
+            type: "i64"
+          },
+          {
+            name: "rolePubkey",
+            type: "publicKey"
+          },
+          {
+            name: "project",
+            type: "publicKey"
+          },
+          {
+            name: "user",
+            type: "publicKey"
+          },
+          {
+            name: "name",
+            type: "string"
+          },
+          {
+            name: "role",
+            type: "string"
+          }
+        ]
+      }
+    },
+    {
       name: "Identifier",
       type: {
         kind: "struct",
@@ -1961,6 +2523,34 @@ export const IDL: CardinalStakePool =
           },
           {
             name: "departments",
+            type: "string"
+          }
+        ]
+      }
+    },
+    {
+      name: "RoleInfo",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "time",
+            type: "i64"
+          },
+          {
+            name: "payment",
+            type: "u64"
+          },
+          {
+            name: "role",
+            type: "string"
+          },
+          {
+            name: "levelOfExperience",
+            type: "string"
+          },
+          {
+            name: "description",
             type: "string"
           }
         ]

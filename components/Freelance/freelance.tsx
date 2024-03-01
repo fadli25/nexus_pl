@@ -1,4 +1,5 @@
 import { getAllProjects } from "@/lib/NexusProgram/project/utils/get_all_projects";
+import { getAllRoles } from "@/lib/NexusProgram/project/utils/get_roles";
 import AptosIcon from "@/public/Aptos.svg";
 import PolygonIcon from "@/public/Polygon.svg";
 import SolanaIcon from "@/public/Solana.svg";
@@ -18,8 +19,25 @@ export default function freelance() {
   const get_projects = async () => {
     try {
       const projects = await getAllProjects(connection, "confirmed");
-      setProjects(projects);
+      projects.map((project, i) => {
+        projects[i].role = [];
+      })
+      // console.log(projects);
+      const roles = await getAllRoles(connection, 'confirmed');
+      console.log(roles);
+
+      roles.map((role) => {
+        projects.map((project, i) => {
+          if (role.project.toBase58() == project.pubkey.toBase58()) {
+            console.log("Done");
+            projects[i].role.push(role)
+          }
+        })
+      })
+
       console.log(projects);
+      setProjects(projects);
+
     } catch (err) {
       console.log(err);
     }
@@ -194,10 +212,11 @@ export default function freelance() {
                   <div className=" fontPopSemibold text-[#00ff47] mb-[1.7vw] md:mb-[1vw]">
                     Roles Needed
                   </div>
-                  <MotionButton>Collab Manager</MotionButton>
-                  <MotionButton>Project Manager</MotionButton>
-                  <MotionButton>Community Moderator</MotionButton>
-                  <MotionButton>Community Manager</MotionButton>
+                  {el.role.map((rl: any) => (
+                    <>
+                      <MotionButton>{rl.role}</MotionButton>
+                    </>
+                  ))}
                 </div>
               </div>
             </motion.div>
