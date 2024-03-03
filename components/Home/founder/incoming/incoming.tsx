@@ -15,6 +15,7 @@ export default function incoming() {
   const data = [1, 2, 3];
 
   const [projects, setProjects] = useState<any[]>()
+  const [role_filter, setRoleFilter] = useState<string>("null")
 
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection()
@@ -107,15 +108,29 @@ export default function incoming() {
             <div className="mt-[0.6vw] text-[2vw] md:text-[1.4vw] flex flex-col items-start gap-y-[0.5vw]">
               {
                 project.role.map((rl: any) => (
-                  <>
-                    <ButtonMotion>{rl.role}</ButtonMotion>
-                  </>
+                  <div
+                    onClick={() => {
+                      console.log(rl.role)
+                      if (role_filter && rl.role == role_filter) {
+                        console.log("")
+                        setRoleFilter("null")
+                      } else {
+                        setRoleFilter(rl.role)
+                      }
+                    }
+                    }
+                  >
+                    <ButtonMotion
+                    >
+                      {rl.role}
+                    </ButtonMotion>
+                  </div>
                 ))
               }
             </div>
           </div>
         </div>
-        {project.applys.map((el: any, j: number) => (
+        {(role_filter !== "null" ? project.applys.filter((rol: any) => rol.role == role_filter) : project.applys).map((el: any, j: number) => (
           <div
             key={j}
             className="w-[80vw] md:w-[54vw] mx-auto mt-[3vw] md:mt-[2vw] text-black border border-black rounded-[1vw] px-[2vw] py-[1.4vw] flex justify-between items-center"
