@@ -152,7 +152,10 @@ export default function incoming() {
                 <div className="flex items-center gap-x-[1vw]">
                   <div className="w-[15vw] md:w-[7vw] h-[15vw] md:h-[7vw] bg-black/80 rounded-full"></div>
                   <div>
-                    <div className=" font-semibold text-[4vw] md:text-[2vw] underline">
+                    <div
+                      onClick={() => router.push("/founder/haire/profile")}
+                      className="cursor-pointer font-semibold text-[4vw] md:text-[2vw] underline"
+                    >
                       {el.name}
                     </div>
                     <div className="text-[2.4vw] md:text-[1.4vw]">
