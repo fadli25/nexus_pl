@@ -1,8 +1,10 @@
+import { getRolesForProject } from "@/lib/NexusProgram/project/utils/get_role";
 import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
 import aptosIcon from "@/public/Aptos.svg";
 import polygonIcon from "@/public/Polygon.svg";
 import solanaIcon from "@/public/Solana.svg";
 import { Button } from "@mui/material";
+import { web3 } from "@project-serum/anchor";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -24,6 +26,7 @@ export default function project({ project }: any) {
     "https://img.icons8.com/external-black-fill-lafs/64/external-Solana-cryptocurrency-black-fill-lafs.png";
 
   const [project_info, setProjectInfo] = useState<any>()
+  const [roles, setRoles] = useState<any>()
 
   const anchorWallet = useAnchorWallet()
   const { connection } = useConnection();
@@ -36,6 +39,9 @@ export default function project({ project }: any) {
       console.log(info);
       setProjectInfo(info)
 
+      const roll = await getRolesForProject(connection, new web3.PublicKey(project), "confirmed");
+      console.log(roll);
+      setRoles(roll);
 
     } catch (e) {
       console.log(e);
@@ -111,12 +117,13 @@ export default function project({ project }: any) {
               Roles Needed
             </div>
             <div className="w-full border-2 border-solid border-black rounded-xl p-4 flex flex-col gap-[.5rem] h-[13rem] max-h-screen overflow-y-auto no-scrollbar">
-              <div className="text-[3vw] md:text-[1.8vw] border border-solid border-black rounded-xl pl-4">
-                Collab Manager
-              </div>
-              <div className="text-[3vw] md:text-[1.8vw] border border-solid border-black rounded-xl pl-4">
-                Project Manager
-              </div>
+              {roles && roles.map((role: any) => (
+                <div
+                  onClick={() => router.push("/freelance/project/apply/" + role.pubkey.toBase58())}
+                  className="text-[3vw] md:text-[1.8vw] border border-solid border-black rounded-xl pl-4">
+                  {role.role}
+                </div>
+              ))}
             </div>
             <div className="mt-[3vw] flex justify-center items-center gap-x-[1.2vw]">
               <MuiButton>Contact</MuiButton>

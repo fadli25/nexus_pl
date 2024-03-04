@@ -1,9 +1,34 @@
+import { getApplyForUser } from "@/lib/NexusProgram/project/utils/get_apply_for_user";
 import { Button } from "@mui/material";
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 export default function index() {
+
+  const anchorWallet = useAnchorWallet()
+  const { connection } = useConnection()
+
+  const [applys, setApplys] = useState<any[]>()
+
+  const get_info = async () => {
+    try {
+      const applys = await getApplyForUser(connection, anchorWallet!.publicKey, "confirmed")
+      console.log(applys);
+      setApplys(applys);
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+
+    get_info();
+  }, [anchorWallet]);
+
   const data = [
     {
       state: "You have been hired !!!!",
@@ -28,14 +53,14 @@ export default function index() {
         <title>Outgoing</title>
       </Head>
       <div className="w-[90vw] md:w-[60vw] mx-auto">
-        {data.map((el, i) => (
+        {applys && applys.map((el, i) => (
           <div
             key={i}
             className="w-full my-[3vw] relative rounded-[1.5vw] md:rounded-[1vw] bg-black px-[3vw] flex justify-between text-white items-center h-[20vw] md:h-[12vw]"
           >
             <div>
               <div className="absolute top-[9%] text-[3vw] md:text-[1.5vw] fontPopSemibold left-[5%] text-[#00ff47]">
-                {el.state}
+                {el.role}
               </div>
               <div
                 className="text-[5.3vw] md:text-[3vw]  cursor-pointer"
@@ -44,16 +69,16 @@ export default function index() {
                 {el.name}
               </div>
             </div>
-            {el.sl === true ? (
-              <div className="flex items-center gap-x-[1vw]">
-                <MuiButtonAprove>Approve</MuiButtonAprove>
-                <MuiButtonReject>Reject</MuiButtonReject>
-              </div>
+            {/* {el.sl === true ? (
+              <div className="flex items-center gap-x-[1vw]"> */}
+            <MuiButtonAprove>Pending</MuiButtonAprove>
+            {/* <MuiButtonReject>Reject</MuiButtonReject> */}
+            {/* </div>
             ) : (
               <div>
                 <MuiButtonClose>Close</MuiButtonClose>
               </div>
-            )}
+            )} */}
           </div>
         ))}
       </div>
