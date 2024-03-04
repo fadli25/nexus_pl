@@ -1,6 +1,6 @@
 import { getProjectUsers } from "@/lib/NexusProgram/project/utils/get_project_users";
 import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
-import { Button, FormControlLabel } from "@mui/material";
+import { Button, FormControlLabel, Stack } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
@@ -12,6 +12,9 @@ import { MdAddCircle, MdOutlineArrowDropDownCircle } from "react-icons/md";
 import { fire } from "@/lib/NexusProgram/invite/fire";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { FaDiscord } from "react-icons/fa";
+import solanaIcon from "@/public/Solana.svg";
+import AptosIcon from "@/public/Aptos.svg";
+import Link from "next/link";
 
 type Project = {
   project: string;
@@ -90,7 +93,6 @@ export default function Project({ project }: Project) {
 
   const imageProject =
     "https://media.discordapp.net/attachments/1085293900706627595/1162185105696116826/Ellipse_1.png?ex=65a9c239&is=65974d39&hm=6a77d8451e8ca2161c281c277a67fc99170ff3ea97d36f513597e736c8b426d6&=&format=webp&quality=lossless&width=465&height=465";
-  const solanaIcon = "https://cryptologos.cc/logos/solana-sol-logo.png";
 
   const [coreTeam, setCoreTeam] = useState(false);
   const [users, setUsers] = useState<any[]>([]);
@@ -191,13 +193,11 @@ export default function Project({ project }: Project) {
 
   const firing = async (i: number) => {
     try {
-
-      await fire(anchorWallet, connection, users[i].pubkey, users[i].project)
-
+      await fire(anchorWallet, connection, users[i].pubkey, users[i].project);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   const router = useRouter();
   console.log(users);
@@ -216,15 +216,33 @@ export default function Project({ project }: Project) {
             />
           </div>
           <div className="flex flex-col md:flex-row gap-y-[4vw] md:gap-y-0 justify-start gap-x-[0.7vw]">
-            <div>
+            <Stack className="flex-col md:!flex-row gap-[3vw] md:gap-[1vw]">
+              <Link href="/founder/project/settings">
+                <Button
+                  variant="contained"
+                  sx={buttonStyle}
+                  className={`${buttonStyleClass}`}
+                >
+                  Project Settings
+                </Button>
+              </Link>
+
               <Button
                 variant="contained"
                 sx={buttonStyle}
                 className={`${buttonStyleClass}`}
               >
-                Edit Project
+                Feature Project
               </Button>
-            </div>
+
+              <Button
+                variant="contained"
+                sx={buttonStyle}
+                className={`${buttonStyleClass}`}
+              >
+                Use Rebirth Tower
+              </Button>
+            </Stack>
             {/* <div>
               <Button
                 variant="contained"
@@ -261,8 +279,11 @@ export default function Project({ project }: Project) {
                   {/* <div className="w-[2vw]">
                   <Image src={solanaIcon} width={8999} height={2000} alt="" />
                 </div> */}
-                  <div className="w-[5vw] md:w-[2vw]">
+                  <div className="w-[6vw] md:w-[3vw]">
                     <Image src={solanaIcon} width={8999} height={2000} alt="" />
+                  </div>
+                  <div className="w-[5vw] md:w-[2.5vw]">
+                    <Image src={AptosIcon} width={8999} height={2000} alt="" />
                   </div>
                 </div>
               </div>

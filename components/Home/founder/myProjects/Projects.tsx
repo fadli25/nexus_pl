@@ -185,7 +185,7 @@ export default function Projects() {
               onClick={() =>
                 router.push("/founder/project/" + project.pubkey.toBase58())
               }
-              className="w-full relative rounded-[1vw] md:rounded-[0.4vw] py-[6vw] md:py-[1vw] px-[2.4vw] mt-[2vw] border border-black text-black flex justify-between items-center"
+              className="w-full cursor-pointer relative rounded-[1vw] md:rounded-[0.4vw] py-[6vw] md:py-[1vw] px-[2.4vw] mt-[2vw] border border-black text-black flex justify-between items-center"
             >
               <div>
                 <div className="text-[5vw] md:text-[2.5vw] pb-[3vw] fontPopSemibold flex flex-col items-start w-[39vw] md:w-[24vw]">

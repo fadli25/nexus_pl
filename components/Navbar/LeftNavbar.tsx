@@ -28,11 +28,11 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
       link: "/dashboard",
     },
     {
-      name: "Founder",
+      name: "Projects",
       link: "/founder",
     },
     {
-      name: "Freelance",
+      name: "Jobs",
       link: "/freelance",
     },
 

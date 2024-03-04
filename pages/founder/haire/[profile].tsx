@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 export default function profile() {
-
   const router = useRouter();
   const [user, setUser] = useState<string>();
 
@@ -14,7 +13,6 @@ export default function profile() {
     console.log(profile);
     setUser(profile as string);
   }, [router.isReady]);
-
 
   return (
     <div className="w-full md:w-[84vw] float-right">
