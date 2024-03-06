@@ -12,7 +12,7 @@ export const getInvitationFroUser = async (
     commitment?: Commitment,
 ) => {
 
-    const NEXUS_ADDRESS = new PublicKey("33cQK4yLQkRVBKtRWoSA2aYjTPDgEp3CM6EK8w6M2ALf");
+    const NEXUS_ADDRESS = new PublicKey("4qe9UNHeTtpyqsBV9Ahp9XraS1H5QkfimQHaXtLrpyRL");
     const [user] = PublicKey.findProgramAddressSync(
         [
             anchorWallet.publicKey.toBuffer(),

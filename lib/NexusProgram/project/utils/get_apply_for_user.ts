@@ -11,7 +11,7 @@ export const getApplyForUser = async (
     user: web3.PublicKey,
     commitment?: Commitment,
 ) => {
-    const NEXUS_ADDRESS = new PublicKey("33cQK4yLQkRVBKtRWoSA2aYjTPDgEp3CM6EK8w6M2ALf");
+    const NEXUS_ADDRESS = new PublicKey("4qe9UNHeTtpyqsBV9Ahp9XraS1H5QkfimQHaXtLrpyRL");
 
     const [founder] = PublicKey.findProgramAddressSync(
         [

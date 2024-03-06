@@ -467,7 +467,20 @@ export type CardinalStakePool =
             isSigner: false
           }
         ],
-        args: []
+        args: [
+          {
+            name: "country",
+            type: "string"
+          },
+          {
+            name: "description",
+            type: "string"
+          },
+          {
+            name: "payment",
+            type: "u64"
+          }
+        ]
       },
       {
         name: "rejectApply",
@@ -598,6 +611,10 @@ export type CardinalStakePool =
               type: "publicKey"
             },
             {
+              name: "feature",
+              type: "bool"
+            },
+            {
               name: "name",
               type: "string"
             },
@@ -652,6 +669,10 @@ export type CardinalStakePool =
             {
               name: "paymentRatePerHour",
               type: "u64"
+            },
+            {
+              name: "feature",
+              type: "bool"
             },
             {
               name: "name",
@@ -728,6 +749,10 @@ export type CardinalStakePool =
             {
               name: "members",
               type: "u16"
+            },
+            {
+              name: "feature",
+              type: "bool"
             },
             {
               name: "name",
@@ -1464,7 +1489,7 @@ export type CardinalStakePool =
       }
     ],
     metadata: {
-      address: "33cQK4yLQkRVBKtRWoSA2aYjTPDgEp3CM6EK8w6M2ALf"
+      address: "4qe9UNHeTtpyqsBV9Ahp9XraS1H5QkfimQHaXtLrpyRL"
     }
   }
 
@@ -1937,7 +1962,20 @@ export const IDL: CardinalStakePool =
           isSigner: false
         }
       ],
-      args: []
+      args: [
+        {
+          name: "country",
+          type: "string"
+        },
+        {
+          name: "description",
+          type: "string"
+        },
+        {
+          name: "payment",
+          type: "u64"
+        }
+      ]
     },
     {
       name: "rejectApply",
@@ -2068,6 +2106,10 @@ export const IDL: CardinalStakePool =
             type: "publicKey"
           },
           {
+            name: "feature",
+            type: "bool"
+          },
+          {
             name: "name",
             type: "string"
           },
@@ -2122,6 +2164,10 @@ export const IDL: CardinalStakePool =
           {
             name: "paymentRatePerHour",
             type: "u64"
+          },
+          {
+            name: "feature",
+            type: "bool"
           },
           {
             name: "name",
@@ -2198,6 +2244,10 @@ export const IDL: CardinalStakePool =
           {
             name: "members",
             type: "u16"
+          },
+          {
+            name: "feature",
+            type: "bool"
           },
           {
             name: "name",
@@ -2934,6 +2984,6 @@ export const IDL: CardinalStakePool =
     }
   ],
   metadata: {
-    address: "33cQK4yLQkRVBKtRWoSA2aYjTPDgEp3CM6EK8w6M2ALf"
+    address: "4qe9UNHeTtpyqsBV9Ahp9XraS1H5QkfimQHaXtLrpyRL"
   }
 }
