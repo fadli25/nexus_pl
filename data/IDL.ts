@@ -930,6 +930,10 @@ export type CardinalStakePool =
               type: "publicKey"
             },
             {
+              name: "name",
+              type: "string"
+            },
+            {
               name: "role",
               type: "string"
             },
@@ -979,6 +983,18 @@ export type CardinalStakePool =
             },
             {
               name: "role",
+              type: "string"
+            },
+            {
+              name: "levelOfExperience",
+              type: "string"
+            },
+            {
+              name: "country",
+              type: "string"
+            },
+            {
+              name: "description",
               type: "string"
             }
           ]
@@ -2384,6 +2400,10 @@ export const IDL: CardinalStakePool =
             type: "publicKey"
           },
           {
+            name: "name",
+            type: "string"
+          },
+          {
             name: "role",
             type: "string"
           },
@@ -2433,6 +2453,18 @@ export const IDL: CardinalStakePool =
           },
           {
             name: "role",
+            type: "string"
+          },
+          {
+            name: "levelOfExperience",
+            type: "string"
+          },
+          {
+            name: "country",
+            type: "string"
+          },
+          {
+            name: "description",
             type: "string"
           }
         ]

@@ -466,7 +466,20 @@
           "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "country",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "payment",
+          "type": "u64"
+        }
+      ]
     },
     {
       "name": "rejectApply",
@@ -597,6 +610,10 @@
             "type": "publicKey"
           },
           {
+            "name": "feature",
+            "type": "bool"
+          },
+          {
             "name": "name",
             "type": "string"
           },
@@ -651,6 +668,10 @@
           {
             "name": "paymentRatePerHour",
             "type": "u64"
+          },
+          {
+            "name": "feature",
+            "type": "bool"
           },
           {
             "name": "name",
@@ -727,6 +748,10 @@
           {
             "name": "members",
             "type": "u16"
+          },
+          {
+            "name": "feature",
+            "type": "bool"
           },
           {
             "name": "name",
@@ -929,6 +954,10 @@
             "type": "publicKey"
           },
           {
+            "name": "name",
+            "type": "string"
+          },
+          {
             "name": "role",
             "type": "string"
           },
@@ -978,6 +1007,18 @@
           },
           {
             "name": "role",
+            "type": "string"
+          },
+          {
+            "name": "levelOfExperience",
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "name": "description",
             "type": "string"
           }
         ]

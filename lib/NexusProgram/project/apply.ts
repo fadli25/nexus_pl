@@ -10,7 +10,10 @@ export async function apply_role(
     anchorWallet: any,
     connection: web3.Connection,
     project: web3.PublicKey,
-    role: web3.PublicKey
+    role: web3.PublicKey,
+    country: string,
+    description: string,
+    payment: number
 ) {
 
     const provider = new AnchorProvider(
@@ -36,7 +39,7 @@ export async function apply_role(
         PROGRAM_ID
     );
 
-    const tx = await program.methods.apply().accounts({
+    const tx = await program.methods.apply(country, description, new BN(payment)).accounts({
         apply: apply,
         role: role,
         project: project,
