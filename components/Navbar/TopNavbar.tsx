@@ -76,7 +76,7 @@ export default function TopNavbar() {
     return (
       <div className="mt-[14vw] md:mt-[6.8vw] px-[2vw]">
         <div className="fontPopSemibold text-[10vw] md:text-[4vw] mb-[-0.4vw]">
-          Founder
+          Projects
         </div>
         <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction()}
@@ -112,7 +112,7 @@ export default function TopNavbar() {
     return (
       <div className="mt-[14vw] md:mt-[6.8vw] px-[2vw]">
         <div className="fontPopSemibold text-[10vw] md:text-[4.4vw] mb-[-0.4vw]">
-          Freelance
+          Jobs
         </div>
         <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction1()}
@@ -514,8 +514,8 @@ export default function TopNavbar() {
           </div>
         )}
         {path.slice(0, 5) === "/logi" && (
-          <div className="absolute top-0 left-[0] md:left-[-3vw] text-center text-[14vw] md:text-[6vw]  justify-center font-semibold w-full h-full flex items-center -z-10">
-            Wolcome
+          <div className="absolute top-0 left-[0] md:left-[-3vw] text-center text-[14vw] md:text-[6vw]  justify-center font-[poppins] w-full h-full flex items-center -z-10">
+            Welcome
           </div>
         )}
       </div>

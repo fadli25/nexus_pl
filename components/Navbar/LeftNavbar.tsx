@@ -74,7 +74,7 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
           />
 
           <div className="text-[4vw] md:text-[1.4vw] px-[10vw] md:px-[2.6vw] text-center">
-            Wolcome to Nexus,
+            Welcome to Nexus,
             <br /> please setup your profile.
           </div>
         </Stack>
