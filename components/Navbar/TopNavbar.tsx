@@ -514,7 +514,7 @@ export default function TopNavbar() {
           </div>
         )}
         {path.slice(0, 5) === "/logi" && (
-          <div className="absolute top-0 left-[-3vw] text-center text-[6vw]  justify-center font-semibold w-full h-full flex items-center -z-10">
+          <div className="absolute top-0 left-[0] md:left-[-3vw] text-center text-[14vw] md:text-[6vw]  justify-center font-semibold w-full h-full flex items-center -z-10">
             Wolcome
           </div>
         )}
