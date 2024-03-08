@@ -70,7 +70,7 @@ export default function TopNavbar() {
     return (
       <div className="mt-[14vw] md:mt-[6.8vw] px-[2vw]">
         <div className="fontPopSemibold text-[10vw] md:text-[4vw] mb-[-0.4vw]">
-          Founder
+          Projects
         </div>
         <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction()}
@@ -105,7 +105,7 @@ export default function TopNavbar() {
     return (
       <div className="mt-[14vw] md:mt-[6.8vw] px-[2vw]">
         <div className="fontPopSemibold text-[10vw] md:text-[4.4vw] mb-[-0.4vw]">
-          Freelance
+          Jobs
         </div>
         <div className="fontPopSemibold text-[5vw] md:text-[1.9vw] text-[#00ff47] mb-[1vw]">
           {pathFunction1()}
@@ -506,6 +506,11 @@ export default function TopNavbar() {
         {path.slice(0, 5) === "/mint" && (
           <div className="absolute top-0 left-0 w-full h-full flex items-center -z-10">
             {mint()}
+          </div>
+        )}
+        {path.slice(0, 5) === "/logi" && (
+          <div className="absolute top-0 left-[0] font-[100] md:left-[-3vw] text-center text-[12vw] md:text-[5vw]  justify-center font-[poppins] w-full h-full flex items-center -z-10">
+            W E L C O M E
           </div>
         )}
       </div>

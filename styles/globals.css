@@ -45,6 +45,11 @@ body {
   }
 }
 
+@font-face {
+  font-family: poppins;
+  src: url(./Poppins.ttf);
+}
+
 .wallet-adapter-button-trigger {
   background: white !important;
   color: #000 !important;
