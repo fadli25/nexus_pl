@@ -1,57 +1,51 @@
+import { get_user_info } from "@/lib/NexusProgram/user/utils/user_info";
+import mintbg from "@/public/mintbar.png";
 import { Button, IconButton } from "@mui/material";
+import { web3 } from "@project-serum/anchor";
+import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { BiMenu, BiMenuAltRight } from "react-icons/bi";
 import { BsFillChatFill } from "react-icons/bs";
 import { IoNotifications, IoSettingsOutline } from "react-icons/io5";
 import { MdLocalGroceryStore } from "react-icons/md";
 import LeftNavbar from "./LeftNavbar";
-import mintbg from "@/public/mintbar.png";
 import MintTitle from "./MintTitle.png";
 
 export default function TopNavbar() {
-  const connectWalletStyle = {
-    fontSite: "0.7vw",
-    padding: "0.1vw 2vw",
-    borderRaduis: "9999px",
-    background: "#fff",
-    color: "#000",
-    "&hover": {
-      background: "#fff",
-      color: "#000",
-    },
-    "@media (max-width: 767px)": {
-      fontSize: "2.4vw",
-    },
-  };
-  const cwc =
-    "rounded-full bg-white font-semibold text-[2.4vw] md:text-[0.8vw] hover:bg-white hover:border-none";
-  const buttonProfile = {
-    fontSize: "1vw",
-    padding: "0.7vw 2vw",
-    color: "#fff",
-    border: "0.12vw #fff solid",
-    fontWeight: "500",
-    textTransform: "none",
-    "&hover": {
-      border: "0.12vw #fff solid",
-      color: "#fff",
-    },
-    "@media (max-width: 767px)": {
-      fontSize: "2.4vw",
-    },
-  };
-  // const mpc = "";
 
   const router = useRouter();
 
   const path = router.asPath;
+  const connection = new web3.Connection(web3.clusterApiUrl("devnet"));
+
+  const anchorWallet = useAnchorWallet();
+  const wallet = useWallet();
 
   const homeImage =
     "https://media.discordapp.net/attachments/1085293900706627595/1162188481905315850/Group_120_1.png?ex=653b075e&is=6528925e&hm=4b730b569c232d226255a98a2bb18971413f11e82de5c020fdfa50beac1ef5fd&=&width=1036&height=368";
+
+  async function check_user() {
+    try {
+      const user_info = await get_user_info(anchorWallet, connection);
+      console.log("nav")
+      if (!user_info) {
+        console.log("nav push")
+        router.push("/profile")
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+    check_user();
+  }, [anchorWallet, anchorWallet?.publicKey]);
+
 
   function home() {
     return (
@@ -85,7 +79,6 @@ export default function TopNavbar() {
           <MotionButton onClick={() => router.push("/founder")}>
             My Projects
           </MotionButton>
-
           <MotionButton onClick={() => router.push("/founder/haire")}>
             Hire staffs
           </MotionButton>
@@ -312,6 +305,8 @@ export default function TopNavbar() {
   }
 
   const [showLeftNavbar, setShowLeftNavbar] = useState(false);
+
+  ///////----------------------------------////////////////////
 
   return (
     <div>

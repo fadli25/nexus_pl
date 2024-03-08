@@ -8,8 +8,8 @@ export async function get_user_info(
 ) {
     try {
         const provider = new AnchorProvider(
-            connection, anchorWallet, {"preflightCommitment": "processed"},
-            );
+            connection, anchorWallet, { "preflightCommitment": "processed" },
+        );
         const PROGRAM_ID = new web3.PublicKey(idl.metadata.address)
 
         const [user] = web3.PublicKey.findProgramAddressSync(
@@ -23,8 +23,9 @@ export async function get_user_info(
         const program = new Program(idl, idl.metadata.address, provider);
         const account = await program.account.user.fetchNullable(user);
         console.log(account);
+        console.log("account");
         return account;
-    } catch(e) {
+    } catch (e) {
         console.log(e);
     }
 }
