@@ -1,3 +1,6 @@
+import aptosImg from "@/public/Aptos.svg";
+import polygonImg from "@/public/Polygon.svg";
+import solanaImg from "@/public/Solana.svg";
 import { Button } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
@@ -5,15 +8,13 @@ import { Connection, clusterApiUrl } from "@solana/web3.js";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { ReactNode, useEffect, useState } from "react";
 import { BiSolidShow } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { init_user } from "../lib/NexusProgram/user/init_user";
 import { update_user } from "../lib/NexusProgram/user/update_user";
 import { get_user_info } from "../lib/NexusProgram/user/utils/user_info";
-import solanaImg from "@/public/Solana.svg";
-import aptosImg from "@/public/Aptos.svg";
-import polygonImg from "@/public/Polygon.svg";
 
 export default function profile() {
   const [exist, setExist] = useState<boolean>(false);
@@ -36,6 +37,9 @@ export default function profile() {
   const [timezone, setTimeZone] = useState<string>("");
   const [country, setCountry] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+
+  const router = useRouter();
+
 
   const connection = new Connection(clusterApiUrl("devnet"));
 
@@ -67,6 +71,7 @@ export default function profile() {
       notify_delete();
       notify_success("transaction successful");
       setLoading(false);
+      router.push("/")
     } catch (e) {
       setLoading(false);
       notify_delete();

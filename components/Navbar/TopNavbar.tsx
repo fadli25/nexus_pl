@@ -34,7 +34,7 @@ export default function TopNavbar() {
       console.log("nav")
       if (!user_info) {
         console.log("nav push")
-        router.push("/profile")
+        router.push("/login")
       }
     } catch (e) {
       console.log(e);
