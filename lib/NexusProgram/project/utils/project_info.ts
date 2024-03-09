@@ -17,6 +17,9 @@ export async function get_project_info(
 
         const program = new Program(idl, idl.metadata.address, provider);
         const account = await program.account.project.fetchNullable(project_pubkey, "confirmed");
+        if (account) {
+            account.pubkey = project_pubkey;
+        }
         console.log(account);
         return account;
     } catch (e) {

@@ -5,10 +5,10 @@ import Switch, { SwitchProps } from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
 import { Connection, clusterApiUrl } from "@solana/web3.js";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { useState } from "react";
 import { IoIosAddCircle } from "react-icons/io";
-import { motion } from "framer-motion";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -292,7 +292,7 @@ export default function addProject() {
           />
         </div>
       </div>
-      <div className="mt-[3vw]">
+      {/* <div className="mt-[3vw]">
         <div className="flex justify-between items-center">
           <div className="flex items-center text-[5vw] md:text-[3vw] fontPopSemibold gap-x-[3vw] md:gap-x-[1vw] text-black">
             <div>Recruiting</div>
@@ -311,9 +311,9 @@ export default function addProject() {
             Delete Role
           </Button>
         </div>
-      </div>
+      </div> */}
 
-      <div className="pt-[5vw] text-[3.5vw] md:text-[1.2vw] font-semibold text-black">
+      {/* <div className="pt-[5vw] text-[3.5vw] md:text-[1.2vw] font-semibold text-black">
         <Stack className="!flex-col md:!flex-row !justify-between !items-end gap-x-[1vw] gap-y-[3vw]">
           <Stack className="p-[3vw] md:p-[1vw] border-[0.2vw] md:border-[0.16vw] border-black rounded-[1vw] md:rounded-[0.6vw] w-full h-fit gap-y-[1vw]">
             <Stack direction="row" spacing={1} justifyContent="space-between">
@@ -419,15 +419,15 @@ export default function addProject() {
             </Stack>
           </Stack>
         </Stack>
-      </div>
-      <Stack className="mt-[5vw] relative w-full md:w-[49.4%] place-items-center py-[4vw] border-[0.2vw] border-black rounded-[0.6vw]">
+      </div> */}
+      {/* <Stack className="mt-[5vw] relative w-full md:w-[49.4%] place-items-center py-[4vw] border-[0.2vw] border-black rounded-[0.6vw]">
         <div className="absolute top-[5%] left-[5%] text-[3vw] md:text-[1.4vw] text-black">
           Add new role
         </div>
         <motion.button whileTap={{ scale: 0.96 }}>
           <IoIosAddCircle className="text-[35vw] md:text-[15vw] text-black/40" />
         </motion.button>
-      </Stack>
+      </Stack> */}
       <div className="flex justify-center mt-[5vw]">
         <Button
           onClick={(e) => {

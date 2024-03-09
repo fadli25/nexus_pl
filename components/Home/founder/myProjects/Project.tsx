@@ -10,11 +10,11 @@ import React, { useEffect, useState } from "react";
 import { MdAddCircle, MdOutlineArrowDropDownCircle } from "react-icons/md";
 
 import { fire } from "@/lib/NexusProgram/invite/fire";
-import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
-import { FaDiscord } from "react-icons/fa";
-import solanaIcon from "@/public/Solana.svg";
 import AptosIcon from "@/public/Aptos.svg";
+import solanaIcon from "@/public/Solana.svg";
+import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import Link from "next/link";
+import { FaDiscord } from "react-icons/fa";
 
 type Project = {
   project: string;
@@ -217,7 +217,7 @@ export default function Project({ project }: Project) {
           </div>
           <div className="flex flex-col md:flex-row gap-y-[4vw] md:gap-y-0 justify-start gap-x-[0.7vw]">
             <Stack className="flex-col md:!flex-row gap-[3vw] md:gap-[1vw]">
-              <Link href="/founder/project/settings">
+              <Link href={`/founder/project/settings?project=${project}`}>
                 <Button
                   variant="contained"
                   sx={buttonStyle}

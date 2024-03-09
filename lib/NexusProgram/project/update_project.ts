@@ -21,7 +21,7 @@ const idl = require("../../../data/nexus.json")
 export async function update_project(
     anchorWallet: any,
     connection: web3.Connection,
-    name: string,
+    projectId: string,
     logo: string,
     category: string,
     linkDiscord: string,
@@ -29,6 +29,7 @@ export async function update_project(
     linkTwitter: string,
     linkWebsite: string,
     projectOverview: string,
+    departments: string,
     hiring: boolean,
 ) {
 
@@ -47,16 +48,9 @@ export async function update_project(
         PROGRAM_ID
     );
 
-    const [project] = web3.PublicKey.findProgramAddressSync(
-        [
-            founder.toBuffer(),
-            Buffer.from(name),
-        ],
-        PROGRAM_ID
-    );
+    const project = new web3.PublicKey(projectId)
 
     const tx = await program.methods.updateProject({
-        name: name,
         logo: logo,
         linkDiscord: linkDiscord,
         linkThread: linkThread,
@@ -65,6 +59,7 @@ export async function update_project(
         projectOverview: projectOverview,
         category: category,
         hiring: hiring,
+        departments
     }).accounts({
         project: project,
         founder: founder,
