@@ -100,8 +100,7 @@ export default function addProject() {
   };
 
   const projetImage =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162188869798736053/Ellipse_18_3.png?ex=653b07ba&is=652892ba&hm=879a3e9d39738e485a66832817a0913f193639592d3b5b36bd607bd37d554ba8&=&width=486&height=443";
-
+    "https://media.discordapp.net/attachments/1085293900706627595/1216090924862406678/Frame_52351_1.png?ex=65ff1fee&is=65ecaaee&hm=7be1ea6efe7966eb223dea2bccd63a6302b1bc6bace1ab9c4af691f26ee5c9ec&=&format=webp&quality=lossless&width=781&height=642";
   const buttonStyle = {
     fontSize: "1vw",
     padding: "0.6vw 1vw",
@@ -159,12 +158,12 @@ export default function addProject() {
     <div className="px-[4vw]">
       <div className="flex flex-col md:flex-row gap-y-[3vw] md:gap-y-0 justify-between">
         <div className="flex flex-row md:flex-col gap-x-[3vw] md:gap-x-0 justify-center md:justify-start items-center">
-          <div className="w-[34vw] md:w-[15vw] rounded-full border-[0.2vw] border-[#00ff47] overflow-hidden">
+          <div className="w-fit rounded-full border-[0.2vw] border-[#00ff47] overflow-hidden">
             <Image
               src={projetImage}
               width={9000}
               height={2000}
-              className="w-[54vw] object-cover object-center"
+              className="w-[34vw] h-[34vw] md:w-[15vw] md:h-[15vw] object-cover object-center"
               alt=""
             />
           </div>

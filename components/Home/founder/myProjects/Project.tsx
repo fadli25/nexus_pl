@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import { MdAddCircle, MdOutlineArrowDropDownCircle } from "react-icons/md";
 
 import { fire } from "@/lib/NexusProgram/invite/fire";
-import AptosIcon from "@/public/Aptos.svg";
+import AptosIcon from "@/public/AptosWhite.svg";
 import solanaIcon from "@/public/Solana.svg";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import Link from "next/link";
@@ -92,7 +92,7 @@ export default function Project({ project }: Project) {
   const buttonStyleClass = "bg-[#00ff47] hover:bg-[#00ff47]";
 
   const imageProject =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162185105696116826/Ellipse_1.png?ex=65a9c239&is=65974d39&hm=6a77d8451e8ca2161c281c277a67fc99170ff3ea97d36f513597e736c8b426d6&=&format=webp&quality=lossless&width=465&height=465";
+    "https://media.discordapp.net/attachments/1085293900706627595/1216090924862406678/Frame_52351_1.png?ex=65ff1fee&is=65ecaaee&hm=7be1ea6efe7966eb223dea2bccd63a6302b1bc6bace1ab9c4af691f26ee5c9ec&=&format=webp&quality=lossless&width=781&height=642";
 
   const [coreTeam, setCoreTeam] = useState(false);
   const [users, setUsers] = useState<any[]>([]);
@@ -206,9 +206,9 @@ export default function Project({ project }: Project) {
     <div className="px-[5vw] pt-[3vw] text-black">
       <div className="w-[97vw] md:w-[61vw] mx-auto">
         <div className="w-[92.4vw] md:w-[54vw] relative">
-          <div className="absolute top-0 right-0 md:right-[-9vw] rounded-full">
+          <div className="absolute top-[-2vw] right-0 md:right-[-9vw] w-fit rounded-full border-white border-[1vw] md:border-[0.5vw]">
             <Image
-              className="w-[40vw] md:w-[17vw] rounded-full "
+              className="w-[40vw] h-[40vw] md:w-[15vw] md:h-[15vw] object-cover object-center rounded-full "
               src={imageProject}
               width={9000}
               height={2000}
@@ -335,7 +335,9 @@ export default function Project({ project }: Project) {
                 </span>
               </div>
               <motion.button
-                onClick={() => router.push("/founder/project/addRole/" + project)}
+                onClick={() =>
+                  router.push("/founder/project/addRole/" + project)
+                }
                 whileTap={{ scale: 0.98 }}
                 className="text-[2.4vw] md:text-[0.9vw] font-semibold"
               >
@@ -402,6 +404,7 @@ export default function Project({ project }: Project) {
                         src={imageProject}
                         width={1000}
                         height={200}
+                        className="object-cover object-center"
                         alt=""
                       />
                     </div>
