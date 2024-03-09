@@ -10,7 +10,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { ReactNode, useEffect, useState } from "react";
-import { BiSolidShow } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { init_user } from "../lib/NexusProgram/user/init_user";
 import { update_user } from "../lib/NexusProgram/user/update_user";
