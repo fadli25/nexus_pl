@@ -151,6 +151,18 @@ export default function addRole({ project }: any) {
       padding: "0.7vw 4vw",
     },
   };
+
+  const [data, setData] = useState([1]);
+
+  const [clickCount, setClickCount] = useState(0);
+
+  const handleClick = () => {
+    // Increment the click count
+    setClickCount((prevCount) => prevCount + 1);
+
+    // Update the state with [1, 2, 3, 4]
+    setData((prevData) => [...prevData, clickCount + 2]);
+  };
   return (
     <div className="px-[4vw]">
       <div className="mt-[3vw]">
@@ -175,131 +187,89 @@ export default function addRole({ project }: any) {
       </div>
 
       <div className="pt-[5vw] text-[3.5vw] md:text-[1.2vw] font-semibold text-black">
-        <Stack className="!flex-col md:!flex-row !justify-between !items-end gap-x-[1vw] gap-y-[3vw]">
-          <Stack className="p-[3vw] md:p-[1vw] border-[0.2vw] md:border-[0.16vw] border-black rounded-[1vw] md:rounded-[0.6vw] w-full h-fit gap-y-[1vw]">
-            <Stack direction="row" spacing={1} justifyContent="space-between">
-              <div className="w-full">
-                <div>Role Needed</div>
-                <input
-                  onChange={(e) => setRole(e.target.value)}
-                  className={`${inputStyle2} w-full`} />
-              </div>
-              <div className="w-[60%]">
-                <Stack direction="row" justifyContent="space-between">
-                  <label>Payement</label>
-                  <label>Time</label>
-                </Stack>
-                <Stack direction="row" alignItems="center">
+        <div className=" grid grid-cols-1 md:grid-cols-2 justify-between gap-[5vw] md:gap-[2vw]">
+          {data.map((el, i) => (
+            <Stack className="p-[3vw] md:p-[1vw] border-[0.2vw] md:border-[0.16vw] border-black rounded-[1vw] md:rounded-[0.6vw] w-full h-fit gap-y-[1vw]">
+              <Stack direction="row" spacing={1} justifyContent="space-between">
+                <div className="w-full">
+                  <div>Role Needed</div>
                   <input
-                    onChange={(e) => setPayment(Number(e.target.value))}
-                    className={`${inputStyle2} !border-r-0 !rounded-r-none w-full`}
+                    onChange={(e) => setRole(e.target.value)}
+                    className={`${inputStyle2} w-full`}
                   />
-                  <div
-                    className={`border-[0.12vw] mt-[0.6vw] border-black rounded-l-none rounded-[0.4vw] px-[1vw] py-[1.8vw] md:py-[0.85vw] text-[3vw] md:text-[1vw]`}
-                  >
-                    Mnth
-                  </div>
-                </Stack>
-              </div>
-            </Stack>
+                </div>
+                <div className="w-[60%]">
+                  <Stack direction="row" justifyContent="space-between">
+                    <label>Payement</label>
+                    <label>Time</label>
+                  </Stack>
+                  <Stack direction="row" alignItems="center">
+                    <input
+                      onChange={(e) => setPayment(Number(e.target.value))}
+                      className={`${inputStyle2} !border-r-0 !rounded-r-none w-full`}
+                    />
+                    <div
+                      className={`border-[0.12vw] mt-[0.6vw] border-black rounded-l-none rounded-[0.4vw] px-[1vw] py-[1.8vw] md:py-[0.85vw] text-[3vw] md:text-[1vw]`}
+                    >
+                      Mnth
+                    </div>
+                  </Stack>
+                </div>
+              </Stack>
 
-            <Stack direction="row" spacing={1} justifyContent="space-between">
-              <div className="w-full">
-                <div>Category</div>
-                <input
-                  onChange={(e) => setCategory(e.target.value)}
-                  className={`${inputStyle2} w-full`} />
-              </div>
-              <div className="w-[60%]">
-                <Stack direction="row" justifyContent="space-between">
-                  <label>Country</label>
-                </Stack>
-                <input
-                  onChange={(e) => setCountry(e.target.value)}
-                  className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
+              <Stack direction="row" spacing={1} justifyContent="space-between">
+                <div className="w-full">
+                  <div>Category</div>
+                  <input
+                    onChange={(e) => setCategory(e.target.value)}
+                    className={`${inputStyle2} w-full`}
+                  />
+                </div>
+                <div className="w-[60%]">
+                  <Stack direction="row" justifyContent="space-between">
+                    <label>Country</label>
+                  </Stack>
+                  <input
+                    onChange={(e) => setCountry(e.target.value)}
+                    className={`${inputStyle2} w-full`}
+                  />
+                </div>
+              </Stack>
 
-            <Stack>
-              <div className="w-full">
-                <div>Level of experience</div>
-                <input
-                  onChange={(e) => setLoEx(e.target.value)}
-                  className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
+              <Stack>
+                <div className="w-full">
+                  <div>Level of experience</div>
+                  <input
+                    onChange={(e) => setLoEx(e.target.value)}
+                    className={`${inputStyle2} w-full`}
+                  />
+                </div>
+              </Stack>
 
-            <Stack>
-              <div className="w-full">
-                <div>Role Description</div>
-                <textarea
-                  onChange={(e) => setDescription(e.target.value)}
-                  rows={3} className={`${inputStyle2} w-full`} />
-              </div>
+              <Stack>
+                <div className="w-full">
+                  <div>Role Description</div>
+                  <textarea
+                    onChange={(e) => setDescription(e.target.value)}
+                    rows={3}
+                    className={`${inputStyle2} w-full`}
+                  />
+                </div>
+              </Stack>
             </Stack>
+          ))}
+
+          <Stack className="relative w-full flex justify-center items-center py-[4vw] border-[0.2vw] h-full border-black rounded-[0.6vw]">
+            <div className="absolute top-[5%] left-[5%] text-[3vw] md:text-[1.4vw] text-black">
+              Add new role
+            </div>
+            <motion.button whileTap={{ scale: 0.96 }} onClick={handleClick}>
+              <IoIosAddCircle className="text-[35vw] md:text-[15vw] text-black/40" />
+            </motion.button>
           </Stack>
-
-          {/* <Stack className="p-[3vw] md:p-[1vw] border-[0.2vw] md:border-[0.16vw] border-black rounded-[1vw] md:rounded-[0.6vw] w-full h-fit gap-y-[1vw]">
-            <Stack direction="row" spacing={1} justifyContent="space-between">
-              <div className="w-full">
-                <div>Role Needed</div>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-              <div className="w-[60%]">
-                <Stack direction="row" justifyContent="space-between">
-                  <label>Payement</label>
-                  <label>Time</label>
-                </Stack>
-                <Stack direction="row" alignItems="center">
-                  <input
-                    className={`${inputStyle2} !border-r-0 !rounded-r-none w-full`}
-                  />
-                  <div
-                    className={`border-[0.12vw] mt-[0.6vw] border-black rounded-l-none rounded-[0.4vw] px-[1vw] py-[1.8vw] md:py-[0.85vw] text-[3vw] md:text-[1vw]`}
-                  >
-                    Mnth
-                  </div>
-                </Stack>
-              </div>
-            </Stack>
-
-            <Stack direction="row" spacing={1} justifyContent="space-between">
-              <div className="w-full">
-                <div>Category</div>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-              <div className="w-[60%]">
-                <Stack direction="row" justifyContent="space-between">
-                  <label>Country</label>
-                </Stack>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
-
-            <Stack>
-              <div className="w-full">
-                <div>Level of experience</div>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
-
-            <Stack>
-              <div className="w-full">
-                <div>Role Description</div>
-                <textarea rows={3} className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
-          </Stack> */}
-        </Stack>
-      </div>
-      {/* <Stack className="mt-[5vw] relative w-full md:w-[49.4%] place-items-center py-[4vw] border-[0.2vw] border-black rounded-[0.6vw]">
-        <div className="absolute top-[5%] left-[5%] text-[3vw] md:text-[1.4vw] text-black">
-          Add new role
         </div>
-        <motion.button whileTap={{ scale: 0.96 }}>
-          <IoIosAddCircle className="text-[35vw] md:text-[15vw] text-black/40" />
-        </motion.button>
-      </Stack> */}
+      </div>
+
       <div className="flex justify-center mt-[5vw]">
         <Button
           onClick={(e) => {
