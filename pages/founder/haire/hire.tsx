@@ -1,9 +1,78 @@
+import { invites } from "@/lib/NexusProgram/invite/init_invite";
+import { getProjectForFounder } from "@/lib/NexusProgram/project/utils/get_projects";
+import { getRolesForProject } from "@/lib/NexusProgram/project/utils/get_role";
 import { Button } from "@mui/material";
+import { web3 } from "@project-serum/anchor";
+import { set } from "@project-serum/anchor/dist/cjs/utils/features";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import Image from "next/image";
-import React, { ReactNode } from "react";
+import { useSearchParams } from "next/navigation";
+import React, { ReactNode, useEffect, useState } from "react";
 
 export default function hire() {
+
+  const searchParams = useSearchParams()
+  const anchorWallet = useAnchorWallet()
+  const { connection } = useConnection()
+
+  const wallet = useWallet()
+
+
+  const [user, setUser] = useState<string>()
+  const [select1, setSelect1] = useState<number>()
+  const [select2, setSelect2] = useState<number>()
+  const [projects, setProjects] = useState<any[]>()
+  const [roles, setRoles] = useState<any[]>()
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+    const _user = searchParams.get("user");
+    setUser(_user!);
+    get_project();
+    console.log(_user);
+  }, [anchorWallet])
+
+  const get_project = async () => {
+    try {
+      console.log("_projects");
+      const _projects = await getProjectForFounder(
+        connection,
+        anchorWallet!,
+        "confirmed"
+      );
+      const role: any[] = [];
+      await Promise.all(_projects.map(async (prj) => {
+        const roll = await getRolesForProject(connection, prj.pubkey, "confirmed");
+        role.push(...roll);
+      }));
+      console.log(role);
+      setRoles(role);
+      console.log("_projects");
+      console.log(_projects);
+      setProjects(_projects);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
+  const invite = async () => {
+    try {
+      console.log("start")
+      console.log(select1)
+      console.log(select2)
+      // if (select1! >= 0 && select2! >= 0) {
+      console.log("nice")
+      await invites(anchorWallet, connection, projects![0].pubkey, new web3.PublicKey(user!), roles![0].role);
+      // }
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
   const img =
     "https://s3-alpha-sig.figma.com/img/0bdf/67b4/683aa8620d81b877c5f6f4a1f300e5a9?Expires=1693785600&Signature=SiI1li3sicVTdGKYEYk6zRzYOkLquWoaAA8aL10bud48OGnCyFIlRgpcWtaXgNL2K~3e~RPZtPPkZtfy61MG4Ypvv9fVGFcibJy8IE0aE3CcAG-KW0XNyPp5RKR2Buux0UAF1W-XawE~hbPAKjSYs0E6HWQifXLhEcN3RN5x~rDjAyV9Vj77cLxpETTYZF8ueBSkmqYIooqr1uin3xk~b-XwnIRv4XhIpf3XwMUdNDyvmi4Ss9SRZN6CgLHFrwFbA7Z8a9RQFLO-j1UDCPYRSV-0URCsgpwjPb5VCUnxGne7o0H55~uObS3bh5HZIMniPlsduIYiu7lXdmchxIlzWA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
@@ -85,9 +154,15 @@ export default function hire() {
             className="px-[2vw] mt-[1vw] text-[1vw] rounded-[1vw] py-[1.6vw] w-full border-[0.12vw] border-black"
             id=""
           >
-            <option>Aptos Monkeys</option>
-            <option>Aptos Monkeys</option>
-            <option>Aptos Monkeys</option>
+            {projects && projects.map((project, i) => (
+              <option
+                key={i}
+                onClick={() => {
+                  console.log(i)
+                  setSelect1(i)
+                }}
+              >{project.name}</option>
+            ))}
           </select>
         </div>
         <div className="mt-[2vw]">
@@ -97,13 +172,22 @@ export default function hire() {
             className="px-[2vw] mt-[1vw] text-[1vw] rounded-[1vw] py-[1.6vw] w-full border-[0.12vw] border-black"
             id=""
           >
-            <option>Role 1</option>
-            <option>Role 2</option>
-            <option>Role 3</option>
+            {roles?.map((role, i) => (
+              <option
+                key={i}
+                onClick={() => {
+                  setSelect2(i)
+                }}
+              >{role.role}</option>
+            ))}
           </select>
         </div>
       </div>
-      <div className="mt-[4vw] flex justify-center">
+      <div
+        onClick={() => {
+          invite()
+        }}
+        className="mt-[4vw] flex justify-center">
         <Button2>Hire</Button2>
       </div>
     </div>
