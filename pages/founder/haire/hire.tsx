@@ -4,33 +4,31 @@ import { getRolesForProject } from "@/lib/NexusProgram/project/utils/get_role";
 import { Button } from "@mui/material";
 import { web3 } from "@project-serum/anchor";
 import { set } from "@project-serum/anchor/dist/cjs/utils/features";
-import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import {
+  useAnchorWallet,
+  useConnection,
+  useWallet,
+} from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import Image from "next/image";
-<<<<<<< HEAD
-import React, { ReactNode } from "react";
 import solanaIcon from "@/public/Solana.svg";
 import aptosIcon from "@/public/AptosWhite.svg";
 import polygonIcon from "@/public/Polygon.svg";
-=======
 import { useSearchParams } from "next/navigation";
 import React, { ReactNode, useEffect, useState } from "react";
->>>>>>> 4827af5c326ed236d960c0141eb55acb2f7335d0
 
 export default function hire() {
+  const searchParams = useSearchParams();
+  const anchorWallet = useAnchorWallet();
+  const { connection } = useConnection();
 
-  const searchParams = useSearchParams()
-  const anchorWallet = useAnchorWallet()
-  const { connection } = useConnection()
+  const wallet = useWallet();
 
-  const wallet = useWallet()
-
-
-  const [user, setUser] = useState<string>()
-  const [select1, setSelect1] = useState<number>()
-  const [select2, setSelect2] = useState<number>()
-  const [projects, setProjects] = useState<any[]>()
-  const [roles, setRoles] = useState<any[]>()
+  const [user, setUser] = useState<string>();
+  const [select1, setSelect1] = useState<number>();
+  const [select2, setSelect2] = useState<number>();
+  const [projects, setProjects] = useState<any[]>();
+  const [roles, setRoles] = useState<any[]>();
 
   useEffect(() => {
     if (!anchorWallet) return;
@@ -38,7 +36,7 @@ export default function hire() {
     setUser(_user!);
     get_project();
     console.log(_user);
-  }, [anchorWallet])
+  }, [anchorWallet]);
 
   const get_project = async () => {
     try {
@@ -49,10 +47,16 @@ export default function hire() {
         "confirmed"
       );
       const role: any[] = [];
-      await Promise.all(_projects.map(async (prj) => {
-        const roll = await getRolesForProject(connection, prj.pubkey, "confirmed");
-        role.push(...roll);
-      }));
+      await Promise.all(
+        _projects.map(async (prj) => {
+          const roll = await getRolesForProject(
+            connection,
+            prj.pubkey,
+            "confirmed"
+          );
+          role.push(...roll);
+        })
+      );
       console.log(role);
       setRoles(role);
       console.log("_projects");
@@ -63,22 +67,25 @@ export default function hire() {
     }
   };
 
-
   const invite = async () => {
     try {
-      console.log("start")
-      console.log(select1)
-      console.log(select2)
+      console.log("start");
+      console.log(select1);
+      console.log(select2);
       // if (select1! >= 0 && select2! >= 0) {
-      console.log("nice")
-      await invites(anchorWallet, connection, projects![0].pubkey, new web3.PublicKey(user!), roles![0].role);
+      console.log("nice");
+      await invites(
+        anchorWallet,
+        connection,
+        projects![0].pubkey,
+        new web3.PublicKey(user!),
+        roles![0].role
+      );
       // }
-
     } catch (e) {
       console.log(e);
     }
-  }
-
+  };
 
   const img =
     "https://media.discordapp.net/attachments/1085293900706627595/1216090924862406678/Frame_52351_1.png?ex=65ff1fee&is=65ecaaee&hm=7be1ea6efe7966eb223dea2bccd63a6302b1bc6bace1ab9c4af691f26ee5c9ec&=&format=webp&quality=lossless&width=781&height=642";
@@ -167,15 +174,18 @@ export default function hire() {
             className="px-[2vw] mt-[1vw] text-[3vw] md:text-[1vw] rounded-[1vw] py-[1.6vw] w-full border-[0.12vw] border-black"
             id=""
           >
-            {projects && projects.map((project, i) => (
-              <option
-                key={i}
-                onClick={() => {
-                  console.log(i)
-                  setSelect1(i)
-                }}
-              >{project.name}</option>
-            ))}
+            {projects &&
+              projects.map((project, i) => (
+                <option
+                  key={i}
+                  onClick={() => {
+                    console.log(i);
+                    setSelect1(i);
+                  }}
+                >
+                  {project.name}
+                </option>
+              ))}
           </select>
         </div>
         <div className="mt-[5vw] md:mt-[2vw]">
@@ -189,18 +199,21 @@ export default function hire() {
               <option
                 key={i}
                 onClick={() => {
-                  setSelect2(i)
+                  setSelect2(i);
                 }}
-              >{role.role}</option>
+              >
+                {role.role}
+              </option>
             ))}
           </select>
         </div>
       </div>
       <div
         onClick={() => {
-          invite()
+          invite();
         }}
-        className="mt-[4vw] flex justify-center">
+        className="mt-[4vw] flex justify-center"
+      >
         <Button2>Hire</Button2>
       </div>
     </div>
