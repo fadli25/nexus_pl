@@ -4,6 +4,7 @@ import { get_profile_info } from "@/lib/NexusProgram/user/utils/profile_info";
 import AptosIcon from "@/public/Aptos.svg";
 import PolygonIcon from "@/public/Polygon.svg";
 import SolanaIcon from "@/public/Solana.svg";
+import { Button, Stack } from "@mui/material";
 import { web3 } from "@project-serum/anchor";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
@@ -12,7 +13,6 @@ import { useRouter } from "next/router";
 import React, { ReactNode, useEffect, useState } from "react";
 import { FaTwitter } from "react-icons/fa";
 import { GrLanguage } from "react-icons/gr";
-import { Button, Stack } from "@mui/material";
 import { IoLogoLinkedin, IoStarSharp } from "react-icons/io5";
 import { TbCurrencySolana } from "react-icons/tb";
 
@@ -230,7 +230,7 @@ export default function Profile({ user }: any) {
       </div>
       <div className="mt-[6vw] md:mt-[4vw] flex justify-center gap-x-[4vw] md:gap-x-[2vw]">
         <Button3>Add to watchlist</Button3>
-        <Button2 onClick={() => router.push("/founder/haire/hire")}>
+        <Button2 onClick={() => router.push("/founder/haire/hire?user=" + info.address.toBase58())}>
           Hire
         </Button2>
         <Button4>Reject</Button4>

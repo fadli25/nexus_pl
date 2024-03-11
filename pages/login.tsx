@@ -47,7 +47,7 @@ export default function profile() {
 
   async function initialize_user() {
     try {
-      notify_laoding("transaction pending...");
+      notify_laoding("Creating Profile...");
       setLoading(true);
       await init_user(
         anchorWallet,
@@ -68,20 +68,20 @@ export default function profile() {
         country
       );
       notify_delete();
-      notify_success("transaction successful");
+      notify_success("Profile Created!");
       setLoading(false);
       router.push("/")
     } catch (e) {
       setLoading(false);
       notify_delete();
-      notify_error("transaction failed");
+      notify_error("Transaction Failed");
       console.log(e);
     }
   }
 
   async function update_user_info() {
     try {
-      notify_laoding("transaction pending...");
+      notify_laoding("Updating Profile...");
       setLoading(true);
       await update_user(
         anchorWallet,
@@ -97,12 +97,12 @@ export default function profile() {
         nogotion
       );
       notify_delete();
-      notify_success("transaction successful");
+      notify_success("Profile Updated!");
       setLoading(false);
     } catch (e) {
       setLoading(false);
       notify_delete();
-      notify_error("transaction failed");
+      notify_error("Transaction Failed");
       console.log(e);
     }
   }

@@ -1,3 +1,6 @@
+import aptosImg from "@/public/Aptos.svg";
+import polygonImg from "@/public/Polygon.svg";
+import solanaImg from "@/public/Solana.svg";
 import { Button } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
@@ -11,9 +14,6 @@ import { toast } from "react-toastify";
 import { init_user } from "../lib/NexusProgram/user/init_user";
 import { update_user } from "../lib/NexusProgram/user/update_user";
 import { get_user_info } from "../lib/NexusProgram/user/utils/user_info";
-import solanaImg from "@/public/Solana.svg";
-import aptosImg from "@/public/Aptos.svg";
-import polygonImg from "@/public/Polygon.svg";
 
 export default function profile() {
   const [exist, setExist] = useState<boolean>(false);
@@ -44,7 +44,7 @@ export default function profile() {
 
   async function initialize_user() {
     try {
-      notify_laoding("transaction pending...");
+      notify_laoding("Creating Profile...");
       setLoading(true);
       await init_user(
         anchorWallet,
@@ -65,19 +65,19 @@ export default function profile() {
         country
       );
       notify_delete();
-      notify_success("transaction successful");
+      notify_success("Profile Created!");
       setLoading(false);
     } catch (e) {
       setLoading(false);
       notify_delete();
-      notify_error("transaction failed");
+      notify_error("Transaction Failed");
       console.log(e);
     }
   }
 
   async function update_user_info() {
     try {
-      notify_laoding("transaction pending...");
+      notify_laoding("Updating Profile...");
       setLoading(true);
       await update_user(
         anchorWallet,
@@ -93,12 +93,12 @@ export default function profile() {
         nogotion
       );
       notify_delete();
-      notify_success("transaction successful");
+      notify_success("Profile Updated!");
       setLoading(false);
     } catch (e) {
       setLoading(false);
       notify_delete();
-      notify_error("transaction failed");
+      notify_error("Transaction Failed");
       console.log(e);
     }
   }
