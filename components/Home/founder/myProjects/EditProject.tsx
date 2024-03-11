@@ -8,7 +8,7 @@ import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { IoIosAddCircle } from "react-icons/io";
 
@@ -87,8 +87,7 @@ export default function EditProject({ project }: any) {
 
     // const nft_address = searchParams.get("address");
     get_infos(project as string);
-
-  }, [anchorWallet])
+  }, [anchorWallet]);
 
   const initProject = async () => {
     try {
@@ -113,31 +112,28 @@ export default function EditProject({ project }: any) {
 
   const get_infos = async (project: string) => {
     try {
-
       const infos = await get_project_info(anchorWallet, connection, project);
 
       console.log(infos);
       if (infos) {
-        setDiscodLink(infos.linkDiscord)
-        setTwitterLink(infos.linkTwitter)
-        setWebsiteLink(infos.linkWebsite)
-        setThreadLink(infos.linkThread)
-        setHiring(infos.hiring)
-        setLogo(infos.logo)
-        setCategory(infos.category)
-        setProjectOverview(infos.projectOverview)
+        setDiscodLink(infos.linkDiscord);
+        setTwitterLink(infos.linkTwitter);
+        setWebsiteLink(infos.linkWebsite);
+        setThreadLink(infos.linkThread);
+        setHiring(infos.hiring);
+        setLogo(infos.logo);
+        setCategory(infos.category);
+        setProjectOverview(infos.projectOverview);
         // setName(infos.name)
-        setDepartments(infos.departments)
+        setDepartments(infos.departments);
       }
-
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   const projetImage =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162188869798736053/Ellipse_18_3.png?ex=653b07ba&is=652892ba&hm=879a3e9d39738e485a66832817a0913f193639592d3b5b36bd607bd37d554ba8&=&width=486&height=443";
-
+    "https://media.discordapp.net/attachments/1085293900706627595/1216090924862406678/Frame_52351_1.png?ex=65ff1fee&is=65ecaaee&hm=7be1ea6efe7966eb223dea2bccd63a6302b1bc6bace1ab9c4af691f26ee5c9ec&=&format=webp&quality=lossless&width=781&height=642";
   const buttonStyle = {
     fontSize: "1vw",
     padding: "0.6vw 1vw",
@@ -195,12 +191,12 @@ export default function EditProject({ project }: any) {
     <div className="px-[4vw]">
       <div className="flex flex-col md:flex-row gap-y-[3vw] md:gap-y-0 justify-between">
         <div className="flex flex-row md:flex-col gap-x-[3vw] md:gap-x-0 justify-center md:justify-start items-center">
-          <div className="w-[34vw] md:w-[15vw] rounded-full border-[0.2vw] border-[#00ff47] overflow-hidden">
+          <div className="w-fit rounded-full border-[0.2vw] border-[#00ff47] overflow-hidden">
             <Image
               src={projetImage}
               width={9000}
               height={2000}
-              className="w-[54vw] object-cover object-center"
+              className="w-[34vw] h-[34vw] md:w-[13vw] md:h-[13vw] object-cover object-center"
               alt=""
             />
           </div>
@@ -329,142 +325,7 @@ export default function EditProject({ project }: any) {
           />
         </div>
       </div>
-      {/* <div className="mt-[3vw]">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center text-[5vw] md:text-[3vw] fontPopSemibold gap-x-[3vw] md:gap-x-[1vw] text-black">
-            <div>Recruiting</div>
-            <div>
-              <FormControlLabel
-                control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
-                label=""
-              />
-            </div>
-          </div>
-          <Button
-            variant="contained"
-            sx={styleButton2}
-            className="bg-[#FF2D2D] hover:bg-[#FF2D2D]"
-          >
-            Delete Role
-          </Button>
-        </div>
-      </div> */}
 
-      {/* <div className="pt-[5vw] text-[3.5vw] md:text-[1.2vw] font-semibold text-black">
-        <Stack className="!flex-col md:!flex-row !justify-between !items-end gap-x-[1vw] gap-y-[3vw]">
-          <Stack className="p-[3vw] md:p-[1vw] border-[0.2vw] md:border-[0.16vw] border-black rounded-[1vw] md:rounded-[0.6vw] w-full h-fit gap-y-[1vw]">
-            <Stack direction="row" spacing={1} justifyContent="space-between">
-              <div className="w-full">
-                <div>Role Needed</div>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-              <div className="w-[60%]">
-                <Stack direction="row" justifyContent="space-between">
-                  <label>Payement</label>
-                  <label>Time</label>
-                </Stack>
-                <Stack direction="row" alignItems="center">
-                  <input
-                    className={`${inputStyle2} !border-r-0 !rounded-r-none w-full`}
-                  />
-                  <div
-                    className={`border-[0.12vw] mt-[0.6vw] border-black rounded-l-none rounded-[0.4vw] px-[1vw] py-[1.8vw] md:py-[0.85vw] text-[3vw] md:text-[1vw]`}
-                  >
-                    Mnth
-                  </div>
-                </Stack>
-              </div>
-            </Stack>
-
-            <Stack direction="row" spacing={1} justifyContent="space-between">
-              <div className="w-full">
-                <div>Category</div>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-              <div className="w-[60%]">
-                <Stack direction="row" justifyContent="space-between">
-                  <label>Country</label>
-                </Stack>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
-
-            <Stack>
-              <div className="w-full">
-                <div>Level of experience</div>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
-
-            <Stack>
-              <div className="w-full">
-                <div>Role Description</div>
-                <textarea rows={3} className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
-          </Stack>
-
-          <Stack className="p-[3vw] md:p-[1vw] border-[0.2vw] md:border-[0.16vw] border-black rounded-[1vw] md:rounded-[0.6vw] w-full h-fit gap-y-[1vw]">
-            <Stack direction="row" spacing={1} justifyContent="space-between">
-              <div className="w-full">
-                <div>Role Needed</div>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-              <div className="w-[60%]">
-                <Stack direction="row" justifyContent="space-between">
-                  <label>Payement</label>
-                  <label>Time</label>
-                </Stack>
-                <Stack direction="row" alignItems="center">
-                  <input
-                    className={`${inputStyle2} !border-r-0 !rounded-r-none w-full`}
-                  />
-                  <div
-                    className={`border-[0.12vw] mt-[0.6vw] border-black rounded-l-none rounded-[0.4vw] px-[1vw] py-[1.8vw] md:py-[0.85vw] text-[3vw] md:text-[1vw]`}
-                  >
-                    Mnth
-                  </div>
-                </Stack>
-              </div>
-            </Stack>
-
-            <Stack direction="row" spacing={1} justifyContent="space-between">
-              <div className="w-full">
-                <div>Category</div>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-              <div className="w-[60%]">
-                <Stack direction="row" justifyContent="space-between">
-                  <label>Country</label>
-                </Stack>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
-
-            <Stack>
-              <div className="w-full">
-                <div>Level of experience</div>
-                <input className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
-
-            <Stack>
-              <div className="w-full">
-                <div>Role Description</div>
-                <textarea rows={3} className={`${inputStyle2} w-full`} />
-              </div>
-            </Stack>
-          </Stack>
-        </Stack>
-      </div> */}
-      {/* <Stack className="mt-[5vw] relative w-full md:w-[49.4%] place-items-center py-[4vw] border-[0.2vw] border-black rounded-[0.6vw]">
-        <div className="absolute top-[5%] left-[5%] text-[3vw] md:text-[1.4vw] text-black">
-          Add new role
-        </div>
-        <motion.button whileTap={{ scale: 0.96 }}>
-          <IoIosAddCircle className="text-[35vw] md:text-[15vw] text-black/40" />
-        </motion.button>
-      </Stack> */}
       <div className="flex justify-center mt-[5vw]">
         <Button
           onClick={(e) => {
@@ -475,7 +336,7 @@ export default function EditProject({ project }: any) {
           sx={styleButton1}
           className="bg-[#00ff47] hover:bg-[#00ff47]"
         >
-          Update
+          Done
         </Button>
       </div>
     </div>

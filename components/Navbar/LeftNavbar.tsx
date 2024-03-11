@@ -12,8 +12,7 @@ type showLeftNavbar = {
 export default function LeftNavbar({ showLeftNavbar }: any) {
   //   Profile Image
   const imageSrc =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162185596601647255/Ellipse_18_2.png?ex=653b04ae&is=65288fae&hm=fb327e5a676c925fbfd3cd968a2df42b7731031bb7a53dc07964bab70c84a5cf&=&width=287&height=286";
-
+    "https://media.discordapp.net/attachments/1085293900706627595/1216090924862406678/Frame_52351_1.png?ex=65ff1fee&is=65ecaaee&hm=7be1ea6efe7966eb223dea2bccd63a6302b1bc6bace1ab9c4af691f26ee5c9ec&=&format=webp&quality=lossless&width=781&height=642";
   const buttonClass = "rounded-full bg-[#FF2D2D] hover:bg-[#FF2D2D99] ";
 
   const menu = [
@@ -88,7 +87,7 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
               className="w-[30vw] h-[30vw] md:w-[10vw] mb-[2vw] md:h-[10vw] rounded-full object-cover object-center"
               alt="profile image"
               style={{
-                border: "0.28vw #fff solid",
+                border: "0.2vw #fff solid",
               }}
             />
           </div>
