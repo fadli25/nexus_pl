@@ -8,10 +8,7 @@ import React, { useEffect, useState } from "react";
 
 export default function haire() {
   const featuredImage =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162191996614619186/Ellipse_1_1.png?ex=653b0aa4&is=652895a4&hm=d67c4517c86bd5ca0b09850880dde46eff4dd8980e31df291d047a5f66196faa&=&width=358&height=342";
-  const imgg =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162204983048032307/Ellipse_4_2.png?ex=653b16bc&is=6528a1bc&hm=9753dfa8469a9eb95a4e795bea1cc5907edea6cd86eccf6baaea94f94514857e&=&width=225&height=216";
-
+    "https://media.discordapp.net/attachments/1085293900706627595/1216090924862406678/Frame_52351_1.png?ex=65ff1fee&is=65ecaaee&hm=7be1ea6efe7966eb223dea2bccd63a6302b1bc6bace1ab9c4af691f26ee5c9ec&=&format=webp&quality=lossless&width=781&height=642";
   const [users, setUsers] = useState<any[]>();
 
   const anchorWallet = useAnchorWallet();
@@ -153,12 +150,12 @@ export default function haire() {
                   </div>
                 </div>
               </div>
-              <div className="w-[20vw] md:w-[15vw] border-[0.15vw] border-[#00ff47] rounded-full">
+              <div className="w-fit border-[0.15vw] border-[#00ff47] rounded-full">
                 <Image
                   src={featuredImage}
                   width={9000}
                   height={2000}
-                  className="rounded-full object-cover object-center"
+                  className="rounded-full object-cover object-center w-[24vw] h-[24vw] md:w-[12vw] md:h-[12vw]"
                   alt=""
                 />
               </div>
