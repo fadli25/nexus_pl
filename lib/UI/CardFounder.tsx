@@ -8,11 +8,8 @@ import { CiStar } from "react-icons/ci";
 import { RiStarSLine } from "react-icons/ri";
 import { TbCurrencySolana } from "react-icons/tb";
 
-const featuredImage =
-  "https://media.discordapp.net/attachments/1085293900706627595/1162191996614619186/Ellipse_1_1.png?ex=653b0aa4&is=652895a4&hm=d67c4517c86bd5ca0b09850880dde46eff4dd8980e31df291d047a5f66196faa&=&width=358&height=342";
 const imgg =
-  "https://media.discordapp.net/attachments/1085293900706627595/1162204983048032307/Ellipse_4_2.png?ex=653b16bc&is=6528a1bc&hm=9753dfa8469a9eb95a4e795bea1cc5907edea6cd86eccf6baaea94f94514857e&=&width=225&height=216";
-const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
+  "https://media.discordapp.net/attachments/1085293900706627595/1216090924862406678/Frame_52351_1.png?ex=65ff1fee&is=65ecaaee&hm=7be1ea6efe7966eb223dea2bccd63a6302b1bc6bace1ab9c4af691f26ee5c9ec&=&format=webp&quality=lossless&width=781&height=642";
 
 // type RouterFunc = {
 //   onClick: () => void;
@@ -26,9 +23,15 @@ export default function CardFounder({ onClick, info, key }: any) {
       onClick={onClick}
       className="flex font-semibold cursor-pointer text-black gap-x-[2vw] md:gap-x-[1vw] pt-[2vw] w-full px-[2.8vw] md:px-[1vw] py-[2vw] md:py-[1vw] rounded-[0.6vw] border border-black md:!w-[100px] overflow-hidden CardFounder"
     >
-      <div className="flex items-center flex-col">
-        <div className="w-[30vw] img rounded-full border border-black">
-          <Image src={imgg} width={1000} height={1000} alt="" />
+      <div className="flex w-[40vw] md:w-[16vw] items-center flex-col">
+        <div className="rounded-full border-[0.14vw] border-black">
+          <Image
+            src={imgg}
+            width={9000}
+            height={2000}
+            alt=""
+            className="rounded-full w-[20vw] h-[20vw] md:w-[8vw] md:h-[8vw] object-cover object-center"
+          />
         </div>
         <div
           style={{ padding: "0.2vw 0.5vw" }}

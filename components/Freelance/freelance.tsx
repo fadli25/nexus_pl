@@ -10,51 +10,46 @@ import { useRouter } from "next/router";
 import React, { ReactNode, useEffect, useState } from "react";
 
 export default function freelance() {
-
-  const [projects, setProjects] = useState<any[]>()
+  const [projects, setProjects] = useState<any[]>();
 
   const anchorWallet = useAnchorWallet();
-  const { connection } = useConnection()
+  const { connection } = useConnection();
 
   const get_projects = async () => {
     try {
       const projects = await getAllProjects(connection, "confirmed");
       projects.map((project, i) => {
         projects[i].role = [];
-      })
+      });
       // console.log(projects);
-      const roles = await getAllRoles(connection, 'confirmed');
+      const roles = await getAllRoles(connection, "confirmed");
       console.log(roles);
 
       roles.map((role) => {
         projects.map((project, i) => {
           if (role.project.toBase58() == project.pubkey.toBase58()) {
             console.log("Done");
-            projects[i].role.push(role)
+            projects[i].role.push(role);
           }
-        })
-      })
+        });
+      });
 
       console.log(projects);
       setProjects(projects);
-
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   useEffect(() => {
     if (!anchorWallet) return;
 
-    get_projects()
-  }, [anchorWallet])
+    get_projects();
+  }, [anchorWallet]);
 
   const featuredImage =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162191996614619186/Ellipse_1_1.png?ex=653b0aa4&is=652895a4&hm=d67c4517c86bd5ca0b09850880dde46eff4dd8980e31df291d047a5f66196faa&=&width=358&height=342";
-  const imgg =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162204983048032307/Ellipse_4_2.png?ex=653b16bc&is=6528a1bc&hm=9753dfa8469a9eb95a4e795bea1cc5907edea6cd86eccf6baaea94f94514857e&=&width=225&height=216";
-  const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
-  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    "https://media.discordapp.net/attachments/1085293900706627595/1216090924862406678/Frame_52351_1.png?ex=65ff1fee&is=65ecaaee&hm=7be1ea6efe7966eb223dea2bccd63a6302b1bc6bace1ab9c4af691f26ee5c9ec&=&format=webp&quality=lossless&width=781&height=642";
+
   const router = useRouter();
   return (
     <div className="flex justify-center md:justify-between relative">
@@ -144,12 +139,12 @@ export default function freelance() {
                   </div>
                 </div>
               </div>
-              <div className="w-[24vw] md:w-[15vw] border-[0.15vw] border-[#00ff47] rounded-full">
+              <div className="w-fit border-[0.15vw] border-[#00ff47] rounded-full">
                 <Image
                   src={featuredImage}
                   width={9000}
                   height={2000}
-                  className="rounded-full object-cover object-center"
+                  className="rounded-full w-[24vw] h-[24vw] md:w-[12vw] md:h-[12vw] object-cover object-center"
                   alt=""
                 />
               </div>
@@ -157,70 +152,73 @@ export default function freelance() {
           </div>
         </div>
         <div className="mt-[3vw] flex flex-wrap justify-center md:justify-between gap-y-[2vw] pb-[4vw]">
-          {projects && projects.map((el, i) => (
-            <motion.div
-              onClick={() => router.push("/freelance/project/" + el.pubkey.toBase58())}
-              whileHover={{ scale: 0.98 }}
-              key={i}
-              className="w-[70vw] md:w-[32vw] cursor-pointer rounded-[1.4vw] md:rounded-[0.6vw] overflow-hidden  flex justify-between border-[0.11vw] border-black"
-            >
-              <div className="flex flex-col items-center pl-[1vw] py-[2vw] md:py-[1vw]">
-                <div className="w-[20vw] md:w-[8vw] rounded-full border-[0.14vw] border-black">
-                  <Image
-                    src={imgg}
-                    width={9000}
-                    height={2000}
-                    alt=""
-                    className="rounded-full"
-                  />
-                </div>
-                <div className="mt-[0.6vw] flex justify-center gap-x-[0.2vw] px-[1vw] md:px-[0.4vw] py-[0.1vw]">
-                  <Image
-                    src={SolanaIcon}
-                    className="w-[5vw] md:w-[2vw]"
-                    alt=""
-                  />
-                  <Image
-                    src={PolygonIcon}
-                    className="w-[5vw] md:w-[2vw]"
-                    alt=""
-                  />
-                  <Image
-                    src={AptosIcon}
-                    className="w-[4vw] md:w-[1.5vw]"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div className="w-[36%] py-[1vw]">
-                <div className="flex justify-between items-center text-black">
-                  <div>
-                    <div className="fontPopSemibold  text-[2.6vw] md:text-[1.8vw]">
-                      {el.name}
-                    </div>
-                    <div className="text-[4vw] md:text-[1.2vw]">
-                      {el.category}
-                    </div>
+          {projects &&
+            projects.map((el, i) => (
+              <motion.div
+                onClick={() =>
+                  router.push("/freelance/project/" + el.pubkey.toBase58())
+                }
+                whileHover={{ scale: 0.98 }}
+                key={i}
+                className="w-[70vw] md:w-[32vw] cursor-pointer rounded-[1.4vw] md:rounded-[0.6vw] overflow-hidden  flex justify-between border-[0.11vw] border-black"
+              >
+                <div className="flex flex-col items-center pl-[1vw] py-[2vw] md:py-[1vw]">
+                  <div className=" rounded-full border-[0.14vw] border-black">
+                    <Image
+                      src={featuredImage}
+                      width={9000}
+                      height={2000}
+                      alt=""
+                      className="rounded-full w-[20vw] h-[20vw] md:w-[8vw] md:h-[8vw] object-cover object-center"
+                    />
+                  </div>
+                  <div className="mt-[0.6vw] flex justify-center gap-x-[0.2vw] px-[1vw] md:px-[0.4vw] py-[0.1vw]">
+                    <Image
+                      src={SolanaIcon}
+                      className="w-[5vw] md:w-[2vw]"
+                      alt=""
+                    />
+                    <Image
+                      src={PolygonIcon}
+                      className="w-[5vw] md:w-[2vw]"
+                      alt=""
+                    />
+                    <Image
+                      src={AptosIcon}
+                      className="w-[4vw] md:w-[1.5vw]"
+                      alt=""
+                    />
                   </div>
                 </div>
-                <div className="mt-[0.5vw] text-[1.8vw] md:text-[0.7vw] w-full border-[#282828] border-[0.11vw] text-black h-[13vw] md:h-[5.9vw] rounded-[0.6vw] p-[1vw] md:p-[0.5vw]">
-                  {el.projectOverview}
-                </div>
-              </div>
-              <div className="w-[30%] bg-[#1f1f1f] h-full">
-                <div className="px-[1vw] text-[2.5vw] md:text-[1vw] pt-[1vw]">
-                  <div className=" fontPopSemibold text-[#00ff47] mb-[1.7vw] md:mb-[1vw]">
-                    Roles Needed
+                <div className="w-[36%] py-[1vw]">
+                  <div className="flex justify-between items-center text-black">
+                    <div>
+                      <div className="fontPopSemibold  text-[2.6vw] md:text-[1.8vw]">
+                        {el.name}
+                      </div>
+                      <div className="text-[4vw] md:text-[1.2vw]">
+                        {el.category}
+                      </div>
+                    </div>
                   </div>
-                  {el.role.map((rl: any) => (
-                    <>
-                      <MotionButton>{rl.role}</MotionButton>
-                    </>
-                  ))}
+                  <div className="mt-[0.5vw] text-[1.8vw] md:text-[0.7vw] w-full border-[#282828] border-[0.11vw] text-black h-[13vw] md:h-[5.9vw] rounded-[0.6vw] p-[1vw] md:p-[0.5vw]">
+                    {el.projectOverview}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                <div className="w-[30%] bg-[#1f1f1f] h-full">
+                  <div className="px-[1vw] text-[2.5vw] md:text-[1vw] pt-[1vw]">
+                    <div className=" fontPopSemibold text-[#00ff47] mb-[1.7vw] md:mb-[1vw]">
+                      Roles Needed
+                    </div>
+                    {el.role.map((rl: any) => (
+                      <>
+                        <MotionButton>{rl.role}</MotionButton>
+                      </>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
         </div>
       </div>
     </div>
