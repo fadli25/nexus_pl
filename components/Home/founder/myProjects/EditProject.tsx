@@ -74,7 +74,7 @@ export default function EditProject({ project }: any) {
   const [discod_link, setDiscodLink] = useState<string>("");
   const [twitter_link, setTwitterLink] = useState<string>("");
   const [website_link, setWebsiteLink] = useState<string>("");
-  const [thread_link, setThreadLink] = useState<string>("");
+  const [linkdin_link, setLinkdin] = useState<string>("");
   const [hiring, setHiring] = useState(false);
   const [logo, setLogo] = useState<string>("");
   const [category, setCategory] = useState<string>("");
@@ -98,7 +98,7 @@ export default function EditProject({ project }: any) {
         logo,
         category,
         discod_link,
-        thread_link,
+        linkdin_link,
         twitter_link,
         website_link,
         project_overview,
@@ -119,7 +119,7 @@ export default function EditProject({ project }: any) {
         setDiscodLink(infos.linkDiscord);
         setTwitterLink(infos.linkTwitter);
         setWebsiteLink(infos.linkWebsite);
-        setThreadLink(infos.linkThread);
+        setLinkdin(infos.linkThread);
         setHiring(infos.hiring);
         setLogo(infos.logo);
         setCategory(infos.category);
@@ -241,11 +241,11 @@ export default function EditProject({ project }: any) {
             />
           </div>
           <div>
-            <div className="fontPopSemibold">Link Thread</div>
+            <div className="fontPopSemibold">Link Linkdin</div>
             <input
-              onChange={(e) => setThreadLink(e.target.value)}
-              value={thread_link}
-              placeholder="https://thread/12345"
+              onChange={(e) => setLinkdin(e.target.value)}
+              value={linkdin_link}
+              placeholder="https://www.linkedin.com/in/120349/"
               className={`${inputStyle}`}
             />
           </div>
