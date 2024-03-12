@@ -8,7 +8,7 @@ export default function index() {
       <Head>
         <title>Jobs</title>
       </Head>
-      {/* <Freelance /> */}
+      <Freelance />
     </div>
   );
 }

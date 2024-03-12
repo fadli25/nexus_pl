@@ -467,12 +467,8 @@ export default function TopNavbar() {
         )}
         {path.slice(0, 8) === "/freelan" && (
           <>
-            {/* <div className="absolute top-0 left-0 w-[70%] h-full flex items-center ">
-             {freelance()}
-          </div> */}
-
-            <div className="absolute top-0 left-[0] font-[100] md:left-[-3vw] text-center text-[7vw] md:text-[5vw]  justify-center font-[poppins] w-full h-full flex items-center -z-10">
-              C O M I N G &nbsp; S O O N
+            <div className="absolute top-0 left-0 w-[70%] h-full flex items-center ">
+              {freelance()}
             </div>
           </>
         )}
