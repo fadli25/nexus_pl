@@ -6,9 +6,9 @@ export default function index() {
   return (
     <div className="w-full md:w-[84vw] float-right">
       <Head>
-        <title>Freelancers</title>
+        <title>Jobs</title>
       </Head>
-      <Freelance />
+      {/* <Freelance /> */}
     </div>
   );
 }
