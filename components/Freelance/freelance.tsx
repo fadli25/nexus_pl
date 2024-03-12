@@ -120,11 +120,11 @@ export default function freelance() {
           />
         </div>
         <div className="mt-[3vw]">
-          <div className="border-[0.12vw] border-black w-full text-black py-[1vw] font-semibold px-[2vw] rounded-[1vw] md:rounded-[1vw]">
-            <div className="text-white/80 text-[2vw] md:text-[1vw]">
+          <div className="relative border-[0.12vw] border-black w-full text-black py-[1vw] font-semibold px-[2vw] rounded-[1vw] md:rounded-[1vw]">
+            <div className="text-white/80 text-[2vw] md:text-[1vw] invisible">
               Featured
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center invisible">
               <div>
                 <div className="fontPopSemibold text-[5.4vw] md:text-[3.4vw]">
                   John Stewart
@@ -148,6 +148,10 @@ export default function freelance() {
                   alt=""
                 />
               </div>
+            </div>
+
+            <div className="w-full font-[poppins] absolute top-0 left-0 z-20 h-full grid place-items-center text-[6vw] md:text-[4vw]">
+              <div>C O M I N G &nbsp; S O O N</div>
             </div>
           </div>
         </div>
