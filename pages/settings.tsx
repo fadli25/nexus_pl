@@ -28,9 +28,9 @@ export default function settings() {
       setInfo(user_info);
 
       if (user_info) {
-        setL(user_info.linkedin);
-        setD(user_info.discord_id);
-        setT(user_info.telegram_id);
+        setL(user_info.lindedin);
+        setD(user_info.discordId);
+        setT(user_info.telegramId);
         setW(user_info.website);
         setX(user_info.twitter);
       }
@@ -59,8 +59,8 @@ export default function settings() {
         info.image,
         info.category,
         info.roles,
-        info.level,
-        info.links,
+        info.levelOfExpertise,
+        info.others,
         info.profileOverview,
         info.paymentRatePerHour,
         info.nogotion,
@@ -127,7 +127,7 @@ export default function settings() {
           <div>
             <div className="font-semibold">Twitter</div>
             <input
-              onChange={(e) => setT(e.target.value)}
+              onChange={(e) => setX(e.target.value)}
               value={twitter}
               type="text"
               className="px-[1vw] outline-none md:w-[18.8vw] py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
@@ -159,6 +159,9 @@ export default function settings() {
               type="text"
               className="px-[1vw] outline-none py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
+          </div>
+          <div onClick={() => update_user_info()}>
+            DONE
           </div>
         </div>
       </div>

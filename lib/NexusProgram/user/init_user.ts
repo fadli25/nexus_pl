@@ -6,7 +6,7 @@ import {
 import { USER_PREFIX } from "../../constants/constants";
 const idl = require("../../../data/nexus.json")
 
-/**
+/** 
     nigotion: bool,
     payment_rate_per_hour: u64,
     name: String,
@@ -31,7 +31,7 @@ export async function init_user(
     category: string,
     roles: string,
     level_of_expertise: string,
-    links: string,
+    others: string,
     profile_overview: string,
     payment_rate_per_hour: number,
     nigotion: boolean,
@@ -65,7 +65,7 @@ export async function init_user(
         levelOfExpertise: level_of_expertise,
         paymentRatePerHour: new BN(payment_rate_per_hour),
         profileOverview: profile_overview,
-        links: links,
+        others: others,
         nigotion: nigotion,
         portfolio,
         resume,

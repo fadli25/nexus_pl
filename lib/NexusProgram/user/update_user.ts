@@ -26,7 +26,7 @@ export async function update_user(
     category: string,
     roles: string,
     level_of_expertise: string,
-    links: string,
+    others: string,
     profile_overview: string,
     payment_rate_per_hour: number,
     nigotion: boolean,
@@ -52,21 +52,23 @@ export async function update_user(
         PROGRAM_ID
     );
 
+
+
     const tx = await program.methods.updateUser({
         name: name,
         image: image,
         category: category,
         roles: roles,
         levelOfExpertise: level_of_expertise,
-        paymentRatePerHour: new BN(payment_rate_per_hour),
+        paymentRatePerHour: new BN(Number(payment_rate_per_hour)),
         profileOverview: profile_overview,
-        links: links,
         nigotion: nigotion,
-        telegramId: telegram_id,
+        others: others,
         lindedin: linkedin,
         twitter: twitter,
         website: website,
-        discordId: discord_id
+        discordId: discord_id,
+        telegramId: telegram_id,
     }).accounts({
         user: user,
         authority: anchorWallet.publicKey,
