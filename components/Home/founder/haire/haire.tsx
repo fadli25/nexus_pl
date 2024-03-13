@@ -131,11 +131,11 @@ export default function haire() {
           />
         </div>
         <div className="mt-[3vw]">
-          <div className="border-[0.12vw] border-black w-full py-[1vw] px-[2vw] rounded-[1.4vw] md:rounded-[1vw]">
-            <div className="text-black/80 text-[2.5vw] md:text-[1vw]">
+          <div className="border-[0.12vw] border-black w-full py-[1vw] relative px-[2vw] rounded-[1.4vw] md:rounded-[1vw]">
+            <div className="text-black/80 text-[2.5vw] md:text-[1vw] invisible">
               Featured
             </div>
-            <div className="flex font-semibold justify-between items-center">
+            <div className="flex font-semibold justify-between items-center invisible">
               <div>
                 <div className="text-[6vw] md:text-[3.4vw] text-black">
                   John Stewart
@@ -159,6 +159,10 @@ export default function haire() {
                   alt=""
                 />
               </div>
+            </div>
+
+            <div className="w-full font-[poppins] text-black absolute top-0 left-0 z-20 h-full grid place-items-center text-[6vw] md:text-[4vw]">
+              <div>C O M I N G &nbsp; S O O N</div>
             </div>
           </div>
         </div>

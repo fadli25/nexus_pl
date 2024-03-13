@@ -16,7 +16,6 @@ import LeftNavbar from "./LeftNavbar";
 import MintTitle from "./MintTitle.png";
 
 export default function TopNavbar() {
-
   const router = useRouter();
 
   const path = router.asPath;
@@ -31,10 +30,10 @@ export default function TopNavbar() {
   async function check_user() {
     try {
       const user_info = await get_user_info(anchorWallet, connection);
-      console.log("nav")
+      console.log("nav");
       if (!user_info) {
-        console.log("nav push")
-        router.push("/login")
+        console.log("nav push");
+        router.push("/login");
       }
     } catch (e) {
       console.log(e);
@@ -45,7 +44,6 @@ export default function TopNavbar() {
     if (!anchorWallet) return;
     check_user();
   }, [anchorWallet, anchorWallet?.publicKey]);
-
 
   function home() {
     return (
@@ -468,9 +466,11 @@ export default function TopNavbar() {
           </div>
         )}
         {path.slice(0, 8) === "/freelan" && (
-          <div className="absolute top-0 left-0 w-[70%] h-full flex items-center ">
-            {freelance()}
-          </div>
+          <>
+            <div className="absolute top-0 left-0 w-[70%] h-full flex items-center ">
+              {freelance()}
+            </div>
+          </>
         )}
         {path.slice(0, 8) === "/message" && (
           <div className="absolute top-0 left-0 w-[70%] h-full flex items-center ">
