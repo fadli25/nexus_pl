@@ -1,6 +1,11 @@
 import { invites } from "@/lib/NexusProgram/invite/init_invite";
 import { getProjectForFounder } from "@/lib/NexusProgram/project/utils/get_projects";
 import { getRolesForProject } from "@/lib/NexusProgram/project/utils/get_role";
+import { get_userr_info } from "@/lib/NexusProgram/user/utils/get_userr_info";
+import { get_user_info } from "@/lib/NexusProgram/user/utils/user_info";
+import aptosIcon from "@/public/AptosWhite.svg";
+import polygonIcon from "@/public/Polygon.svg";
+import solanaIcon from "@/public/Solana.svg";
 import { Button } from "@mui/material";
 import { web3 } from "@project-serum/anchor";
 import { set } from "@project-serum/anchor/dist/cjs/utils/features";
@@ -11,9 +16,6 @@ import {
 } from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import Image from "next/image";
-import solanaIcon from "@/public/Solana.svg";
-import aptosIcon from "@/public/AptosWhite.svg";
-import polygonIcon from "@/public/Polygon.svg";
 import { useSearchParams } from "next/navigation";
 import React, { ReactNode, useEffect, useState } from "react";
 
@@ -25,20 +27,22 @@ export default function hire() {
   const wallet = useWallet();
 
   const [user, setUser] = useState<string>();
+  const [user_info, setUserInfo] = useState<any>();
   const [select1, setSelect1] = useState<number>();
   const [select2, setSelect2] = useState<number>();
   const [projects, setProjects] = useState<any[]>();
   const [roles, setRoles] = useState<any[]>();
+  const [role, setRole] = useState<string>("");
 
   useEffect(() => {
     if (!anchorWallet) return;
     const _user = searchParams.get("user");
     setUser(_user!);
-    get_project();
+    get_project(_user!);
     console.log(_user);
   }, [anchorWallet]);
 
-  const get_project = async () => {
+  const get_project = async (_user: string) => {
     try {
       console.log("_projects");
       const _projects = await getProjectForFounder(
@@ -57,6 +61,12 @@ export default function hire() {
           role.push(...roll);
         })
       );
+
+
+      const infos = await get_userr_info(anchorWallet, connection, _user)
+      console.log(infos)
+      setUserInfo(infos)
+
       console.log(role);
       setRoles(role);
       console.log("_projects");
@@ -69,6 +79,9 @@ export default function hire() {
 
   const invite = async () => {
     try {
+
+      if (role.length == 0) return;
+
       console.log("start");
       console.log(select1);
       console.log(select2);
@@ -79,7 +92,7 @@ export default function hire() {
         connection,
         projects![0].pubkey,
         new web3.PublicKey(user!),
-        roles![0].role
+        role
       );
       // }
     } catch (e) {
@@ -140,10 +153,10 @@ export default function hire() {
           <div className="flex justify-between items-center">
             <div>
               <div className="text-[6vw] md:text-[2.5vw] fontPopSemibold">
-                Stella Marris
+                {user_info && user_info.name}
               </div>
               <div className="text-[#00ff47] text-[4vw] md:text-[1.5vw]">
-                Content Writer
+                {user_info && user_info.roles}
               </div>
             </div>
             <div className="flex flex-col items-end">
@@ -151,20 +164,20 @@ export default function hire() {
                 4.6
               </div>
               <div className="text-black text-[2vw] md:text-[0.8vw] px-[2vw] py-[0.7vw] bg-[#1DA1F2]">
-                Expert
+                {user_info && user_info.levelOfExpertise}
               </div>
             </div>
           </div>
           <div className="mt-[3vw] md:mt-[1vw] w-full h-[12vw] rounded-[1.4vw] px-[2vw] py-[1vw] bg-[#282828] text-[3.4vw] md:text-[1vw] text-white/80">
-            Experienced writer, SEO Expert, worked for over 50 projects
+            {user_info && user_info.profileOverview}
           </div>
         </div>
       </div>
       <div className="w-[70vw] md:w-[40vw] mx-auto md:h-[6vw] border-[0.12vw] border-black rounded-b-[1.4vw] bg-[#00ff47] text-black text-[2.6vw] md:text-[0.9vw] grid place-items-center p-[2vw] md:p-0">
-        <div>
-          You are about to hire STELLA MARRIS, please confirm all details before
+        {user_info && <div>
+          You are about to hire {user_info.name}, please confirm all details before
           approval
-        </div>
+        </div>}
       </div>
       <div className="mt-[6vw] md:mt-[4vw] w-[80vw] md:w-[50vw] text-black text-[3.5vw] md:text-[1.8vw] mx-auto">
         <div>
@@ -190,22 +203,11 @@ export default function hire() {
         </div>
         <div className="mt-[5vw] md:mt-[2vw]">
           <div>Select Role</div>
-          <select
-            name="select project"
-            className="px-[2vw] mt-[1vw] text-[3vw] md:text-[1vw] rounded-[1vw] py-[1.6vw] w-full border-[0.12vw] border-black"
-            id=""
-          >
-            {roles?.map((role, i) => (
-              <option
-                key={i}
-                onClick={() => {
-                  setSelect2(i);
-                }}
-              >
-                {role.role}
-              </option>
-            ))}
-          </select>
+          <input
+            onChange={(e) => setRole(e.target.value)}
+            type="text"
+            className="px-[1vw] outline-none py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
+          />
         </div>
       </div>
       <div

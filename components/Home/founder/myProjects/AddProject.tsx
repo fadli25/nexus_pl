@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { useState } from "react";
 import { IoIosAddCircle } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -80,6 +81,8 @@ export default function addProject() {
 
   const initProject = async () => {
     try {
+      notify_laoding("Creating Project...");
+
       await init_project(
         anchorWallet,
         connection,
@@ -94,8 +97,12 @@ export default function addProject() {
         departments,
         hiring
       );
+      notify_delete();
+      notify_success("Project Created!");
     } catch (e) {
       console.log(e);
+      notify_delete();
+      notify_error("Transaction Failed");
     }
   };
 
@@ -154,6 +161,35 @@ export default function addProject() {
       padding: "0.7vw 4vw",
     },
   };
+
+
+  const notify_success = (msg: string) => {
+    toast.success(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const notify_warning = (msg: string) => {
+    toast.warning(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  const notify_error = (msg: string) => {
+    toast.error(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  const notify_laoding = (msg: string) => {
+    toast.loading(msg, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+  const notify_delete = () => {
+    toast.dismiss();
+  };
+
+
+
   return (
     <div className="px-[4vw]">
       <div className="flex flex-col md:flex-row gap-y-[3vw] md:gap-y-0 justify-between">

@@ -165,7 +165,7 @@ export default function addRole({ project }: any) {
   };
   return (
     <div className="px-[4vw]">
-      <div className="mt-[3vw]">
+      {/* <div className="mt-[3vw]">
         <div className="flex justify-between items-center">
           <div className="flex items-center text-[5vw] md:text-[3vw] fontPopSemibold gap-x-[3vw] md:gap-x-[1vw] text-black">
             <div>Recruiting</div>
@@ -184,7 +184,7 @@ export default function addRole({ project }: any) {
             Delete Role
           </Button>
         </div>
-      </div>
+      </div> */}
 
       <div className="pt-[5vw] text-[3.5vw] md:text-[1.2vw] font-semibold text-black">
         <div className=" grid grid-cols-1 md:grid-cols-2 justify-between gap-[5vw] md:gap-[2vw]">
@@ -259,14 +259,14 @@ export default function addRole({ project }: any) {
             </Stack>
           ))}
 
-          <Stack className="relative w-full flex justify-center items-center py-[4vw] border-[0.2vw] h-full border-black rounded-[0.6vw]">
+          {/* <Stack className="relative w-full flex justify-center items-center py-[4vw] border-[0.2vw] h-full border-black rounded-[0.6vw]">
             <div className="absolute top-[5%] left-[5%] text-[3vw] md:text-[1.4vw] text-black">
               Add new role
             </div>
             <motion.button whileTap={{ scale: 0.96 }} onClick={handleClick}>
               <IoIosAddCircle className="text-[35vw] md:text-[15vw] text-black/40" />
             </motion.button>
-          </Stack>
+          </Stack> */}
         </div>
       </div>
 

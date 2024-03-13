@@ -1,8 +1,112 @@
-import Head from "next/head";
-import React from "react";
+import { update_user } from "@/lib/NexusProgram/user/update_user";
+import { get_user_info } from "@/lib/NexusProgram/user/utils/user_info";
 import { Button } from "@mui/material";
+import { web3 } from "@project-serum/anchor";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import Head from "next/head";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function settings() {
+
+  const anchorWallet = useAnchorWallet()
+  const { connection } = useConnection()
+  const wallet = useWallet()
+
+  const [loading, setLoading] = useState<boolean>(false)
+  const [info, setInfo] = useState<any>()
+  const [linkedin, setL] = useState<string>()
+  const [discord_id, setD] = useState<string>()
+  const [telegram_id, setT] = useState<string>()
+  const [twitter, setX] = useState<string>()
+  const [website, setW] = useState<string>()
+
+  const get_info = async () => {
+    try {
+      const user_info = await get_user_info(anchorWallet, connection);
+      console.log(user_info);
+      setInfo(user_info);
+
+      if (user_info) {
+        setL(user_info.linkedin);
+        setD(user_info.discord_id);
+        setT(user_info.telegram_id);
+        setW(user_info.website);
+        setX(user_info.twitter);
+      }
+
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+    get_info()
+  }, [anchorWallet])
+
+
+
+
+  async function update_user_info() {
+    try {
+      notify_laoding("Updating Profile...");
+      setLoading(true);
+      await update_user(
+        anchorWallet,
+        connection,
+        info.name,
+        info.image,
+        info.category,
+        info.roles,
+        info.level,
+        info.links,
+        info.profileOverview,
+        info.paymentRatePerHour,
+        info.nogotion,
+        discord_id!,
+        telegram_id!,
+        website!,
+        linkedin!,
+        twitter!
+      );
+      notify_delete();
+      notify_success("Profile Updated!");
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      notify_delete();
+      notify_error("Transaction Failed");
+      console.log(e);
+    }
+  }
+
+  const notify_success = (msg: string) => {
+    toast.success(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const notify_warning = (msg: string) => {
+    toast.warning(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  const notify_error = (msg: string) => {
+    toast.error(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  const notify_laoding = (msg: string) => {
+    toast.loading(msg, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+  const notify_delete = () => {
+    toast.dismiss();
+  };
+
+
   return (
     <div className="w-full md:w-[84vw] float-right py-[5vw]">
       <Head>
@@ -14,6 +118,8 @@ export default function settings() {
           <div>
             <div className="font-semibold">Lindedin</div>
             <input
+              onChange={(e) => setL(e.target.value)}
+              value={linkedin}
               type="text"
               className="px-[1vw] outline-none md:w-[18.8vw] py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
@@ -21,6 +127,8 @@ export default function settings() {
           <div>
             <div className="font-semibold">Twitter</div>
             <input
+              onChange={(e) => setT(e.target.value)}
+              value={twitter}
               type="text"
               className="px-[1vw] outline-none md:w-[18.8vw] py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
@@ -28,6 +136,8 @@ export default function settings() {
           <div>
             <div className="font-semibold">Website</div>
             <input
+              onChange={(e) => setW(e.target.value)}
+              value={website}
               type="text"
               className="px-[1vw] outline-none md:w-[18.8vw] py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
@@ -35,6 +145,8 @@ export default function settings() {
           <div>
             <div className="font-semibold">Discord ID</div>
             <input
+              onChange={(e) => setD(e.target.value)}
+              value={discord_id}
               type="text"
               className="px-[1vw] outline-none py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
@@ -42,6 +154,8 @@ export default function settings() {
           <div>
             <div className="font-semibold">Telegram ID</div>
             <input
+              onChange={(e) => setT(e.target.value)}
+              value={telegram_id}
               type="text"
               className="px-[1vw] outline-none py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />

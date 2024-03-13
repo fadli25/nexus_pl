@@ -29,12 +29,17 @@ export async function update_user(
     links: string,
     profile_overview: string,
     payment_rate_per_hour: number,
-    nigotion: boolean
+    nigotion: boolean,
+    discord_id: string,
+    telegram_id: string,
+    website: string,
+    linkedin: string,
+    twitter: string,
 ) {
 
     const provider = new AnchorProvider(
-        connection, anchorWallet, {"preflightCommitment": "processed"},
-        );
+        connection, anchorWallet, { "preflightCommitment": "processed" },
+    );
 
     const PROGRAM_ID = new web3.PublicKey(idl.metadata.address)
     const program = new Program(idl, idl.metadata.address, provider);
@@ -47,25 +52,30 @@ export async function update_user(
         PROGRAM_ID
     );
 
-        const tx = await program.methods.updateUser({      
-                name: name,
-                image: image,
-                category: category,
-                roles: roles,
-                levelOfExpertise: level_of_expertise,
-                paymentRatePerHour: new BN(payment_rate_per_hour),
-                profileOverview: profile_overview,
-                links: links,
-                nigotion: nigotion,
-            }).accounts({
-                user: user,
-                authority: anchorWallet.publicKey,
-                systemProgram: web3.SystemProgram.programId
-        })
+    const tx = await program.methods.updateUser({
+        name: name,
+        image: image,
+        category: category,
+        roles: roles,
+        levelOfExpertise: level_of_expertise,
+        paymentRatePerHour: new BN(payment_rate_per_hour),
+        profileOverview: profile_overview,
+        links: links,
+        nigotion: nigotion,
+        telegramId: telegram_id,
+        lindedin: linkedin,
+        twitter: twitter,
+        website: website,
+        discordId: discord_id
+    }).accounts({
+        user: user,
+        authority: anchorWallet.publicKey,
+        systemProgram: web3.SystemProgram.programId
+    })
         // .transaction()
         .rpc({
             commitment: "confirmed",
         })
 
     return tx;
-    }
+}

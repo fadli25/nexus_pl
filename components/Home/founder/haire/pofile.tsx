@@ -27,6 +27,7 @@ export default function Profile({ user }: any) {
     try {
       const _user = new web3.PublicKey(user);
       const infos = await get_profile_info(anchorWallet, connection, _user);
+      console.log("infos");
       console.log(infos);
       setInfo(infos);
     } catch (e) {

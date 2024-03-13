@@ -11,6 +11,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { IoIosAddCircle } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -91,6 +92,7 @@ export default function EditProject({ project }: any) {
 
   const initProject = async () => {
     try {
+      notify_laoding("Updating Project...");
       await update_project(
         anchorWallet,
         connection,
@@ -105,8 +107,11 @@ export default function EditProject({ project }: any) {
         departments,
         hiring
       );
+      notify_delete();
+      notify_success("Project Updated!");
     } catch (e) {
-      console.log(e);
+      notify_delete();
+      notify_error("Transaction Failed");
     }
   };
 
@@ -153,9 +158,6 @@ export default function EditProject({ project }: any) {
   const inputStyle =
     "bg-none border-[0.15vw] mt-[0.6vw] w-full md:w-[20vw] px-[3vw] md:px-[1vw] text-[3vw] md:text-[0.9vw] py-[1.4vw] md:py-[0.8vw] border-black rounded-[1vw] md:rounded-[0.4vw] outline-none focus:border-red-600 focus:scale-[101%] transition-all";
 
-  const inputStyle2 =
-    "border-[0.16vw] md:border-[0.12vw] mt-[0.6vw] border-black rounded-[1vw] md:rounded-[0.4vw] px-[2vw] md:px-[1vw] py-[1.4vw] md:py-[0.7vw] outline-none";
-
   const styleButton1 = {
     fontSize: "1vw",
     padding: "0.7vw 2vw",
@@ -172,21 +174,34 @@ export default function EditProject({ project }: any) {
       borderRadius: "1vw",
     },
   };
-  const styleButton2 = {
-    fontSize: "1vw",
-    padding: "0.7vw 2vw",
-    borderRadius: "0.6vw",
-    background: "#FF2D2D",
-    textTransform: "none",
-    color: "#fff",
-    ":hover": {
-      background: "#FF2D2D",
-    },
-    "@media (max-width:767px)": {
-      fontSize: "3vw",
-      padding: "0.7vw 4vw",
-    },
+
+
+  const notify_success = (msg: string) => {
+    toast.success(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
   };
+
+  const notify_warning = (msg: string) => {
+    toast.warning(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  const notify_error = (msg: string) => {
+    toast.error(msg, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  const notify_laoding = (msg: string) => {
+    toast.loading(msg, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+  const notify_delete = () => {
+    toast.dismiss();
+  };
+
+
   return (
     <div className="px-[4vw]">
       <div className="flex flex-col md:flex-row gap-y-[3vw] md:gap-y-0 justify-between">

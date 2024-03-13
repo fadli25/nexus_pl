@@ -719,7 +719,27 @@ export type CardinalStakePool =
               type: "string"
             },
             {
-              name: "links",
+              name: "others",
+              type: "string"
+            },
+            {
+              name: "lindedin",
+              type: "string"
+            },
+            {
+              name: "twitter",
+              type: "string"
+            },
+            {
+              name: "website",
+              type: "string"
+            },
+            {
+              name: "discordId",
+              type: "string"
+            },
+            {
+              name: "telegramId",
               type: "string"
             }
           ]
@@ -2214,7 +2234,27 @@ export const IDL: CardinalStakePool =
             type: "string"
           },
           {
-            name: "links",
+            name: "others",
+            type: "string"
+          },
+          {
+            name: "lindedin",
+            type: "string"
+          },
+          {
+            name: "twitter",
+            type: "string"
+          },
+          {
+            name: "website",
+            type: "string"
+          },
+          {
+            name: "discordId",
+            type: "string"
+          },
+          {
+            name: "telegramId",
             type: "string"
           }
         ]
