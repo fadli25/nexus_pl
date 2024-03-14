@@ -23,6 +23,7 @@ export async function init_role(
     role: string,
     level_of_experience: string,
     description: string,
+    country: string
 ) {
 
     const provider = new AnchorProvider(
@@ -53,7 +54,8 @@ export async function init_role(
         payment: new BN(payment),
         role,
         levelOfExperience: level_of_experience,
-        description
+        description,
+        country
     }).accounts({
         role: role_pubkey,
         founder: founder,

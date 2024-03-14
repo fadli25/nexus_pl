@@ -722,7 +722,7 @@
             "type": "string"
           },
           {
-            "name": "lindedin",
+            "name": "linkedin",
             "type": "string"
           },
           {
@@ -986,6 +986,10 @@
             "type": "string"
           },
           {
+            "name": "country",
+            "type": "string"
+          },
+          {
             "name": "description",
             "type": "string"
           }
@@ -1158,6 +1162,10 @@
           {
             "name": "description",
             "type": "string"
+          },
+          {
+            "name": "country",
+            "type": "string"
           }
         ]
       }
@@ -1312,7 +1320,7 @@
             "type": "string"
           },
           {
-            "name": "lindedin",
+            "name": "linkedin",
             "type": "string"
           },
           {

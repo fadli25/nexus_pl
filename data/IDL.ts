@@ -989,6 +989,10 @@ export type CardinalStakePool =
             {
               name: "description",
               type: "string"
+            },
+            {
+              name: "country",
+              type: "string"
             }
           ]
         }
@@ -2503,6 +2507,10 @@ export const IDL: CardinalStakePool =
           },
           {
             name: "description",
+            type: "string"
+          },
+          {
+            name: "country",
             type: "string"
           }
         ]

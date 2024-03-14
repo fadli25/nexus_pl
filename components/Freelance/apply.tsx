@@ -1,5 +1,6 @@
 import { apply_role } from "@/lib/NexusProgram/project/apply";
 import { get_role_info } from "@/lib/NexusProgram/project/utils/get_role_info";
+import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
 import { Button, Stack } from "@mui/material";
 import { web3 } from "@project-serum/anchor";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
@@ -13,6 +14,7 @@ export default function apply({ role }: any) {
   const [country, setCountry] = useState<string>()
   const [payment, setPayment] = useState<number>()
   const [description, setDescription] = useState<string>()
+  const [category, setCategory] = useState<string>()
 
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection()
@@ -20,9 +22,17 @@ export default function apply({ role }: any) {
   const get_Role = async () => {
     try {
       const role_infos = await get_role_info(anchorWallet, connection, role);
-      console.log(role_infos)
+      // console.log(role_infos);
       setRoleInfo(role_infos);
 
+      const project_info = await get_project_info(anchorWallet, connection, role_infos!.project.toBase58());
+
+      // console.log(project_info)
+      setCategory(project_info!.category);
+
+      setPayment(Number(role_infos!.payment))
+      setCountry(role_infos!.country);
+      setDescription(role_infos!.description);
     } catch (err) {
       console.log(err);
     }
@@ -107,7 +117,8 @@ export default function apply({ role }: any) {
             </Stack>
             <Stack direction="row" alignItems="center">
               <input
-                onChange={(e) => setPayment(Number(e.target.value))}
+                // onChange={(e) => setPayment(Number(e.target.value))}
+                value={payment}
                 className={`${inputStyle2} !border-r-0 !rounded-r-none w-full`}
               />
               <div
@@ -122,7 +133,10 @@ export default function apply({ role }: any) {
             <Stack direction="row" justifyContent="space-between">
               <label>Country</label>
             </Stack>
-            <input onChange={(e) => setCountry(e.target.value)} className={`${inputStyle2} w-full`} />
+            <input
+              // onChange={(e) => setCountry(e.target.value)}
+              value={country}
+              className={`${inputStyle2} w-full`} />
           </div>
         </Stack>
 
@@ -139,7 +153,10 @@ export default function apply({ role }: any) {
 
       <div className="mt-[6vw] md:mt-[3vw] text-[4vw] md:text-[1.4vw] font-[500]">
         <div>Role Description</div>
-        <textarea onChange={(e) => setDescription(e.target.value)} rows={10} className={`${inputStyle2}  w-full`}></textarea>
+        <textarea
+          // onChange={(e) => setDescription(e.target.value)} 
+          value={description}
+          rows={10} className={`${inputStyle2}  w-full`}></textarea>
       </div>
 
       <div className="mt-[5vw] flex justify-center">

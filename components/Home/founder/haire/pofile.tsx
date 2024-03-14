@@ -230,11 +230,11 @@ export default function Profile({ user }: any) {
         />
       </div>
       <div className="mt-[6vw] md:mt-[4vw] flex justify-center gap-x-[4vw] md:gap-x-[2vw]">
-        <Button3>Add to watchlist</Button3>
+        {/* <Button3>Add to watchlist</Button3> */}
         <Button2 onClick={() => router.push("/founder/haire/hire?user=" + info.address.toBase58())}>
           Hire
         </Button2>
-        <Button4>Reject</Button4>
+        {/* <Button4>Reject</Button4> */}
       </div>
     </div>
   );
