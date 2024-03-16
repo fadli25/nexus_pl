@@ -1,6 +1,7 @@
 import { init_project } from "@/lib/NexusProgram/project/init_project";
 import { init_role } from "@/lib/NexusProgram/project/init_role";
 import { update_project } from "@/lib/NexusProgram/project/update_project";
+import { notify_delete, notify_error, notify_laoding, notify_success, notify_warning } from "@/pages/profile";
 import { Button, FormControlLabel, Stack } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
@@ -79,6 +80,10 @@ export default function addRole({ project }: any) {
   const [description, setDescription] = useState<string>("");
 
   const initRole = async () => {
+    if (description.length > 120) {
+      return notify_warning("Description Need to be less than 120 characters");
+    }
+    notify_laoding("Transaction Pending...");
     try {
       await init_role(
         anchorWallet,
@@ -88,9 +93,14 @@ export default function addRole({ project }: any) {
         payment!,
         role,
         loex,
-        description
+        description,
+        country
       );
+      notify_delete()
+      notify_success("Roles Created Successfully!")
     } catch (e) {
+      notify_delete()
+      notify_error("Transaction Failed!")
       console.log(e);
     }
   };

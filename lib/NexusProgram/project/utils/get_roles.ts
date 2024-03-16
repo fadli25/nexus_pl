@@ -12,7 +12,7 @@ export const getAllRoles = async (
 ) => {
     const NEXUS_ADDRESS = new PublicKey("4qe9UNHeTtpyqsBV9Ahp9XraS1H5QkfimQHaXtLrpyRL");
 
-    const PROJECT_OFFSET = 224;
+    const PROJECT_OFFSET = 308;
     const programAccounts = await connection.getProgramAccounts(
         NEXUS_ADDRESS,
         {

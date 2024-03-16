@@ -15,6 +15,32 @@ import { init_user } from "../lib/NexusProgram/user/init_user";
 import { update_user } from "../lib/NexusProgram/user/update_user";
 import { get_user_info } from "../lib/NexusProgram/user/utils/user_info";
 
+export const notify_success = (msg: string) => {
+  toast.success(msg, {
+    position: toast.POSITION.TOP_RIGHT,
+  });
+};
+
+export const notify_warning = (msg: string) => {
+  toast.warning(msg, {
+    position: toast.POSITION.TOP_RIGHT,
+  });
+};
+export const notify_error = (msg: string) => {
+  toast.error(msg, {
+    position: toast.POSITION.TOP_RIGHT,
+  });
+};
+export const notify_laoding = (msg: string) => {
+  toast.loading(msg, {
+    position: toast.POSITION.TOP_CENTER,
+  });
+};
+export const notify_delete = () => {
+  toast.dismiss();
+};
+
+
 export default function profile() {
   const [exist, setExist] = useState<boolean>(false);
   const [show, setShow] = useState(false);
@@ -90,7 +116,12 @@ export default function profile() {
         links,
         profile_overview,
         payment_rate_per_hour,
-        nogotion
+        nogotion,
+        "",
+        "",
+        "",
+        "",
+        "",
       );
       notify_delete();
       notify_success("Profile Updated!");
@@ -136,30 +167,6 @@ export default function profile() {
     check_user();
   }, [anchorWallet, anchorWallet?.publicKey]);
 
-  const notify_success = (msg: string) => {
-    toast.success(msg, {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-  };
-
-  const notify_warning = (msg: string) => {
-    toast.warning(msg, {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-  };
-  const notify_error = (msg: string) => {
-    toast.error(msg, {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-  };
-  const notify_laoding = (msg: string) => {
-    toast.loading(msg, {
-      position: toast.POSITION.TOP_CENTER,
-    });
-  };
-  const notify_delete = () => {
-    toast.dismiss();
-  };
 
   return (
     <div className="w-full md:w-[84vw] float-right pb-[5vw]">

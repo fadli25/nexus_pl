@@ -94,7 +94,13 @@ export default function profile() {
         links,
         profile_overview,
         payment_rate_per_hour,
-        nogotion
+        nogotion,
+        "",
+        "",
+        "",
+        "",
+        "",
+
       );
       notify_delete();
       notify_success("Profile Updated!");
