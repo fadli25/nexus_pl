@@ -21,38 +21,38 @@ import { MdLanguage } from "react-icons/md";
 
 export default function project({ project }: any) {
   const img =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162192637705605280/Ellipse_5_3.png?ex=653b0b3d&is=6528963d&hm=40697a2331ee15067ae9ae3e82fdf9252eb0ab75434b5e23a0297d3f5efc71eb&=&width=235&height=226";
+    "https://media.discordapp.net/attachments/1085293900706627595/1216090924862406678/Frame_52351_1.png?ex=65ff1fee&is=65ecaaee&hm=7be1ea6efe7966eb223dea2bccd63a6302b1bc6bace1ab9c4af691f26ee5c9ec&=&format=webp&quality=lossless&width=781&height=642";
   const solanaIcon =
     "https://img.icons8.com/external-black-fill-lafs/64/external-Solana-cryptocurrency-black-fill-lafs.png";
 
-  const [project_info, setProjectInfo] = useState<any>()
-  const [roles, setRoles] = useState<any>()
+  const [project_info, setProjectInfo] = useState<any>();
+  const [roles, setRoles] = useState<any>();
 
-  const anchorWallet = useAnchorWallet()
+  const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
-
 
   const get_infos = async () => {
     try {
-
       const info = await get_project_info(anchorWallet, connection, project);
       console.log(info);
-      setProjectInfo(info)
+      setProjectInfo(info);
 
-      const roll = await getRolesForProject(connection, new web3.PublicKey(project), "confirmed");
+      const roll = await getRolesForProject(
+        connection,
+        new web3.PublicKey(project),
+        "confirmed"
+      );
       console.log(roll);
       setRoles(roll);
-
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   useEffect(() => {
     if (!anchorWallet) return;
-    get_infos()
-  }, [anchorWallet])
-
+    get_infos();
+  }, [anchorWallet]);
 
   const router = useRouter();
   return (
@@ -60,7 +60,9 @@ export default function project({ project }: any) {
       <div className="w-[90vw] md:w-[66vw] mx-auto py-[5vw]">
         <div className="w-full bg-black text-white fontPopSemibold rounded-[1vw] flex justify-between items-center py-[3vw] px-[4vw] text-[2.4vw] md:text-[1.4vw]">
           <div>
-            <div className="text-[5vw] md:text-[3.4vw]">{project_info && project_info.name}</div>
+            <div className="text-[5vw] md:text-[3.4vw]">
+              {project_info && project_info.name}
+            </div>
             <div className="mt-[1vw]">
               <span className="text-[#00ff47]">Project Categories: </span>
               <span>{project_info && project_info.category}</span>
@@ -72,7 +74,7 @@ export default function project({ project }: any) {
               width={9000}
               height={900}
               alt=""
-              className="w-[20vw] md:w-[16vw] rounded-full"
+              className="w-[20vw] h-[20vw] md:w-[16vw] md:h-[16vw] object-cover object-center rounded-full"
             />
           </div>
         </div>
@@ -117,13 +119,19 @@ export default function project({ project }: any) {
               Roles Needed
             </div>
             <div className="w-full border-2 border-solid border-black rounded-xl p-4 flex flex-col gap-[.5rem] h-[13rem] max-h-screen overflow-y-auto no-scrollbar">
-              {roles && roles.map((role: any) => (
-                <div
-                  onClick={() => router.push("/freelance/project/apply/" + role.pubkey.toBase58())}
-                  className="text-[3vw] md:text-[1.8vw] border border-solid border-black rounded-xl pl-4">
-                  {role.role}
-                </div>
-              ))}
+              {roles &&
+                roles.map((role: any) => (
+                  <div
+                    onClick={() =>
+                      router.push(
+                        "/freelance/project/apply/" + role.pubkey.toBase58()
+                      )
+                    }
+                    className="text-[3vw] md:text-[1.8vw] border border-solid border-black rounded-xl pl-4"
+                  >
+                    {role.role}
+                  </div>
+                ))}
             </div>
             <div className="mt-[3vw] flex justify-center items-center gap-x-[1.2vw]">
               <MuiButton>Contact</MuiButton>
