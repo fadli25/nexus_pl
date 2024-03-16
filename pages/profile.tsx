@@ -53,7 +53,7 @@ export default function profile() {
   const [roles, setRoles] = useState<string>("");
   const [payment_rate_per_hour, setPaymentRatePerHour] = useState<number>(0);
   const [profile_overview, setProfileOverview] = useState<string>("");
-  const [links, setLinks] = useState<string>("");
+  const [others, setOthers] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [nogotion, setNigotion] = useState<boolean>(true);
   const [portfolio, setPortfolio] = useState<string>("");
@@ -61,6 +61,11 @@ export default function profile() {
   const [tosp, setTosp] = useState<string>("Individual");
   const [timezone, setTimeZone] = useState<string>("");
   const [country, setCountry] = useState<string>("");
+  const [website, setW] = useState<string>("");
+  const [twitter, setTw] = useState<string>("");
+  const [linkdin, setL] = useState<string>("");
+  const [telegram, setTE] = useState<string>("");
+  const [discord, setD] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
   const connection = new Connection(clusterApiUrl("devnet"));
@@ -80,7 +85,7 @@ export default function profile() {
         category,
         roles,
         level,
-        links,
+        others,
         profile_overview,
         payment_rate_per_hour,
         nogotion,
@@ -113,15 +118,15 @@ export default function profile() {
         category,
         roles,
         level,
-        links,
+        others,
         profile_overview,
         payment_rate_per_hour,
         nogotion,
-        "",
-        "",
-        "",
-        "",
-        "",
+        discord,
+        telegram,
+        website,
+        linkdin,
+        twitter
       );
       notify_delete();
       notify_success("Profile Updated!");
@@ -147,7 +152,7 @@ export default function profile() {
         setRoles(user_info.roles);
         setPaymentRatePerHour(user_info.paymentRatePerHour);
         setProfileOverview(user_info.profileOverview);
-        setLinks(user_info.links);
+        setOthers(user_info.others);
         setName(user_info.name);
         setNigotion(user_info.nigotion);
         setCountry(user_info.country);
@@ -155,6 +160,11 @@ export default function profile() {
         setTimeZone(user_info.timezone);
         setTosp(user_info.tosp);
         setPortfolio(user_info.portfolio);
+        setD(user_info.discordId);
+        setW(user_info.website);
+        setTw(user_info.twitter);
+        setTE(user_info.telegramId);
+        setL(user_info.linkedin);
       }
     } catch (e) {
       console.log(e);
@@ -441,8 +451,8 @@ export default function profile() {
             Others (Case Studies, Testimonials)
           </div>
           <textarea
-            value={links}
-            onChange={(e) => setLinks(e.target.value)}
+            value={others}
+            onChange={(e) => setOthers(e.target.value)}
             rows={3}
             className="mt-[0.5vw] w-full py-[2vw] md:py-[1vw] shadow-md rounded-xl outline-none border-[0.14vw] border-black px-[2vw] focus:scale-[101%] transition-all text-black/80 h-[10rem]"
           />

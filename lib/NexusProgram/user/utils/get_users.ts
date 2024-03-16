@@ -9,7 +9,7 @@ export const getUsers = async (
 
     const NEXUS_ADDRESS = new PublicKey("4qe9UNHeTtpyqsBV9Ahp9XraS1H5QkfimQHaXtLrpyRL");
 
-    const USER_LENGTH = 376;
+    const USER_LENGTH = 496;
     const programAccounts = await connection.getProgramAccounts(
         NEXUS_ADDRESS,
         {

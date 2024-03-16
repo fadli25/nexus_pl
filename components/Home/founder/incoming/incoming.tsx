@@ -153,7 +153,7 @@ export default function incoming() {
                   <div className="w-[15vw] md:w-[7vw] h-[15vw] md:h-[7vw] bg-black/80 rounded-full"></div>
                   <div>
                     <div
-                      onClick={() => router.push("/founder/haire/profile")}
+                      onClick={() => router.push("/founder/haire/" + el.user)}
                       className="cursor-pointer font-semibold text-[4vw] md:text-[2vw] underline"
                     >
                       {el.name}

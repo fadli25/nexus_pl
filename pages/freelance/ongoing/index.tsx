@@ -52,11 +52,11 @@ export default function index() {
                   className="text-[5vw] md:text-[3vw] fontPopSemibold cursor-pointer"
                   onClick={() => router.push("/freelance/ongoing/project")}
                 >
-                  {el.name}
+                  {el.projectName}
                 </div>
               </div>
               <div>
-                <MuiButton>Close</MuiButton>
+                {/* <MuiButton>Close</MuiButton> */}
               </div>
             </div>
           ))}
