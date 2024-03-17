@@ -64,7 +64,7 @@ export async function update_user(
         profileOverview: profile_overview,
         nigotion: nigotion,
         others: others,
-        lindedin: linkedin,
+        linkedin: linkedin,
         twitter: twitter,
         website: website,
         discordId: discord_id,

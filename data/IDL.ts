@@ -1513,7 +1513,7 @@ export type CardinalStakePool =
       }
     ],
     metadata: {
-      address: "4qe9UNHeTtpyqsBV9Ahp9XraS1H5QkfimQHaXtLrpyRL"
+      address: "DtN8QCWh8ofcL1ib2utdsUSK2ea6MQhvwP41JsjUbmf1"
     }
   }
 
@@ -3032,6 +3032,6 @@ export const IDL: CardinalStakePool =
     }
   ],
   metadata: {
-    address: "4qe9UNHeTtpyqsBV9Ahp9XraS1H5QkfimQHaXtLrpyRL"
+    address: "DtN8QCWh8ofcL1ib2utdsUSK2ea6MQhvwP41JsjUbmf1"
   }
 }
