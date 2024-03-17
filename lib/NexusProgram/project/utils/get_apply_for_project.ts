@@ -11,7 +11,7 @@ export const getApplyForProject = async (
     project: web3.PublicKey,
     commitment?: Commitment,
 ) => {
-    const NEXUS_ADDRESS = new PublicKey("4qe9UNHeTtpyqsBV9Ahp9XraS1H5QkfimQHaXtLrpyRL");
+    const NEXUS_ADDRESS = new PublicKey("DtN8QCWh8ofcL1ib2utdsUSK2ea6MQhvwP41JsjUbmf1");
 
     const PROJECT_OFFSET = 57;
     const programAccounts = await connection.getProgramAccounts(

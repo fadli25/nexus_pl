@@ -290,111 +290,6 @@
       "args": []
     },
     {
-      "name": "recuringPayment",
-      "accounts": [
-        {
-          "name": "payment",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "founder",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "reciever",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "identifier",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "authority",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "escrow",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": [
-        {
-          "name": "info",
-          "type": {
-            "defined": "PaymentInfo"
-          }
-        }
-      ]
-    },
-    {
-      "name": "payment",
-      "accounts": [
-        {
-          "name": "payment",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "founder",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "reciever",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "escrow",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "address",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "initIdentifier",
-      "accounts": [
-        {
-          "name": "identifier",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "payer",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": []
-    },
-    {
       "name": "initRole",
       "accounts": [
         {
@@ -1067,30 +962,6 @@
   ],
   "types": [
     {
-      "name": "PaymentInfo",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "workingTime",
-            "type": "u64"
-          },
-          {
-            "name": "timeRate",
-            "type": "u64"
-          },
-          {
-            "name": "totalAmount",
-            "type": "u64"
-          },
-          {
-            "name": "roles",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
       "name": "ProjectInfo",
       "type": {
         "kind": "struct",
@@ -1536,6 +1407,6 @@
     }
   ],
   "metadata": {
-    "address": "4qe9UNHeTtpyqsBV9Ahp9XraS1H5QkfimQHaXtLrpyRL"
+    "address": "DtN8QCWh8ofcL1ib2utdsUSK2ea6MQhvwP41JsjUbmf1"
   }
 }
