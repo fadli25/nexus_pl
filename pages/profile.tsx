@@ -40,7 +40,6 @@ export const notify_delete = () => {
   toast.dismiss();
 };
 
-
 export default function profile() {
   const [exist, setExist] = useState<boolean>(false);
   const [show, setShow] = useState(false);
@@ -177,7 +176,6 @@ export default function profile() {
     check_user();
   }, [anchorWallet, anchorWallet?.publicKey]);
 
-
   return (
     <div className="w-full md:w-[84vw] float-right pb-[5vw]">
       <Head>
@@ -197,8 +195,9 @@ export default function profile() {
           </div>
           <ButtonMotion
             onClick={() => setShow(!show)}
-            className={`text-[5vw] md:text-[2.4vw] ${show && "text-[#00ff47]"
-              } `}
+            className={`text-[5vw] md:text-[2.4vw] ${
+              show && "text-[#00ff47]"
+            } `}
           >
             <BiSolidShow />
           </ButtonMotion>
@@ -217,7 +216,7 @@ export default function profile() {
         {/*  */}
         {/*  */}
         <div className="mt-[6vw] md:mt-[2vw]">
-          <label className="fontPopSemibold text-base">Role</label>
+          <label className="fontPopSemibold text-base">Job Role</label>
           <input
             value={roles}
             onChange={(e) => setRoles(e.target.value)}
@@ -322,8 +321,12 @@ export default function profile() {
               id=""
               className=" border p-[1rem] border-black h-[3.5rem] md:h-[4rem] shadow-md rounded-xl bg-white text-base"
             >
-              <option onClick={() => setTosp("Individual")} value="individual">Individual</option>
-              <option onClick={() => setTosp("Agency")} value="agency">Agency</option>
+              <option onClick={() => setTosp("Individual")} value="individual">
+                Individual
+              </option>
+              <option onClick={() => setTosp("Agency")} value="agency">
+                Agency
+              </option>
             </select>
           </div>
           {/* <div>
@@ -359,7 +362,6 @@ export default function profile() {
             Portfolio (Behance, Dribbble)
           </div>
           <input
-
             value={portfolio}
             onChange={(e) => setPortfolio(e.target.value)}
             type="text"
