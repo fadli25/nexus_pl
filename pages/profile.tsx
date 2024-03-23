@@ -74,6 +74,11 @@ export default function profile() {
 
   async function initialize_user() {
     try {
+
+      if (profile_overview.length > 120) {
+        return notify_warning("Profile Overview need to be at least 120 characters!")
+      }
+
       notify_laoding("Creating Profile...");
       setLoading(true);
       await init_user(
@@ -107,6 +112,11 @@ export default function profile() {
 
   async function update_user_info() {
     try {
+
+      if (profile_overview.length > 120) {
+        return notify_warning("Profile Overview need to be at least 120 characters!")
+      }
+
       notify_laoding("Updating Profile...");
       setLoading(true);
       await update_user(
