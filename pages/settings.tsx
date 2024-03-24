@@ -28,7 +28,7 @@ export default function settings() {
       setInfo(user_info);
 
       if (user_info) {
-        setL(user_info.lindedin);
+        setL(user_info.linkedin);
         setD(user_info.discordId);
         setT(user_info.telegramId);
         setW(user_info.website);

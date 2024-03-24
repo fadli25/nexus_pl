@@ -81,6 +81,11 @@ export default function Profile({ user }: any) {
   const workImage =
     "https://s3-alpha-sig.figma.com/img/8c77/db9b/1bd6ae82b38daaf0abae070b391ed1e1?Expires=1693785600&Signature=fuZlHy6x4I5-bCv3Mvpe-icAKSvsOLP0r3Q2~MZ07GXbXDzPs237WoSnC0MJHZTRbpNu~Qu6UxSBa5zSnS4uVIknFK1bRXZZq-QmKm0dmQ~a4r238nAGe29WNDbQvlrCPb44iZ7a6iNErrSkuPbi-7ZukjvsOxfFbYNapPE3nB~OiUfzL-V97tGVgPbUHYZOgNglatkWvKbRp2NrItzHl-IYupEC~TsEAV0VC7kBZX62H9MHtBMjYPULR1BIj9wpKH3Rbk1yMb1V1x-t~i3RGtnsYyGiGT9SvToke2lGjjn9rd5AWywNelI5cVGdG0G7uQnfQKmoeMBSQsWFsDIe9A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
   const router = useRouter();
+
+  const links = (link: string) => {
+    window.open(link, "_blank");
+  };
+
   return (
     <div className="w-[95vw] md:w-[65vw] mx-auto text-black pt-[3vw] pb-[5vw]">
       <div className="flex gap-x-[1vw] items-center justify-between">
@@ -108,16 +113,30 @@ export default function Profile({ user }: any) {
             <IoStarSharp className="text-yellow-400 " />
           </div>
           <div className="flex justify-between items-center">
-            <div className="text-[4vw] md:text-[2vw] flex items-center gap-x-[1vw] mt-[1vw]">
-              <Icon>
-                <IoLogoLinkedin />
-              </Icon>
-              <Icon>
-                <FaTwitter />
-              </Icon>
-              <Icon>
-                <GrLanguage />
-              </Icon>
+            <div
+              // onClick={() => links("https://www.linkedin.com/in/" + info.linkedin)}
+              className="text-[4vw] md:text-[2vw] flex items-center gap-x-[1vw] mt-[1vw]">
+              <div
+                onClick={() => links("https://www.linkedin.com/in/" + info.linkedin)}
+              >
+                <Icon>
+                  <IoLogoLinkedin />
+                </Icon>
+              </div>
+              <div
+                onClick={() => links("https://twitter.com/" + info.twitter)}
+              >
+                <Icon>
+                  <FaTwitter />
+                </Icon>
+              </div>
+              <div
+                onClick={() => links(info.website)}
+              >
+                <Icon>
+                  <GrLanguage />
+                </Icon>
+              </div>
             </div>
           </div>
         </div>
@@ -148,17 +167,21 @@ export default function Profile({ user }: any) {
         >
           <div>
             <div>Discord ID</div>
-            <input className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]" />
+            <input
+              value={info && info.discordId}
+              className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]" />
           </div>
           <div>
             <div>Telegram ID</div>
-            <input className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]" />
+            <input
+              value={info && info.telegramId}
+              className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]" />
           </div>
         </Stack>
-        <Stack className=" gap-[3vw] md:gap-[1vw]">
+        {/* <Stack className=" gap-[3vw] md:gap-[1vw]">
           <Button1>Contact</Button1>
           <Button1>Review</Button1>
-        </Stack>
+        </Stack> */}
       </Stack>
       <div className="mt-[4vw] md:mt-[3vw]">
         <div className="flex justify-between items-center">
@@ -171,7 +194,9 @@ export default function Profile({ user }: any) {
         </div>
       </div>
 
-      <div>
+      <div
+        onClick={() => links(info.resume)}
+      >
         <motion.button
           whileTap={{ scale: 0.99 }}
           className="mt-[3vw] text-[3.5vw] md:text-[1.7vw] w-full text-start border-[0.12vw] border-black rounded-[0.4vw] p-[2.4vw] md:p-[1vw] text-black font-semibold"
@@ -179,7 +204,9 @@ export default function Profile({ user }: any) {
           View Resume
         </motion.button>
       </div>
-      <div>
+      <div
+        onClick={() => links(info.portfolio)}
+      >
         <motion.button
           whileTap={{ scale: 0.99 }}
           className="mt-[3vw] text-[3.5vw] md:text-[1.7vw] w-full text-start border-[0.12vw] border-black rounded-[0.4vw] p-[2.4vw] md:p-[1vw] text-black font-semibold"
@@ -217,18 +244,18 @@ export default function Profile({ user }: any) {
           Others (Case Studes, Testimonials)
         </div>
         <textarea
-          value={info && info.links}
+          value={info && info.others}
           rows={2}
           className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all"
         />
       </div>
-      <div className="mt-[3vw] text-[3vw] md:text-[1.5vw]">
+      {/* <div className="mt-[3vw] text-[3vw] md:text-[1.5vw]">
         <div className="fontPopSemibold">Reviews</div>
         <textarea
           rows={3}
           className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all"
         />
-      </div>
+      </div> */}
       <div className="mt-[6vw] md:mt-[4vw] flex justify-center gap-x-[4vw] md:gap-x-[2vw]">
         {/* <Button3>Add to watchlist</Button3> */}
         <Button2 onClick={() => router.push("/founder/haire/hire?user=" + info.address.toBase58())}>
