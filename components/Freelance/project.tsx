@@ -127,7 +127,7 @@ export default function project({ project }: any) {
                         "/freelance/project/apply/" + role.pubkey.toBase58()
                       )
                     }
-                    className="text-[3vw] md:text-[1.8vw] border border-solid border-black rounded-xl pl-4"
+                    className="text-[3vw] md:text-[1.8vw] border border-solid border-black rounded-xl pl-4 cursor-pointer"
                   >
                     {role.role}
                   </div>

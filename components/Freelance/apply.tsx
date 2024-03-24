@@ -94,7 +94,7 @@ export default function apply({ role }: any) {
           </div>
           <Stack className="mt-[3vw] md:mt-[1.8vw] !flex-row items-center gap-[0.5vw] text-black/60 text-[3vw] md:text-[1.2vw] font-semibold">
             <PiMapPinFill />
-            <div>Remote</div>
+            <div>{role_info && role_info.country}</div>
           </Stack>
         </div>
 
@@ -131,7 +131,7 @@ export default function apply({ role }: any) {
 
           <div>
             <Stack direction="row" justifyContent="space-between">
-              <label>Country</label>
+              <label>Category</label>
             </Stack>
             <input
               // onChange={(e) => setCountry(e.target.value)}
