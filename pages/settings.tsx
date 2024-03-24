@@ -116,7 +116,7 @@ export default function settings() {
         <div className="text-[4vw] md:text-[2vw] font-semibold">Soicals</div>
         <div className="rounded-[0.6vw] text-[3vw] md:text-[1.4vw] gap-[2vw] flex flex-wrap items-center border-[0.1vw] border-black p-[2vw]">
           <div>
-            <div className="font-semibold">Lindedin Handle</div>
+            <div className="font-semibold">Linkedin Handle</div>
             <input
               onChange={(e) => setL(e.target.value)}
               value={linkedin}

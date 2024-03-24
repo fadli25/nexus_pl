@@ -37,6 +37,14 @@ export async function update_user(
     twitter: string,
 ) {
 
+    twitter = twitter.replace("https://twitter.com/", "");
+    twitter = twitter.replace("/", "");
+    linkedin = linkedin.replace("https://www.linkedin.com/in/", "");
+    linkedin = linkedin.replace("/", "");
+
+
+    console.log(twitter)
+    console.log(linkedin)
     const provider = new AnchorProvider(
         connection, anchorWallet, { "preflightCommitment": "processed" },
     );
