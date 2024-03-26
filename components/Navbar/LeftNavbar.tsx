@@ -4,9 +4,16 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { ReactNode, useState } from "react";
 import log from "@/public/log.png";
+import { toast } from "react-toastify";
 
 type showLeftNavbar = {
   showLeftNavbar: boolean;
+};
+
+const notify = () => {
+  toast.info("Coming Soon!", {
+    position: toast.POSITION.TOP_RIGHT,
+  });
 };
 
 export default function LeftNavbar({ showLeftNavbar }: any) {
@@ -94,7 +101,11 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
           <div className=" md:-mt-[7vw]">
             {menu.map((el, index) => (
               <MuiButton
-                onClick={() => router.push(el.link)}
+                onClick={() =>
+                  el.name === "Payment" || el.name === "Support"
+                    ? notify()
+                    : router.push(el.link)
+                }
                 className={` md:mb-[1.2vw] flex items-center gap-x-[3vw] md:gap-x-[0.4vw] ${
                   el.link.slice(0, 6) === router.asPath.slice(0, 6) &&
                   "!text-[#00ff47] !font-semibold !scale-105"

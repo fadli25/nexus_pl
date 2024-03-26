@@ -14,8 +14,14 @@ import { IoNotifications, IoSettingsOutline } from "react-icons/io5";
 import { MdLocalGroceryStore } from "react-icons/md";
 import LeftNavbar from "./LeftNavbar";
 import MintTitle from "./MintTitle.png";
+import { toast } from "react-toastify";
 
 export default function TopNavbar() {
+  const notify = () => {
+    toast.info("Coming Soon!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
   const router = useRouter();
 
   const path = router.asPath;
@@ -382,7 +388,8 @@ export default function TopNavbar() {
                   : { color: "#fff" }),
               }}
               className={`text-[6vw] md:text-[1.9vw]  w-fit `}
-              onClick={() => router.push("/notification")}
+              // onClick={() => router.push("/notification")}
+              onClick={notify}
             >
               <IoNotifications />
             </IconButton>
@@ -396,7 +403,8 @@ export default function TopNavbar() {
                   : { color: "#fff" }),
               }}
               className={`text-[6vw] md:text-[1.9vw]  w-fit`}
-              onClick={() => router.push("/messages")}
+              // onClick={() => router.push("/messages")}
+              onClick={notify}
             >
               <BsFillChatFill />
             </IconButton>
@@ -405,6 +413,7 @@ export default function TopNavbar() {
                 color: "#fff",
               }}
               className="text-[6vw] md:text-[1.9vw] text-white w-fit"
+              onClick={notify}
             >
               <MdLocalGroceryStore />
             </IconButton>
