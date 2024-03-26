@@ -102,7 +102,9 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
             {menu.map((el, index) => (
               <MuiButton
                 onClick={() =>
-                  el.name === "Payment" || el.name === "Support"
+                  el.name === "Payment" ||
+                  el.name === "Support" ||
+                  el.name === "Dashboard"
                     ? notify()
                     : router.push(el.link)
                 }
@@ -207,7 +209,7 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
           </div>
           <Button
             variant="contained"
-            className="!normal-case !text-[4vw] md:!text-[1vw] !px-[5vw] md:!px-[2vw] !py-[0.8vw] md:!py-[0.6vw] !rounded-full !bg-[#FF2D2D] hover:!bg-[#FF2D2D99] !mt-[3vw] md:!mt-[1.4vw]"
+            className="!normal-case !invisible !text-[4vw] md:!text-[1vw] !px-[5vw] md:!px-[2vw] !py-[0.8vw] md:!py-[0.6vw] !rounded-full !bg-[#FF2D2D] hover:!bg-[#FF2D2D99] !mt-[3vw] md:!mt-[1.4vw]"
           >
             Sign out
           </Button>
