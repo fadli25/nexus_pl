@@ -4,9 +4,16 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { ReactNode, useState } from "react";
 import log from "@/public/log.png";
+import { toast } from "react-toastify";
 
 type showLeftNavbar = {
   showLeftNavbar: boolean;
+};
+
+const notify = () => {
+  toast.info("Coming Soon!", {
+    position: toast.POSITION.TOP_RIGHT,
+  });
 };
 
 export default function LeftNavbar({ showLeftNavbar }: any) {
@@ -94,7 +101,13 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
           <div className=" md:-mt-[7vw]">
             {menu.map((el, index) => (
               <MuiButton
-                onClick={() => router.push(el.link)}
+                onClick={() =>
+                  el.name === "Payment" ||
+                  el.name === "Support" ||
+                  el.name === "Dashboard"
+                    ? notify()
+                    : router.push(el.link)
+                }
                 className={` md:mb-[1.2vw] flex items-center gap-x-[3vw] md:gap-x-[0.4vw] ${
                   el.link.slice(0, 6) === router.asPath.slice(0, 6) &&
                   "!text-[#00ff47] !font-semibold !scale-105"
@@ -196,7 +209,7 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
           </div>
           <Button
             variant="contained"
-            className="!normal-case !text-[4vw] md:!text-[1vw] !px-[5vw] md:!px-[2vw] !py-[0.8vw] md:!py-[0.6vw] !rounded-full !bg-[#FF2D2D] hover:!bg-[#FF2D2D99] !mt-[3vw] md:!mt-[1.4vw]"
+            className="!normal-case !invisible !text-[4vw] md:!text-[1vw] !px-[5vw] md:!px-[2vw] !py-[0.8vw] md:!py-[0.6vw] !rounded-full !bg-[#FF2D2D] hover:!bg-[#FF2D2D99] !mt-[3vw] md:!mt-[1.4vw]"
           >
             Sign out
           </Button>

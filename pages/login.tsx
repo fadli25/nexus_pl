@@ -39,7 +39,6 @@ export default function profile() {
 
   const router = useRouter();
 
-
   const connection = new Connection(clusterApiUrl("devnet"));
 
   const anchorWallet = useAnchorWallet();
@@ -70,7 +69,7 @@ export default function profile() {
       notify_delete();
       notify_success("Profile Created!");
       setLoading(false);
-      router.push("/")
+      router.push("/");
     } catch (e) {
       setLoading(false);
       notify_delete();
@@ -99,8 +98,7 @@ export default function profile() {
         "",
         "",
         "",
-        "",
-
+        ""
       );
       notify_delete();
       notify_success("Profile Updated!");
@@ -191,7 +189,7 @@ export default function profile() {
         {/*  */}
         {/*  */}
         <div className="mt-[6vw] md:mt-[2vw]">
-          <label className="fontPopSemibold text-base">Role</label>
+          <label className="fontPopSemibold text-base">Job Role</label>
           <input
             value={roles}
             onChange={(e) => setRoles(e.target.value)}

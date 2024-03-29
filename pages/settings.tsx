@@ -2,24 +2,27 @@ import { update_user } from "@/lib/NexusProgram/user/update_user";
 import { get_user_info } from "@/lib/NexusProgram/user/utils/user_info";
 import { Button } from "@mui/material";
 import { web3 } from "@project-serum/anchor";
-import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import {
+  useAnchorWallet,
+  useConnection,
+  useWallet,
+} from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function settings() {
+  const anchorWallet = useAnchorWallet();
+  const { connection } = useConnection();
+  const wallet = useWallet();
 
-  const anchorWallet = useAnchorWallet()
-  const { connection } = useConnection()
-  const wallet = useWallet()
-
-  const [loading, setLoading] = useState<boolean>(false)
-  const [info, setInfo] = useState<any>()
-  const [linkedin, setL] = useState<string>()
-  const [discord_id, setD] = useState<string>()
-  const [telegram_id, setT] = useState<string>()
-  const [twitter, setX] = useState<string>()
-  const [website, setW] = useState<string>()
+  const [loading, setLoading] = useState<boolean>(false);
+  const [info, setInfo] = useState<any>();
+  const [linkedin, setL] = useState<string>();
+  const [discord_id, setD] = useState<string>();
+  const [telegram_id, setT] = useState<string>();
+  const [twitter, setX] = useState<string>();
+  const [website, setW] = useState<string>();
 
   const get_info = async () => {
     try {
@@ -34,7 +37,6 @@ export default function settings() {
         setW(user_info.website);
         setX(user_info.twitter);
       }
-
     } catch (e) {
       console.log(e);
     }
@@ -42,11 +44,8 @@ export default function settings() {
 
   useEffect(() => {
     if (!anchorWallet) return;
-    get_info()
-  }, [anchorWallet])
-
-
-
+    get_info();
+  }, [anchorWallet]);
 
   async function update_user_info() {
     try {
@@ -105,7 +104,6 @@ export default function settings() {
   const notify_delete = () => {
     toast.dismiss();
   };
-
 
   return (
     <div className="w-full md:w-[84vw] float-right py-[5vw]">
@@ -177,14 +175,14 @@ export default function settings() {
           <WalletButton>Add BNB</WalletButton>
         </div>
         {/* Connected Wallets */}
-        <div className="text-[2.9vw] md:text-[1.4vw] mt-[8vw] md:mt-[5vw]">
+        <div className="text-[2.9vw] md:text-[1.4vw] mt-[8vw] md:mt-[5vw] invisible">
           <div className="font-semibold">Your Solana Wallet</div>
           <div className="mt-[1vw] flex gap-x-[2vw] items-center">
             <div>SJWVROW4658G2U9HG47839FH</div>
             <WalletButtonUnlink>Unlink Wallet</WalletButtonUnlink>
           </div>
         </div>
-        <div className="text-[2.9vw] md:text-[1.4vw] mt-[2vw]">
+        <div className="text-[2.9vw] md:text-[1.4vw] mt-[2vw] invisible">
           <div className="font-semibold">Your Solana Aptos</div>
           <div className="mt-[1vw] flex gap-x-[2vw] items-center">
             <div>0xewubf348f373429gh842984y2</div>
