@@ -97,7 +97,7 @@ export default function TopNavbar() {
 
   function pathFunction1() {
     if (path.slice(0, 14) == "/freelance/out") {
-      return <>Outgoing Jobs</>;
+      return <>Outgoing Applications</>;
     } else if (path.slice(0, 14) === "/freelance/ong") {
       return <>Ongoing Projects</>;
     } else {
