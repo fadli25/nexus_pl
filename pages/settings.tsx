@@ -115,7 +115,7 @@ export default function settings() {
       <div className="w-[95vw] md:w-[65vw] mx-auto text-[2vw] text-black md:text-[1vw]">
         <div className="text-[4vw] md:text-[2vw] font-semibold">Soicals</div>
         <div className="rounded-[0.6vw] text-[3vw] md:text-[1.4vw] gap-[2vw] flex flex-wrap items-center border-[0.1vw] border-black p-[2vw]">
-          <div>
+          {/* <div>
             <div className="font-semibold">Linkedin Handle</div>
             <input
               onChange={(e) => setL(e.target.value)}
@@ -123,7 +123,7 @@ export default function settings() {
               type="text"
               className="px-[1vw] outline-none md:w-[18.8vw] py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
-          </div>
+          </div> */}
           <div>
             <div className="font-semibold">Twitter Handle</div>
             <input
@@ -133,7 +133,7 @@ export default function settings() {
               className="px-[1vw] outline-none md:w-[18.8vw] py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
           </div>
-          <div>
+          {/* <div>
             <div className="font-semibold">Website</div>
             <input
               onChange={(e) => setW(e.target.value)}
@@ -141,8 +141,8 @@ export default function settings() {
               type="text"
               className="px-[1vw] outline-none md:w-[18.8vw] py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <div className="font-semibold">Discord ID</div>
             <input
               onChange={(e) => setD(e.target.value)}
@@ -150,8 +150,8 @@ export default function settings() {
               type="text"
               className="px-[1vw] outline-none py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <div className="font-semibold">Telegram ID</div>
             <input
               onChange={(e) => setT(e.target.value)}
@@ -159,7 +159,7 @@ export default function settings() {
               type="text"
               className="px-[1vw] outline-none py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
-          </div>
+          </div> */}
           <div onClick={() => update_user_info()}>
             DONE
           </div>

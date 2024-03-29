@@ -1,6 +1,7 @@
 import { invites } from "@/lib/NexusProgram/invite/init_invite";
 import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
 import { getUsers } from "@/lib/NexusProgram/user/utils/get_users";
+import { notify_delete, notify_error, notify_laoding, notify_success, notify_warning } from "@/pages/profile";
 import { Button } from "@mui/material";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import Image from "next/image";
@@ -63,6 +64,7 @@ export default function invite({ project }: Inv) {
 
   const invitation = async () => {
     try {
+      notify_laoding("Sending Job invitation...");
       let User_pubkeu: any;
 
       users?.map((user) => {
@@ -79,14 +81,17 @@ export default function invite({ project }: Inv) {
         }
       });
 
-
       console.log(User_pubkeu.toBase58());
       if (!User_pubkeu) {
-        return console.log("user not found");
+        return notify_warning("User not found!");
       }
 
       await invites(anchorWallet, connection, project, User_pubkeu, role);
+      notify_delete()
+      notify_success("Job invitation Sent!")
     } catch (e) {
+      notify_delete()
+      notify_error("Transaction Failed!")
       console.log(e);
     }
   };

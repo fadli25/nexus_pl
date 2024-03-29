@@ -83,7 +83,7 @@ export default function addRole({ project }: any) {
     if (description.length > 120) {
       return notify_warning("Description Need to be less than 120 characters");
     }
-    notify_laoding("Transaction Pending...");
+    notify_laoding("Creating New Job Role...");
     try {
       await init_role(
         anchorWallet,
@@ -97,7 +97,7 @@ export default function addRole({ project }: any) {
         country
       );
       notify_delete()
-      notify_success("Roles Created Successfully!")
+      notify_success("New Job Role Created!")
     } catch (e) {
       notify_delete()
       notify_error("Transaction Failed!")

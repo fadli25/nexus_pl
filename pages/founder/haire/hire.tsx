@@ -3,6 +3,7 @@ import { getProjectForFounder } from "@/lib/NexusProgram/project/utils/get_proje
 import { getRolesForProject } from "@/lib/NexusProgram/project/utils/get_role";
 import { get_userr_info } from "@/lib/NexusProgram/user/utils/get_userr_info";
 import { get_user_info } from "@/lib/NexusProgram/user/utils/user_info";
+import { notify_delete, notify_error, notify_laoding, notify_success } from "@/pages/profile";
 import aptosIcon from "@/public/AptosWhite.svg";
 import polygonIcon from "@/public/Polygon.svg";
 import solanaIcon from "@/public/Solana.svg";
@@ -44,6 +45,7 @@ export default function hire() {
 
   const get_project = async (_user: string) => {
     try {
+      notify_laoding("Sending Job invitation...");
       console.log("_projects");
       const _projects = await getProjectForFounder(
         connection,
@@ -72,7 +74,11 @@ export default function hire() {
       console.log("_projects");
       console.log(_projects);
       setProjects(_projects);
+      notify_delete()
+      notify_success("Job invitation Sent!")
     } catch (e) {
+      notify_delete()
+      notify_error("Transaction Failed!")
       console.log(e);
     }
   };

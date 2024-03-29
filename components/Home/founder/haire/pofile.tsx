@@ -116,13 +116,13 @@ export default function Profile({ user }: any) {
             <div
               // onClick={() => links("https://www.linkedin.com/in/" + info.linkedin)}
               className="text-[4vw] md:text-[2vw] flex items-center gap-x-[1vw] mt-[1vw]">
-              <div
+              {/* <div
                 onClick={() => links("https://www.linkedin.com/in/" + info.linkedin)}
               >
                 <Icon>
                   <IoLogoLinkedin />
                 </Icon>
-              </div>
+              </div> */}
               <div
                 onClick={() => links("https://twitter.com/" + info.twitter)}
               >
@@ -130,13 +130,13 @@ export default function Profile({ user }: any) {
                   <FaTwitter />
                 </Icon>
               </div>
-              <div
+              {/* <div
                 onClick={() => links(info.website)}
               >
                 <Icon>
                   <GrLanguage />
                 </Icon>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -148,8 +148,8 @@ export default function Profile({ user }: any) {
           </div>
           <div className="mt-[0.3vw] border text-[6vw] md:text-[3vw] flex items-center border-black rounded-[0.6vw] px-[0.7vw] py-[0.2vw] gap-x-[0.2vw]">
             <Image src={SolanaIcon} className="w-[4vw] md:w-[2.4vw]" alt="" />
-            <Image src={PolygonIcon} className="w-[4vw] md:w-[2.5vw]" alt="" />
-            <Image src={AptosIcon} className="w-[4vw] md:w-[2vw]" alt="" />
+            {/* <Image src={PolygonIcon} className="w-[4vw] md:w-[2.5vw]" alt="" />
+            <Image src={AptosIcon} className="w-[4vw] md:w-[2vw]" alt="" /> */}
           </div>
         </div>
         <div className="flex flex-col items-start text-[2.5vw] md:text-[1.4vw]">
