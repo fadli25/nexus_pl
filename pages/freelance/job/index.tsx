@@ -1,6 +1,7 @@
 import { accept_invite } from "@/lib/NexusProgram/invite/accept";
 import { refuse_invite } from "@/lib/NexusProgram/invite/refuse";
 import { getInvitationFroUser } from "@/lib/NexusProgram/invite/utils.ts/getInvtforUser";
+import { notify_delete, notify_error, notify_laoding, notify_success } from "@/pages/profile";
 import { Button } from "@mui/material";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import Head from "next/head";
@@ -34,6 +35,7 @@ export default function index() {
 
   const refuse = async (i: number) => {
     try {
+      notify_laoding("Transaction Pending...");
       const invite = invitations![i];
       console.log(invite);
       await refuse_invite(
@@ -42,23 +44,31 @@ export default function index() {
         invite.pubkey,
         invite.project
       );
+      notify_delete();
+      notify_success("Transaction Successful!");
     } catch (e) {
+      notify_delete();
+      notify_error("Transaction Failed");
       console.log(e);
     }
   };
 
   const accept = async (i: number) => {
     try {
+      notify_laoding("Transaction Pending...");
       const invite = invitations![i];
       console.log(invite);
-
       await accept_invite(
         anchorWallet,
         connection,
         invite.pubkey,
         invite.project
       );
+      notify_delete();
+      notify_success("Transaction Successful!");
     } catch (e) {
+      notify_delete();
+      notify_error("Transaction Failed");
       console.log(e);
     }
   };

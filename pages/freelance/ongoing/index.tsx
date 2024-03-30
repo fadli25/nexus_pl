@@ -50,7 +50,7 @@ export default function index() {
                 </div>
                 <div
                   className="text-[5vw] md:text-[3vw] fontPopSemibold cursor-pointer"
-                  onClick={() => router.push("/freelance/ongoing/project")}
+                  onClick={() => router.push("/freelance/project/" + el.project.toBase58())}
                 >
                   {el.projectName}
                 </div>
