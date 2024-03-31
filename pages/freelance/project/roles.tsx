@@ -58,7 +58,7 @@ export default function roles() {
         <Stack className="border-[0.16vw] font-[500] text-[4vw] md:text-[1.4vw] gap-[3vw] md:gap-[1vw] px-[5vw] md:px-[2vw] w-full md:w-[50%] py-[3vw] md:py-[1vw] border-black rounded-[0.6vw]">
           <div>
             <Stack direction="row" justifyContent="space-between">
-              <label>Payement</label>
+              <label>Payment</label>
               <label>Time</label>
             </Stack>
             <Stack direction="row" alignItems="center">
@@ -81,14 +81,18 @@ export default function roles() {
           </div>
         </Stack>
 
-        <div className="bg-black h-auto text-white  px-[4vw] md:px-[1vw] py-[2vw] md:py-[0.6vw] rounded-[0.6vw]">
-          <div className="text-[6vw] md:text-[3vw] font-semibold">
+        <div className="bg-black h-auto text-white relative px-[4vw] md:px-[1vw] py-[2vw] md:py-[0.6vw] rounded-[0.6vw]">
+          <div className="text-[6vw] md:text-[3vw] font-semibold invisible">
             Bone Shamans
           </div>
-          <div className="text-[4vw] md:text-[1.4vw]">
+          <div className="text-[4vw] md:text-[1.4vw] invisible">
             <span className="text-[#00ff47]">Project Categories: </span> NFT,
             DeFI, DAO, Social FI
           </div>
+
+          <Stack className="absolute top-0 left-0 w-full h-full justify-center items-center text-[6vw] md:text-[3vw] font-semibold">
+            Coming Soon
+          </Stack>
         </div>
       </Stack>
 

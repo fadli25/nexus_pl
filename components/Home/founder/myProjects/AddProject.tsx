@@ -162,7 +162,6 @@ export default function addProject() {
     },
   };
 
-
   const notify_success = (msg: string) => {
     toast.success(msg, {
       position: toast.POSITION.TOP_RIGHT,
@@ -187,8 +186,6 @@ export default function addProject() {
   const notify_delete = () => {
     toast.dismiss();
   };
-
-
 
   return (
     <div className="px-[4vw]">
@@ -358,7 +355,7 @@ export default function addProject() {
               </div>
               <div className="w-[60%]">
                 <Stack direction="row" justifyContent="space-between">
-                  <label>Payement</label>
+                  <label>Payment</label>
                   <label>Time</label>
                 </Stack>
                 <Stack direction="row" alignItems="center">
@@ -410,7 +407,7 @@ export default function addProject() {
               </div>
               <div className="w-[60%]">
                 <Stack direction="row" justifyContent="space-between">
-                  <label>Payement</label>
+                  <label>Payment</label>
                   <label>Time</label>
                 </Stack>
                 <Stack direction="row" alignItems="center">

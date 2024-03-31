@@ -115,7 +115,8 @@ export default function Profile({ user }: any) {
           <div className="flex justify-between items-center">
             <div
               // onClick={() => links("https://www.linkedin.com/in/" + info.linkedin)}
-              className="text-[4vw] md:text-[2vw] flex items-center gap-x-[1vw] mt-[1vw]">
+              className="text-[4vw] md:text-[2vw] flex items-center gap-x-[1vw] mt-[1vw]"
+            >
               {/* <div
                 onClick={() => links("https://www.linkedin.com/in/" + info.linkedin)}
               >
@@ -123,9 +124,7 @@ export default function Profile({ user }: any) {
                   <IoLogoLinkedin />
                 </Icon>
               </div> */}
-              <div
-                onClick={() => links("https://twitter.com/" + info.twitter)}
-              >
+              <div onClick={() => links("https://twitter.com/" + info.twitter)}>
                 <Icon>
                   <FaTwitter />
                 </Icon>
@@ -169,13 +168,15 @@ export default function Profile({ user }: any) {
             <div>Discord ID</div>
             <input
               value={info && info.discordId}
-              className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]" />
+              className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]"
+            />
           </div>
           <div>
             <div>Telegram ID</div>
             <input
               value={info && info.telegramId}
-              className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]" />
+              className="outline-none border-[0.12vw] border-black rounded-[0.6vw] p-[0.8vw]"
+            />
           </div>
         </Stack>
         {/* <Stack className=" gap-[3vw] md:gap-[1vw]">
@@ -194,9 +195,7 @@ export default function Profile({ user }: any) {
         </div>
       </div>
 
-      <div
-        onClick={() => links(info.resume)}
-      >
+      <div onClick={() => links(info.resume)}>
         <motion.button
           whileTap={{ scale: 0.99 }}
           className="mt-[3vw] text-[3.5vw] md:text-[1.7vw] w-full text-start border-[0.12vw] border-black rounded-[0.4vw] p-[2.4vw] md:p-[1vw] text-black font-semibold"
@@ -204,9 +203,7 @@ export default function Profile({ user }: any) {
           View Resume
         </motion.button>
       </div>
-      <div
-        onClick={() => links(info.portfolio)}
-      >
+      <div onClick={() => links(info.portfolio)}>
         <motion.button
           whileTap={{ scale: 0.99 }}
           className="mt-[3vw] text-[3.5vw] md:text-[1.7vw] w-full text-start border-[0.12vw] border-black rounded-[0.4vw] p-[2.4vw] md:p-[1vw] text-black font-semibold"
@@ -225,29 +222,23 @@ export default function Profile({ user }: any) {
 
       <div className="mt-[3vw] text-[3vw] md:text-[1.5vw]">
         <div className="fontPopSemibold">Categories</div>
-        <input
-          value={info && info.category}
-          type="text"
-          className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all"
-        />
+        <div className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all">
+          {info && info.category}/
+        </div>
       </div>
       <div className="mt-[3vw] text-[3vw] md:text-[1.5vw]">
         <div className="fontPopSemibold">Secondary Roles</div>
-        <input
-          value={info && info.category}
-          type="text"
-          className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all"
-        />
+        <div className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all">
+          {info && info.category}
+        </div>
       </div>
       <div className="mt-[3vw] text-[3vw] md:text-[1.5vw]">
         <div className="fontPopSemibold">
           Others (Case Studes, Testimonials)
         </div>
-        <textarea
-          value={info && info.others}
-          rows={2}
-          className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all"
-        />
+        <div className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all">
+          {info && info.others}
+        </div>
       </div>
       {/* <div className="mt-[3vw] text-[3vw] md:text-[1.5vw]">
         <div className="fontPopSemibold">Reviews</div>
@@ -258,7 +249,11 @@ export default function Profile({ user }: any) {
       </div> */}
       <div className="mt-[6vw] md:mt-[4vw] flex justify-center gap-x-[4vw] md:gap-x-[2vw]">
         {/* <Button3>Add to watchlist</Button3> */}
-        <Button2 onClick={() => router.push("/founder/haire/hire?user=" + info.address.toBase58())}>
+        <Button2
+          onClick={() =>
+            router.push("/founder/haire/hire?user=" + info.address.toBase58())
+          }
+        >
           Hire
         </Button2>
         {/* <Button4>Reject</Button4> */}

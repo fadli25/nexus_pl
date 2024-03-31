@@ -1,7 +1,13 @@
 import { init_project } from "@/lib/NexusProgram/project/init_project";
 import { init_role } from "@/lib/NexusProgram/project/init_role";
 import { update_project } from "@/lib/NexusProgram/project/update_project";
-import { notify_delete, notify_error, notify_laoding, notify_success, notify_warning } from "@/pages/profile";
+import {
+  notify_delete,
+  notify_error,
+  notify_laoding,
+  notify_success,
+  notify_warning,
+} from "@/pages/profile";
 import { Button, FormControlLabel, Stack } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
@@ -96,11 +102,11 @@ export default function addRole({ project }: any) {
         description,
         country
       );
-      notify_delete()
-      notify_success("New Job Role Created!")
+      notify_delete();
+      notify_success("New Job Role Created!");
     } catch (e) {
-      notify_delete()
-      notify_error("Transaction Failed!")
+      notify_delete();
+      notify_error("Transaction Failed!");
       console.log(e);
     }
   };
@@ -210,7 +216,7 @@ export default function addRole({ project }: any) {
                 </div>
                 <div className="w-[60%]">
                   <Stack direction="row" justifyContent="space-between">
-                    <label>Payement</label>
+                    <label>Payment</label>
                     <label>Time</label>
                   </Stack>
                   <Stack direction="row" alignItems="center">

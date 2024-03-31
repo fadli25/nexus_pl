@@ -9,15 +9,14 @@ import React, { ReactNode, useEffect, useState } from "react";
 import { PiMapPinFill } from "react-icons/pi";
 
 export default function apply({ role }: any) {
-
-  const [role_info, setRoleInfo] = useState<any>()
-  const [country, setCountry] = useState<string>()
-  const [payment, setPayment] = useState<number>()
-  const [description, setDescription] = useState<string>()
-  const [category, setCategory] = useState<string>()
+  const [role_info, setRoleInfo] = useState<any>();
+  const [country, setCountry] = useState<string>();
+  const [payment, setPayment] = useState<number>();
+  const [description, setDescription] = useState<string>();
+  const [category, setCategory] = useState<string>();
 
   const anchorWallet = useAnchorWallet();
-  const { connection } = useConnection()
+  const { connection } = useConnection();
 
   const get_Role = async () => {
     try {
@@ -25,38 +24,44 @@ export default function apply({ role }: any) {
       // console.log(role_infos);
       setRoleInfo(role_infos);
 
-      const project_info = await get_project_info(anchorWallet, connection, role_infos!.project.toBase58());
+      const project_info = await get_project_info(
+        anchorWallet,
+        connection,
+        role_infos!.project.toBase58()
+      );
 
       // console.log(project_info)
       setCategory(project_info!.category);
 
-      setPayment(Number(role_infos!.payment))
+      setPayment(Number(role_infos!.payment));
       setCountry(role_infos!.country);
       setDescription(role_infos!.description);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   useEffect(() => {
     if (!anchorWallet) return;
 
-    get_Role()
-  }, [anchorWallet])
-
-
+    get_Role();
+  }, [anchorWallet]);
 
   const appling = async () => {
     try {
-      await apply_role(anchorWallet, connection, role_info.project, new web3.PublicKey(role), country!, description!, payment!);
+      await apply_role(
+        anchorWallet,
+        connection,
+        role_info.project,
+        new web3.PublicKey(role),
+        country!,
+        description!,
+        payment!
+      );
     } catch (e) {
       console.log(e);
     }
-  }
-
-
-
-
+  };
 
   const styleButton = {
     fontSize: "1vw",
@@ -78,7 +83,6 @@ export default function apply({ role }: any) {
   const inputStyle2 =
     "border-[0.16vw] md:border-[0.16vw] mt-[0.6vw] border-black rounded-[1vw] md:rounded-[0.4vw] px-[2vw] md:px-[1vw] py-[1.4vw] md:py-[0.7vw] outline-none";
 
-
   return (
     <div className="w-full md:w-[84vw] float-right px-[8vw] py-[2vw] text-black">
       <Head>
@@ -86,9 +90,11 @@ export default function apply({ role }: any) {
       </Head>
       <Stack className="!flex-row border-[0.16vw] items-center border-black rounded-[0.6vw] w-full px-[3vw] py-[2vw] justify-between">
         <div>
-          {role_info && <div className="text-[6vw] md:text-[3vw] font-semibold">
-            {role_info.name}
-          </div>}
+          {role_info && (
+            <div className="text-[6vw] md:text-[3vw] font-semibold">
+              {role_info.name}
+            </div>
+          )}
           <div className="text-[3.5vw] md:text-[1.5vw] ">
             {role_info && role_info.role}
           </div>
@@ -112,7 +118,7 @@ export default function apply({ role }: any) {
         <Stack className="border-[0.16vw] font-[500] text-[4vw] md:text-[1.4vw] gap-[3vw] md:gap-[1vw] px-[5vw] md:px-[2vw] w-full md:w-[50%] py-[3vw] md:py-[1vw] border-black rounded-[0.6vw]">
           <div>
             <Stack direction="row" justifyContent="space-between">
-              <label>Payement</label>
+              <label>Payment</label>
               <label>Time</label>
             </Stack>
             <Stack direction="row" alignItems="center">
@@ -136,35 +142,44 @@ export default function apply({ role }: any) {
             <input
               // onChange={(e) => setCountry(e.target.value)}
               value={country}
-              className={`${inputStyle2} w-full`} />
+              className={`${inputStyle2} w-full`}
+            />
           </div>
         </Stack>
 
-        <div className="bg-black h-auto text-white  px-[4vw] md:px-[1vw] py-[2vw] md:py-[0.6vw] rounded-[0.6vw]">
-          <div className="text-[6vw] md:text-[3vw] font-semibold">
+        <div className="bg-black h-auto text-white relative px-[4vw] md:px-[1vw] py-[2vw] md:py-[0.6vw] rounded-[0.6vw]">
+          <div className="text-[6vw] md:text-[3vw] font-semibold invisible">
             Bone Shamans
           </div>
-          <div className="text-[4vw] md:text-[1.4vw]">
+          <div className="text-[4vw] md:text-[1.4vw] invisible">
             <span className="text-[#00ff47]">Project Categories: </span> NFT,
             DeFI, DAO, Social FI
           </div>
+
+          <Stack className="absolute top-0 left-0 w-full h-full justify-center items-center text-[6vw] md:text-[3vw] font-semibold">
+            Coming Soon
+          </Stack>
         </div>
       </Stack>
 
       <div className="mt-[6vw] md:mt-[3vw] text-[4vw] md:text-[1.4vw] font-[500]">
         <div>Role Description</div>
         <textarea
-          // onChange={(e) => setDescription(e.target.value)} 
+          // onChange={(e) => setDescription(e.target.value)}
           value={description}
-          rows={10} className={`${inputStyle2}  w-full`}></textarea>
+          rows={10}
+          className={`${inputStyle2}  w-full`}
+        ></textarea>
       </div>
 
       <div className="mt-[5vw] flex justify-center">
         <Button
           onClick={() => {
-            appling()
+            appling();
           }}
-          variant="contained" sx={styleButton}>
+          variant="contained"
+          sx={styleButton}
+        >
           Apply
         </Button>
       </div>
