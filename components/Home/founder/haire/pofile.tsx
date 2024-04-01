@@ -162,7 +162,7 @@ export default function Profile({ user }: any) {
       <Stack className="flex-col md:!flex-row gap-[3vw] justify-between mt-[5vw]">
         <Stack
           direction="row"
-          className="text-[3vw] md:text-[1.4vw] font-semibold gap-[3vw] md:gap-[1vw]"
+          className="text-[3vw] !hidden md:text-[1.4vw] font-semibold gap-[3vw] md:gap-[1vw]"
         >
           <div>
             <div>Discord ID</div>
