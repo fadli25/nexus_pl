@@ -119,7 +119,7 @@ export default function freelance() {
             placeholder="Search"
           />
         </div>
-        <div className="mt-[3vw]">
+        <div className="mt-[3vw] hidden">
           <div className="relative border-[0.12vw] border-black w-full text-black py-[1vw] font-semibold px-[2vw] rounded-[1vw] md:rounded-[1vw]">
             <div className="text-white/80 text-[2vw] md:text-[1vw] invisible">
               Featured
