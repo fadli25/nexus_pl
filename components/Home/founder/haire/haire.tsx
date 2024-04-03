@@ -130,7 +130,7 @@ export default function haire() {
             placeholder="Search"
           />
         </div>
-        <div className="mt-[3vw]">
+        <div className="mt-[3vw] hidden">
           <div className="border-[0.12vw] border-black w-full py-[1vw] relative px-[2vw] rounded-[1.4vw] md:rounded-[1vw]">
             <div className="text-black/80 text-[2.5vw] md:text-[1vw] invisible">
               Featured
@@ -161,7 +161,7 @@ export default function haire() {
               </div>
             </div>
 
-            <div className="w-full font-[poppins] text-black absolute top-0 left-0 z-20 h-full grid place-items-center text-[6vw] md:text-[4vw]">
+            <div className="w-full font-[poppins]  text-black absolute top-0 left-0 z-20 h-full grid place-items-center text-[6vw] md:text-[4vw]">
               <div>C O M I N G &nbsp; S O O N</div>
             </div>
           </div>

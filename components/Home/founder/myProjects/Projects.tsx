@@ -209,11 +209,11 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-              <div className="text-[3vw] md:text-[1vw] font-semibold text-center w-[12vw] md:w-[8vw]">
+              <div className="text-[3vw] invisible md:text-[1vw] font-semibold text-center w-[12vw] md:w-[8vw]">
                 <div className="">5000</div>
                 <div>Twitter</div>
               </div>
-              <div className="text-[3vw] md:text-[1vw] font-semibold text-center w-[12vw] md:w-[8vw]">
+              <div className="text-[3vw] invisible md:text-[1vw] font-semibold text-center w-[12vw] md:w-[8vw]">
                 <div className="">5000</div>
                 <div>Discord</div>
               </div>
