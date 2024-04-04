@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { ReactNode, useEffect, useState } from "react";
-import { FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaDiscord, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdLanguage } from "react-icons/md";
 
 // interface Role {
@@ -87,10 +87,10 @@ export default function project({ project }: any) {
             <div className="w-[6vw] md:w-[3vw]">
               <Image src={solanaIcon} width={2000} height={200} alt="" />
             </div>
-            <div className="w-[6vw] md:w-[2vw]">
+            <div className="w-[6vw] md:w-[2vw] invisible">
               <Image src={aptosIcon} width={2000} height={200} alt="" />
             </div>
-            <div className="w-[6vw] md:w-[3vw]">
+            <div className="w-[6vw] md:w-[3vw] invisible">
               <Image src={polygonIcon} width={2000} height={200} alt="" />
             </div>
           </div>
@@ -116,6 +116,7 @@ export default function project({ project }: any) {
                 <MdLanguage />
               </Icon>
             </div>
+
           </div>
         </div>
         <div className="mt-[5vw] flex flex-col-reverse md:flex-row justify-between md:items-start text-black">
