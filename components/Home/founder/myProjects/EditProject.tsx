@@ -327,7 +327,7 @@ export default function EditProject({ project }: any) {
             style={{ width: "100%" }}
           />
         </div>
-        <div>
+        <div className="hidden">
           <div className="fontPopSemibold mt-[1vw]">Add Departments</div>
           <textarea
             value={departments}
