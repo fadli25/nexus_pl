@@ -415,7 +415,7 @@ export default function Project({ project }: Project) {
                         {user.name}
                       </div>
                       <div className="text-[3vw] md:text-[1.4vw]">
-                        {user.role}
+                        {user.projectRole}
                       </div>
                     </div>
                   </div>
