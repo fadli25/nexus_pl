@@ -21,7 +21,7 @@ export default function CardFounder({ onClick, info, key }: any) {
     <motion.div
       whileTap={{ y: 3 }}
       onClick={onClick}
-      className="flex font-semibold cursor-pointer text-black gap-x-[2vw] md:gap-x-[1vw] pt-[2vw] w-full px-[2.8vw] md:px-[1vw] py-[2vw] md:py-[1vw] rounded-[0.6vw] border border-black md:!w-[100px] overflow-hidden CardFounder"
+      className="flex font-[500] md:font-semibold cursor-pointer text-black gap-x-[2vw] md:gap-x-[1vw] pt-[2vw] w-full px-[2.8vw] md:px-[1vw] py-[2vw] md:py-[1vw] rounded-[0.6vw] border border-black md:!w-[100px] overflow-hidden CardFounder"
     >
       <div className="flex w-[40vw] md:w-[16vw] items-center flex-col">
         <div className="rounded-full border-[0.14vw] border-black">

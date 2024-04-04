@@ -240,7 +240,7 @@ export default function addProject() {
               className={`${inputStyle}`}
             />
           </div>
-          <div>
+          <div className="hidden">
             <div className="fontPopSemibold">Link Linkdin</div>
             <input
               onChange={(e) => setLinkdin(e.target.value)}
@@ -270,7 +270,7 @@ export default function addProject() {
             />
           </div>
 
-          <div>
+          <div className="hidden">
             <div className="fontPopSemibold">Select Category</div>
             <select className={`${inputStyle}`}>
               <option onClick={() => setCategory("Category 1")} value="">
@@ -291,7 +291,7 @@ export default function addProject() {
             </select>
           </div>
           <div></div>
-          <div>
+          <div className="hidden">
             <div className="fontPopSemibold">Select Chain</div>
             <select className={`${inputStyle}`}>
               <option value="">chain 1</option>

@@ -175,7 +175,6 @@ export default function EditProject({ project }: any) {
     },
   };
 
-
   const notify_success = (msg: string) => {
     toast.success(msg, {
       position: toast.POSITION.TOP_RIGHT,
@@ -200,7 +199,6 @@ export default function EditProject({ project }: any) {
   const notify_delete = () => {
     toast.dismiss();
   };
-
 
   return (
     <div className="px-[4vw]">
@@ -255,7 +253,7 @@ export default function EditProject({ project }: any) {
               className={`${inputStyle}`}
             />
           </div>
-          <div>
+          <div className="hidden">
             <div className="fontPopSemibold">Link Linkdin</div>
             <input
               onChange={(e) => setLinkdin(e.target.value)}
@@ -285,7 +283,7 @@ export default function EditProject({ project }: any) {
             />
           </div>
 
-          <div>
+          <div className="hidden">
             <div className="fontPopSemibold">Select Category</div>
             <select className={`${inputStyle}`}>
               <option onClick={() => setCategory("Category 1")} value="">
@@ -306,7 +304,7 @@ export default function EditProject({ project }: any) {
             </select>
           </div>
           <div></div>
-          <div>
+          <div className="hidden">
             <div className="fontPopSemibold">Select Chain</div>
             <select className={`${inputStyle}`}>
               <option value="">chain 1</option>

@@ -58,7 +58,7 @@ export default function project({ project }: any) {
   return (
     <div>
       <div className="w-[90vw] md:w-[66vw] mx-auto py-[5vw]">
-        <div className="w-full bg-black text-white fontPopSemibold rounded-[1vw] flex justify-between items-center py-[3vw] px-[4vw] text-[2.4vw] md:text-[1.4vw]">
+        <div className="w-full bg-black text-white font-semibold rounded-[1vw] flex justify-between items-center py-[3vw] px-[4vw] text-[2.4vw] md:text-[1.4vw]">
           <div>
             <div className="text-[5vw] md:text-[3.4vw]">
               {project_info && project_info.name}
