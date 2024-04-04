@@ -30,6 +30,8 @@ export async function update_user(
     profile_overview: string,
     payment_rate_per_hour: number,
     nigotion: boolean,
+    resume: string,
+    portfolio: string,
     discord_id: string,
     telegram_id: string,
     website: string,
@@ -77,6 +79,8 @@ export async function update_user(
         website: website,
         discordId: discord_id,
         telegramId: telegram_id,
+        resume,
+        portfolio
     }).accounts({
         user: user,
         authority: anchorWallet.publicKey,

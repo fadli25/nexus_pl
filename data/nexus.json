@@ -1209,6 +1209,14 @@
           {
             "name": "telegramId",
             "type": "string"
+          },
+          {
+            "name": "resume",
+            "type": "string"
+          },
+          {
+            "name": "portfolio",
+            "type": "string"
           }
         ]
       }
