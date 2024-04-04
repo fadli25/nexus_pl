@@ -54,6 +54,10 @@ export default function project({ project }: any) {
     get_infos();
   }, [anchorWallet]);
 
+  const links = (link: string) => {
+    window.open(link, "_blank");
+  };
+
   const router = useRouter();
   return (
     <div>
@@ -91,15 +95,27 @@ export default function project({ project }: any) {
             </div>
           </div>
           <div className="flex items-center gap-x-[1.4vw]">
-            <Icon>
-              <FaLinkedin />
-            </Icon>
-            <Icon>
-              <FaTwitter />
-            </Icon>
-            <Icon>
-              <MdLanguage />
-            </Icon>
+            <div
+              onClick={() => links(project_info.linkDiscord)}
+            >
+              <Icon>
+                <FaLinkedin />
+              </Icon>
+            </div>
+            <div
+              onClick={() => links(project_info.linkTwitter)}
+            >
+              <Icon>
+                <FaTwitter />
+              </Icon>
+            </div>
+            <div
+              onClick={() => links(project_info.linkWebsite)}
+            >
+              <Icon>
+                <MdLanguage />
+              </Icon>
+            </div>
           </div>
         </div>
         <div className="mt-[5vw] flex flex-col-reverse md:flex-row justify-between md:items-start text-black">
