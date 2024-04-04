@@ -303,7 +303,7 @@ export default function Project({ project }: Project) {
                 <div className="mb-[1vw]">
                   <div className="text-[3vw] md:text-[0.8vw]">Turn Over</div>
                   <div className="px-[1vw] border text-center border-black rounded-[0.4vw] text-[5vw] md:text-[2vw]">
-                    3
+                    --
                   </div>
                 </div>
               </div>
@@ -314,8 +314,8 @@ export default function Project({ project }: Project) {
                   <FaDiscord className="text-black text-[5.5vw] md:text-[2vw]" />
                 </div>
                 <div>
-                  <div>5 Online</div>
-                  <div>15 Offline</div>
+                  <div>-- Online</div>
+                  <div>-- Offline</div>
                 </div>
               </div>
               <div className="text-[4.5vw] md:text-[1.5vw] border border-black px-[1vw] py-[0.5vw] rounded-[0.4vw]">
@@ -346,19 +346,19 @@ export default function Project({ project }: Project) {
             </div>
             <div className="flex flex-col md:flex-row gap-y-[3vw] items-center gap-x-[1vw] mt-[4vw] md:mt-[1.3vw] text-[15vw] md:text-[5vw] text-center">
               <div className="border border-black rounded-[0.4vw] px-[1vw] py-[2vw] md:py-[0.4vw] w-full h-full">
-                <div>25</div>
+                <div>--</div>
                 <div className="text-[5vw] md:text-[1.2vw]">
                   Incomming <br /> Application
                 </div>
               </div>
               <div className="border border-black rounded-[0.4vw] px-[1vw] py-[2vw] md:py-[0.4vw] w-full h-full">
-                <div>10</div>
+                <div>--</div>
                 <div className="text-[5vw] md:text-[1.2vw] text-red-600">
                   Rejected <br /> Application
                 </div>
               </div>
               <div className="border border-black rounded-[0.4vw] px-[1vw] py-[2vw] md:py-[0.4vw] w-full h-full">
-                <div>5</div>
+                <div>--</div>
                 <div className="text-[5vw] md:text-[1.2vw]">
                   Invitions <br /> Sent
                 </div>
@@ -409,7 +409,9 @@ export default function Project({ project }: Project) {
                       />
                     </div>
                     <div>
-                      <div className="text-[5vw] md:text-[2vw] fontPopSemibold underline">
+                      <div
+                        onClick={() => router.push("/founder/haire/" + user.user.toBase58())}
+                        className="text-[5vw] md:text-[2vw] fontPopSemibold underline cursor-pointer">
                         {user.name}
                       </div>
                       <div className="text-[3vw] md:text-[1.4vw]">

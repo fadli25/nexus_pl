@@ -136,9 +136,9 @@ export default function invite({ project }: Inv) {
                 <div className="w-[2vw]">
                   <Image src={solanaIcon} width={8999} height={2000} alt="" />
                 </div>
-                <div className="w-[2vw]">
+                {/* <div className="w-[2vw]">
                   <Image src={solanaIcon} width={8999} height={2000} alt="" />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function invite({ project }: Inv) {
       </div>
       <div className="mt-[5vw] fontPopSemibold">
         <div className="flex items-center gap-x-[1vw] text-[2vw]">
-          <div className="w-[27vw]">User Name</div>
+          <div className="w-[27vw]">User Name/Address</div>
           <input
             onChange={(e) => setName(e.target.value)}
             value={name}
