@@ -67,7 +67,9 @@ export default function settings() {
         telegram_id!,
         website!,
         linkedin!,
-        twitter!
+        twitter!,
+        "",
+        ""
       );
       notify_delete();
       notify_success("Profile Updated!");
@@ -158,9 +160,7 @@ export default function settings() {
               className="px-[1vw] outline-none py-[0.4vw] border-[0.1vw] border-black rounded-[0.5vw]"
             />
           </div> */}
-          <div onClick={() => update_user_info()}>
-            DONE
-          </div>
+          <div onClick={() => update_user_info()}>DONE</div>
         </div>
       </div>
       <div className="mt-[6vw] md:mt-[2vw] w-[85vw] md:w-[60vw] mx-auto text-black">

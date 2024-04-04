@@ -94,7 +94,6 @@ export default function profile() {
         profile_overview,
         payment_rate_per_hour,
         nogotion,
-
         "",
         "",
         "",
