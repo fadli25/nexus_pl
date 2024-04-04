@@ -131,6 +131,8 @@ export default function profile() {
         profile_overview,
         payment_rate_per_hour,
         nogotion,
+        resume,
+        portfolio,
         discord,
         telegram,
         website,
@@ -205,9 +207,8 @@ export default function profile() {
           </div>
           <ButtonMotion
             onClick={() => setShow(!show)}
-            className={`text-[5vw] md:text-[2.4vw] ${
-              show && "text-[#00ff47]"
-            } `}
+            className={`text-[5vw] md:text-[2.4vw] ${show && "text-[#00ff47]"
+              } `}
           >
             <BiSolidShow />
           </ButtonMotion>
