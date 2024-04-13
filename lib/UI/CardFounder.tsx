@@ -57,7 +57,7 @@ export default function CardFounder({ onClick, info, key }: any) {
           <div>
             <div className="flex items-center gap-x-[0.4vw] mt-[2vw] md:mt-[0.3vw]">
               <div className="bg-black font-normal text-white text-[2vw] md:text-[0.7vw] px-[2vw] md:px-[1vw] py-[0.2vw] rounded-full">
-                {info.levelOfExpertise}
+                {info.levelOfExpertise || "Volunteer"}
               </div>
               <div className="text-[3vw] md:text-[1.2vw] invisible">4.2</div>
               <div>
