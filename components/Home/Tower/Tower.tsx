@@ -5,9 +5,15 @@ import OldOnce from "@/public/OldOnes.png";
 import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import { toast } from "react-toastify";
 
 export default function Tower() {
   const router = useRouter();
+  const notify = () => {
+    toast.info("Coming Soon!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
   return (
     <div className="relative overflow-hidden">
       <Swiper
@@ -18,10 +24,10 @@ export default function Tower() {
         }}
         modules={[Pagination, Autoplay]}
       >
-        <SwiperSlide>
+        <SwiperSlide onClick={notify}>
           <div
             className="w-[90vw] md:w-[64vw] mx-auto flex justify-between items-center relative cursor-pointer"
-            onClick={() => router.push("/mint")}
+            // onClick={() => router.push("/mint")}
           >
             <Image src={OldOnce} width={2000} height={200} alt="" />
             <div className="absolute top-[34%] right-[3%] text-[1.4vw] text-white">
