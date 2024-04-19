@@ -4,7 +4,7 @@ import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info"
 import { Button, FormControlLabel, Stack } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
-import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -65,9 +65,11 @@ const IOSSwitch = styled((props: SwitchProps) => (
 }));
 
 export default function EditProject({ project }: any) {
-  const connection = new Connection(clusterApiUrl("devnet"));
+  // const connection = new Connection(clusterApiUrl("devnet"));
 
   // const searchParams = useSearchParams()
+  const { connection } = useConnection()
+
 
   const anchorWallet = useAnchorWallet();
   const wallet = useWallet();

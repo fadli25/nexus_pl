@@ -3,7 +3,7 @@ import polygonImg from "@/public/Polygon.svg";
 import solanaImg from "@/public/Solana.svg";
 import { Button } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
-import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 import { motion } from "framer-motion";
 import Head from "next/head";
@@ -67,10 +67,11 @@ export default function profile() {
   const [discord, setD] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const connection = new Connection(clusterApiUrl("devnet"));
+  // const connection = new Connection(clusterApiUrl("devnet"));
 
   const anchorWallet = useAnchorWallet();
   const wallet = useWallet();
+  const { connection } = useConnection()
 
   async function initialize_user() {
     try {

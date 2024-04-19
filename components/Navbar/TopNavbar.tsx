@@ -2,7 +2,7 @@ import { get_user_info } from "@/lib/NexusProgram/user/utils/user_info";
 import mintbg from "@/public/mintbar.png";
 import { Button, IconButton } from "@mui/material";
 import { web3 } from "@project-serum/anchor";
-import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -12,9 +12,9 @@ import { BiMenu, BiMenuAltRight } from "react-icons/bi";
 import { BsFillChatFill } from "react-icons/bs";
 import { IoNotifications, IoSettingsOutline } from "react-icons/io5";
 import { MdLocalGroceryStore } from "react-icons/md";
+import { toast } from "react-toastify";
 import LeftNavbar from "./LeftNavbar";
 import MintTitle from "./MintTitle.png";
-import { toast } from "react-toastify";
 
 export default function TopNavbar() {
   const notify = () => {
@@ -25,7 +25,10 @@ export default function TopNavbar() {
   const router = useRouter();
 
   const path = router.asPath;
-  const connection = new web3.Connection(web3.clusterApiUrl("devnet"));
+  // const connection = new web3.Connection(web3.clusterApiUrl("devnet"));
+
+  const { connection } = useConnection()
+
 
   const anchorWallet = useAnchorWallet();
   const wallet = useWallet();
@@ -326,9 +329,8 @@ export default function TopNavbar() {
       <div className="bg-black border-b border-white/20 w-full md:w-[84vw] float-right px-[2vw] relative z-[100]">
         <div className="flex justify-end py-[1.4vw] z-50">
           <div
-            className={`flex flex-col gap-y-[0.5vw] md:gap-y-[0.4vw] items-end ${
-              path === "/login" && "invisible"
-            }`}
+            className={`flex flex-col gap-y-[0.5vw] md:gap-y-[0.4vw] items-end ${path === "/login" && "invisible"
+              }`}
           >
             {/* Connect Wallet */}
             <div className="flex gap-x-[3vw] md:gap-x-[1.4vw] ] itemes-center">
