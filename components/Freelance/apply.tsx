@@ -3,7 +3,7 @@ import { get_role_info } from "@/lib/NexusProgram/project/utils/get_role_info";
 import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info";
 import { Button, Stack } from "@mui/material";
 import { web3 } from "@project-serum/anchor";
-import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import React, { ReactNode, useEffect, useState } from "react";
 import { PiMapPinFill } from "react-icons/pi";
@@ -17,6 +17,7 @@ export default function apply({ role }: any) {
 
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
+  const wallet = useWallet()
 
   const get_Role = async () => {
     try {
@@ -56,7 +57,8 @@ export default function apply({ role }: any) {
         new web3.PublicKey(role),
         country!,
         description!,
-        payment!
+        payment!,
+        wallet
       );
     } catch (e) {
       console.log(e);

@@ -24,6 +24,7 @@ export async function refuse_invite(
     connection: web3.Connection,
     invitation_pubkey: PublicKey,
     project: PublicKey,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
@@ -49,7 +50,13 @@ export async function refuse_invite(
         authority: anchorWallet.publicKey,
         systemProgram: web3.SystemProgram.programId
     })
-        .rpc()
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
 
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
     return tx;
 }

@@ -6,7 +6,7 @@ import PolygonIcon from "@/public/Polygon.svg";
 import SolanaIcon from "@/public/Solana.svg";
 import { Button, Stack } from "@mui/material";
 import { web3 } from "@project-serum/anchor";
-import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -22,6 +22,7 @@ export default function Profile({ user }: any) {
 
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
+  const wallet = useWallet()
 
   const get_info = async () => {
     try {
@@ -42,7 +43,8 @@ export default function Profile({ user }: any) {
         connection,
         user.project,
         project![i].pubkey,
-        user.roles
+        user.roles,
+        wallet
       );
     } catch (e) {
       console.log(e);

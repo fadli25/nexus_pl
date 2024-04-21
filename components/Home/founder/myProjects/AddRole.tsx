@@ -74,7 +74,7 @@ export default function addRole({ project }: any) {
   // const connection = new Connection(clusterApiUrl("devnet"));
 
   const anchorWallet = useAnchorWallet();
-  // const wallet = useWallet();
+  const wallet = useWallet();
   const { connection } = useConnection()
 
   const [loex, setLoEx] = useState<string>("");
@@ -101,7 +101,8 @@ export default function addRole({ project }: any) {
         role,
         loex,
         description,
-        country
+        country,
+        wallet
       );
       notify_delete();
       notify_success("New Job Role Created!");

@@ -18,7 +18,8 @@ export async function close_role(
     anchorWallet: any,
     connection: web3.Connection,
     project: web3.PublicKey,
-    role: web3.PublicKey
+    role: web3.PublicKey,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
@@ -43,10 +44,13 @@ export async function close_role(
         authority: anchorWallet.publicKey,
         systemProgram: web3.SystemProgram.programId
     })
-        // .transaction()
-        .rpc({
-            commitment: "confirmed",
-        })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
 
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
     return tx;
 }

@@ -107,7 +107,8 @@ export default function EditProject({ project }: any) {
         website_link,
         project_overview,
         departments,
-        hiring
+        hiring,
+        wallet
       );
       notify_delete();
       notify_success("Project Updated!");

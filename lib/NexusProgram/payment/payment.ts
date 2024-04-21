@@ -10,6 +10,7 @@ export async function payment(
     payment: web3.PublicKey,
     user: web3.PublicKey,
     founder: web3.PublicKey,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
@@ -37,9 +38,13 @@ export async function payment(
         escrow: escrow,
         systemProgram: web3.SystemProgram.programId
     })
-        // .transaction()
-        .rpc({
-            commitment: "confirmed",
-        })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
+
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
     return tx;
 }

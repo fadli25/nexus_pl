@@ -31,6 +31,7 @@ export async function update_project(
     projectOverview: string,
     departments: string,
     hiring: boolean,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
@@ -66,10 +67,13 @@ export async function update_project(
         authority: anchorWallet.publicKey,
         systemProgram: web3.SystemProgram.programId
     })
-        // .transaction()
-        .rpc({
-            commitment: "confirmed",
-        })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
 
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
     return tx;
 }

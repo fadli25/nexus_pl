@@ -24,6 +24,7 @@ export default function recurringpayment() {
   const [time_rate, setTimeRate] = useState<any>();
   const [amount, setAmount] = useState<any>();
   const [showLevels, setShowLevels] = useState(false);
+  const wallet = useWallet()
 
   const get_apa = async (_apa: string) => {
     try {
@@ -70,7 +71,8 @@ export default function recurringpayment() {
         apa.projectRole,
         amount,
         payment_rate,
-        time
+        time,
+        wallet
       );
     } catch (e) {
       console.log(e);

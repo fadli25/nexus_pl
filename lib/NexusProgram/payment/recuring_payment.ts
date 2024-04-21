@@ -31,7 +31,8 @@ export async function one_time_payment(
     role: string,
     totalAmount: number,
     workingTime: number,
-    timeRate: number
+    timeRate: number,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
@@ -53,7 +54,7 @@ export async function one_time_payment(
     const balance = await connection.getBalance(identifier);
     let number = 0;
     if (balance == 0) {
-        await init_identifier(anchorWallet, connection);
+        await init_identifier(anchorWallet, connection, wallet);
     } else {
         const account = await program.account.identifier.fetch(identifier, "confirmed");
         number = Number(account.count);
@@ -111,9 +112,13 @@ export async function one_time_payment(
         escrow: escrow,
         systemProgram: web3.SystemProgram.programId
     })
-        // .transaction()
-        .rpc({
-            commitment: "confirmed",
-        })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
+
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
     return tx;
 }

@@ -98,7 +98,8 @@ export default function profile() {
         resume,
         tosp,
         timezone,
-        country
+        country,
+        wallet
       );
       notify_delete();
       notify_success("Profile Created!");
@@ -138,7 +139,8 @@ export default function profile() {
         telegram,
         website,
         linkdin,
-        twitter
+        twitter,
+        wallet
       );
       notify_delete();
       notify_success("Profile Updated!");

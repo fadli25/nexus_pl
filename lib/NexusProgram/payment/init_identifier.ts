@@ -8,11 +8,12 @@ const idl = require("../../../data/nexus.json")
 export async function init_identifier(
     anchorWallet: any,
     connection: web3.Connection,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
-        connection, anchorWallet, {"preflightCommitment": "processed"},
-        );
+        connection, anchorWallet, { "preflightCommitment": "processed" },
+    );
 
     const PROGRAM_ID = new web3.PublicKey(idl.metadata.address)
     const program = new Program(idl, idl.metadata.address, provider);
@@ -24,13 +25,18 @@ export async function init_identifier(
         PROGRAM_ID
     );
 
-        const tx = await program.methods.initIdentifier().accounts({
-            identifier: identifier,
-            payer: anchorWallet.publicKey,
-            systemProgram: web3.SystemProgram.programId
-        })
-        .rpc({
-            commitment: "confirmed",
-        })
+    const tx = await program.methods.initIdentifier().accounts({
+        identifier: identifier,
+        payer: anchorWallet.publicKey,
+        systemProgram: web3.SystemProgram.programId
+    })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
+
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
     return tx;
-    }
+}

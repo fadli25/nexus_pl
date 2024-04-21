@@ -9,11 +9,12 @@ const idl = require("../../../data/nexus.json")
 export async function update_user(
     anchorWallet: any,
     connection: web3.Connection,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
-        connection, anchorWallet, {"preflightCommitment": "processed"},
-        );
+        connection, anchorWallet, { "preflightCommitment": "processed" },
+    );
 
     const PROGRAM_ID = new web3.PublicKey(idl.metadata.address)
     const program = new Program(idl, idl.metadata.address, provider);
@@ -26,15 +27,18 @@ export async function update_user(
         PROGRAM_ID
     );
 
-        const tx = await program.methods.closeUser().accounts({
-                user: user,
-                authority: anchorWallet.publicKey,
-                systemProgram: web3.SystemProgram.programId
-        })
-        // .transaction()
-        .rpc({
-            commitment: "confirmed",
-        })
+    const tx = await program.methods.closeUser().accounts({
+        user: user,
+        authority: anchorWallet.publicKey,
+        systemProgram: web3.SystemProgram.programId
+    })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
 
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
     return tx;
-    }
+}

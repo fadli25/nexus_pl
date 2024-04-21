@@ -3,7 +3,7 @@ import { refuse_invite } from "@/lib/NexusProgram/invite/refuse";
 import { getInvitationFroUser } from "@/lib/NexusProgram/invite/utils.ts/getInvtforUser";
 import { notify_delete, notify_error, notify_laoding, notify_success } from "@/pages/profile";
 import { Button } from "@mui/material";
-import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { ReactNode, useEffect, useState } from "react";
@@ -13,6 +13,7 @@ export default function index() {
   const anchorWallet = useAnchorWallet();
 
   const router = useRouter();
+  const wallet = useWallet()
 
   useEffect(() => {
     if (!anchorWallet) return;
@@ -42,7 +43,8 @@ export default function index() {
         anchorWallet,
         connection,
         invite.pubkey,
-        invite.project
+        invite.project,
+        wallet
       );
       notify_delete();
       notify_success("Transaction Successful!");
@@ -62,7 +64,8 @@ export default function index() {
         anchorWallet,
         connection,
         invite.pubkey,
-        invite.project
+        invite.project,
+        wallet
       );
       notify_delete();
       notify_success("Transaction Successful!");

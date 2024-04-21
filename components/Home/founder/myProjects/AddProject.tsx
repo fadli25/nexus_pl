@@ -96,7 +96,8 @@ export default function addProject() {
         website_link,
         project_overview,
         departments,
-        hiring
+        hiring,
+        wallet
       );
       notify_delete();
       notify_success("Project Created!");

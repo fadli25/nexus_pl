@@ -20,6 +20,7 @@ export async function reject_apply(
     project: web3.PublicKey,
     role: web3.PublicKey,
     apply: web3.PublicKey,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
@@ -45,10 +46,13 @@ export async function reject_apply(
         authority: anchorWallet.publicKey,
         systemProgram: web3.SystemProgram.programId
     })
-        // .transaction()
-        .rpc({
-            commitment: "confirmed",
-        })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
 
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
     return tx;
 }
