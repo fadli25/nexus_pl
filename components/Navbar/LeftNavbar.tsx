@@ -58,16 +58,16 @@ export default function LeftNavbar({ showLeftNavbar }: any) {
   const router = useRouter();
 
   const path = router.asPath;
-
+  console.log(path.slice(0, 4));
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
       transition={{ duration: 0.2 }}
-      className={`fixed top-0 left-0 border-r border-white/20 h-full bg-[#0F0F0F] w-[60vw] md:w-[16vw] z-[9999] ${
+      className={`fixed top-0 left-0 border-r border-white/20 h-full bg-[#0F0F0F] w-[60vw] md:w-[16vw] z-[9999]  ${
         !showLeftNavbar && "hidden md:block"
-      }`}
+      } ${path.slice(0, 4) === "/lan" && "!hidden"}`}
     >
       {path === "/login" ? (
         <Stack className="gap-[6vw] md:gap-[4vw] items-center pt-[2vw]">
