@@ -12,7 +12,7 @@ import { MdAddCircle, MdOutlineArrowDropDownCircle } from "react-icons/md";
 import { fire } from "@/lib/NexusProgram/invite/fire";
 import AptosIcon from "@/public/AptosWhite.svg";
 import solanaIcon from "@/public/Solana.svg";
-import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import Link from "next/link";
 import { FaDiscord } from "react-icons/fa";
 
@@ -135,7 +135,7 @@ export default function Project({ project }: Project) {
 
   const { connection } = useConnection();
   const anchorWallet = useAnchorWallet();
-
+  const wallet = useWallet()
   const [projecte, setProject] = useState<any | null>();
 
   const get_project = async () => {
@@ -193,7 +193,7 @@ export default function Project({ project }: Project) {
 
   const firing = async (i: number) => {
     try {
-      await fire(anchorWallet, connection, users[i].pubkey, users[i].project);
+      await fire(anchorWallet, connection, users[i].pubkey, users[i].project, wallet);
     } catch (e) {
       console.log(e);
     }

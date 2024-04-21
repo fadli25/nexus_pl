@@ -10,7 +10,7 @@ export const getAllProjects = async (
     connection: Connection,
     commitment?: Commitment,
 ) => {
-    const NEXUS_ADDRESS = new PublicKey("xce1Li2q1NYDBKvPbSEj6qA9fsoqEdYN4RHDaF9hBdn");
+    const NEXUS_ADDRESS = new PublicKey("NExsDgP1otSvvHjtYhJ4YFRZWnRBEzPRhC8C1a3n5mM");
 
     const PROJECT_OFFSET = 380;
     const programAccounts = await connection.getProgramAccounts(

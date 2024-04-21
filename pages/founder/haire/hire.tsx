@@ -98,7 +98,8 @@ export default function hire() {
         connection,
         projects![0].pubkey,
         new web3.PublicKey(user!),
-        role
+        role,
+        wallet
       );
       // }
     } catch (e) {

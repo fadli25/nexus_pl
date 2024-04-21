@@ -37,6 +37,7 @@ export async function update_user(
     website: string,
     linkedin: string,
     twitter: string,
+    wallet: any
 ) {
 
     twitter = twitter.replace("https://twitter.com/", "");
@@ -86,10 +87,14 @@ export async function update_user(
         authority: anchorWallet.publicKey,
         systemProgram: web3.SystemProgram.programId
     })
-        // .transaction()
-        .rpc({
-            commitment: "confirmed",
-        })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
+
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
 
     return tx;
 }

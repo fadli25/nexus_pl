@@ -3,7 +3,7 @@ import { get_project_info } from "@/lib/NexusProgram/project/utils/project_info"
 import { getUsers } from "@/lib/NexusProgram/user/utils/get_users";
 import { notify_delete, notify_error, notify_laoding, notify_success, notify_warning } from "@/pages/profile";
 import { Button } from "@mui/material";
-import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 type Inv = {
@@ -13,7 +13,7 @@ type Inv = {
 export default function invite({ project }: Inv) {
   const { connection } = useConnection();
   const anchorWallet = useAnchorWallet();
-
+  const wallet = useWallet()
   const [users, setUsers] = useState<any[]>();
   const [projects, setProjects] = useState<any | null>();
   const [name, setName] = useState<string>("");
@@ -86,7 +86,7 @@ export default function invite({ project }: Inv) {
         return notify_warning("User not found!");
       }
 
-      await invites(anchorWallet, connection, project, User_pubkeu, role);
+      await invites(anchorWallet, connection, project, User_pubkeu, role, wallet);
       notify_delete()
       notify_success("Job invitation Sent!")
     } catch (e) {

@@ -19,6 +19,7 @@ let MONTH = 60 * 60 * 24 * 30;
 export default function incoming() {
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
+  const wallet = useWallet()
   const [payments, setPayments] = useState<any[]>();
   const [showInformation, setShowInformation] = useState(false);
 
@@ -111,7 +112,8 @@ export default function incoming() {
         connection,
         _payment.pubkey,
         _payment.reciever,
-        _payment.founder
+        _payment.founder,
+        wallet
       );
     } catch (e) {
       console.log(e);
@@ -149,11 +151,10 @@ export default function incoming() {
                 <div>
                   <Button
                     variant="contained"
-                    className={`!text-[3vw] md:!text-[1vw] !normal-case !text-black !w-[22.5vw] md:!w-[10vw] !py-[0.8vw] md:!py-[0.4vw] ${
-                      status === "running"
+                    className={`!text-[3vw] md:!text-[1vw] !normal-case !text-black !w-[22.5vw] md:!w-[10vw] !py-[0.8vw] md:!py-[0.4vw] ${status === "running"
                         ? "!bg-[#00ff47]"
                         : "!bg-[#FF2D2D] !text-white"
-                    }`}
+                      }`}
                   >
                     {el.live ? "Runnig" : "Ended"}
                   </Button>

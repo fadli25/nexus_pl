@@ -69,7 +69,8 @@ export default function settings() {
         linkedin!,
         twitter!,
         "",
-        ""
+        "",
+        wallet
       );
       notify_delete();
       notify_success("Profile Updated!");

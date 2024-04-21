@@ -12,7 +12,7 @@ import { Button, FormControlLabel, Stack } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 import { web3 } from "@project-serum/anchor";
-import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -71,10 +71,11 @@ const IOSSwitch = styled((props: SwitchProps) => (
 }));
 
 export default function addRole({ project }: any) {
-  const connection = new Connection(clusterApiUrl("devnet"));
+  // const connection = new Connection(clusterApiUrl("devnet"));
 
   const anchorWallet = useAnchorWallet();
-  // const wallet = useWallet();
+  const wallet = useWallet();
+  const { connection } = useConnection()
 
   const [loex, setLoEx] = useState<string>("");
   const [hiring, setHiring] = useState(false);
@@ -100,7 +101,8 @@ export default function addRole({ project }: any) {
         role,
         loex,
         description,
-        country
+        country,
+        wallet
       );
       notify_delete();
       notify_success("New Job Role Created!");

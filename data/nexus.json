@@ -962,6 +962,30 @@
   ],
   "types": [
     {
+      "name": "PaymentInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "workingTime",
+            "type": "u64"
+          },
+          {
+            "name": "timeRate",
+            "type": "u64"
+          },
+          {
+            "name": "totalAmount",
+            "type": "u64"
+          },
+          {
+            "name": "roles",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
       "name": "ProjectInfo",
       "type": {
         "kind": "struct",
@@ -1415,6 +1439,6 @@
     }
   ],
   "metadata": {
-    "address": "xce1Li2q1NYDBKvPbSEj6qA9fsoqEdYN4RHDaF9hBdn"
+    "address": "NExsDgP1otSvvHjtYhJ4YFRZWnRBEzPRhC8C1a3n5mM"
   }
 }

@@ -12,6 +12,7 @@ export async function fire(
     connection: web3.Connection,
     apa: web3.PublicKey,
     project: web3.PublicKey,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
@@ -50,9 +51,14 @@ export async function fire(
         authority: anchorWallet.publicKey,
         systemProgram: web3.SystemProgram.programId
     })
-        .rpc({
-            commitment: "confirmed",
-        })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
+
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
 
     return tx;
 }

@@ -1,13 +1,13 @@
 import { getProjectForFounder } from "@/lib/NexusProgram/project/utils/get_projects";
 import { Button } from "@mui/material";
-import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import AddProject from "./AddProject";
 import { TbCurrencySolana } from "react-icons/tb";
+import AddProject from "./AddProject";
 
 export default function Projects() {
   const styleButton1 = {
@@ -75,8 +75,9 @@ export default function Projects() {
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
   const anchorWallet = useAnchorWallet();
   const wallet = useWallet();
-  const connection = new Connection(clusterApiUrl("devnet"));
+  // const connection = new Connection(clusterApiUrl("devnet"));
   const [projects, setProjects] = useState<any[]>([]);
+  const { connection } = useConnection()
 
   const get_project = async () => {
     try {

@@ -5,7 +5,7 @@ import { getProjectForFounder } from "@/lib/NexusProgram/project/utils/get_proje
 import { getAllRoles } from "@/lib/NexusProgram/project/utils/get_roles";
 import { MuiButtonAprove, MuiButtonReject } from "@/pages/freelance/outgoing";
 import { Button } from "@mui/material";
-import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import React, { ReactNode, useEffect, useState } from "react";
@@ -19,6 +19,7 @@ export default function incoming() {
 
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
+  const wallet = useWallet()
 
   const get_projects = async () => {
     try {
@@ -76,7 +77,8 @@ export default function incoming() {
         projects![i].pubkey,
         projects![i].applys[j].rolePubkey,
         projects![i].applys[j].user,
-        projects![i].applys[j].pubkey
+        projects![i].applys[j].pubkey,
+        wallet
       );
     } catch (e) {
       console.log(e);
@@ -91,7 +93,8 @@ export default function incoming() {
         connection,
         projects![i].pubkey,
         projects![i].applys[j].rolePubkey,
-        projects![i].applys[j].pubkey
+        projects![i].applys[j].pubkey,
+        wallet
       );
     } catch (e) {
       console.log(e);

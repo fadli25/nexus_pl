@@ -23,7 +23,8 @@ export async function init_role(
     role: string,
     level_of_experience: string,
     description: string,
-    country: string
+    country: string,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
@@ -63,10 +64,14 @@ export async function init_role(
         authority: anchorWallet.publicKey,
         systemProgram: web3.SystemProgram.programId
     })
-        // .transaction()
-        .rpc({
-            commitment: "confirmed",
-        })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
+
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
 
     return tx;
 }

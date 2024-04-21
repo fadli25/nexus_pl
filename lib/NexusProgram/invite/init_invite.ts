@@ -25,6 +25,7 @@ export async function invites(
     project: string,
     _user: PublicKey,
     role: string,
+    wallet: any
 ) {
 
     const provider = new AnchorProvider(
@@ -69,9 +70,14 @@ export async function invites(
         authority: anchorWallet.publicKey,
         systemProgram: web3.SystemProgram.programId
     })
-        .rpc({
-            commitment: "confirmed",
-        })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
+
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
 
     return tx;
 }

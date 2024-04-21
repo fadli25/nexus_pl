@@ -2,6 +2,7 @@ import {
     AnchorProvider,
     Program, web3
 } from '@project-serum/anchor';
+import { WalletContextState } from '@solana/wallet-adapter-react';
 import { PublicKey } from '@solana/web3.js';
 import { APA_PREFIX, USER_PREFIX } from "../../constants/constants";
 const idl = require("../../../data/nexus.json")
@@ -23,6 +24,7 @@ export async function accept_invite(
     connection: web3.Connection,
     invitation: PublicKey,
     project: PublicKey,
+    wallet: WalletContextState
 ) {
 
     const provider = new AnchorProvider(
@@ -60,9 +62,14 @@ export async function accept_invite(
         authority: anchorWallet.publicKey,
         systemProgram: web3.SystemProgram.programId
     })
-        .rpc({
-            commitment: "confirmed",
-        })
+        .transaction()
+    // .rpc({
+    //     commitment: "confirmed",
+    // })
+
+    wallet.sendTransaction(tx, connection, {
+        preflightCommitment: "confirmed"
+    })
 
     return tx;
 }
