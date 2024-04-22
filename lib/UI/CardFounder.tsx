@@ -21,7 +21,7 @@ export default function CardFounder({ onClick, info, key }: any) {
     <motion.div
       whileTap={{ y: 3 }}
       onClick={onClick}
-      className="flex font-[500] md:font-semibold cursor-pointer text-black gap-x-[2vw] md:gap-x-[1vw] pt-[2vw] w-full px-[2.8vw] md:px-[1vw] py-[2vw] md:py-[1vw] rounded-[0.6vw] border border-black md:!w-[100px] overflow-hidden CardFounder"
+      className="flex font-[500] md:font-semibold cursor-pointer text-black gap-x-[2vw] md:gap-x-[1vw] pt-[2vw] w-full px-[2.8vw] md:px-[1vw] py-[2vw] md:py-[1vw] rounded-[1.4vw] md:rounded-[0.6vw] border border-black md:!w-[100px] overflow-hidden CardFounder"
     >
       <div className="flex w-[40vw] md:w-[16vw] items-center flex-col">
         <div className="rounded-full border-[0.14vw] border-black">
@@ -35,17 +35,17 @@ export default function CardFounder({ onClick, info, key }: any) {
         </div>
         <div
           style={{ padding: "0.2vw 0.5vw" }}
-          className="mt-[1vw] border-[0.1vw] border-black rounded-[0.4vw] md:mt-[0.5vw] text-black text-[8vw] md:text-[2vw] flex items-center justify-center gap-x-[0.2vw]"
+          className="mt-[3vw] md:mt-[1vw] border-[0.1vw] border-black rounded-[0.4vw] md:mt-[0.5vw] text-black text-[8vw] md:text-[2vw] flex items-center justify-center gap-x-[0.2vw]"
         >
-          <Image src={SolanaIcon} className="w-[5vw] md:w-[2.4vw]" alt="" />
+          <Image src={SolanaIcon} className="w-[6vw] md:w-[2.4vw]" alt="" />
           <Image
             src={PolygonIcon}
-            className="w-[5vw] md:w-[2.3vw] hidden"
+            className="w-[6vw] md:w-[2.3vw] hidden"
             alt=""
           />
           <Image
             src={AptosIcon}
-            className="w-[4vw] md:w-[1.9vw] hidden"
+            className="w-[5vw] md:w-[1.9vw] hidden"
             alt=""
           />
         </div>
@@ -69,7 +69,8 @@ export default function CardFounder({ onClick, info, key }: any) {
             {Number(info.paymentRatePerHour)}$/wk
           </div>
         </div>
-        <div className="w-full font-normal text-[2.8vw] md:text-[0.8vw] px-[2vw] py-[1vw] mt-[1vw] border border-black rounded-[1.5vw] md:rounded-[0.5vw] md:px-[1vw] h-[18vw] CardFounderDescription">
+        <div className="w-full font-normal text-[2.8vw] md:text-[0.8vw] px-[2vw] py-[1vw] mt-[1vw] border border-black rounded-[1.5vw] md:rounded-[0.5vw] md:px-[1vw] CardFounderDescription">
+          {" "}
           {info.profileOverview}
         </div>
       </div>

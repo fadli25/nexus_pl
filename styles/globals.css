@@ -46,6 +46,12 @@ body {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .CardFounderDescription {
+    height: 14vw !important;
+  }
+}
+
 @font-face {
   font-family: poppins;
   src: url(./Poppins.ttf);
