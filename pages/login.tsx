@@ -3,7 +3,11 @@ import polygonImg from "@/public/Polygon.svg";
 import solanaImg from "@/public/Solana.svg";
 import { Button } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
-import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import {
+  useAnchorWallet,
+  useConnection,
+  useWallet,
+} from "@solana/wallet-adapter-react";
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 import { motion } from "framer-motion";
 import Head from "next/head";
@@ -41,8 +45,7 @@ export default function profile() {
 
   // const connection = new Connection(clusterApiUrl("devnet"));
 
-  const { connection } = useConnection()
-
+  const { connection } = useConnection();
 
   const anchorWallet = useAnchorWallet();
   const wallet = useWallet();
@@ -428,7 +431,7 @@ export default function profile() {
           </div>
         </div>
 
-        <div className="mt-[5vw] md:mt-[2vw]">
+        <div className="mt-[5vw] md:mt-[2vw] hidden">
           <div className="fontPopSemibold text-base">
             Others (Case Studies, Testimonials)
           </div>
