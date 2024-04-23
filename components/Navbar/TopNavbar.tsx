@@ -316,7 +316,7 @@ export default function TopNavbar() {
   ///////----------------------------------////////////////////
 
   return (
-    <div>
+    <div className={`${path.slice(0, 4) == "/lan" && "hidden"}`}>
       {showLeftNavbar && (
         <>
           <div

@@ -3,7 +3,11 @@ import polygonImg from "@/public/Polygon.svg";
 import solanaImg from "@/public/Solana.svg";
 import { Button } from "@mui/material";
 import Switch, { SwitchProps } from "@mui/material/Switch";
-import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import {
+  useAnchorWallet,
+  useConnection,
+  useWallet,
+} from "@solana/wallet-adapter-react";
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 import { motion } from "framer-motion";
 import Head from "next/head";
@@ -71,13 +75,14 @@ export default function profile() {
 
   const anchorWallet = useAnchorWallet();
   const wallet = useWallet();
-  const { connection } = useConnection()
+  const { connection } = useConnection();
 
   async function initialize_user() {
     try {
-
       if (profile_overview.length > 120) {
-        return notify_warning("Profile Overview need to be at least 120 characters!")
+        return notify_warning(
+          "Profile Overview need to be at least 120 characters!"
+        );
       }
 
       notify_laoding("Creating Profile...");
@@ -114,9 +119,10 @@ export default function profile() {
 
   async function update_user_info() {
     try {
-
       if (profile_overview.length > 120) {
-        return notify_warning("Profile Overview need to be at least 120 characters!")
+        return notify_warning(
+          "Profile Overview need to be at least 120 characters!"
+        );
       }
 
       notify_laoding("Updating Profile...");
@@ -210,8 +216,9 @@ export default function profile() {
           </div>
           <ButtonMotion
             onClick={() => setShow(!show)}
-            className={`text-[5vw] md:text-[2.4vw] ${show && "text-[#00ff47]"
-              } `}
+            className={`text-[5vw] md:text-[2.4vw] ${
+              show && "text-[#00ff47]"
+            } `}
           >
             <BiSolidShow />
           </ButtonMotion>
@@ -462,7 +469,7 @@ export default function profile() {
           </div>
         </div>
 
-        <div className="mt-[5vw] md:mt-[2vw]">
+        <div className="mt-[5vw] md:mt-[2vw] hidden">
           <div className="fontPopSemibold text-base">
             Others (Case Studies, Testimonials)
           </div>

@@ -46,6 +46,12 @@ body {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .CardFounderDescription {
+    height: 14vw !important;
+  }
+}
+
 @font-face {
   font-family: poppins;
   src: url(./Poppins.ttf);
@@ -76,4 +82,38 @@ body {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+}
+
+.scroll-container {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.content {
+  width: 800%; /* Adjust this value based on the number of images (8 images = 800%) */
+  height: 100%;
+  position: absolute;
+  animation: scroll 10s linear infinite; /* Adjust the animation duration as per your needs */
+}
+
+.content .img {
+  float: left;
+  width: 12.5%; /* Adjust this value based on the number of images (8 images = 12.5%) */
+  object-fit: cover;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(
+      -100%
+    ); /* Adjust this value based on the number of images */
+  }
+}
+ul {
+  list-style: inside;
 }
