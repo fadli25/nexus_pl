@@ -20,6 +20,7 @@ export default function index() {
 
   const fetchNfts = async () => {
     try {
+
       const token = await (metaplex as any)
         .nfts()
         .fetchAllDigitalAssetWithTokenByOwner({ owner: (metaplex as any).identity().publicKey });
