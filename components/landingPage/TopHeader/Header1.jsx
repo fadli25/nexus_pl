@@ -1,18 +1,27 @@
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
 import img1 from "@/public/landingpage/img1.png";
-import { Button } from "@mui/material";
 import loginimg from "@/public/landingpage/singimg.png";
-import { HiMail } from "react-icons/hi";
+import { Button } from "@mui/material";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { FaDiscord, FaTwitter } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { motion } from "framer-motion";
-import { useRouter } from "next/router";
+import { HiMail } from "react-icons/hi";
 
 export default function Header1() {
   const [sing, setSing] = useState(false);
 
   const router = useRouter();
+
+  const anchorWallet = useAnchorWallet()
+
+  useEffect(() => {
+    if (!anchorWallet) return;
+    router.push("/");
+  }, [anchorWallet])
 
   const typingContainer = {
     hidden: { opacity: 0 },
@@ -329,14 +338,15 @@ export default function Header1() {
             animate="show"
             className="mt-[23vw] md:mt-[2vw] flex justify-center md:justify-start"
           >
-            <Button
+            {/* <Button
               onClick={() => router.push("/landingpage/join")}
               sx={ButtonStyle}
               className="inter"
               variant="contained"
             >
               Connect Wallet
-            </Button>
+            </Button> */}
+            <WalletMultiButton />
           </motion.div>
         </motion.div>
       </div>

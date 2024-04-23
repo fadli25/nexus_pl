@@ -15,7 +15,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@metaplex-foundation/js": "^1.18.3",
+    "@metaplex-foundation/js": "^0.19.3",
     "@metaplex-foundation/mpl-bubblegum": "^0.9.0",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.5",
