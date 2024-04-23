@@ -335,7 +335,7 @@ export default function Header1() {
               className="inter"
               variant="contained"
             >
-              GET EARLY ACCESS
+              Connect Wallet
             </Button>
           </motion.div>
         </motion.div>

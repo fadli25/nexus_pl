@@ -78,7 +78,7 @@ export default function chains() {
           </div>
         </div>
       </div>
-      <div className="mb-[5vw] mt-[1vw] font-bold text-center">
+      <div className="mb-[5vw] mt-[1vw] font-bold text-center hidden">
         <div className="text-[7vw] md:text-[5vw]">26475</div>
         <div className="text-[3vw] md:text-[2vw]">Waitlist Sinups</div>
       </div>
