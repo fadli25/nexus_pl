@@ -1,8 +1,44 @@
 import { Button } from "@mui/material";
-import React from "react";
+// import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import React, { useEffect, useState } from "react";
+import { useMetaplex } from "../MetaplexProvider/useMetaplex";
 import CardMintBox from "./CardMintBox";
 
 export default function MintBox() {
+
+  // const [tokens, setTokens] = useState<any[]>()
+
+  // const anchorWallet = useAnchorWallet();
+  // const { connection } = useConnection();
+  // const wallet = useWallet()
+
+  // const { metaplex } = useMetaplex();
+
+  // const fetchNfts = async () => {
+  //   try {
+  //     const token = await (metaplex as any)
+  //       .nfts()
+  //       .fetchAllDigitalAssetWithTokenByOwner({ owner: (metaplex as any).identity().publicKey });
+
+  //     console.log(token);
+
+  //     setTokens([]);
+
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+
+
+
+  // useEffect(() => {
+  //   if (!anchorWallet) return;
+
+  //   // fetchNfts();
+  // }, [anchorWallet])
+
+
   return (
     <CardMintBox>
       <div className="mt-[5vw] md:mt-[2vw] flex flex-col gap-y-[8vw] md:gap-y-0 md:flex-row justify-between items-center">

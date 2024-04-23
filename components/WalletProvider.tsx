@@ -1,14 +1,15 @@
 import {
   ConnectionProvider,
   WalletProvider
-} from "@solana/wallet-adapter-react"
-import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
+} from "@solana/wallet-adapter-react";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import {
   LedgerWalletAdapter,
   PhantomWalletAdapter,
   SolflareWalletAdapter
-} from "@solana/wallet-adapter-wallets"
-import React, { FC, useMemo } from "react"
+} from "@solana/wallet-adapter-wallets";
+import React, { FC, useMemo } from "react";
+import { MetaplexProvider } from "./MetaplexProvider/MetaplexProvider";
 require("@solana/wallet-adapter-react-ui/styles.css")
 
 const Wallet = ({ children }: { children: React.ReactChild }) => {
@@ -41,7 +42,10 @@ const Wallet = ({ children }: { children: React.ReactChild }) => {
     >
       <WalletProvider wallets={wallets} autoConnect={true}>
         <WalletModalProvider>
-          {children}{" "}
+          <MetaplexProvider>
+            {children}
+          </MetaplexProvider>
+
           {/* Your app's components go here, nested within the context providers. */}
         </WalletModalProvider>
       </WalletProvider>
