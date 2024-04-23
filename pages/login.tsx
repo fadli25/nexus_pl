@@ -209,7 +209,7 @@ export default function profile() {
         </div>
         {/*  */}
         <div className="mt-[6vw] md:mt-[2vw] flex flex-col md:flex-row justify-start items-start md:items-center gap-[1rem]">
-          <div className=" w-full md:w-[60%] relative z-10">
+          <div className=" w-full md:w-[60%] relative z-10 hidden">
             <div className="fontPopSemibold text-base">
               Chains (What chains you are active on)
             </div>
@@ -251,7 +251,7 @@ export default function profile() {
               </div>
             )}
           </div>
-          <div className="w-full md:w-[40%] flex flex-col ">
+          <div className="w-full flex flex-col ">
             <label className="fontPopSemibold text-base">Country</label>
             <input
               value={country}

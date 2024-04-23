@@ -16,12 +16,12 @@ export default function Header1() {
 
   const router = useRouter();
 
-  const anchorWallet = useAnchorWallet()
+  const anchorWallet = useAnchorWallet();
 
   useEffect(() => {
     if (!anchorWallet) return;
     router.push("/");
-  }, [anchorWallet])
+  }, [anchorWallet]);
 
   const typingContainer = {
     hidden: { opacity: 0 },
