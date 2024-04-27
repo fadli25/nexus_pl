@@ -47,7 +47,7 @@ export default function Floor() {
 
       // tx1.add(tx2);
 
-      // wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed" });
+      wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed" });
       console.log("mint");
     } catch (e) {
       console.log(e);

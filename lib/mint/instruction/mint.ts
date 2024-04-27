@@ -136,8 +136,8 @@ export async function mint(
     systemProgram: web3.SystemProgram.programId,
     tokenMetadataProgram: TOKEN_METADATA_PROGRAM_ID,
   })
-    // .transaction();
-    .rpc()
+    .transaction();
+  // .rpc()
 
   // let blockhash = (await connection.getLatestBlockhash('finalized')).blockhash;
   // tx.recentBlockhash = blockhash;
