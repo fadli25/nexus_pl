@@ -232,7 +232,7 @@ export default function Profile({ user }: any) {
           {info && info.category}/
         </div>
       </div>
-      <div className="mt-[3vw] text-[3vw] md:text-[1.5vw]">
+      <div className="mt-[3vw] text-[3vw] md:text-[1.5vw] hidden">
         <div className="fontPopSemibold">Secondary Roles</div>
         <div className="outline-none px-[2vw] mt-[1vw] border-[0.12vw] border-black rounded-[0.4vw] w-full py-[1vw] focus:border-red-500 focus:scale-[101%] transition-all">
           {info && info.category}
