@@ -126,6 +126,11 @@ export default function Floor() {
     fetchNfts();
   }, [anchorWallet]);
 
+  const percent = () => {
+    const num = identifier.token / 400
+    return num * 100
+  }
+
   return (
     <div className="w-full float-right md:w-[84%] p-[5vw] md:p-[3vw] bg-black">
       <Head>
@@ -138,7 +143,7 @@ export default function Floor() {
             <DragonSpin
               Minted={identifier ? identifier.nft : 0}
               Total_Mint={100}
-              Width={60}
+              Width={identifier ? identifier.nft : 0}
               Name={"Old Onces Won"}
             />
           </div>
@@ -146,7 +151,7 @@ export default function Floor() {
             <DragonSpin
               Minted={identifier ? identifier.token : 0}
               Total_Mint={400}
-              Width={80}
+              Width={identifier ? percent() : 0}
               Name={"WL Keys won"}
             />
           </div>
