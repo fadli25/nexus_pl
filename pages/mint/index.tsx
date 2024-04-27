@@ -3,6 +3,7 @@ import Card from "@/components/mint/Card";
 import DragonSpin from "@/components/mint/DragonSpin";
 import FloorBox from "@/components/mint/FloorBox";
 import MintBox from "@/components/mint/MintBox";
+import { getIdentifier } from "@/lib/mint/fetch/getIdentifier";
 import { init_identifier } from "@/lib/mint/instruction/init_identifier";
 import { mint } from "@/lib/mint/instruction/mint";
 import { tokenGate } from "@/lib/mint/instruction/tokenGate";
@@ -16,7 +17,7 @@ import React, { useEffect, useState } from "react";
 export default function index() {
 
   const [holder, setHolder] = useState<boolean>(false);
-
+  const [identifier, setIdentifier] = useState<any>();
 
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
@@ -40,7 +41,6 @@ export default function index() {
       console.log(e);
     }
   }
-
 
   const fetchNfts = async () => {
     try {
@@ -66,7 +66,16 @@ export default function index() {
         }
       })
 
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
+  const get_tracker = async () => {
+    try {
+      const ident = await getIdentifier(anchorWallet, connection);
+      console.log(ident);
+      setIdentifier(ident);
     } catch (e) {
       console.log(e);
     }
@@ -74,10 +83,14 @@ export default function index() {
 
   useEffect(() => {
     if (!anchorWallet) return;
+    get_tracker();
     fetchNfts();
   }, [anchorWallet])
 
-
+  const percent = () => {
+    const num = identifier.token / 1900
+    return num * 100
+  }
 
   return (
     <div className="w-full float-right md:w-[84%] p-[5vw] md:p-[3vw] bg-black">
@@ -89,8 +102,8 @@ export default function index() {
         <div className="my-[8vw] md:my-[4vw] w-full md:w-[80%] mx-auto">
           <DragonSpin
             Name={"Old Onces Minted"}
-            Width={80}
-            Minted={1200}
+            Width={identifier ? percent() : 0}
+            Minted={identifier ? Number(identifier.count) : 0}
             Total_Mint={1900}
           />
         </div>
