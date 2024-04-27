@@ -45,7 +45,7 @@ export default function TopNavbar() {
       console.log("nav");
       if (!user_info) {
         console.log("nav push");
-        router.push("/login");
+        // router.push("/login");
       }
     } catch (e) {
       console.log(e);
@@ -330,15 +330,13 @@ export default function TopNavbar() {
         </>
       )}
       <div
-        className={`bg-black border-b border-white/20 w-full md:w-[84vw] float-right px-[2vw] relative z-[100] ${
-          path == "/login" && "md:h-[14vw]"
-        }`}
+        className={`bg-black border-b border-white/20 w-full md:w-[84vw] float-right px-[2vw] relative z-[100] ${path == "/login" && "md:h-[14vw]"
+          }`}
       >
         <div className="flex justify-end py-[1.4vw] z-50">
           <div
-            className={`flex flex-col gap-y-[0.5vw] md:gap-y-[0.4vw] items-end ${
-              path === "/login" && "invisible"
-            }`}
+            className={`flex flex-col gap-y-[0.5vw] md:gap-y-[0.4vw] items-end ${path === "/login" && "invisible"
+              }`}
           >
             {/* Connect Wallet */}
             <div className="flex gap-x-[3vw] md:gap-x-[1.4vw] ] itemes-center">

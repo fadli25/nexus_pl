@@ -1,13 +1,15 @@
+import { IDENTIFIER_PREFIX } from '@/lib/constants/constants';
 import {
     AnchorProvider, BN, Program, web3
 } from '@project-serum/anchor';
 import {
     TOKEN_PROGRAM_ID,
+    createAssociatedTokenAccountInstruction
 } from "@solana/spl-token";
 import { AnchorWallet, WalletContextState } from "@solana/wallet-adapter-react";
 import { ComputeBudgetProgram, SYSVAR_INSTRUCTIONS_PUBKEY, SystemProgram } from '@solana/web3.js';
 import { pdas } from '../../utils/pda';
-const idl = require("../../public/draffle.json");
+const idl = require("../../../data/cnft.json");
 
 const TOKEN_METADATA_PROGRAM_ID = new web3.PublicKey(
     'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
@@ -32,6 +34,7 @@ export async function PnftGate(
     connection: web3.Connection,
     wallet: WalletContextState,
     mint: web3.PublicKey,
+    collection_mint: web3.PublicKey,
     programable_config: any,
 ) {
 
@@ -63,75 +66,131 @@ export async function PnftGate(
 
 
     const tx = new web3.Transaction()
-        .add()
-    let blockhash = (await connection.getLatestBlockhash('finalized')).blockhash;
-    tx.recentBlockhash = blockhash;
-    tx.feePayer = new web3.PublicKey(anchorWallet.publicKey);
+
+    // let blockhash = (await connection.getLatestBlockhash('finalized')).blockhash;
+    // tx.recentBlockhash = blockhash;
+    // tx.feePayer = new web3.PublicKey(anchorWallet.publicKey);
 
     const escrow = new web3.PublicKey(
-        "Fig5f7CBQXNnNqoHWBCkPArxBxMBW8CoNyPH6UZhha4F"
+        "DnzdyKpZ9GxTsEgVui1hjFVvLFgGSq1mQaA23utb1Nod"
     );
 
-    const [to] = web3.PublicKey.findProgramAddressSync(
-        [
-            escrow.toBuffer(),
-            TOKEN_PROGRAM_ID.toBuffer(),
-            mint.toBuffer(),
-        ],
-        SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID
-    );
+    // const [to] = web3.PublicKey.findProgramAddressSync(
+    //     [
+    //         escrow.toBuffer(),
+    //         TOKEN_PROGRAM_ID.toBuffer(),
+    //         mint.toBuffer(),
+    //     ],
+    //     SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID
+    // );
 
 
-    const [destination_record_account] = web3.PublicKey.findProgramAddressSync(
+    // const info = await connection.getBalance(to);
+    // // create associted token account
+    // if (info == 0) {
+    //     // const ataTransaction = new web3.Transaction()
+    //     tx.add(
+    //         createAssociatedTokenAccountInstruction(
+    //             anchorWallet.publicKey,
+    //             to,
+    //             escrow,
+    //             mint!
+    //         )
+    //     );
+    //     // const signature = await wallet.sendTransaction(ataTransaction, connection)
+    //     // await connection.confirmTransaction(signature, "finalized");
+    // }
+
+
+    // const [destination_record_account] = web3.PublicKey.findProgramAddressSync(
+    //     [
+    //         Buffer.from('metadata'),
+    //         META.toBuffer(),
+    //         mint.toBuffer(),
+    //         Buffer.from('token_record'),
+    //         to.toBuffer()
+    //     ],
+    //     META
+    // );
+
+    const [token_account, metadata_acount, master_edition, record_account] = await pdas(anchorWallet.publicKey, mint)
+
+    const [collection_metadata_acount] = web3.PublicKey.findProgramAddressSync(
         [
             Buffer.from('metadata'),
             META.toBuffer(),
-            mint.toBuffer(),
-            Buffer.from('token_record'),
-            to.toBuffer()
+            collection_mint.toBuffer(),
         ],
         META
     );
 
-    const [token_account, metadata_acount, master_edition, record_account] = await pdas(anchorWallet.publicKey, mint)
 
-    const modifyComputeUnits = ComputeBudgetProgram.setComputeUnitLimit({
-        units: 600000
-    });
+    // const modifyComputeUnits = ComputeBudgetProgram.setComputeUnitLimit({
+    //     units: 600000
+    // });
 
-    const addPriorityFee = ComputeBudgetProgram.setComputeUnitPrice({
-        microLamports: 2000
-    });
+    // const addPriorityFee = ComputeBudgetProgram.setComputeUnitPrice({
+    //     microLamports: 2000
+    // });
 
-    tx.add(modifyComputeUnits)
-    tx.add(addPriorityFee)
+    // tx.add(modifyComputeUnits)
+    // tx.add(addPriorityFee)
 
-    const transaction = await program.methods.createRaffle().accounts({
+    const [identifier] = web3.PublicKey.findProgramAddressSync(
+        [
+            Buffer.from(IDENTIFIER_PREFIX),
+        ],
+        PROGRAM_ID
+    );
+    console.log("tracker: " + tracker.toBase58())
+    console.log("anchorWallet.publicKey: " + anchorWallet.publicKey.toBase58())
+    console.log("nftMintCollectionMetadata: " + collection_metadata_acount.toBase58())
+    console.log("mint: " + mint.toBase58())
+    console.log("from: " + token_account.toBase58())
+    console.log("escrow: " + escrow.toBase58())
+    console.log("nftMetadata: " + metadata_acount.toBase58())
+    console.log("master_edition: " + master_edition.toBase58())
+    console.log("record_account: " + record_account.toBase58())
+    // console.log("destination_record_account: " + destination_record_account.toBase58())
+    console.log("tracker: " + tracker.toBase58())
+    console.log("tracker: " + tracker.toBase58())
+    console.log("tracker: " + tracker.toBase58())
+    console.log("tracker: " + tracker.toBase58())
+    console.log("tracker: " + tracker.toBase58())
+    console.log("tracker: " + tracker.toBase58())
+
+    const transaction = await program.methods.pnftGate(
+        new BN(1)
+    ).accounts({
         tracker: tracker,
-        payer: anchorWallet.publicKey,
-        proceedsMint: mint,
-        mint: mint,
+        identifier: identifier,
         from: token_account,
-        to: to,
-        escrow: escrow,
-        system_program: web3.SystemProgram.programId,
-        token_program: TOKEN_METADATA_PROGRAM_ID,
-        rent: sysvar_rant_pubkey,
+        payer: anchorWallet.publicKey,
+        mint: mint,
+        nftMintCollectionMetadata: collection_metadata_acount,
+        systemProgram: web3.SystemProgram.programId,
         nftMetadata: metadata_acount,
-        nftMasterEdition: master_edition,
         ownerTokenRecord: record_account,
-        destinationTokenRecord: destination_record_account,
-        splAtaProgram: SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
+        tokenMetadataProgram: META,
         splTokenProgram: TOKEN_METADATA_PROGRAM_ID,
         sysvarInstructions: SYSVAR_INSTRUCTIONS_PUBKEY,
-        authRules: ruleSet ? ruleSet : META,
-        authRulesProgram: auth_rule_program,
-        tokenMetadataProgram: META
+        nftMasterEdition: master_edition,
+        // to: to,
+        // escrow: escrow,
+        // token_program: TOKEN_METADATA_PROGRAM_ID,
+        // rent: sysvar_rant_pubkey,
+        // destinationTokenRecord: record_account,
+        // splAtaProgram: SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
+        // authRules: ruleSet ? ruleSet : META,
+        // authRulesProgram: auth_rule_program,
     })
-        .transaction()
+        .rpc({
+            "commitment": "confirmed"
+        })
+    // .transaction()
 
-    tx.add(transaction)
-    await wallet.sendTransaction(tx, connection);
+    // tx.add(transaction)
+    // await wallet.sendTransaction(tx, connection);
 
     return tx
 

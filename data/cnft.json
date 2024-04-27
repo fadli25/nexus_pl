@@ -16,6 +16,21 @@
           "isSigner": false
         },
         {
+          "name": "from",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "to",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "escrow",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "treeAuthority",
           "isMut": true,
           "isSigner": false
@@ -110,6 +125,11 @@
           "isSigner": false
         },
         {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false
@@ -129,42 +149,6 @@
           "name": "payer",
           "isMut": true,
           "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "updateAuthority",
-      "accounts": [
-        {
-          "name": "authority",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "tokenMetadataProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "metadata",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "newAuthority",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "escrow",
-          "isMut": true,
-          "isSigner": false
         },
         {
           "name": "systemProgram",
@@ -229,22 +213,12 @@
           "isSigner": false
         },
         {
+          "name": "identifier",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "from",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "to",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "mint",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "escrow",
           "isMut": true,
           "isSigner": false
         },
@@ -254,17 +228,12 @@
           "isSigner": true
         },
         {
-          "name": "prize",
-          "isMut": false,
+          "name": "mint",
+          "isMut": true,
           "isSigner": false
         },
         {
-          "name": "prizeMint",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "tokenProgram",
+          "name": "nftMintCollectionMetadata",
           "isMut": true,
           "isSigner": false
         },
@@ -285,7 +254,7 @@
         },
         {
           "name": "nftMasterEdition",
-          "isMut": false,
+          "isMut": true,
           "isSigner": false
         },
         {
@@ -294,32 +263,7 @@
           "isSigner": false
         },
         {
-          "name": "destinationTokenRecord",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "destination",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "splAtaProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
           "name": "tokenMetadataProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "authRulesProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "authRules",
           "isMut": false,
           "isSigner": false
         },
@@ -334,7 +278,12 @@
           "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "kind",
+          "type": "u8"
+        }
+      ]
     }
   ],
   "accounts": [
@@ -350,6 +299,14 @@
           {
             "name": "count",
             "type": "u64"
+          },
+          {
+            "name": "nft",
+            "type": "u16"
+          },
+          {
+            "name": "token",
+            "type": "u16"
           }
         ]
       }
@@ -410,6 +367,10 @@
           {
             "name": "payer",
             "type": "publicKey"
+          },
+          {
+            "name": "kind",
+            "type": "u8"
           }
         ]
       }
@@ -446,5 +407,8 @@
       "name": "MaxUserReach",
       "msg": "Max User Reach"
     }
-  ]
+  ],
+  "metadata": {
+    "address": "DWRp8bUH5fhLr5Ve9WrT3iR2kEZY1oi3ZuuxeFT1Ujo6"
+  }
 }

@@ -2,7 +2,7 @@ import {
     AnchorProvider, Program, Wallet, web3
 } from '@project-serum/anchor';
 import { IDENTIFIER_PREFIX } from "../../constants/constants";
-const idl = require("../../../data/staking.json")
+const idl = require("../../../data/cnft.json");
 
 
 export async function init_identifier(
@@ -30,7 +30,7 @@ export async function init_identifier(
         systemProgram: web3.SystemProgram.programId
     })
         .rpc({
-            commitment: "finalized",
+            commitment: "confirmed",
         })
     return tx;
 }

@@ -3,14 +3,12 @@ import {
     Program,
     web3,
 } from "@project-serum/anchor";
-import {
-    TOKEN_PROGRAM_ID,
-} from "@solana/spl-token";
+import { TOKEN_PROGRAM_ID, createAssociatedTokenAccountInstruction } from '@solana/spl-token';
 import { WalletContextState } from "@solana/wallet-adapter-react";
 import {
     SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
 } from "../../constants/constants";
-const idl = require("../../../data/staking.json");
+const idl = require("../../../data/cnft.json");
 
 export async function tokenGate(
     anchorWallet: any,
@@ -24,7 +22,7 @@ export async function tokenGate(
     const PROGRAM_ID = new web3.PublicKey(idl.metadata.address);
     const program = new Program(idl, idl.metadata.address, provider);
     const mint = new web3.PublicKey(
-        "HELL8DJW983gMsKfhmYxLqoAu87dufjKcWqcUkz9PHb8"
+        "NFWVPhAxDtZ9jdeZFzDr7AQAxepy2TThSYdAZcykaRg"
     );
 
     // const [identifier] = web3.PublicKey.findProgramAddressSync(
@@ -57,6 +55,20 @@ export async function tokenGate(
         SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID
     );
 
+    const info = await connection.getBalance(to);
+    // create associted token account
+    if (info == 0) {
+        const ataTransaction = new web3.Transaction().add(
+            createAssociatedTokenAccountInstruction(
+                anchorWallet.publicKey,
+                to,
+                escrow,
+                mint!
+            )
+        );
+        const signature = await wallet.sendTransaction(ataTransaction, connection)
+        await connection.confirmTransaction(signature, "finalized");
+    }
 
 
     const tx = await program.methods
@@ -78,9 +90,9 @@ export async function tokenGate(
     // });
 
 
-    wallet.sendTransaction(tx, connection, {
-        preflightCommitment: "confirmed"
-    })
+    // wallet.sendTransaction(tx, connection, {
+    //     preflightCommitment: "confirmed"
+    // })
 
     return tx;
 }

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useMetaplex } from "../MetaplexProvider/useMetaplex";
 import CardMintBox from "./CardMintBox";
 
-export default function MintBox() {
+export default function MintBox({ mint, mintButton }: any) {
 
   // const [tokens, setTokens] = useState<any[]>()
 
@@ -50,12 +50,22 @@ export default function MintBox() {
           </div>
         </div>
         <div>
-          <Button
-            className="!text-black !bg-[#00ff47] !rounded-[0.6vw] !text-[6vw] md:!text-[2vw] !px-[8vw] md:!px-[4vw] !font-semibold "
-            style={{ textTransform: "none" }}
-          >
-            Mint
-          </Button>
+          {mint ?
+            <Button
+              onClick={() => mintButton()}
+              className="!text-black !bg-[#00ff47] !rounded-[0.6vw] !text-[6vw] md:!text-[2vw] !px-[8vw] md:!px-[4vw] !font-semibold "
+              style={{ textTransform: "none" }}
+            >
+              Mint
+            </Button>
+            :
+            <Button
+              className="!text-black !bg-[#f73838] !rounded-[0.6vw] !text-[6vw] md:!text-[2vw] !px-[8vw] md:!px-[4vw] !font-semibold "
+              style={{ textTransform: "none" }}
+            >
+              Not Eligibale!
+            </Button>
+          }
         </div>
       </div>
     </CardMintBox>
