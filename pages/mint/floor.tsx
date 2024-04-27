@@ -8,7 +8,11 @@ import { getIdentifier } from "@/lib/mint/fetch/getIdentifier";
 import { getTracker } from "@/lib/mint/fetch/getTracker";
 import { PnftGate } from "@/lib/mint/instruction/PnftGate";
 import { mint } from "@/lib/mint/instruction/mint";
-import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import {
+  useAnchorWallet,
+  useConnection,
+  useWallet,
+} from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 
@@ -20,51 +24,54 @@ export default function Floor() {
   const [tokens, setTokens] = useState<any[]>();
   const [holder, setHolder] = useState<boolean>(false);
 
-
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
-  const wallet = useWallet()
+  const wallet = useWallet();
 
   const { metaplex } = useMetaplex();
 
   const minting = async (id: number) => {
     try {
-
       if (tracker) {
         return console.log("Claim first!");
       }
 
-      console.log(tokens![id])
-      console.log(tokens![id].collection.address.toBase58())
-      console.log(tokens![id].collection.key.toBase58())
+      console.log(tokens![id]);
+      console.log(tokens![id].collection.address.toBase58());
+      console.log(tokens![id].collection.key.toBase58());
 
-
-
-      const tx1 = await PnftGate(anchorWallet!, connection, wallet, tokens![id].mintAddress, tokens![id].collection.key, tokens![id].programmableConfig)
+      const tx1 = await PnftGate(
+        anchorWallet!,
+        connection,
+        wallet,
+        tokens![id].mintAddress,
+        tokens![id].collection.key,
+        tokens![id].programmableConfig
+      );
 
       // const tx2 = await mint(anchorWallet!, connection)
       // const tx2 = await init_identifier(anchorWallet!, connection)
 
       // tx1.add(tx2);
 
-      wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed" });
+      wallet.sendTransaction(tx1, connection, {
+        preflightCommitment: "confirmed",
+      });
       console.log("mint");
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   const claim = async () => {
     try {
-
-      const tx1 = await mint(anchorWallet!, wallet, connection)
+      const tx1 = await mint(anchorWallet!, wallet, connection);
 
       // wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed" });
-
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   const fetchNfts = async () => {
     try {
@@ -98,7 +105,6 @@ export default function Floor() {
 
   const get_tracker = async () => {
     try {
-
       const tracker = await getTracker(anchorWallet, connection);
       const ident = await getIdentifier(anchorWallet, connection);
       console.log(ident);
@@ -108,13 +114,13 @@ export default function Floor() {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   useEffect(() => {
     if (!anchorWallet) return;
     get_tracker();
     fetchNfts();
-  }, [anchorWallet])
+  }, [anchorWallet]);
 
   return (
     <div className="w-full float-right md:w-[84%] p-[5vw] md:p-[3vw] bg-black">
@@ -141,20 +147,23 @@ export default function Floor() {
             />
           </div>
         </div>
-        {tracker && <div
-          onClick={() => {
-            claim()
-          }}
-          className="!text-black !bg-[#00ff47] !rounded-[0.6vw] !text-[4vw] md:!text-[1.2vw] !px-[6vw] md:!px-[3vw] !font-semibold "
-          style={{ textTransform: "none" }}
-        >
-          claim
-        </div>}
+        {tracker && (
+          <div
+            onClick={() => {
+              claim();
+            }}
+            className="!text-black !bg-[#00ff47] !rounded-[0.6vw] !text-[4vw] md:!text-[1.2vw] !px-[6vw] md:!px-[3vw] !font-semibold "
+            style={{ textTransform: "none" }}
+          >
+            claim
+          </div>
+        )}
         <CardMintBox>
           <div className="mt-[5vw] md:mt-[3vw] grid grid-cols-1 gap-y-[10vw] md:gap-y-[4vw] md:grid-cols-3">
-            {tokens && tokens.map((token, i) => (
-              <BurnCard token={token} minting={minting} />
-            ))}
+            {tokens &&
+              tokens.map((token, i) => (
+                <BurnCard token={token} minting={minting} />
+              ))}
           </div>
         </CardMintBox>
       </Card>

@@ -20,7 +20,8 @@ export default function DragonSpin({ Name, Total_Mint, Minted, Width }: any) {
         </div>
         <div className="w-full rounded-[0.4vw] rounded-l-none border border-[#BFE6FF] overflow-hidden">
           <div
-            className={`w-[${Width}%] p-[2vw] md:p-[0.9vw] bg-gradient-to-r from-[#BFE6FF] to-[#225472]`}
+            className={`p-[2vw] md:p-[0.9vw] bg-gradient-to-r from-[#BFE6FF] to-[#225472]`}
+            style={{ width: `${Width}%` }}
           ></div>
         </div>
         <div className="text-[4.4vw] md:text-[2vw]">{Name}</div>
