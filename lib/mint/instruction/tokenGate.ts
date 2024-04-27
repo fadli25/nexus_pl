@@ -22,7 +22,7 @@ export async function tokenGate(
     const PROGRAM_ID = new web3.PublicKey(idl.metadata.address);
     const program = new Program(idl, idl.metadata.address, provider);
     const mint = new web3.PublicKey(
-        "NFWVPhAxDtZ9jdeZFzDr7AQAxepy2TThSYdAZcykaRg"
+        "oDNaTFqKN3cuzToL6YCKDvE1t8DjbNjXr8dUy8Q9LfB"
     );
 
     // const [identifier] = web3.PublicKey.findProgramAddressSync(
@@ -47,7 +47,7 @@ export async function tokenGate(
     );
 
     const escrow = new web3.PublicKey(
-        "Fig5f7CBQXNnNqoHWBCkPArxBxMBW8CoNyPH6UZhha4F"
+        "EuNVySuyeL97YrLUZYTEJPx5soJQZ3hAnW94yrvLogkY"
     );
 
     const [to] = web3.PublicKey.findProgramAddressSync(

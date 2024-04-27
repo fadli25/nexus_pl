@@ -60,7 +60,7 @@ export default function index() {
       console.log(token);
 
       token.map((tk) => {
-        if (tk.publicKey == "NFWVPhAxDtZ9jdeZFzDr7AQAxepy2TThSYdAZcykaRg") {
+        if (tk.publicKey == "oDNaTFqKN3cuzToL6YCKDvE1t8DjbNjXr8dUy8Q9LfB") {
           console.log(tk.mint.supply)
           setHolder(true);
         }

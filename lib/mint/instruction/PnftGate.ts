@@ -159,8 +159,20 @@ export async function PnftGate(
     console.log("tracker: " + tracker.toBase58())
     console.log("tracker: " + tracker.toBase58())
 
+    const rand = Math.random();
+
+    let kind = 2;
+
+    if (rand > 0.5) {
+        kind = 1;
+    } else {
+        kind = 2;
+    }
+
+    console.log(kind);
+
     const transaction = await program.methods.pnftGate(
-        new BN(1)
+        new BN(kind)
     ).accounts({
         tracker: tracker,
         identifier: identifier,
@@ -184,12 +196,12 @@ export async function PnftGate(
         // authRules: ruleSet ? ruleSet : META,
         // authRulesProgram: auth_rule_program,
     })
-        .rpc({
-            "commitment": "confirmed"
-        })
-    // .transaction()
+        // .rpc({
+        //     "commitment": "confirmed"
+        // })
+        .transaction()
 
-    // tx.add(transaction)
+    tx.add(transaction)
     // await wallet.sendTransaction(tx, connection);
 
     return tx

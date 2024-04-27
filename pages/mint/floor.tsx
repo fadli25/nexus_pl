@@ -47,8 +47,9 @@ export default function Floor() {
 
       // tx1.add(tx2);
 
-      wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed" });
+      await wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed" });
       console.log("mint");
+      setTracker(true)
     } catch (e) {
       console.log(e);
     }
@@ -59,7 +60,8 @@ export default function Floor() {
 
       const tx1 = await mint(anchorWallet!, wallet, connection)
 
-      // wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed" });
+      await wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed" });
+      setTracker(null)
 
     } catch (e) {
       console.log(e);
