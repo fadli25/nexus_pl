@@ -40,6 +40,7 @@
     "autoprefixer": "10.4.15",
     "bs58": "^5.0.0",
     "framer-motion": "^10.15.2",
+    "moment-timezone": "^0.5.45",
     "next": "13.4.15",
     "next-seo": "^6.5.0",
     "normalize.css": "^8.0.1",

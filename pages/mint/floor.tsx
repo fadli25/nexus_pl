@@ -168,6 +168,7 @@ export default function Floor() {
             >
               claim
             </Button>
+            console.log("second")
           </div>
         )}
         <CardMintBox>
