@@ -1,14 +1,14 @@
-import { PROGRAM_ID as BUBBLEGUM_PROGRAM_ID } from "@metaplex-foundation/mpl-bubblegum";
-import {
-  PROGRAM_ID as TOKEN_METADATA_PROGRAM_ID,
-} from "@metaplex-foundation/mpl-token-metadata";
+// import { PROGRAM_ID as BUBBLEGUM_PROGRAM_ID } from "@metaplex-foundation/mpl-bubblegum";
+// import {
+//   PROGRAM_ID as TOKEN_METADATA_PROGRAM_ID,
+// } from "@metaplex-foundation/mpl-token-metadata";
 import {
   AnchorProvider, BN, Program, web3
 } from '@project-serum/anchor';
 import { SPL_ACCOUNT_COMPRESSION_PROGRAM_ID, SPL_NOOP_PROGRAM_ID } from "@solana/spl-account-compression";
 import { AnchorWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from '@solana/web3.js';
-import { IDENTIFIER_PREFIX } from "../../constants/constants";
+import { IDENTIFIER_PREFIX, TOKEN_METADATA_PROGRAM_ID } from "../../constants/constants";
 const idl = require("../../../data/staking.json");
 
 export async function update_authority(
