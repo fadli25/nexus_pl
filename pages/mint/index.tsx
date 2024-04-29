@@ -13,6 +13,7 @@ import { createUmi } from "@metaplex-foundation/umi-bundle-defaults";
 import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
+import { notify_delete, notify_error, notify_laoding, notify_success } from "../profile";
 
 export default function index() {
 
@@ -27,6 +28,7 @@ export default function index() {
 
   const minting = async () => {
     try {
+      notify_laoding("Transaction Pending...")
 
       const tx1 = await tokenGate(anchorWallet, connection, wallet);
       // const tx1 = await init_identifier(anchorWallet, connection);
@@ -35,9 +37,13 @@ export default function index() {
 
       tx1.add(tx2);
 
-      wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed" });
+      await wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed", "maxRetries": 10 });
       console.log("mint");
+      notify_delete()
+      notify_success("Mint Successful!")
     } catch (e) {
+      notify_delete()
+      notify_error("Transactions Failed!")
       console.log(e);
     }
   }

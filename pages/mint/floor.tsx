@@ -7,6 +7,7 @@ import FloorBox from "@/components/mint/FloorBox";
 import { getIdentifier } from "@/lib/mint/fetch/getIdentifier";
 import { getTracker } from "@/lib/mint/fetch/getTracker";
 import { PnftGate } from "@/lib/mint/instruction/PnftGate";
+import { init_identifier } from "@/lib/mint/instruction/init_identifier";
 import { mint } from "@/lib/mint/instruction/mint";
 import { Button } from "@mui/material";
 import {
@@ -16,6 +17,7 @@ import {
 } from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
+import { notify_delete, notify_error, notify_laoding, notify_success, notify_warning } from "../profile";
 
 const data = [1, 2, 3, 4, 5, 6, 7];
 
@@ -34,19 +36,21 @@ export default function Floor() {
   const minting = async (id: number) => {
     try {
       if (tracker) {
-        return console.log("Claim first!");
+        return notify_warning("Claim first!");
       }
 
-      console.log(tokens![id]);
-      console.log(tokens![id].collection.address.toBase58());
-      console.log(tokens![id].collection.key.toBase58());
+      notify_laoding("Transaction Pending...")
+
+      // console.log(tokens![id]);
+      // console.log(tokens![id].collection.address.toBase58());
+      // console.log(tokens![id].collection.key.toBase58());
 
       const tx1 = await PnftGate(
         anchorWallet!,
         connection,
         wallet,
         tokens![id].mintAddress,
-        tokens![id].collection.key,
+        tokens![id].collection,
         tokens![id].programmableConfig
       );
 
@@ -55,25 +59,36 @@ export default function Floor() {
 
       // tx1.add(tx2);
 
-      wallet.sendTransaction(tx1, connection, {
+      await wallet.sendTransaction(tx1, connection, {
         preflightCommitment: "confirmed",
+        maxRetries: 10
       });
+      notify_delete()
+      notify_success("Mint Successful!")
       console.log("mint");
       setTracker(true);
     } catch (e) {
+      notify_delete()
+      notify_error("Transactions Failed!")
       console.log(e);
     }
   };
 
   const claim = async () => {
     try {
+      notify_laoding("Transaction Pending...")
       const tx1 = await mint(anchorWallet!, wallet, connection);
 
       await wallet.sendTransaction(tx1, connection, {
         preflightCommitment: "confirmed",
+        maxRetries: 10
       });
+      notify_delete()
+      notify_success("Claim Successful!")
       setTracker(null);
     } catch (e) {
+      notify_delete()
+      notify_error("Transactions Failed!")
       console.log(e);
     }
   };

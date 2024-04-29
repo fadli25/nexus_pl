@@ -34,9 +34,17 @@ export async function PnftGate(
     connection: web3.Connection,
     wallet: WalletContextState,
     mint: web3.PublicKey,
-    collection_mint: web3.PublicKey,
+    collections: any,
     programable_config: any,
 ) {
+    console.log(collections)
+    let collection_mint;
+
+    if (collections) {
+        collection_mint = collections.key;
+    } else {
+        collection_mint = mint;
+    }
 
     let ruleSet = null;
 
@@ -142,22 +150,16 @@ export async function PnftGate(
         ],
         PROGRAM_ID
     );
-    console.log("tracker: " + tracker.toBase58())
-    console.log("anchorWallet.publicKey: " + anchorWallet.publicKey.toBase58())
-    console.log("nftMintCollectionMetadata: " + collection_metadata_acount.toBase58())
-    console.log("mint: " + mint.toBase58())
-    console.log("from: " + token_account.toBase58())
-    console.log("escrow: " + escrow.toBase58())
-    console.log("nftMetadata: " + metadata_acount.toBase58())
-    console.log("master_edition: " + master_edition.toBase58())
-    console.log("record_account: " + record_account.toBase58())
+    // console.log("tracker: " + tracker.toBase58())
+    // console.log("anchorWallet.publicKey: " + anchorWallet.publicKey.toBase58())
+    // console.log("nftMintCollectionMetadata: " + collection_metadata_acount.toBase58())
+    // console.log("mint: " + mint.toBase58())
+    // console.log("from: " + token_account.toBase58())
+    // console.log("escrow: " + escrow.toBase58())
+    // console.log("nftMetadata: " + metadata_acount.toBase58())
+    // console.log("master_edition: " + master_edition.toBase58())
+    // console.log("record_account: " + record_account.toBase58())
     // console.log("destination_record_account: " + destination_record_account.toBase58())
-    console.log("tracker: " + tracker.toBase58())
-    console.log("tracker: " + tracker.toBase58())
-    console.log("tracker: " + tracker.toBase58())
-    console.log("tracker: " + tracker.toBase58())
-    console.log("tracker: " + tracker.toBase58())
-    console.log("tracker: " + tracker.toBase58())
 
     const rand = Math.random();
 
