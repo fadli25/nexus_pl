@@ -8,6 +8,7 @@ import { getIdentifier } from "@/lib/mint/fetch/getIdentifier";
 import { getTracker } from "@/lib/mint/fetch/getTracker";
 import { PnftGate } from "@/lib/mint/instruction/PnftGate";
 import { mint } from "@/lib/mint/instruction/mint";
+import { Button } from "@mui/material";
 import {
   useAnchorWallet,
   useConnection,
@@ -54,12 +55,11 @@ export default function Floor() {
 
       // tx1.add(tx2);
 
-
       wallet.sendTransaction(tx1, connection, {
         preflightCommitment: "confirmed",
       });
       console.log("mint");
-      setTracker(true)
+      setTracker(true);
     } catch (e) {
       console.log(e);
     }
@@ -69,9 +69,10 @@ export default function Floor() {
     try {
       const tx1 = await mint(anchorWallet!, wallet, connection);
 
-      await wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed" });
-      setTracker(null)
-
+      await wallet.sendTransaction(tx1, connection, {
+        preflightCommitment: "confirmed",
+      });
+      setTracker(null);
     } catch (e) {
       console.log(e);
     }
@@ -127,9 +128,9 @@ export default function Floor() {
   }, [anchorWallet]);
 
   const percent = () => {
-    const num = identifier.token / 400
-    return num * 100
-  }
+    const num = identifier.token / 400;
+    return num * 100;
+  };
 
   return (
     <div className="w-full float-right md:w-[84%] p-[5vw] md:p-[3vw] bg-black">
@@ -157,14 +158,16 @@ export default function Floor() {
           </div>
         </div>
         {tracker && (
-          <div
-            onClick={() => {
-              claim();
-            }}
-            className="!text-black !bg-[#00ff47] !rounded-[0.6vw] !text-[4vw] md:!text-[1.2vw] !px-[6vw] md:!px-[3vw] !font-semibold "
-            style={{ textTransform: "none" }}
-          >
-            claim
+          <div className="w-fit mx-auto my-4">
+            <Button
+              onClick={() => {
+                claim();
+              }}
+              className="!text-black !bg-[#00ff47] hover:!bg-[#88ff00da] !rounded-[0.6vw] md:!rounded-[0.3vw] !text-[4vw] md:!text-[1.2vw] !px-[6vw] md:!px-[3vw] !font-semibold "
+              style={{ textTransform: "none" }}
+            >
+              claim
+            </Button>
           </div>
         )}
         <CardMintBox>
