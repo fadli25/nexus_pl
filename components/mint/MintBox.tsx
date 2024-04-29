@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 // import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useMetaplex } from "../MetaplexProvider/useMetaplex";
 import CardMintBox from "./CardMintBox";
@@ -43,10 +44,18 @@ export default function MintBox({ mint, mintButton }: any) {
     <CardMintBox>
       <div className="mt-[5vw] md:mt-[2vw] flex flex-col gap-y-[8vw] md:gap-y-0 md:flex-row justify-between items-center">
         <div className="flex flex-col md:flex-row gap-y-[3vw] md:gap-y-0 gap-x-[2vw] items-center">
-          <div className="w-[60vw] md:w-[18vw] h-[60vw] md:h-[18vw] bg-white/50 rounded-[0.6vw]"></div>
+          <div className="w-full flex justify-center">
+            <Image
+              className="w-[90vw] h-[70vw] md:h-[17vw] md:w-[17vw] object-cover object-center rounded-lg"
+              src={"https://shdw-drive.genesysgo.net/Exm2RqgptPTAmLGdg8wVb3tyZtdXMQSUcNiEqxiCifUT/WhatsApp%20Image%202024-04-26%20at%2020.41.35.jpeg"}
+              width={1000}
+              height={200}
+              loading="lazy"
+              alt=""
+            />
+          </div>
           <div className="text-[5vw] md:text-[3vw] font-semibold">
             WL KEY <div className="hidden md:block"></div>
-            x2
           </div>
         </div>
         <div>

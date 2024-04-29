@@ -78,7 +78,7 @@ export async function mint(
     BUBBLEGUM_PROGRAM_ID
   );
 
-  const fees = new web3.PublicKey("8wqL47iovmr1czQ1KLinNb4D35cTxRV4wQL9m1HuAu7Q");
+  const fees = new web3.PublicKey("Cvzgpt4zobKqp55r6gYEze6m9HUeqX6SvAYSwc6SS5se");
 
   const [to] = web3.PublicKey.findProgramAddressSync(
     [

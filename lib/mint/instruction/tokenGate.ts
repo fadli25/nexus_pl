@@ -47,7 +47,7 @@ export async function tokenGate(
     );
 
     const escrow = new web3.PublicKey(
-        "EuNVySuyeL97YrLUZYTEJPx5soJQZ3hAnW94yrvLogkY"
+        "CSUTQXTzqNehwiMot4GYnMk2ahMM3MuobfiTCbBUyQVG"
     );
 
     const [to] = web3.PublicKey.findProgramAddressSync(
@@ -69,7 +69,6 @@ export async function tokenGate(
         const signature = await wallet.sendTransaction(ataTransaction, connection)
         await connection.confirmTransaction(signature, "finalized");
     }
-
 
     const tx = await program.methods
         .tokenGate()
