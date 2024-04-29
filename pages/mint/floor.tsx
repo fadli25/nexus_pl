@@ -7,6 +7,7 @@ import FloorBox from "@/components/mint/FloorBox";
 import { getIdentifier } from "@/lib/mint/fetch/getIdentifier";
 import { getTracker } from "@/lib/mint/fetch/getTracker";
 import { PnftGate } from "@/lib/mint/instruction/PnftGate";
+import { init_identifier } from "@/lib/mint/instruction/init_identifier";
 import { mint } from "@/lib/mint/instruction/mint";
 import { Button } from "@mui/material";
 import {
@@ -34,30 +35,30 @@ export default function Floor() {
   const minting = async (id: number) => {
     try {
       if (tracker) {
-        return console.log("Claim first!");
+        // return console.log("Claim first!");
       }
 
-      console.log(tokens![id]);
-      console.log(tokens![id].collection.address.toBase58());
-      console.log(tokens![id].collection.key.toBase58());
+      // console.log(tokens![id]);
+      // console.log(tokens![id].collection.address.toBase58());
+      // console.log(tokens![id].collection.key.toBase58());
 
-      const tx1 = await PnftGate(
-        anchorWallet!,
-        connection,
-        wallet,
-        tokens![id].mintAddress,
-        tokens![id].collection.key,
-        tokens![id].programmableConfig
-      );
+      // const tx1 = await PnftGate(
+      //   anchorWallet!,
+      //   connection,
+      //   wallet,
+      //   tokens![id].mintAddress,
+      //   tokens![id].collection,
+      //   tokens![id].programmableConfig
+      // );
 
       // const tx2 = await mint(anchorWallet!, connection)
-      // const tx2 = await init_identifier(anchorWallet!, connection)
+      const tx2 = await init_identifier(anchorWallet!, connection)
 
       // tx1.add(tx2);
 
-      wallet.sendTransaction(tx1, connection, {
-        preflightCommitment: "confirmed",
-      });
+      // wallet.sendTransaction(tx1, connection, {
+      //   preflightCommitment: "confirmed",
+      // });
       console.log("mint");
       setTracker(true);
     } catch (e) {
