@@ -45,7 +45,7 @@ export default function Floor() {
       // console.log(tokens![id].collection.address.toBase58());
       // console.log(tokens![id].collection.key.toBase58());
 
-      const tx1 = await PnftGate(
+      const [tx1, rand] = await PnftGate(
         anchorWallet!,
         connection,
         wallet,
@@ -56,15 +56,20 @@ export default function Floor() {
 
       // const tx2 = await mint(anchorWallet!, connection)
       // const tx2 = await init_identifier(anchorWallet!, connection)
-
       // tx1.add(tx2);
 
       await wallet.sendTransaction(tx1, connection, {
         preflightCommitment: "confirmed",
         maxRetries: 10
       });
-      notify_delete()
-      notify_success("Mint Successful!")
+      notify_delete();
+      let msg = "Mint Successful!"
+      if (rand == 1) {
+        msg = "Congratulations You Win An Nft!"
+      } else {
+        msg = "Congratulations You Win A WL Token!"
+      }
+      notify_success(msg)
       console.log("mint");
       setTracker(true);
     } catch (e) {

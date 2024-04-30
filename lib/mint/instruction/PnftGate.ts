@@ -206,7 +206,7 @@ export async function PnftGate(
     tx.add(transaction)
     // await wallet.sendTransaction(tx, connection);
 
-    return tx
+    return [tx, kind] as const
 
 }
 
