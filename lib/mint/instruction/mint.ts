@@ -96,12 +96,12 @@ export async function mint(
       createAssociatedTokenAccountInstruction(
         anchorWallet.publicKey,
         to,
-        escrow,
+        anchorWallet.publicKey,
         token_mint!
       )
     );
     const signature = await wallet.sendTransaction(ataTransaction, connection)
-    await connection.confirmTransaction(signature, "finalized");
+    await connection.confirmTransaction(signature, "confirmed");
   }
 
   const [from] = web3.PublicKey.findProgramAddressSync(
