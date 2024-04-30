@@ -3,6 +3,7 @@ import Card from "@/components/mint/Card";
 import DragonSpin from "@/components/mint/DragonSpin";
 import FloorBox from "@/components/mint/FloorBox";
 import MintBox from "@/components/mint/MintBox";
+import CountdownTimer from "@/components/timer/CountdownTimer2";
 import { getIdentifier } from "@/lib/mint/fetch/getIdentifier";
 import { init_identifier } from "@/lib/mint/instruction/init_identifier";
 import { mint } from "@/lib/mint/instruction/mint";
@@ -23,7 +24,6 @@ import {
   notify_laoding,
   notify_success,
 } from "../profile";
-import CountdownTimer from "@/components/timer/CountdownTimer2";
 
 export default function index() {
   const [holder, setHolder] = useState<boolean>(false);
@@ -101,8 +101,12 @@ export default function index() {
 
   useEffect(() => {
     if (!anchorWallet) return;
-    get_tracker();
+    // get_tracker();
     fetchNfts();
+    const intervalId = setInterval(() => {
+      get_tracker()
+    }, 3000) // in milliseconds
+    return () => clearInterval(intervalId)
   }, [anchorWallet]);
 
   const percent = () => {
@@ -127,7 +131,7 @@ export default function index() {
         </div>
         <MintBox mint={holder} mintButton={minting} keys={keys} />
 
-        <div className=" border-[0.1vw] ml-auto border-white rounded-[0.5vw] w-fit px-[3vw] py-[1.2vw] flex justify-end items-center gap-x-[6vw] md:gap-x-[3vw] my-[2vw] ">
+        <div className="border-[0.1vw] ml-auto border-white rounded-[0.5vw] w-fit px-[3vw] py-[1.2vw] flex justify-end items-center gap-x-[6vw] md:gap-x-[3vw] my-[2vw] ">
           <div className="text-[1.6vw] font-[500]">Public Mint</div>
           <div>
             <CountdownTimer time={"2024-04-30T18:00:00"} />

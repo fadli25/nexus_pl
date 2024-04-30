@@ -143,8 +143,11 @@ export default function Floor() {
 
   useEffect(() => {
     if (!anchorWallet) return;
-    get_tracker();
     fetchNfts();
+    const intervalId = setInterval(() => {
+      get_tracker()
+    }, 3000) // in milliseconds
+    return () => clearInterval(intervalId)
   }, [anchorWallet]);
 
   const percent = () => {
