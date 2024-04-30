@@ -194,6 +194,7 @@ export default function Floor() {
           <div className="mt-[5vw] md:mt-[3vw] grid grid-cols-1 gap-y-[10vw] md:gap-y-[4vw] md:grid-cols-3">
             {tokens &&
               tokens.map((token, i) => (
+                token.tokenStandard == 4 &&
                 <BurnCard token={token} minting={minting} />
               ))}
           </div>
