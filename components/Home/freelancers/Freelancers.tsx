@@ -14,7 +14,7 @@ import SolanaIcon from "@/public/Solana.svg";
 
 export default function Freelancers() {
   const projectImage =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162186091340763207/Ellipse_4_1.png?ex=653b0524&is=65289024&hm=fd33129e7e254b9178d10f7bd2f29e30cee47ef9f6989132cae8e2079bc5f126&=&width=235&height=226";
+    "https://cdn.discordapp.com/attachments/1085293900706627595/1162186091340763207/Ellipse_4_1.png?ex=66318da4&is=66303c24&hm=a686c370719047e8def82f029746558204eccce817f9d7f62f494b07923d2321&";
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
   const projectData = [1, 2, 3, 4, 5, 6];
 

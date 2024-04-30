@@ -12,7 +12,7 @@ import SolanaIcon from "@/public/Solana.svg";
 
 export default function Projects() {
   const projectImage =
-    "https://media.discordapp.net/attachments/1085293900706627595/1162185959572516976/Ellipse_27_1.png?ex=653b0505&is=65289005&hm=1ce34d84dbb4f26571b994fe2521313f5885e3eea9c4e96641074f6fafd06244&=&width=190&height=183";
+    "https://cdn.discordapp.com/attachments/1085293900706627595/1162185959572516976/Ellipse_27_1.png?ex=66318d85&is=66303c05&hm=75938a2e4c7f90d019aa0d880e0bdedc73fb723e45cf820e87f6515f62a47f9e&";
   const solanaIcon = "https://img.icons8.com/nolan/64/solana.png";
   const projectData = [1, 2, 3, 4, 5, 6];
 
