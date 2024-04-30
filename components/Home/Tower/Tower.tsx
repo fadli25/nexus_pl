@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { toast } from "react-toastify";
+import CountdownTimer from "@/components/timer/CountdownTimer";
 
 export default function Tower() {
   const router = useRouter();
@@ -30,8 +31,8 @@ export default function Tower() {
             // onClick={() => router.push("/mint")}
           >
             <Image src={OldOnce} width={2000} height={200} alt="" />
-            <div className="absolute top-[34%] right-[3%] text-[1.4vw] text-white">
-              Countdown: --|--
+            <div className="absolute top-[34%] right-[3%] text-[1.4vw] text-white flex items-center gap-[1vw]">
+              Countdown: <CountdownTimer time={"2024-04-30T17:00:00"} />
             </div>
           </div>
         </SwiperSlide>

@@ -10,54 +10,66 @@ import { tokenGate } from "@/lib/mint/instruction/tokenGate";
 import { fetchAllDigitalAssetWithTokenByOwner } from "@metaplex-foundation/mpl-token-metadata";
 import { publicKey } from "@metaplex-foundation/umi";
 import { createUmi } from "@metaplex-foundation/umi-bundle-defaults";
-import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
+import {
+  useAnchorWallet,
+  useConnection,
+  useWallet,
+} from "@solana/wallet-adapter-react";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import { notify_delete, notify_error, notify_laoding, notify_success } from "../profile";
+import {
+  notify_delete,
+  notify_error,
+  notify_laoding,
+  notify_success,
+} from "../profile";
+import CountdownTimer from "@/components/timer/CountdownTimer2";
 
 export default function index() {
-
   const [holder, setHolder] = useState<boolean>(false);
   const [identifier, setIdentifier] = useState<any>();
 
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
-  const wallet = useWallet()
+  const wallet = useWallet();
 
   // const { metaplex } = useMetaplex();
 
   const minting = async () => {
     try {
-      notify_laoding("Transaction Pending...")
+      notify_laoding("Transaction Pending...");
 
       const tx1 = await tokenGate(anchorWallet, connection, wallet);
       // const tx1 = await init_identifier(anchorWallet, connection);
 
-      const tx2 = await mint(anchorWallet!, wallet, connection)
+      const tx2 = await mint(anchorWallet!, wallet, connection);
 
       tx1.add(tx2);
 
-      await wallet.sendTransaction(tx1, connection, { "preflightCommitment": "confirmed", "maxRetries": 10 });
+      await wallet.sendTransaction(tx1, connection, {
+        preflightCommitment: "confirmed",
+        maxRetries: 10,
+      });
       console.log("mint");
-      notify_delete()
-      notify_success("Mint Successful!")
+      notify_delete();
+      notify_success("Mint Successful!");
     } catch (e) {
-      notify_delete()
-      notify_error("Transactions Failed!")
+      notify_delete();
+      notify_error("Transactions Failed!");
       console.log(e);
     }
-  }
+  };
 
   const fetchNfts = async () => {
     try {
-      console.log("start")
+      console.log("start");
       // if (!anchorWallet) return;
       // const token = await (metaplex as any)
       //   .nfts()
       //   .fetchAllDigitalAssetWithTokenByOwner({ owner: (metaplex as any).identity().publicKey });
       // .fetchAllDigitalAssetWithTokenByOwner({ owner: (metaplex as any).identity().publicKey });
 
-      const umi = createUmi(connection)
+      const umi = createUmi(connection);
 
       const pubkey = publicKey(anchorWallet!.publicKey.toBase58());
 
@@ -67,11 +79,10 @@ export default function index() {
 
       token.map((tk) => {
         if (tk.publicKey == "oDNaTFqKN3cuzToL6YCKDvE1t8DjbNjXr8dUy8Q9LfB") {
-          console.log(tk.mint.supply)
+          console.log(tk.mint.supply);
           setHolder(true);
         }
-      })
-
+      });
     } catch (e) {
       console.log(e);
     }
@@ -91,12 +102,12 @@ export default function index() {
     if (!anchorWallet) return;
     get_tracker();
     fetchNfts();
-  }, [anchorWallet])
+  }, [anchorWallet]);
 
   const percent = () => {
-    const num = identifier.token / 1900
-    return num * 100
-  }
+    const num = identifier.token / 1900;
+    return num * 100;
+  };
 
   return (
     <div className="w-full float-right md:w-[84%] p-[5vw] md:p-[3vw] bg-black">
@@ -114,6 +125,13 @@ export default function index() {
           />
         </div>
         <MintBox mint={holder} mintButton={minting} />
+
+        <div className=" border-[0.1vw] ml-auto border-white rounded-[0.5vw] w-fit px-[3vw] py-[1.2vw] flex justify-end items-center gap-x-[6vw] md:gap-x-[3vw] my-[2vw] ">
+          <div className="text-[1.6vw] font-[500]">Public Mint</div>
+          <div>
+            <CountdownTimer time={"2024-04-30T18:00:00"} />
+          </div>
+        </div>
       </Card>
     </div>
   );

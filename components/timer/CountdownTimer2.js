@@ -34,13 +34,7 @@ export default function CountdownTimer(time) {
   const router = useRouter();
   return (
     <div>
-      <div
-        className={`${
-          router.pathname !== "/"
-            ? "text-[4vw] md:text-[1.8vw]"
-            : "text-[3vw] md:text-[1.4vw]"
-        }`}
-      >
+      <div className="text-[3vw] md:text-[1.2vw]">
         {remainingTime != 0 ? (
           getFormattedTime(remainingTime)
         ) : (
