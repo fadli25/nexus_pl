@@ -110,7 +110,9 @@ export default function index() {
   }, [anchorWallet]);
 
   const percent = () => {
-    const num = identifier.token / 1900;
+    const num = Number(identifier.count) / 1900;
+    // console.log((identifier.token))
+    // console.log((num * 100))
     return num * 100;
   };
 

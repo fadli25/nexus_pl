@@ -1,7 +1,7 @@
+import { Button } from "@mui/material";
+import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import getRemainingTime from "./timer";
-import { useRouter } from "next/router";
-import { Button } from "@mui/material";
 
 export default function CountdownTimer(time) {
   const [remainingTime, setRemainingTime] = useState(getRemainingTime(time));
@@ -37,7 +37,7 @@ export default function CountdownTimer(time) {
   return (
     <div>
       <div className="text-[3vw] md:text-[1.2vw]">
-        {remainingTime != 0 ? (
+        {remainingTime > 0 ? (
           getFormattedTime(remainingTime)
         ) : (
           <Button
