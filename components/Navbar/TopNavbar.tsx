@@ -340,14 +340,14 @@ export default function TopNavbar() {
           >
             {/* Connect Wallet */}
             <div className="flex gap-x-[3vw] md:gap-x-[1.4vw] ] itemes-center">
-              <motion.button
+              {/* <motion.button
                 className="text-[3.2vw] md:text-[1.2vw] font-semibold text-[#0FA]"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => router.push("/tower")}
               >
                 Rebirth Tower
-              </motion.button>
+              </motion.button> */}
               <WalletMultiButton />
               {/* <Button
                 variant="contained"
