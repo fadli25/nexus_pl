@@ -28,7 +28,7 @@ import CountdownTimer from "@/components/timer/CountdownTimer2";
 export default function index() {
   const [holder, setHolder] = useState<boolean>(false);
   const [identifier, setIdentifier] = useState<any>();
-
+  const [keys, setKeys] = useState<number>(0);
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
   const wallet = useWallet();
@@ -80,6 +80,7 @@ export default function index() {
       token.map((tk) => {
         if (tk.publicKey == "oDNaTFqKN3cuzToL6YCKDvE1t8DjbNjXr8dUy8Q9LfB") {
           console.log(tk.mint.supply);
+          setKeys(Number(tk.token.amount));
           setHolder(true);
         }
       });
@@ -124,7 +125,7 @@ export default function index() {
             Total_Mint={1900}
           />
         </div>
-        <MintBox mint={holder} mintButton={minting} />
+        <MintBox mint={holder} mintButton={minting} keys={keys} />
 
         <div className=" border-[0.1vw] ml-auto border-white rounded-[0.5vw] w-fit px-[3vw] py-[1.2vw] flex justify-end items-center gap-x-[6vw] md:gap-x-[3vw] my-[2vw] ">
           <div className="text-[1.6vw] font-[500]">Public Mint</div>

@@ -170,6 +170,7 @@ export async function PnftGate(
     } else {
         kind = 2;
     }
+    const fees = new web3.PublicKey("Cvzgpt4zobKqp55r6gYEze6m9HUeqX6SvAYSwc6SS5se");
 
     console.log(kind);
 
@@ -179,6 +180,7 @@ export async function PnftGate(
         tracker: tracker,
         identifier: identifier,
         from: token_account,
+        receiver: fees,
         payer: anchorWallet.publicKey,
         mint: mint,
         nftMintCollectionMetadata: collection_metadata_acount,

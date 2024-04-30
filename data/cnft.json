@@ -228,6 +228,11 @@
           "isSigner": true
         },
         {
+          "name": "receiver",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "mint",
           "isMut": true,
           "isSigner": false
@@ -307,50 +312,6 @@
           {
             "name": "token",
             "type": "u16"
-          }
-        ]
-      }
-    },
-    {
-      "name": "MintTracker",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "minter",
-            "type": "publicKey"
-          },
-          {
-            "name": "price",
-            "type": "u64"
-          },
-          {
-            "name": "limit",
-            "type": "u64"
-          },
-          {
-            "name": "numMinted",
-            "type": "u64"
-          },
-          {
-            "name": "isPublic",
-            "type": "bool"
-          },
-          {
-            "name": "nounce",
-            "type": "u64"
-          },
-          {
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "name": "url",
-            "type": "string"
-          },
-          {
-            "name": "symbol",
-            "type": "string"
           }
         ]
       }
