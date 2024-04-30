@@ -69,7 +69,7 @@ export default function Floor() {
       } else {
         msg = "Congratulations You Win A WL Token!"
       }
-      notify_success(msg)
+      notify_success(msg);
       console.log("mint");
       setTracker(true);
     } catch (e) {
@@ -188,7 +188,6 @@ export default function Floor() {
             >
               claim
             </Button>
-            console.log("second")
           </div>
         )}
         <CardMintBox>

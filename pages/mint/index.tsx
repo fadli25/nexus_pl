@@ -19,7 +19,7 @@ export default function index() {
 
   const [holder, setHolder] = useState<boolean>(false);
   const [identifier, setIdentifier] = useState<any>();
-
+  const [keys, setKeys] = useState<number>(0)
   const anchorWallet = useAnchorWallet();
   const { connection } = useConnection();
   const wallet = useWallet()
@@ -67,7 +67,7 @@ export default function index() {
 
       token.map((tk) => {
         if (tk.publicKey == "oDNaTFqKN3cuzToL6YCKDvE1t8DjbNjXr8dUy8Q9LfB") {
-          console.log(tk.mint.supply)
+          setKeys(Number(tk.token.amount));
           setHolder(true);
         }
       })
@@ -113,7 +113,7 @@ export default function index() {
             Total_Mint={1900}
           />
         </div>
-        <MintBox mint={holder} mintButton={minting} />
+        <MintBox mint={holder} mintButton={minting} keys={keys} />
       </Card>
     </div>
   );

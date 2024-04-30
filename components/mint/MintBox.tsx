@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useMetaplex } from "../MetaplexProvider/useMetaplex";
 import CardMintBox from "./CardMintBox";
 
-export default function MintBox({ mint, mintButton }: any) {
+export default function MintBox({ mint, mintButton, keys }: any) {
 
   // const [tokens, setTokens] = useState<any[]>()
 
@@ -56,6 +56,7 @@ export default function MintBox({ mint, mintButton }: any) {
           </div>
           <div className="text-[5vw] md:text-[3vw] font-semibold">
             WL KEY <div className="hidden md:block"></div>
+            X {keys}
           </div>
         </div>
         <div>
@@ -72,7 +73,7 @@ export default function MintBox({ mint, mintButton }: any) {
               className="!text-black !bg-[#f73838] !rounded-[0.6vw] !text-[6vw] md:!text-[2vw] !px-[8vw] md:!px-[4vw] !font-semibold "
               style={{ textTransform: "none" }}
             >
-              Not Eligibale!
+              Not Eligible!
             </Button>
           }
         </div>
