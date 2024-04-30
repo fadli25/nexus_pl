@@ -1,7 +1,7 @@
 import { useMetaplex } from "@/components/MetaplexProvider/useMetaplex";
 import BurnCard from "@/components/mint/BurnCard";
 import Card from "@/components/mint/Card";
-import CardMintBox from "@/components/mint/CardMintBox";
+import CardMintBox from "@/components/mint/CardMintBoxFloor";
 import DragonSpin from "@/components/mint/DragonSpin";
 import FloorBox from "@/components/mint/FloorBox";
 import { getIdentifier } from "@/lib/mint/fetch/getIdentifier";

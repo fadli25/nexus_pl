@@ -41,7 +41,7 @@ export default function MintBox({ mint, mintButton }: any) {
 
 
   return (
-    <CardMintBox>
+    <CardMintBox >
       <div className="mt-[5vw] md:mt-[2vw] flex flex-col gap-y-[8vw] md:gap-y-0 md:flex-row justify-between items-center">
         <div className="flex flex-col md:flex-row gap-y-[3vw] md:gap-y-0 gap-x-[2vw] items-center">
           <div className="w-full flex justify-center">

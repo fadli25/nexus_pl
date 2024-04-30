@@ -1,8 +1,9 @@
 import moment from "moment-timezone";
 
-export default function getRemainingTime() {
+export default function getRemainingTime(time) {
+  console.log(time.time)
   const now = Date.now();
-  const targetTime = moment.tz("2024-04-30T17:00:00", "UTC"); // 5 Pm UTC
+  const targetTime = moment.tz(time.time, "UTC"); // 5 Pm UTC
   console.log("time now:", now);
   const difference = targetTime - now;
   console.log("target time: ", targetTime);

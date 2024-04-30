@@ -1,14 +1,15 @@
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import getRemainingTime from "./timer";
 
-export default function CountdownTimer() {
-  const [remainingTime, setRemainingTime] = useState(getRemainingTime());
-
-  console.log("counter: ", getRemainingTime());
+export default function CountdownTimer(time) {
+  const [remainingTime, setRemainingTime] = useState(getRemainingTime(time));
+  // console.log("time")
+  // console.log(time)
+  // console.log("counter: ", getRemainingTime(time));
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      const newRemainingTime = getRemainingTime();
+      const newRemainingTime = getRemainingTime(time);
       if (newRemainingTime > 0) {
         setRemainingTime(newRemainingTime);
       } else {
