@@ -9,16 +9,18 @@ export default function CountdownTimer(time) {
   // console.log("counter: ", getRemainingTime(time));
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      const newRemainingTime = getRemainingTime(time);
-      if (newRemainingTime > 0) {
-        setRemainingTime(newRemainingTime);
-      } else {
-        setRemainingTime(0); // Countdown finished
-      }
-    }, 1000);
+    if (remainingTime > 0) {
+      const timeoutId = setTimeout(() => {
+        const newRemainingTime = getRemainingTime(time);
+        if (newRemainingTime > 0) {
+          setRemainingTime(newRemainingTime);
+        } else {
+          setRemainingTime(0); // Countdown finished
+        }
+      }, 1000);
 
-    return () => clearTimeout(timeoutId);
+      return () => clearTimeout(timeoutId);
+    }
   }, [remainingTime]);
 
   const getFormattedTime = (ms) => {

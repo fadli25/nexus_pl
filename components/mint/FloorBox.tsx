@@ -4,10 +4,8 @@ import img1 from "@/public/img1.png";
 import img2 from "@/public/img2.png";
 import img3 from "@/public/img3.png";
 import Image from "next/image";
-import { useRouter } from "next/router";
 
 export default function FloorBox({ FloorName, Name }: any) {
-  const router = useRouter();
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -19,10 +17,7 @@ export default function FloorBox({ FloorName, Name }: any) {
         <div className="text-[3.5vw] md:text-[1.3vw] italic">live</div>
       </div>
       <div className="mt-[4vw] md:mt-[2vw] flex flex-col gap-y-[3vw] md:gap-y-0 md:flex-row justify-between">
-        <div
-          className="w-full md:w-[38%] cursor-pointer"
-          onClick={() => router.push("/mint/floor")}
-        >
+        <div className="w-full md:w-[38%]">
           <Image
             src={floorimg}
             width={5000}

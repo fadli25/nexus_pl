@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import getRemainingTime from "./timer";
 import { useRouter } from "next/router";
+import { Button } from "@mui/material";
 
 export default function CountdownTimer(time) {
   const [remainingTime, setRemainingTime] = useState(getRemainingTime(time));
@@ -9,16 +10,18 @@ export default function CountdownTimer(time) {
   // console.log("counter: ", getRemainingTime(time));
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      const newRemainingTime = getRemainingTime(time);
-      if (newRemainingTime > 0) {
-        setRemainingTime(newRemainingTime);
-      } else {
-        setRemainingTime(0); // Countdown finished
-      }
-    }, 1000);
+    if (remainingTime > 0) {
+      const timeoutId = setTimeout(() => {
+        const newRemainingTime = getRemainingTime(time);
+        if (newRemainingTime > 0) {
+          setRemainingTime(newRemainingTime);
+        } else {
+          setRemainingTime(0); // Countdown finished
+        }
+      }, 1000);
 
-    return () => clearTimeout(timeoutId);
+      return () => clearTimeout(timeoutId);
+    }
   }, [remainingTime]);
 
   const getFormattedTime = (ms) => {
@@ -30,7 +33,6 @@ export default function CountdownTimer(time) {
       .toString()
       .padStart(2, "0")} min : ${seconds.toString().padStart(2, "0")} s`;
   };
-
   const router = useRouter();
   return (
     <div>
@@ -38,7 +40,12 @@ export default function CountdownTimer(time) {
         {remainingTime != 0 ? (
           getFormattedTime(remainingTime)
         ) : (
-          <div className="font-[Innter]">Live</div>
+          <Button
+            className="!font-[Innter] !text[3vw] md:!text-[1.2vw] !bg-[#00ff47] !text-black !font-[500] hover:!bg-[#00ff48d1]"
+            onClick={() => router.push("/mint/floor")}
+          >
+            Live
+          </Button>
         )}
       </div>
     </div>
